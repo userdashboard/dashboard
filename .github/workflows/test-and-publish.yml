@@ -34,16 +34,11 @@ jobs:
         cp /home/runner/work/dashboard/dashboard/*.js node_modules/@userdashboard/dashboard
         cp -R $HERE/src/ node_modules/@userdashboard/dashboard/src/
         echo "global.applicationPath = __dirname" > main.js
-    - name: Generate localized content
-      run: |
-        HERE=`pwd`
-        rm -rf languages
-        mkdir -p languages
         git clone https://github.com/userdashboard/localization.git /tmp/localize
         cd /tmp/localize
         npm install @userdashboard/dashboard
         for LOCALE in `cat languages`; do
-          node clean-cache.js "$LOCALE" "/home/runner/work/localization/localization/project/dashboard /home/runner/work/dashboard/dashboard
+          node clean-cache.js "$LOCALE" /home/runner/work/localization/localization/project/dashboard $HERE
           node localize.js "$LOCALE"
         done
     - name: Lint (standard.js)
