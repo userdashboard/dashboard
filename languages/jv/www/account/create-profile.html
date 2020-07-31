@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-profiles.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Nggawe profil</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Nggawe profil</h1>
+  <p translate="yes">Profil nyekel informasi pribadi kanggo tujuan administratif lan liyane.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile" name="submit-form">
+    <div class="pure-checkbox">
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">Gawe gawanku</span></label>
+    </div>
+    <div id="display-name-container" class="pure-control-group">
+      <label for="display-name" translate="yes">Jeneng tampilan</label>
+      <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
+    </div>
+    <div id="display-email-container" class="pure-control-group">
+      <label for="display-email" translate="yes">Nuduhake email</label>
+      <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="contact-email-container" class="pure-control-group">
+      <label for="contact-email" translate="yes">Hubungi email</label>
+      <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="full-name-container">
+      <div class="pure-control-group">
+        <label for="first-name" translate="yes">Jeneng pisanan</label>
+      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="last-name" translate="yes">Jeneng mburi</label>
+      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+      </div>
+    </div>
+    <div id="dob-container">
+      <div class="pure-control-group">
+        <label for="dob" translate="yes">Tanggal kelahiran</label>
+      <input required="required" id="dob" name="dob" type="text" maxlength="11">
+      </div>
+    </div>
+    <div id="phone-container" class="pure-control-group">
+      <label for="phone" translate="yes">Telpon</label>
+      <input required="required" id="phone" name="phone" type="text" maxlength="1000">
+    </div>
+    <div id="occupation-container" class="pure-control-group">
+      <label for="occupation" translate="yes">Pakaryan</label>
+      <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
+    </div>
+    <div id="location-container" class="pure-control-group">
+      <label for="location" translate="yes">Lokasi</label>
+      <input required="required" id="location" name="location" type="text" maxlength="1000">
+    </div>
+    <div id="company-name-container" class="pure-control-group">
+      <label for="company-name" translate="yes">Jeneng perusahaan</label>
+      <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
+    </div>
+    <div id="website-container" class="pure-control-group">
+      <label for="website" translate="yes">Situs web</label>
+      <input required="required" id="website" name="website" type="text" maxlength="1000">
+    </div>
+    <div id="submit-container" class="pure-controls">
+      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">Nggawe profil</button>
+    </div>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Sukses! Informasi profil anyar sampeyan wis disimpen
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Kesalahan! Kesalahan sing ora dingerteni kedadeyan
+    </div>
+  </template>
+  <template id="invalid-first-name">
+    <div class="error message" translate="yes">
+      Kesalahan! Jeneng pertama sing ora ana utawa ora kasedhiya
+    </div>
+  </template>
+  <template id="invalid-first-name-length">
+    <div class="error message" translate="yes">
+      Kesalahan! Jeneng pertama sing ora bener diwenehake
+    </div>
+  </template>
+  <template id="invalid-last-name">
+    <div class="error message" translate="yes">
+      Kesalahan! Jeneng pungkasan sing ora ana utawa ora bener diwenehake
+    </div>
+  </template>
+  <template id="invalid-last-name-length">
+    <div class="error message" translate="yes">
+      Kesalahan! Jeneng pungkasan sing ora bener diwenehake
+    </div>
+  </template>
+  <template id="invalid-contact-email">
+    <div class="error message" translate="yes">
+      Kesalahan! Alamat email kontak sing ora bener
+    </div>
+  </template>
+  <template id="invalid-display-email">
+    <div class="error message" translate="yes">
+      Kesalahan! Alamat email tampilan ora sah
+    </div>
+  </template>
+  <template id="invalid-display-name">
+    <div class="error message" translate="yes">
+      Kesalahan! Jeneng tampilan sing ora ana utawa ora bener kasedhiya
+    </div>
+  </template>
+  <template id="invalid-dob">
+    <div class="error message" translate="yes">
+      Kesalahan! Tanggal lair sing ora ana utawa ora bener diwenehake
+    </div>
+  </template>
+  <template id="invalid-phone">
+    <div class="error message" translate="yes">
+      Kesalahan! Telpon sing ilang utawa ora bener diwenehake.
+    </div>
+  </template>
+  <template id="invalid-occupation">
+    <div class="error message" translate="yes">
+      Kesalahan! Kasedhiya pekerjaan sing ora ilang utawa ora bener.
+    </div>
+  </template>
+  <template id="invalid-location">
+    <div class="error message" translate="yes">
+      Kesalahan! Lokasi sing ora ana utawa ora kasedhiya kasedhiya.
+    </div>
+  </template>
+  <template id="invalid-company-name">
+    <div class="error message" translate="yes">
+      Kesalahan! Jeneng perusahaan sing ilang utawa ora bener kasedhiya.
+    </div>
+  </template>
+  <template id="invalid-website">
+    <div class="error message" translate="yes">
+      Kesalahan! Kasedhiya situs web sing ilang utawa ora bener.
+    </div>
+  </template>
+  <template id="invalid-display-name-length">
+    <div class="error message" translate="yes">
+      Kesalahan! Jeneng tampilan sing ora ana utawa ora bener kasedhiya
+    </div>
+  </template>
+</body>
+</html>

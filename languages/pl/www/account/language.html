@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Język konta</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Język konta</h1>
+  <p translate="yes">Wybierz swój język i tam, gdzie to możliwe, treść będzie wyświetlana w Twoim preferowanym języku.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/language" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Język</label>
+        <select id="language" name="language">
+          <option value="" translate="yes">
+            Wybierz język
+          </option>
+        </select>
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Zmień język</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="language-option">
+    <option value="${language.code}">
+      ${language.name}
+    </option>
+  </template>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Sukces! Twoje preferencje językowe będą obowiązywać od teraz.
+    </div>
+  </template>
+  <template id="invalid-language">
+    <div class="error message" translate="yes">
+      Błąd! Wybrano nieprawidłowy język
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Błąd! Wystąpił nieznany błąd
+    </div>
+  </template>
+</body>
+</html>

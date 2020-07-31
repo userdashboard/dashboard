@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">கணக்கு மொழி</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">கணக்கு மொழி</h1>
+  <p translate="yes">உங்கள் மொழியைத் தேர்ந்தெடுத்து, நீங்கள் விரும்பும் மொழியில் சாத்தியமான உள்ளடக்கம் வழங்கப்படும்.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/language" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">மொழி</label>
+        <select id="language" name="language">
+          <option value="" translate="yes">
+            மொழியை தேர்ந்தெடுங்கள்
+          </option>
+        </select>
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">மொழியை மாற்றவும்</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="language-option">
+    <option value="${language.code}">
+      ${language.name}
+    </option>
+  </template>
+  <template id="success">
+    <div class="success message" translate="yes">
+      வெற்றி! உங்கள் மொழி விருப்பம் இனிமேல் நடைமுறைக்கு வரும்.
+    </div>
+  </template>
+  <template id="invalid-language">
+    <div class="error message" translate="yes">
+      பிழை! தவறான மொழி தேர்ந்தெடுக்கப்பட்டது
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      பிழை! அறியப்படாத பிழை ஏற்பட்டது
+    </div>
+  </template>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Hesabımı geri yükle</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">Hesabımı geri yükle</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">Kullanıcı adı</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Parola</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Hesabımı geri yükle</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">Bir hesap oluştur</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">Parolanızı mı unuttunuz</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">Hesabı silmeyi iptal et</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      Hata! Geçersiz hesap veya iptal süresi sona erdi
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      Hata! Hesap silindi veya iptal süresi sona erdi
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      Hata! Yanlış veya eksik kullanıcı adı
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Hata! Yanlış veya eksik şifre
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      Hata! Geçersiz kullanıcı adı uzunluğu
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      Hata! Geçersiz şifre uzunluğu
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Bilinmeyen bir hata oluştu
+    </div>
+  </template>
+</body>
+</html>

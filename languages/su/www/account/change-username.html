@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Ngarobih nami landihan</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Ngarobih nami landihan</h1>
+  <p translate="yes">Sadaya nami nama anu teu terkait-énkripsi sateuacan nyimpen data nganggo uyah bcrypt +.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="new-username" translate="yes">Ngaran pamaké anyar</label>
+        <input id="new-username" name="new-username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Kecap konci Ayeuna</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Atur nami landihan anyar</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Kasuksésan! Ngaran pangguna anyar anjeun kedah dianggo ti ayeuna
+    </div>
+  </template>
+  <template id="invalid-new-username">
+    <div class="error message" translate="yes">
+      Kasalahan! Henteu sah atanapi duplikkeun nami pangguna anyar
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Kasalahan! Kecap konci anjeun ayeuna teu leres
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Kasalahan! Aya kasalahan anu teu dipikanyaho
+    </div>
+  </template>
+  <template id="invalid-new-username-length">
+    <div class="error message" translate="yes">
+      Kasalahan! Panjang nami pangguna anyar anu henteu leres
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      Kasalahan! Aya jalma anu ngagunakeun nami sandi éta
+    </div>
+  </template>
+</body>
+</html>

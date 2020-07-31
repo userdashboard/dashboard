@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-profile.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">संपादित करें ${profile.profileid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">संपादित करें ${profile.profileid}</h1>
+  <p translate="yes">अपनी संपर्क जानकारी सही और अद्यतित रखें।</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/edit-profile?profileid=${profile.profileid}" name="submit-form">
+    <div class="pure-checkbox">
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">मेरा डिफ़ॉल्ट बनाओ</span></label>
+    </div>
+    <div id="display-name-container" class="pure-control-group">
+      <label for="display-name" translate="yes">प्रदर्शित होने वाला नाम</label>
+      <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
+    </div>
+    <div id="display-email-container" class="pure-control-group">
+      <label for="display-email" translate="yes">ईमेल प्रदर्शित करें</label>
+      <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="contact-email-container" class="pure-control-group">
+      <label for="contact-email" translate="yes">ई - मेल से संपर्क करे</label>
+      <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="full-name-container">
+      <div class="pure-control-group">
+        <label for="first-name" translate="yes">पहला नाम</label>
+      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="last-name" translate="yes">अंतिम नाम</label>
+      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+      </div>
+    </div>
+    <div id="dob-container">
+      <div class="pure-control-group">
+        <label for="dob" translate="yes">जन्म की तारीख</label>
+        <input required="required" id="dob" name="dob" type="text" maxlength="11">
+      </div>
+    </div>
+    <div id="phone-container" class="pure-control-group">
+      <label for="phone" translate="yes">टेलीफोन</label>
+      <input required="required" id="phone" name="phone" type="text" maxlength="1000">
+    </div>
+    <div id="occupation-container" class="pure-control-group">
+      <label for="occupation" translate="yes">व्यवसाय</label>
+      <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
+    </div>
+    <div id="location-container" class="pure-control-group">
+      <label for="location" translate="yes">स्थान</label>
+      <input required="required" id="location" name="location" type="text" maxlength="1000">
+    </div>
+    <div id="company-name-container" class="pure-control-group">
+      <label for="company-name" translate="yes">कंपनी का नाम</label>
+      <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
+    </div>
+    <div id="website-container" class="pure-control-group">
+      <label for="website" translate="yes">वेबसाइट</label>
+      <input required="required" id="website" name="website" type="text" maxlength="1000">
+    </div>
+    <div id="submit-container" class="pure-controls">
+      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">प्रोफ़ाइल अपडेट करें</button>
+    </div>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      सफलता! आपकी प्रोफ़ाइल जानकारी अपडेट कर दी गई है
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      त्रुटि! एक अज्ञात ग़लती हुई
+    </div>
+  </template>
+  <template id="invalid-first-name">
+    <div class="error message" translate="yes">
+      त्रुटि! एक लापता या अमान्य पहला नाम प्रदान किया गया
+    </div>
+  </template>
+  <template id="invalid-first-name-length">
+    <div class="error message" translate="yes">
+      त्रुटि! एक अमान्य पहला नाम प्रदान किया गया था
+    </div>
+  </template>
+  <template id="invalid-last-name">
+    <div class="error message" translate="yes">
+      त्रुटि! एक गुम या अमान्य अंतिम नाम प्रदान किया गया था
+    </div>
+  </template>
+  <template id="invalid-last-name-length">
+    <div class="error message" translate="yes">
+      त्रुटि! एक अमान्य अंतिम नाम प्रदान किया गया था
+    </div>
+  </template>
+  <template id="invalid-contact-email">
+    <div class="error message" translate="yes">
+      त्रुटि! अवैध संपर्क ईमेल पता
+    </div>
+  </template>
+  <template id="invalid-display-email">
+    <div class="error message" translate="yes">
+      त्रुटि! अमान्य प्रदर्शन ईमेल पता
+    </div>
+  </template>
+  <template id="invalid-display-name">
+    <div class="error message" translate="yes">
+      त्रुटि! एक अनुपलब्ध या अमान्य प्रदर्शन नाम प्रदान किया गया था
+    </div>
+  </template>
+  <template id="invalid-dob">
+    <div class="error message" translate="yes">
+      त्रुटि! गुम या अमान्य जन्म तिथि प्रदान की गई थी
+    </div>
+  </template>
+  <template id="invalid-phone">
+    <div class="error message" translate="yes">
+      त्रुटि! एक लापता या अमान्य फोन प्रदान किया गया था।
+    </div>
+  </template>
+  <template id="invalid-occupation">
+    <div class="error message" translate="yes">
+      त्रुटि! एक लापता या अवैध व्यवसाय प्रदान किया गया था।
+    </div>
+  </template>
+  <template id="invalid-location">
+    <div class="error message" translate="yes">
+      त्रुटि! गुम या अमान्य स्थान प्रदान किया गया था।
+    </div>
+  </template>
+  <template id="invalid-company-name">
+    <div class="error message" translate="yes">
+      त्रुटि! गुम या अमान्य कंपनी का नाम प्रदान किया गया था।
+    </div>
+  </template>
+  <template id="invalid-website">
+    <div class="error message" translate="yes">
+      त्रुटि! गुम या अमान्य वेबसाइट प्रदान की गई थी।
+    </div>
+  </template>
+  <template id="invalid-display-name-length">
+    <div class="error message" translate="yes">
+      त्रुटि! एक अनुपलब्ध या अमान्य प्रदर्शन नाम प्रदान किया गया था
+    </div>
+  </template>
+</body>
+</html>

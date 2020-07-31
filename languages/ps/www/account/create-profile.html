@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-profiles.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">ئړک ړوج لیافورپ</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">ئړک ړوج لیافورپ</h1>
+  <p translate="yes">.يتاس هراپل وفادها ورون وا يرادا د تامولعم يصخش وساتس هنولیافورپ</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile" name="submit-form">
+    <div class="pure-checkbox">
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">ئړک ړوج ټلافیډ امز</span></label>
+    </div>
+    <div id="display-name-container" class="pure-control-group">
+      <label for="display-name" translate="yes">هړک دنګرڅ مون</label>
+      <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
+    </div>
+    <div id="display-email-container" class="pure-control-group">
+      <label for="display-email" translate="yes">لدوښ کیلانښیرب</label>
+      <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="contact-email-container" class="pure-control-group">
+      <label for="contact-email" translate="yes">کیلانښیرب ېکیړا د</label>
+      <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="full-name-container">
+      <div class="pure-control-group">
+        <label for="first-name" translate="yes">مون لوا</label>
+      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="last-name" translate="yes">صلخت</label>
+      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+      </div>
+    </div>
+    <div id="dob-container">
+      <div class="pure-control-group">
+        <label for="dob" translate="yes">هټین ودیږیز د</label>
+      <input required="required" id="dob" name="dob" type="text" maxlength="11">
+      </div>
+    </div>
+    <div id="phone-container" class="pure-control-group">
+      <label for="phone" translate="yes">نوفیلټ</label>
+      <input required="required" id="phone" name="phone" type="text" maxlength="1000">
+    </div>
+    <div id="occupation-container" class="pure-control-group">
+      <label for="occupation" translate="yes">کلسم</label>
+      <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
+    </div>
+    <div id="location-container" class="pure-control-group">
+      <label for="location" translate="yes">یاځ</label>
+      <input required="required" id="location" name="location" type="text" maxlength="1000">
+    </div>
+    <div id="company-name-container" class="pure-control-group">
+      <label for="company-name" translate="yes">مون ینپمکد</label>
+      <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
+    </div>
+    <div id="website-container" class="pure-control-group">
+      <label for="website" translate="yes">هاپ بیو</label>
+      <input required="required" id="website" name="website" type="text" maxlength="1000">
+    </div>
+    <div id="submit-container" class="pure-controls">
+      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">ئړک ړوج لیافورپ</button>
+    </div>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      يد يوش يدنوخ تامولعم لیافورپ يون د وساتس !ایرب
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      هوشو يطلغ همولعمان هوی !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-first-name">
+    <div class="error message" translate="yes">
+      یوش لړکرو مون یړمول هروابان ای یوش کرو !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-first-name-length">
+    <div class="error message" translate="yes">
+      و یوش لړکرو مون هروابان وی !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-last-name">
+    <div class="error message" translate="yes">
+      و یوش لړکرو مون یتسورو هروابان ای یوش کرو !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-last-name-length">
+    <div class="error message" translate="yes">
+      و یوش لړکرو مون یتسورو هروابان وی !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-contact-email">
+    <div class="error message" translate="yes">
+      هتپ کیلانښیرب مسان ېکیړا د !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-display-email">
+    <div class="error message" translate="yes">
+      هتپ کیلانښیرب ېندوښ مسان د !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-display-name">
+    <div class="error message" translate="yes">
+      و یوش لړکرو مون یوش لدوښ هروابان ای یوش کرو !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-dob">
+    <div class="error message" translate="yes">
+      هو ېوش لړکرو هروابان ای هټین ودیکرو ای ودیکرو د !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-phone">
+    <div class="error message" translate="yes">
+      .و یوش وتمچ نوفیلت هروابان ای یوش کرو !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-occupation">
+    <div class="error message" translate="yes">
+      هو ېوش لړکرو هدند هروابان ای یوش کرو !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-location">
+    <div class="error message" translate="yes">
+      هو ېوش لړکرو عقوم هروابان ای یوش کرو !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-company-name">
+    <div class="error message" translate="yes">
+      .و یوش وتمچ مون تکرش هروابان ای يوش کرو د !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-website">
+    <div class="error message" translate="yes">
+      .هوش لړکرو هdedivorp اپ بیو هروابان ای هکرو !هنتورېت
+    </div>
+  </template>
+  <template id="invalid-display-name-length">
+    <div class="error message" translate="yes">
+      و یوش لړکرو مون یوش لدوښ هروابان ای یوش کرو !هنتورېت
+    </div>
+  </template>
+</body>
+</html>

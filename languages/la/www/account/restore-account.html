@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Mea causa restituet</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">Mea causa restituet</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">nomen usoris</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Password</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Mea causa restituet</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">Register rationem</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">oblitus es password</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">Deletis propter Cancel</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      Error! Aliquam vel propter tempus cancelation finivit
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      Error! Ratio deletum, vel ad tempus cancelation finivit
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      Error! Non recta, aut nomen usoris defuit
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Error! Non recta vel absentis password
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      Error! Tandem invalidos usoris
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      Error! Tandem invalidos ignoro
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Error incognitus occurrit
+    </div>
+  </template>
+</body>
+</html>

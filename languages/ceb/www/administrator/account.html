@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Panglantaw ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Panglantaw ${account.accountid}</h1>
+  <div id="message-container"></div>
+  <table id="accounts-table" class="pure-table data-table">
+    <tbody id="${account.accountid}">
+      <tr>
+        <th>ID</th>
+        <td>${account.accountid}</td>
+      </tr>
+      <tr>
+        <th translate="yes">Gihimo</th>
+        <td>${account.createdFormatted}</td>
+      </tr>
+      <tr>
+        <th translate="yes">Katapusan nga gipirmahan sa</th>
+        <td>${account.lastSignedInFormatted}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 translate="yes">Mga profile</h2>
+  <table id="profiles-table" class="pure-table pure-table-striped list-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th translate="yes">Ngalan</th>
+        <th translate="yes">Email</th>
+      </tr>
+    </thead>
+  </table>
+  <h2 translate="yes">Mga sesyon</h2>
+  <table id="sessions-table" class="pure-table pure-table-striped list-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th translate="yes">Gihimo</th>
+        <th translate="yes">Katapusan nga gipirmahan sa</th>
+      </tr>
+    </thead>
+  </table>
+  <div id="reset-codes-container">
+    <h2 translate="yes">I-reset ang mga code</h2>
+    <table id="reset-codes-table" class="pure-table pure-table-striped list-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th translate="yes">Gihimo</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <template id="profile-row">
+    <tr id="${profile.profileid}">
+      <td>
+        <a href="/administrator/profile?profileid=${profile.profileid}">${profile.profileid}</a>
+      </td>
+      <td>${profile.firstName} ${profile.lastName}</td>
+      <td>
+        <a href="mailto:${profile.contactEmail}">${profile.contactEmail}</a>
+      </td>
+    </tr>
+  </template>
+  <template id="session-row">      
+    <tr id="${session.sessionid}">
+      <td>
+        <a href="/administrator/session?sessionid=${session.sessionid}">${session.sessionid}</a>
+      </td>
+      <td>${session.createdFormatted}</td>
+      <td>${session.expiresFormatted}</td>
+    </tr>
+  </template>
+  <template id="reset-code-row">
+    <tr id="${resetCode.codeid}">
+      <td>
+        <a href="/administrator/reset-code?codeid=${resetCode.codeid}">${resetCode.codeid}</a>
+      </td>
+      <td>${resetCode.createdFormatted}</td>
+    </tr>
+  </template>
+</body>
+</html>

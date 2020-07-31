@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">فذح ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">فذح ${account.accountid}</h1>
+  <p translate="yes">.ةلودجملا فذحلا ةرتف زايتجا دعب تاباسحلا فذح نكمي</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">باسحلا فذح</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      باسحلا فذح مت !حاجن
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      فورعم ريغ أطخ ثدح !أطخ
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      ًالوأ فذحلل باسحلا ةلودج بجي !أطخ
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      لودجملا هخيرات دعب الإ باسحلا فذح نكمي ال !أطخ
+    </div>
+  </template>
+</body>
+</html>

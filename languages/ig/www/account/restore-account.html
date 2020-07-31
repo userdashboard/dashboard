@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Weghachi akaụntụ m</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">Weghachi akaụntụ m</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">Aha njirimara</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Okwuntughe</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Weghachi akaụntụ m</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">Debanye aha akaụntụ</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">Chefuru okwuntughe</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">Kagbuo akaụntụ</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      Njehie! Akaụntụ ezughị oke ma ọ bụ oge kagbuo agwụla
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      Njehie! Akaụntụ ewepụsịrị ma ọ bụ oge ụkagbu ahụ agwụla
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      Njehie! Aha njirimara ezighi ezi ma ọ bụ na-efu
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Njehie! Eziokwu ma ọ bụ na-efu
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      Njehie! Aha njirimara ezighi ezi
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      Njehie! Ogologo paswọọdụ ezighi ezi
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Njehie amaghi mere
+    </div>
+  </template>
+</body>
+</html>

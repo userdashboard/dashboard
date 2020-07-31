@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Выдаліць ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Выдаліць ${account.accountid}</h1>
+  <p translate="yes">Уліковыя запісы можна выдаліць пасля праходжання запланаванага перыяду выдалення.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Выдаліць уліковы запіс</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Поспех! Уліковы запіс выдалены
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Памылка! Узнікла невядомая памылка
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      Памылка! Для ўліковага запісу трэба спачатку запланаваць выдаленне
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      Памылка! Уліковы запіс нельга выдаліць да канца запланаванай даты
+    </div>
+  </template>
+</body>
+</html>

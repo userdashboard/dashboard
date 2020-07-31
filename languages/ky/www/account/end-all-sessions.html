@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-sessions.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Бардык сессияларды аяктаңыз</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Бардык сессияларды аяктаңыз</h1>
+  <p translate="yes">Бул сиздин бардык сессияларды, анын ичинде ушул сессияны дароо токтотот.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/account/end-all-sessions" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Бардык сессияларга кол коюңуз</button>
+    </fieldset>
+  </form>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Error! Белгисиз ката кетти
+    </div>
+  </template>
+</body>
+</html>

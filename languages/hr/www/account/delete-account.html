@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Izbriši račun</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Izbriši račun</h1>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/delete-account" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Trenutna lozinka</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Izbriši račun</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Greška! Vaša trenutna lozinka nije važeća
+    </div>
+  </template>
+  <template id="instant-delete">
+    <p translate="yes">Vaš će račun odmah biti zakazan za brisanje i nije ga moguće vratiti.</p>
+  </template>
+  <template id="scheduled-delete">
+    <p translate="yes">Vaš će račun biti zakazan za brisanje u ${data.numDays} days and you may cancel before then.</p>
+  </template>
+  <template id="owner-account">
+    <div class="error message" translate="yes">
+      Greška! Prvo morate prenijeti vlasništvo nad platformom nekom drugom
+    </div>
+  </template>
+  <template id="administrator-account">
+    <div class="error message" translate="yes">
+      Greška! Prvo morate opozvati ovlaštenja administratora
+    </div>
+  </template>
+</body>
+</html>

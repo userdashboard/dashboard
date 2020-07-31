@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-sessions.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Bütün seansları bitir</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Bütün seansları bitir</h1>
+  <p translate="yes">Bu dərhal daxil olmaqla bütün seanslarınızı dərhal ləğv edəcəkdir.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/account/end-all-sessions" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Bütün seansları imzalayın</button>
+    </fieldset>
+  </form>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Xəta! Naməlum səhv baş verdi
+    </div>
+  </template>
+</body>
+</html>

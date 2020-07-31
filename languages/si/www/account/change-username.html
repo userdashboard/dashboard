@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">පරිශීලක නාමය වෙනස් කරන්න</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">පරිශීලක නාමය වෙනස් කරන්න</h1>
+  <p translate="yes">Bcrypt + හවුල් ලුණු සමඟ දත්ත ගබඩා කිරීමට පෙර සියලුම පරිශීලක නාම ආපසු හැරවිය නොහැකි ලෙස සංකේතනය කර ඇත.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="new-username" translate="yes">නව පරිශීලක නාමය</label>
+        <input id="new-username" name="new-username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">වත්මන් මුරපදය</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">නව පරිශීලක නාමයක් සකසන්න</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      සාර්ථකත්වය! ඔබගේ නව පරිශීලක නාමය මෙතැන් සිට භාවිතා කළ යුතුය
+    </div>
+  </template>
+  <template id="invalid-new-username">
+    <div class="error message" translate="yes">
+      දෝෂයකි! නව පරිශීලක නාමය අවලංගු හෝ අනුපිටපත් කරන්න
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      දෝෂයකි! ඔබගේ වර්තමාන මුරපදය අවලංගුය
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      දෝෂයකි! නොදන්නා දෝෂයක් සිදුවිය
+    </div>
+  </template>
+  <template id="invalid-new-username-length">
+    <div class="error message" translate="yes">
+      දෝෂයකි! අවලංගු නව පරිශීලක නාම දිග
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      දෝෂයකි! වෙනත් අයෙක් එම පරිශීලක නාමය භාවිතා කරයි
+    </div>
+  </template>
+</body>
+</html>

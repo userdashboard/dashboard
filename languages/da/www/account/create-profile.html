@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-profiles.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Opret profil</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Opret profil</h1>
+  <p translate="yes">Profiler opbevarer dine personlige oplysninger til administrative og andre formål.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile" name="submit-form">
+    <div class="pure-checkbox">
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">Lav min standard</span></label>
+    </div>
+    <div id="display-name-container" class="pure-control-group">
+      <label for="display-name" translate="yes">Visningsnavn</label>
+      <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
+    </div>
+    <div id="display-email-container" class="pure-control-group">
+      <label for="display-email" translate="yes">Vis e-mail</label>
+      <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="contact-email-container" class="pure-control-group">
+      <label for="contact-email" translate="yes">Kontakt Email</label>
+      <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="full-name-container">
+      <div class="pure-control-group">
+        <label for="first-name" translate="yes">Fornavn</label>
+      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="last-name" translate="yes">Efternavn</label>
+      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+      </div>
+    </div>
+    <div id="dob-container">
+      <div class="pure-control-group">
+        <label for="dob" translate="yes">Fødselsdato</label>
+      <input required="required" id="dob" name="dob" type="text" maxlength="11">
+      </div>
+    </div>
+    <div id="phone-container" class="pure-control-group">
+      <label for="phone" translate="yes">Telefon</label>
+      <input required="required" id="phone" name="phone" type="text" maxlength="1000">
+    </div>
+    <div id="occupation-container" class="pure-control-group">
+      <label for="occupation" translate="yes">Beskæftigelse</label>
+      <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
+    </div>
+    <div id="location-container" class="pure-control-group">
+      <label for="location" translate="yes">Beliggenhed</label>
+      <input required="required" id="location" name="location" type="text" maxlength="1000">
+    </div>
+    <div id="company-name-container" class="pure-control-group">
+      <label for="company-name" translate="yes">Firmanavn</label>
+      <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
+    </div>
+    <div id="website-container" class="pure-control-group">
+      <label for="website" translate="yes">Internet side</label>
+      <input required="required" id="website" name="website" type="text" maxlength="1000">
+    </div>
+    <div id="submit-container" class="pure-controls">
+      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">Opret profil</button>
+    </div>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Succes! Dine nye profiloplysninger er gemt
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Fejl! Der opstod en ukendt fejl
+    </div>
+  </template>
+  <template id="invalid-first-name">
+    <div class="error message" translate="yes">
+      Fejl! Et angivet eller ugyldigt fornavn opgivet
+    </div>
+  </template>
+  <template id="invalid-first-name-length">
+    <div class="error message" translate="yes">
+      Fejl! Der blev angivet et ugyldigt fornavn
+    </div>
+  </template>
+  <template id="invalid-last-name">
+    <div class="error message" translate="yes">
+      Fejl! Der blev angivet et manglende eller ugyldigt efternavn
+    </div>
+  </template>
+  <template id="invalid-last-name-length">
+    <div class="error message" translate="yes">
+      Fejl! Der blev angivet et ugyldigt efternavn
+    </div>
+  </template>
+  <template id="invalid-contact-email">
+    <div class="error message" translate="yes">
+      Fejl! Ugyldig e-mail-adresse til kontaktpersoner
+    </div>
+  </template>
+  <template id="invalid-display-email">
+    <div class="error message" translate="yes">
+      Fejl! Ugyldig visnings-e-mail-adresse
+    </div>
+  </template>
+  <template id="invalid-display-name">
+    <div class="error message" translate="yes">
+      Fejl! Der blev angivet et manglende eller ugyldigt visningsnavn
+    </div>
+  </template>
+  <template id="invalid-dob">
+    <div class="error message" translate="yes">
+      Fejl! Der blev leveret en manglende eller ugyldig fødselsdato
+    </div>
+  </template>
+  <template id="invalid-phone">
+    <div class="error message" translate="yes">
+      Fejl! Der blev leveret en manglende eller ugyldig telefon.
+    </div>
+  </template>
+  <template id="invalid-occupation">
+    <div class="error message" translate="yes">
+      Fejl! Der blev leveret en manglende eller ugyldig besættelse.
+    </div>
+  </template>
+  <template id="invalid-location">
+    <div class="error message" translate="yes">
+      Fejl! Der blev leveret en manglende eller ugyldig placering.
+    </div>
+  </template>
+  <template id="invalid-company-name">
+    <div class="error message" translate="yes">
+      Fejl! Der blev angivet et manglende eller ugyldigt firmanavn.
+    </div>
+  </template>
+  <template id="invalid-website">
+    <div class="error message" translate="yes">
+      Fejl! Et manglende eller ugyldigt websted blev leveret.
+    </div>
+  </template>
+  <template id="invalid-display-name-length">
+    <div class="error message" translate="yes">
+      Fejl! Der blev angivet et manglende eller ugyldigt visningsnavn
+    </div>
+  </template>
+</body>
+</html>

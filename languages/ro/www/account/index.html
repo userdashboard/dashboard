@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Cont</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Cont</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Șterge cont</a></p>
+  <h2 translate="yes">Coduri de recuperare</h2>
+  <p translate="yes">Aceste coduri de o singură utilizare vă pot reseta parola și dezactiva jetoanele de autentificare.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">Creați un cod</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">Resetați codurile</a></p>
+  <h2 translate="yes">Informații despre profil</h2>
+  <p translate="yes">Din motive administrative, poate este necesar să vă contactăm uneori.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">Gestionează sesiunile</h2>
+  <p translate="yes">Vizualizați conectările recente.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">sesiuni</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">Încheie toate sesiunile</a>
+  </p>
+  <h2 translate="yes">Schimbați autentificarea în datele de acreditare</h2>
+  <p translate="yes">Numele de utilizator și parola dvs. sunt secrete și sunt utilizate doar pentru conectare.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">Schimbă numele</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">Schimbați parola</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">Limba</h2>
+    <p translate="yes">Personalizați preferința de limbă.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">Selecteaza limba</a></p>
+  </div>
+  <h2 translate="yes">Șterge cont</h2>
+  <p translate="yes">Programează-ți contul pentru ștergere în viitorul apropiat și anulează dacă te răzgândești.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Șterge cont</a></p>
+</body>
+</html>

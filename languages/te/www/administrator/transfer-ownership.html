@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">యాజమాన్యాన్ని బదిలీ చేయండి ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">యాజమాన్యాన్ని బదిలీ చేయండి ${account.accountid}</h1>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/transfer-ownership?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">యాజమాన్యాన్ని బదిలీ చేయండి</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      విజయం! వినియోగదారుని యజమానిగా చేశారు
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      లోపం! తెలియని లోపం సంభవించింది
+    </div>
+  </template>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      లోపం! ప్రస్తుత యజమాని మాత్రమే యాజమాన్యాన్ని బదిలీ చేయగలరు
+    </div>
+  </template>
+</body>
+</html>

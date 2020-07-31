@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Whakaora i taku korero</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">Whakaora i taku korero</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">Ingoa Kaiwhakamahi</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Kupuhipa</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Whakaora i taku korero</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">Rēhita he pūkete</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">Wareware kupu huna</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">Whakakorehia te whakakore i nga kaute</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      He hapa! Te kaute kore, te wa whakakorea ranei kua mutu
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      He hapa! I whakakorea nga putea ranei kua mutu te wa whakakorea
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      He hapa! Kei te ngaro, kua ngaro ranei te ingoa ingoa
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      He hapa! Kei te ngaro, kua ngaro ranei to kupuhipa
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      He hapa! Te roa ingoa kore
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      He hapa! Te roa o te kupu huna
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Kua puta he hapa kaore i te mohiotia
+    </div>
+  </template>
+</body>
+</html>

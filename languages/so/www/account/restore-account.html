@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Soo celi akoonkeyga</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">Soo celi akoonkeyga</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">Adeegsade</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Furaha</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Soo celi akoonkeyga</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">Diiwaangeliso koonto</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">Ilowday ereyga sirta ah</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">Tirtir tirtirka koontada</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      Khalad! Koonto aan sax ahayn ama muddadii hakinta ayaa dhammaatay
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      Khalad! Koontada waa la tirtiray ama waqtigii kansalku wuu dhammaaday
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      Khalad! Adeegsi qaldan ama maqan
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Khalad! Fariin khaldan ama maqan
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      Khalad! Dherer isticmaale aan sax ahayn
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      Khalad! Dherer sir aan sax ahayn
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Khalad aan la aqoon ayaa dhacay
+    </div>
+  </template>
+</body>
+</html>

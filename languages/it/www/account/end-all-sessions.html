@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-sessions.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Termina tutte le sessioni</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Termina tutte le sessioni</h1>
+  <p translate="yes">Ciò interromperà immediatamente tutte le sessioni, compresa questa.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/account/end-all-sessions" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Esci da tutte le sessioni</button>
+    </fieldset>
+  </form>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Errore! Si è verificato un errore sconosciuto
+    </div>
+  </template>
+</body>
+</html>

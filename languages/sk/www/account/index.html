@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">účet</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">účet</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Zmazať účet</a></p>
+  <h2 translate="yes">Obnovovacie kódy</h2>
+  <p translate="yes">Tieto kódy na jedno použitie môžu resetovať vaše heslo a zakázať autentifikačné tokeny.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">Vytvorte kód</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">Resetujte kódy</a></p>
+  <h2 translate="yes">Profilové informácie</h2>
+  <p translate="yes">Z administratívnych dôvodov vás budeme musieť niekedy kontaktovať.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">Spravujte relácie</h2>
+  <p translate="yes">Zobraziť svoje posledné prihlásenia.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">Sessions</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">Ukončite všetky relácie</a>
+  </p>
+  <h2 translate="yes">Zmeniť prihlasovacie údaje</h2>
+  <p translate="yes">Vaše používateľské meno a heslo sú tajné a používajú sa iba na prihlásenie.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">Zmeniť používateľské meno</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">Zmeniť heslo</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">Jazyk</h2>
+    <p translate="yes">Prispôsobte si preferencie jazyka.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">Zvoľ jazyk</a></p>
+  </div>
+  <h2 translate="yes">Zmazať účet</h2>
+  <p translate="yes">Naplánujte si odstránenie účtu v blízkej budúcnosti a ak zmeníte názor, zrušte ho.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Zmazať účet</a></p>
+</body>
+</html>

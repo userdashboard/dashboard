@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Hisob</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Hisob</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Hisobni o'chirish</a></p>
+  <h2 translate="yes">Qayta tiklash kodlari</h2>
+  <p translate="yes">Bir martalik ishlatiladigan kodlar parolingizni qayta tiklaydi va autentifikatsiya tokenlarini o'chirib qo'yishi mumkin.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">Kod yarating</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">Kodlarni asl holatiga qaytaring</a></p>
+  <h2 translate="yes">Profil haqida ma'lumot</h2>
+  <p translate="yes">Ma'muriy sabablarga ko'ra ba'zan biz bilan bog'lanishimiz kerak bo'lishi mumkin.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">Seanslarni boshqarish</h2>
+  <p translate="yes">So'nggi kirishlaringizni ko'ring.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">Mashg'ulotlar</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">Barcha seanslarni tugating</a>
+  </p>
+  <h2 translate="yes">Hisob ma'lumotlari tizimiga kirishni o'zgartiring</h2>
+  <p translate="yes">Sizning foydalanuvchi nomingiz va parolingiz maxfiy va faqat kirish uchun foydalaniladi.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">Foydalanuvchi nomini o'zgartirish</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">Kalit so'zni o'zgartirish</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">Til</h2>
+    <p translate="yes">O'zingizning tilingiz parametrlarini sozlang.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">Tilni tanlang</a></p>
+  </div>
+  <h2 translate="yes">Hisobni o'chirish</h2>
+  <p translate="yes">Yaqin kelajakda o'chirish uchun hisobingizni rejalashtiring va fikringizni o'zgartirsangiz, bekor qiling.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Hisobni o'chirish</a></p>
+</body>
+</html>

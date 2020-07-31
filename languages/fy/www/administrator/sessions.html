@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Sesjes</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Sesjes</h1>
+  <p translate="yes">Dizze wurde oanmakke elke kear as in brûker oanmeldt.</p>
+  <div id="message-container"></div>
+  <div id="no-sessions">
+    <p translate="yes">D'r binne noch gjin sesjes.</p>
+  </div>
+  <table id="sessions-table" class="pure-table pure-table-striped list-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th translate="yes">Rekken</th>
+        <th translate="yes">Namme</th>
+        <th translate="yes">E-post</th>
+        <th translate="yes">Makke</th>
+        <th translate="yes">Ferrint</th>
+      </tr>
+    </thead>
+  </table>
+  <ul id="page-links" class="pagination"></ul>
+  <template id="page-link">
+    <li>
+      <a href="/administrator/sessions?offset=${page.offset}" id="page-link-${page.pageNumber}">${page.pageNumber}</a>
+    </li>
+  </template>
+  <template id="session-row">
+    <tr id="${session.sessionid}">
+      <td>
+        <a href="/administrator/session?sessionid=${session.sessionid}">${session.sessionid}</a>
+      </td>
+      <td>
+        <a href="/administrator/account?accountid=${session.accountid}">${session.accountid}</a>
+      </td>
+      <td>${session.firstName} ${session.lastName}</td>
+      <td>
+        <a href="mailto:${session.email}">${session.email}</a>
+      </td>
+      <td>${session.createdFormatted}</td>
+      <td>${session.expiresFormatted}</td>
+    </tr>
+  </template>
+</body>
+</html>

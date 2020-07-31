@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Hisobimni qayta tiklang</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">Hisobimni qayta tiklang</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">Foydalanuvchi ismi</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Parol</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Hisobimni qayta tiklang</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">Hisob qaydnomasini ro'yxatdan o'tkazish</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">Parolni unutdingizmi</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">Hisobni o'chirishni bekor qilish</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      Xato! Hisob yaroqsiz yoki bekor qilish muddati tugagan
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      Xato! Hisob qaydnomasi o'chirildi yoki bekor qilish davri tugadi
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      Xato! Foydalanuvchi nomi noto'g'ri yoki yo'q
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Xato! Noto'g'ri yoki yo'q parol
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      Xato! Foydalanuvchi nomi uzunligi noto‘g‘ri
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      Xato! Parol uzunligi noto‘g‘ri
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Noma'lum xato yuz berdi
+    </div>
+  </template>
+</body>
+</html>

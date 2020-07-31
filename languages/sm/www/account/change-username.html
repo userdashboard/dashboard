@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Sui le igoa igoa</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Sui le igoa igoa</h1>
+  <p translate="yes">O igoa uma o igoa ole igoa e le mafai ona suia faʻafuaseʻi aʻo leʻi teuina le faʻamaumauga ma le bcrypt + faʻasoaina masima.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="new-username" translate="yes">Igoa ole igoa fou</label>
+        <input id="new-username" name="new-username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Upu tuanai o le taimi nei</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Seti se igoa fou</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Manuia! O lou igoa fou ole igoa ole igoa e tatau ona faʻaaogaina mai le taimi nei
+    </div>
+  </template>
+  <template id="invalid-new-username">
+    <div class="error message" translate="yes">
+      Sese! Lua pe toe kopi o le igoa fou
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Sese! E le saʻo lau faʻamatalaga laʻo i le taimi nei
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Sese! O se mea sese le iloa na tupu
+    </div>
+  </template>
+  <template id="invalid-new-username-length">
+    <div class="error message" translate="yes">
+      Sese! Leai le umi ole igoa ole igoa fou
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      Sese! Se isi tagata o loo faʻaaogaina lena username
+    </div>
+  </template>
+</body>
+</html>

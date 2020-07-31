@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Konto</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Konto</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Forigi konton</a></p>
+  <h2 translate="yes">Reakiro-kodoj</h2>
+  <p translate="yes">Ĉi tiuj unu-uzaj kodoj povas restarigi vian pasvorton kaj malebligi aŭtentikajn tokojn.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">Kreu kodon</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">Restarigi kodojn</a></p>
+  <h2 translate="yes">Profilaj informoj</h2>
+  <p translate="yes">Por administraj kialoj ni eble iam bezonos kontakti vin.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">Administri kunsidojn</h2>
+  <p translate="yes">Rigardu viajn lastajn subskribojn.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">Kunsidoj</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">Finu ĉiujn kunsidojn</a>
+  </p>
+  <h2 translate="yes">Ŝanĝu ensaluton laŭ akreditaĵoj</h2>
+  <p translate="yes">Via uzantnomo kaj pasvorto estas sekretaj kaj uzataj nur por ensaluti.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">Ŝanĝu salutnomon</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">Ŝanĝu pasvorton</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">Lingvo</h2>
+    <p translate="yes">Agordu vian lingvan preferon.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">Elektu lingvon</a></p>
+  </div>
+  <h2 translate="yes">Forigi konton</h2>
+  <p translate="yes">Planu vian konton por forviŝi baldaŭ, kaj nuligos se vi ŝanĝos vian opinion.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Forigi konton</a></p>
+</body>
+</html>

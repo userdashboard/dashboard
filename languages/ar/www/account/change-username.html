@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">مدختسملا مسا ريغ</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">مدختسملا مسا ريغ</h1>
+  <p translate="yes">.كرتشملا حلملا + tpyrcb مادختساب تانايبلا نيزخت لبق هيف ةعجر ال لكشب نيمدختسملا ءامسأ عيمج ريفشت متي</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="new-username" translate="yes">ديدج مدختسم مسا</label>
+        <input id="new-username" name="new-username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">يلاحلا رورملا ةملك</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ديدج مدختسم مسا نييعتب مق</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      ادعاصف نآلا نم كب صاخلا ديدجلا مدختسملا مسا مادختسا بجي !حاجن
+    </div>
+  </template>
+  <template id="invalid-new-username">
+    <div class="error message" translate="yes">
+      رركم وأ حلاص ريغ ديدج مدختسم مسا !أطخ
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      ةحلاص ريغ كب ةصاخلا ةيلاحلا رورملا ةملك !أطخ
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      فورعم ريغ أطخ ثدح !أطخ
+    </div>
+  </template>
+  <template id="invalid-new-username-length">
+    <div class="error message" translate="yes">
+      حلاص ريغ ديدجلا مدختسملا مسا لوط !أطخ
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      اذه مدختسملا مسا مدختسي رخآ صخش !أطخ
+    </div>
+  </template>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">لوګنړ ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">لوګنړ ${account.accountid}</h1>
+  <p translate="yes">.يش یدیک فذح هتسورو ولورېت ېرود ولوک فذح يوش لکاټ د یود د هنوباسح</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ئړک ګنړ باسح</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      یوش ګنړ باسح !ایرب
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      هوشو يطلغ همولعمان هوی !هنتورېت
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      يش شیو لاهم هراپل ولوک فذح د یړمول دیاب باسح !هنتورېت
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      يشن یدیک فذح هتسورو هن ېټین ېوش لکاټ د ټنواکا !هنتورېت
+    </div>
+  </template>
+</body>
+</html>

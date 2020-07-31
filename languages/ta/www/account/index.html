@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">கணக்கு</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">கணக்கு</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">கணக்கை நீக்குக</a></p>
+  <h2 translate="yes">மீட்பு குறியீடுகள்</h2>
+  <p translate="yes">இந்த ஒற்றை பயன்பாட்டுக் குறியீடுகள் உங்கள் கடவுச்சொல்லை மீட்டமைக்கலாம் மற்றும் அங்கீகார டோக்கன்களை முடக்கலாம்.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">ஒரு குறியீட்டை உருவாக்கவும்</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">குறியீடுகளை மீட்டமை</a></p>
+  <h2 translate="yes">சுயவிவரத் தகவல்</h2>
+  <p translate="yes">நிர்வாக காரணங்களுக்காக நாங்கள் உங்களை சில நேரங்களில் தொடர்பு கொள்ள வேண்டியிருக்கும்.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">அமர்வுகளை நிர்வகிக்கவும்</h2>
+  <p translate="yes">உங்கள் சமீபத்திய உள்நுழைவுகளைக் காண்க.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">அமர்வுகள்</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">எல்லா அமர்வுகளையும் முடிக்கவும்</a>
+  </p>
+  <h2 translate="yes">நற்சான்றிதழ்களில் உள்நுழைவை மாற்றவும்</h2>
+  <p translate="yes">உங்கள் பயனர்பெயர் மற்றும் கடவுச்சொல் இரகசியமானது மற்றும் உள்நுழைய மட்டுமே பயன்படுத்தப்படுகிறது.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">பயனர்பெயரை மாற்றவும்</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">கடவுச்சொல்லை மாற்று</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">மொழி</h2>
+    <p translate="yes">உங்கள் மொழி விருப்பத்தைத் தனிப்பயனாக்கவும்.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">மொழியை தேர்ந்தெடுங்கள்</a></p>
+  </div>
+  <h2 translate="yes">கணக்கை நீக்குக</h2>
+  <p translate="yes">எதிர்காலத்தில் நீக்குவதற்கு உங்கள் கணக்கைத் திட்டமிடுங்கள், உங்கள் எண்ணத்தை மாற்றினால் ரத்துசெய்.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">கணக்கை நீக்குக</a></p>
+</body>
+</html>

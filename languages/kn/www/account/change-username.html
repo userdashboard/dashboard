@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">ಬಳಕೆದಾರ ಹೆಸರನ್ನು ಬದಲಾಯಿಸಿ</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">ಬಳಕೆದಾರ ಹೆಸರನ್ನು ಬದಲಾಯಿಸಿ</h1>
+  <p translate="yes">Bcrypt + ಹಂಚಿದ ಉಪ್ಪಿನೊಂದಿಗೆ ಡೇಟಾವನ್ನು ಸಂಗ್ರಹಿಸುವ ಮೊದಲು ಎಲ್ಲಾ ಬಳಕೆದಾರಹೆಸರುಗಳನ್ನು ಬದಲಾಯಿಸಲಾಗದಂತೆ-ಎನ್u200cಕ್ರಿಪ್ಟ್ ಮಾಡಲಾಗುತ್ತದೆ.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="new-username" translate="yes">ಹೊಸ ಬಳಕೆದಾರಹೆಸರು</label>
+        <input id="new-username" name="new-username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">ಪ್ರಸ್ತುತ ಗುಪ್ತಪದ</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ಹೊಸ ಬಳಕೆದಾರ ಹೆಸರನ್ನು ಹೊಂದಿಸಿ</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      ಯಶಸ್ಸು! ಇಂದಿನಿಂದ ನಿಮ್ಮ ಹೊಸ ಬಳಕೆದಾರ ಹೆಸರನ್ನು ಬಳಸಬೇಕು
+    </div>
+  </template>
+  <template id="invalid-new-username">
+    <div class="error message" translate="yes">
+      ದೋಷ! ಹೊಸ ಬಳಕೆದಾರಹೆಸರನ್ನು ಅಮಾನ್ಯ ಅಥವಾ ನಕಲು ಮಾಡಿ
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      ದೋಷ! ನಿಮ್ಮ ಪ್ರಸ್ತುತ ಪಾಸ್u200cವರ್ಡ್ ಅಮಾನ್ಯವಾಗಿದೆ
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      ದೋಷ! ಅಜ್ಞಾತ ದೋಷ ಸಂಭವಿಸಿದೆ
+    </div>
+  </template>
+  <template id="invalid-new-username-length">
+    <div class="error message" translate="yes">
+      ದೋಷ! ಅಮಾನ್ಯ ಹೊಸ ಬಳಕೆದಾರಹೆಸರು ಉದ್ದ
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      ದೋಷ! ಬೇರೊಬ್ಬರು ಆ ಬಳಕೆದಾರ ಹೆಸರನ್ನು ಬಳಸುತ್ತಿದ್ದಾರೆ
+    </div>
+  </template>
+</body>
+</html>

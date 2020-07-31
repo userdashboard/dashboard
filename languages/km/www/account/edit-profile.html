@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-profile.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">កែសម្រួល ${profile.profileid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">កែសម្រួល ${profile.profileid}</h1>
+  <p translate="yes">រក្សាព័ត៌មានទំនាក់ទំនងរបស់អ្នកអោយបានត្រឹមត្រូវនិងទាន់សម័យ។</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/edit-profile?profileid=${profile.profileid}" name="submit-form">
+    <div class="pure-checkbox">
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">ធ្វើឱ្យលំនាំដើមរបស់ខ្ញុំ</span></label>
+    </div>
+    <div id="display-name-container" class="pure-control-group">
+      <label for="display-name" translate="yes">បង្ហាញឈ្មោះ</label>
+      <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
+    </div>
+    <div id="display-email-container" class="pure-control-group">
+      <label for="display-email" translate="yes">បង្ហាញអ៊ីមែល</label>
+      <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="contact-email-container" class="pure-control-group">
+      <label for="contact-email" translate="yes">អ៊ីមែលទំនាក់ទំនង</label>
+      <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="full-name-container">
+      <div class="pure-control-group">
+        <label for="first-name" translate="yes">នាមខ្លួន</label>
+      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="last-name" translate="yes">នាមត្រកូល</label>
+      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+      </div>
+    </div>
+    <div id="dob-container">
+      <div class="pure-control-group">
+        <label for="dob" translate="yes">ថ្ងៃខែឆ្នាំកំណើត</label>
+        <input required="required" id="dob" name="dob" type="text" maxlength="11">
+      </div>
+    </div>
+    <div id="phone-container" class="pure-control-group">
+      <label for="phone" translate="yes">ទូរស័ព្ទ</label>
+      <input required="required" id="phone" name="phone" type="text" maxlength="1000">
+    </div>
+    <div id="occupation-container" class="pure-control-group">
+      <label for="occupation" translate="yes">មុខរបរ</label>
+      <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
+    </div>
+    <div id="location-container" class="pure-control-group">
+      <label for="location" translate="yes">ទីតាំង</label>
+      <input required="required" id="location" name="location" type="text" maxlength="1000">
+    </div>
+    <div id="company-name-container" class="pure-control-group">
+      <label for="company-name" translate="yes">ឈ្មោះក្រុមហ៊ុន</label>
+      <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
+    </div>
+    <div id="website-container" class="pure-control-group">
+      <label for="website" translate="yes">គេហទំព័រ</label>
+      <input required="required" id="website" name="website" type="text" maxlength="1000">
+    </div>
+    <div id="submit-container" class="pure-controls">
+      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">ធ្វើបច្ចុប្បន្នភាពប្រវត្តិរូប</button>
+    </div>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      ជោគជ័យ! ព័ត៌មានប្រវត្តិរូបរបស់អ្នកត្រូវបានធ្វើបច្ចុប្បន្នភាព
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      កំហុស! កំហុសមិនស្គាល់បានកើតឡើង
+    </div>
+  </template>
+  <template id="invalid-first-name">
+    <div class="error message" translate="yes">
+      កំហុស! ឈ្មោះដំបូងដែលបាត់ឬមិនត្រឹមត្រូវបានផ្តល់
+    </div>
+  </template>
+  <template id="invalid-first-name-length">
+    <div class="error message" translate="yes">
+      កំហុស! ឈ្មោះដំបូងដែលគ្មានសុពលភាពត្រូវបានផ្តល់ជូន
+    </div>
+  </template>
+  <template id="invalid-last-name">
+    <div class="error message" translate="yes">
+      កំហុស! ឈ្មោះចុងក្រោយដែលបាត់ឬមិនត្រឹមត្រូវត្រូវបានផ្តល់ជូន
+    </div>
+  </template>
+  <template id="invalid-last-name-length">
+    <div class="error message" translate="yes">
+      កំហុស! ឈ្មោះចុងក្រោយមិនត្រឹមត្រូវត្រូវបានផ្តល់ជូន
+    </div>
+  </template>
+  <template id="invalid-contact-email">
+    <div class="error message" translate="yes">
+      កំហុស! អាសយដ្ឋានអ៊ីមែលទំនាក់ទំនងមិនត្រឹមត្រូវ
+    </div>
+  </template>
+  <template id="invalid-display-email">
+    <div class="error message" translate="yes">
+      កំហុស! បង្ហាញអាសយដ្ឋានអ៊ីមែលមិនត្រឹមត្រូវ
+    </div>
+  </template>
+  <template id="invalid-display-name">
+    <div class="error message" translate="yes">
+      កំហុស! ឈ្មោះបង្ហាញដែលបាត់ឬមិនត្រឹមត្រូវត្រូវបានផ្តល់ជូន
+    </div>
+  </template>
+  <template id="invalid-dob">
+    <div class="error message" translate="yes">
+      កំហុស! ថ្ងៃខែឆ្នាំកំណើតដែលបាត់ឬមិនត្រឹមត្រូវត្រូវបានផ្តល់ជូន
+    </div>
+  </template>
+  <template id="invalid-phone">
+    <div class="error message" translate="yes">
+      កំហុស! ទូរស័ព្ទដែលបាត់ឬមិនត្រឹមត្រូវត្រូវបានផ្តល់ជូន។
+    </div>
+  </template>
+  <template id="invalid-occupation">
+    <div class="error message" translate="yes">
+      កំហុស! ការកាន់កាប់ដែលបាត់ឬមិនត្រឹមត្រូវត្រូវបានផ្តល់ជូន។
+    </div>
+  </template>
+  <template id="invalid-location">
+    <div class="error message" translate="yes">
+      កំហុស! ទីតាំងដែលបាត់ឬមិនត្រឹមត្រូវត្រូវបានផ្តល់ជូន។
+    </div>
+  </template>
+  <template id="invalid-company-name">
+    <div class="error message" translate="yes">
+      កំហុស! ឈ្មោះក្រុមហ៊ុនដែលបាត់ឬមិនត្រឹមត្រូវត្រូវបានផ្តល់ជូន។
+    </div>
+  </template>
+  <template id="invalid-website">
+    <div class="error message" translate="yes">
+      កំហុស! គេហទំព័រដែលបាត់ឬមិនត្រឹមត្រូវត្រូវបានផ្តល់ជូន។
+    </div>
+  </template>
+  <template id="invalid-display-name-length">
+    <div class="error message" translate="yes">
+      កំហុស! ឈ្មោះបង្ហាញដែលបាត់ឬមិនត្រឹមត្រូវត្រូវបានផ្តល់ជូន
+    </div>
+  </template>
+</body>
+</html>

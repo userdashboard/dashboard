@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Reikningur</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Reikningur</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Eyða reikningi</a></p>
+  <h2 translate="yes">Endurheimtarkóðar</h2>
+  <p translate="yes">Þessir einnota kóðar geta endurstillt lykilorðið þitt og gert auðkennismerki óvirkar.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">Búðu til kóða</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">Endurstilla kóða</a></p>
+  <h2 translate="yes">Upplýsingar um prófíl</h2>
+  <p translate="yes">Af stjórnunarástæðum gætum við þurft að hafa samband við þig stundum.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">Stjórna fundum</h2>
+  <p translate="yes">Skoða nýlegar innskráningar.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">Fundir</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">Ljúka öllum lotum</a>
+  </p>
+  <h2 translate="yes">Breyta innskráningu í skilríkjum</h2>
+  <p translate="yes">Notandanafn þitt og lykilorð eru leyndarmál og aðeins notað til að skrá þig inn.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">Breyta notendanafni</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">Breyta lykilorði</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">Tungumál</h2>
+    <p translate="yes">Sérsniðið tungumálaval.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">Veldu tungumál</a></p>
+  </div>
+  <h2 translate="yes">Eyða reikningi</h2>
+  <p translate="yes">Skipuleggðu reikninginn þinn til að eyða á næstunni og hætta við ef þú skiptir um skoðun.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Eyða reikningi</a></p>
+</body>
+</html>

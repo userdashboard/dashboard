@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">രക്ഷാധികാരിയെ അസാധുവാക്കുക</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">എന്നതിൽ നിന്ന് രക്ഷാധികാരിയെ അസാധുവാക്കുക ${account.accountid}</h1>
+  <p translate="yes">തിരഞ്ഞെടുത്ത അക്കൗണ്ടിന് അഡ്മിനിസ്ട്രേഷൻ സിസ്റ്റത്തിലേക്കുള്ള ആക്സസ് നഷ്ടപ്പെടും.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/revoke-administrator?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">രക്ഷാധികാരിയെ അസാധുവാക്കുക</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      വിജയം! ഉപയോക്താവ് ഇപ്പോൾ ഒരു അഡ്മിനിസ്ട്രേറ്റർ അല്ല
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      പിശക്! ഒരു അജ്ഞാത പിശക് സംഭവിച്ചു
+    </div>
+  </template>
+</body>
+</html>

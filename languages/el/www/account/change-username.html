@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Αλλαγή ονόματος χρήστη</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Αλλαγή ονόματος χρήστη</h1>
+  <p translate="yes">Όλα τα ονόματα χρήστη κρυπτογραφούνται μη αναστρέψιμα πριν από την αποθήκευση των δεδομένων με κοινόχρηστο αλάτι bcrypt +.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="new-username" translate="yes">Νέο όνομα χρήστη</label>
+        <input id="new-username" name="new-username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Τρέχων κωδικός πρόσβασης</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Ορίστε νέο όνομα χρήστη</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Επιτυχία! Το νέο όνομα χρήστη πρέπει να χρησιμοποιείται από τώρα και στο εξής
+    </div>
+  </template>
+  <template id="invalid-new-username">
+    <div class="error message" translate="yes">
+      Λάθος! Μη έγκυρο ή διπλό νέο όνομα χρήστη
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Λάθος! Ο τρέχων κωδικός σας δεν είναι έγκυρος
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Λάθος! Συνέβη ένα άγνωστο σφάλμα
+    </div>
+  </template>
+  <template id="invalid-new-username-length">
+    <div class="error message" translate="yes">
+      Λάθος! Μη έγκυρο νέο μήκος ονόματος χρήστη
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      Λάθος! Κάποιος άλλος χρησιμοποιεί αυτό το όνομα χρήστη
+    </div>
+  </template>
+</body>
+</html>

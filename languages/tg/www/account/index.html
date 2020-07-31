@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Ҳисоб</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Ҳисоб</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Ҳисобро нест кунед</a></p>
+  <h2 translate="yes">Рамзҳои барқароршавӣ</h2>
+  <p translate="yes">Ин рамзҳои яквақта метавонанд пароли шуморо барқарор кунанд ва оёти муайянсозиро хомӯш кунанд.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">Рамз эҷод кунед</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">Reset рамзҳо</a></p>
+  <h2 translate="yes">Маълумот дар бораи профил</h2>
+  <p translate="yes">Бо сабабҳои маъмурӣ шояд баъзан бо шумо тамос гирем.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">Идоракунии ҷаласаҳо</h2>
+  <p translate="yes">Вурудоти ба наздикӣ диданатонро бинед.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">Ҷаласаҳои</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">Ба ҳамаи сессияҳо хотима диҳед</a>
+  </p>
+  <h2 translate="yes">Дохилшавӣ ба маълумоти эътибор</h2>
+  <p translate="yes">Номи корбар ва пароли шумо махфӣ аст ва танҳо барои воридшавӣ истифода мешавад.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">Тағйир додани номи корбар</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">Ивази калидвожа</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">Забон</h2>
+    <p translate="yes">Ҷӯркунии забони худро танзим кунед.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">Интихоби забон</a></p>
+  </div>
+  <h2 translate="yes">Ҳисобро нест кунед</h2>
+  <p translate="yes">Дар ояндаи наздик ҳисоби худро барои несткунӣ ба нақша гиред ва агар фикратонро иваз кунед.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Ҳисобро нест кунед</a></p>
+</body>
+</html>

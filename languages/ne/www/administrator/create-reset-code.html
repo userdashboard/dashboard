@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">रिसेट कोड सिर्जना गर्नुहोस्</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">का लागि रिसेट कोड सिर्जना गर्नुहोस् ${account.accountid}</h1>
+  <p translate="yes">रिसेट कोड बिना नै प्रयोगकर्ताहरूको खाता पहुँच रिसेट गर्नुहोस्, तपाईंले पहिचान पहिले उनीहरूको प्रमाणित गरेपछि।</p>
+  <div id="message-container"></div>
+  <table id="accounts-table" class="pure-table object-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th translate="yes">नाम</th>
+        <th translate="yes">ईमेल</th>
+        <th translate="yes">सिर्जना गरियो</th>
+        <th translate="yes">अन्तिम साईन ईन गरिएको</th>
+      </tr>
+    </thead>
+    <tr id="${account.accountid}">
+      <td>
+        <a href="/administrator/account?accountid=${account.accountid}">${account.accountid}</a>
+      </td>
+      <td>${account.firstName} ${account.lastName}</td>
+      <td>
+        <a href="mailto:${account.email}">${account.email}</a>
+      </td>
+      <td>${account.createdFormatted}</td>
+      <td>${account.lastSignedInFormatted}</td>
+    </tr>
+  </table>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/administrator/create-reset-code?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="secret-code" translate="yes">कोड रिसेट गर्नुहोस्</label>
+        <input id="secret-code" name="secret-code" type="text" maxlength="1000">
+      </div>
+      <div id="form-buttons" class="pure-controls spaced-buttons">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">रिसेट कोड सिर्जना गर्नुहोस्</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      सफलता! तपाई रिसेट कोड प्रयोगकर्तासँग साझेदारी गर्न सक्नुहुनेछ
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      त्रुटि! एउटा अज्ञात त्रुटि देखा पर्u200dयो
+    </div>
+  </template>
+  <template id="invalid-secret-code">
+    <div class="error message" translate="yes">
+      त्रुटि! अवैध रीसेट कोड
+    </div>
+  </template>
+  <template id="invalid-secret-code-length">
+    <div class="error message" translate="yes">
+      त्रुटि! अवैध रीसेट कोड length
+    </div>
+  </template>
+</body>
+</html>

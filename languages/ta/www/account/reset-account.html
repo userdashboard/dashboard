@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">எனது கணக்கிற்கான அணுகலை மீட்டமைக்கவும்</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account" name="submit-form">
+    <fieldset>
+      <div id="message-container"></div>
+      <h1 translate="yes">எனது கணக்கிற்கான அணுகலை மீட்டமைக்கவும்</h1>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">பயனர்பெயர்</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="secret-code" translate="yes">குறியீட்டை மீட்டமை</label>
+        <input id="secret-code" name="secret-code" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="new-password" translate="yes">புதிய கடவுச்சொல்</label>
+        <input id="new-password" name="new-password" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="confirm-password" translate="yes">புதிய கடவு சொல்லை உறுதி செய்</label>
+        <input id="confirm-password" name="confirm-password" type="text" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">மீட்டமைத்து உள்நுழைக</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/signin" translate="yes">உள்நுழைய திரும்புக</a>
+        </li>
+        <li>
+          <a href="/account/register" translate="yes">ஒரு கணக்கை உருவாக்க</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-reset-code">
+    <div class="error message" translate="yes">
+      பிழை! தவறான ரகசிய குறியீடு
+    </div>
+  </template>
+  <template id="invalid-secret-code">
+    <div class="error message" translate="yes">
+      பிழை! தவறான ரகசிய குறியீடு
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      பிழை! தவறான பயனர்பெயர்
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      பிழை! தவறான பயனர்பெயர் length
+    </div>
+  </template>
+  <template id="invalid-new-password">
+    <div class="error message" translate="yes">
+      பிழை! புதிய கடவுச்சொல் தவறானது
+    </div>
+  </template>
+  <template id="invalid-new-password-length">
+    <div class="error message" translate="yes">
+      பிழை! புதிய கடவுச்சொல் தவறானது length
+    </div>
+  </template>
+  <template id="invalid-confirm-password">
+    <div class="error message" translate="yes">
+      பிழை! உறுதிப்படுத்தல் கடவுச்சொல் தவறானது
+    </div>
+  </template>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      பிழை! தவறான கணக்கு
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      பிழை! அறியப்படாத பிழை ஏற்பட்டது
+    </div>
+  </template>
+</body>
+</html>

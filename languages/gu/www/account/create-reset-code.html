@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-reset-codes.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">રીસેટ કોડ બનાવો</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">રીસેટ કોડ બનાવો</h1>
+  <p translate="yes">કોડ્સને ફરીથી સેટ કરવાથી તમે તમારા એકાઉન્ટને letક્સેસ કરી શકો છો જો તમે તમારો પાસવર્ડ ભૂલી જાઓ છો.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-reset-code" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="secret-code" translate="yes">ગુપ્ત કોડ</label>
+        <input id="secret-code" name="secret-code" type="text" maxlength="1000">
+      </div>
+      <div id="form-buttons" class="pure-controls spaced-buttons">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">કોડ સાચવો</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      સફળતા! તમારો નવો કોડ ક્યાંક સલામત સ્થાને રાખવા માટે તૈયાર છે
+    </div>
+  </template>
+  <template id="invalid-secret-code">
+    <div class="error message" translate="yes">
+      ભૂલ! અમાન્ય ગુપ્ત કોડ
+    </div>
+  </template>
+  <template id="invalid-secret-code-length">
+    <div class="error message" translate="yes">
+      ભૂલ! અમાન્ય ગુપ્ત કોડ length
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      ભૂલ! અજ્ unknownાત ભૂલ આવી
+    </div>
+  </template>
+</body>
+</html>

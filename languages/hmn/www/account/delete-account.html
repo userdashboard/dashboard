@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Rho tawm cov account</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Rho tawm cov account</h1>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/delete-account" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Lo lus zais tam sim no</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Rho tawm cov account</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Yuam Kev! Koj lo lus zais tam sim no tsis muaj nqi
+    </div>
+  </template>
+  <template id="instant-delete">
+    <p translate="yes">Koj tus account yuav teem caij rau kev tshem tawm sai sai thiab tsis tuaj yeem rov qab tau.</p>
+  </template>
+  <template id="scheduled-delete">
+    <p translate="yes">Koj tus account yuav muab teem rau kev rho tawm hauv ${data.numDays} days and you may cancel before then.</p>
+  </template>
+  <template id="owner-account">
+    <div class="error message" translate="yes">
+      Yuam Kev! Koj yuav tsum hloov lub tswv cuab platform rau lwm tus ua ntej
+    </div>
+  </template>
+  <template id="administrator-account">
+    <div class="error message" translate="yes">
+      Yuam Kev! Koj yuav tsum thim koj cov thawj coj txoj cai ua ntej
+    </div>
+  </template>
+</body>
+</html>

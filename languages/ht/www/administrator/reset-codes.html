@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Reyajiste kòd</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Reyajiste kòd</h1>
+  <p translate="yes">Kòd sa yo kreye pa itilizatè yo oswa administratè yo ak aksè Reyajiste lè modpas yo bliye.</p>
+  <div id="message-container"></div>
+  <div id="no-reset-codes">
+    <p translate="yes">Pa gen okenn kòd reset ankò.</p>
+  </div>
+  <table id="reset-codes-table" class="pure-table pure-table-striped list-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th translate="yes">Kont</th>
+        <th translate="yes">Non</th>
+        <th translate="yes">Imèl</th>
+        <th translate="yes">Kreye</th>
+      </tr>
+    </thead>
+  </table>
+  <ul id="page-links" class="pagination"></ul>
+  <template id="page-link">
+    <li>
+      <a href="/administrator/reset-codes?offset=${page.offset}" id="page-link-${page.pageNumber}">${page.pageNumber}</a>
+    </li>
+  </template>
+  <template id="reset-code-row">
+    <tr id="${resetCode.codeid}">
+      <td>
+        <a href="/administrator/reset-code?codeid=${resetCode.codeid}">${resetCode.codeid}</a>
+      </td>
+      <td>
+        <a href="/administrator/account?accountid=${resetCode.accountid}">${resetCode.accountid}</a>
+      </td>
+      <td>${resetCode.firstName} ${resetCode.lastName}</td>
+      <td>
+        <a href="mailto:${resetCode.email}">${resetCode.email}</a>
+      </td>
+      <td>${resetCode.createdFormatted}</td>
+    </tr>
+  </template>
+</body>
+</html>

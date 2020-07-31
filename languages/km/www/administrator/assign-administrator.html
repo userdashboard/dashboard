@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">ចាត់តាំងអ្នកគ្រប់គ្រងទៅ ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">ចាត់តាំងអ្នកគ្រប់គ្រងទៅ ${account.accountid}</h1>
+  <p translate="yes">នេះនឹងផ្តល់សិទ្ធិចូលដំណើរការគណនីដែលបានតែងតាំងទៅប្រព័ន្ធគ្រប់គ្រង។</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/assign-administrator?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ចាត់តាំងអ្នកគ្រប់គ្រង</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      ជោគជ័យ! ឥឡូវនេះអ្នកប្រើប្រាស់គឺជាអ្នកគ្រប់គ្រង
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      កំហុស! កំហុសមិនស្គាល់បានកើតឡើង
+    </div>
+  </template>
+</body>
+</html>

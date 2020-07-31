@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Mäi Kont restauréieren</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">Mäi Kont restauréieren</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">Benotzernumm</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Passwuert</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Mäi Kont restauréieren</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">Registréiert e Kont</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">Passwuert vergiess</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">Ofbriechen geläscht Kont</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      Feeler! Ongeldege Kont oder d'Kënnegungsperiod ass opgehalen
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      Feeler! Kont geläscht oder d'Kënnegungsperiod ass opgehalen
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      Feeler! Falscht oder vermësst Benotzernumm
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Feeler! Falscht oder vermësst Passwuert
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      Feeler! Ongëlteg Benotzernummlängt
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      Feeler! Ongëlteg Passwuertlängt
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      En onbekannte Feeler ass geschitt
+    </div>
+  </template>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-profile.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">राय ${profile.profileid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">प्रोफ़ाइल</h1>
+  <table id="profiles-table" class="pure-table data-table">
+    <tbody id="${profile.profileid}">
+      <tr>
+        <th>ID</th>
+        <td>
+          <a href="/administrator/profile?profileid=${profile.profileid}">${profile.profileid}</a>
+        </td>
+      </tr>
+      <tr>
+        <th translate="yes">बनाया था</th>
+        <td>${profile.createdFormatted}</td>
+      </tr>
+      <tr id="full-name">
+        <th translate="yes">पूरा नाम</th>
+        <td>${profile.firstName} ${profile.lastName}</td>
+      </tr>
+      <tr id="contact-email">
+        <th translate="yes">ई - मेल से संपर्क करे</th>
+        <td>
+          <a href="mailto:${profile.contactEmail}">${profile.contactEmail}</a>
+        </td>
+      </tr>
+      <tr id="display-name">
+        <th translate="yes">प्रदर्शित होने वाला नाम</th>
+        <td>${profile.displayName}</td>
+      </tr>
+      <tr id="display-email">
+        <th translate="yes">ईमेल प्रदर्शित करें</th>
+        <td>
+          <a href="mailto:${profile.displayEmail}">${profile.displayEmail}</a>
+        </td>
+      </tr>
+      <tr id="dob">
+        <th translate="yes">जन्म की तारीख</th>
+        <td>${profile.dob}</td>
+      </tr>
+      <tr id="phone">
+        <th translate="yes">फ़ोन</th>
+        <td>${profile.phone}</td>
+      </tr>
+      <tr id="occupation">
+        <th translate="yes">व्यवसाय</th>
+        <td>${profile.occupation}</td>
+      </tr>
+      <tr id="location">
+        <th translate="yes">स्थान</th>
+        <td>${profile.location}</td>
+      </tr>
+      <tr id="company-name">
+        <th translate="yes">कंपनी का नाम</th>
+        <td>${profile.companyName}</td>
+      </tr>
+      <tr id="website">
+        <th translate="yes">वेबसाइट</th>
+        <td>
+          <a href="${profile.website}">${profile.website}</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">കോഡുകൾ പുന et സജ്ജമാക്കുക</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">കോഡുകൾ പുന et സജ്ജമാക്കുക</h1>
+  <p translate="yes">ഉപയോക്താക്കൾ അല്ലെങ്കിൽ അഡ്മിനിസ്ട്രേറ്റർമാർ കോഡുകൾ സൃഷ്ടിക്കുകയും പാസ്u200cവേഡുകൾ മറക്കുമ്പോൾ ആക്സസ് പുന reset സജ്ജമാക്കുകയും ചെയ്യുന്നു.</p>
+  <div id="message-container"></div>
+  <div id="no-reset-codes">
+    <p translate="yes">പുന reset സജ്ജീകരണ കോഡുകളൊന്നും ഇതുവരെ ഇല്ല.</p>
+  </div>
+  <table id="reset-codes-table" class="pure-table pure-table-striped list-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th translate="yes">അക്കൗണ്ട്</th>
+        <th translate="yes">പേര്</th>
+        <th translate="yes">ഇമെയിൽ</th>
+        <th translate="yes">സൃഷ്ടിച്ചു</th>
+      </tr>
+    </thead>
+  </table>
+  <ul id="page-links" class="pagination"></ul>
+  <template id="page-link">
+    <li>
+      <a href="/administrator/reset-codes?offset=${page.offset}" id="page-link-${page.pageNumber}">${page.pageNumber}</a>
+    </li>
+  </template>
+  <template id="reset-code-row">
+    <tr id="${resetCode.codeid}">
+      <td>
+        <a href="/administrator/reset-code?codeid=${resetCode.codeid}">${resetCode.codeid}</a>
+      </td>
+      <td>
+        <a href="/administrator/account?accountid=${resetCode.accountid}">${resetCode.accountid}</a>
+      </td>
+      <td>${resetCode.firstName} ${resetCode.lastName}</td>
+      <td>
+        <a href="mailto:${resetCode.email}">${resetCode.email}</a>
+      </td>
+      <td>${resetCode.createdFormatted}</td>
+    </tr>
+  </template>
+</body>
+</html>

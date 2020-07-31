@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Akaun</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Akaun</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Padamkan akaun</a></p>
+  <h2 translate="yes">Kod pemulihan</h2>
+  <p translate="yes">Kod sekali pakai ini dapat menetapkan semula kata laluan anda dan mematikan token pengesahan.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">Buat kod</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">Tetapkan semula kod</a></p>
+  <h2 translate="yes">Maklumat Profil</h2>
+  <p translate="yes">Atas sebab-sebab pentadbiran, kami kadang-kadang perlu menghubungi anda.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">Urus sesi</h2>
+  <p translate="yes">Lihat log masuk terkini anda.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">Sesi</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">Tamatkan semua sesi</a>
+  </p>
+  <h2 translate="yes">Tukar log masuk dalam kelayakan</h2>
+  <p translate="yes">Nama pengguna dan kata laluan anda adalah rahsia dan hanya digunakan untuk log masuk.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">Tukar nama pengguna</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">Tukar kata laluan</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">Bahasa</h2>
+    <p translate="yes">Sesuaikan pilihan bahasa anda.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">Pilih Bahasa</a></p>
+  </div>
+  <h2 translate="yes">Padamkan akaun</h2>
+  <p translate="yes">Jadualkan akaun anda untuk dihapus dalam masa terdekat, dan batalkan jika anda berubah fikiran.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Padamkan akaun</a></p>
+</body>
+</html>

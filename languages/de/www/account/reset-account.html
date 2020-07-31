@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Setzen Sie den Zugriff auf mein Konto zurück</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account" name="submit-form">
+    <fieldset>
+      <div id="message-container"></div>
+      <h1 translate="yes">Setzen Sie den Zugriff auf mein Konto zurück</h1>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">Nutzername</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="secret-code" translate="yes">Code zurücksetzen</label>
+        <input id="secret-code" name="secret-code" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="new-password" translate="yes">Neues Kennwort</label>
+        <input id="new-password" name="new-password" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="confirm-password" translate="yes">Bestätige neues Passwort</label>
+        <input id="confirm-password" name="confirm-password" type="text" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Zurücksetzen und anmelden</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/signin" translate="yes">Zurück zur Anmeldung</a>
+        </li>
+        <li>
+          <a href="/account/register" translate="yes">Ein Konto erstellen</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-reset-code">
+    <div class="error message" translate="yes">
+      Error! Ungültiger Geheimcode
+    </div>
+  </template>
+  <template id="invalid-secret-code">
+    <div class="error message" translate="yes">
+      Error! Ungültiger Geheimcode
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      Error! Ungültiger Benutzername
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      Error! Ungültiger Benutzername length
+    </div>
+  </template>
+  <template id="invalid-new-password">
+    <div class="error message" translate="yes">
+      Error! Ungültiges neues Passwort
+    </div>
+  </template>
+  <template id="invalid-new-password-length">
+    <div class="error message" translate="yes">
+      Error! Ungültiges neues Passwort length
+    </div>
+  </template>
+  <template id="invalid-confirm-password">
+    <div class="error message" translate="yes">
+      Error! Ungültiges Bestätigungskennwort
+    </div>
+  </template>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      Error! Ungültiger Account
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Error! Ein unbekannter Fehler ist aufgetreten
+    </div>
+  </template>
+</body>
+</html>

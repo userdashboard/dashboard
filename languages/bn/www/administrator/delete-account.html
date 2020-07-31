@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">মুছে ফেলা ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">মুছে ফেলা ${account.accountid}</h1>
+  <p translate="yes">অ্যাকাউন্টগুলি তাদের নির্ধারিত মোছার সময়টি পেরিয়ে যাওয়ার পরে মোছা যাবে।</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">হিসাব মুছে ফেলা</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      সফল! অ্যাকাউন্ট মুছে ফেলা হয়েছে
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      ত্রুটি! একটি অজানা ত্রুটি ঘটেছে
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      ত্রুটি! অ্যাকাউন্টটি প্রথমে মুছে ফেলার জন্য নির্ধারিত হতে হবে
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      ত্রুটি! অ্যাকাউন্টটি নির্ধারিত তারিখের পরে মুছা যাবে না
+    </div>
+  </template>
+</body>
+</html>

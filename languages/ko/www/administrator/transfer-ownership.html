@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">에 소유권 이전 ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">에 소유권 이전 ${account.accountid}</h1>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/transfer-ownership?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">소유권 이전</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      성공! 사용자가 소유자가되었습니다
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      오류! 알 수없는 오류가 발생했습니다
+    </div>
+  </template>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      오류! 현재 소유자 만 소유권을 이전 할 수 있습니다
+    </div>
+  </template>
+</body>
+</html>

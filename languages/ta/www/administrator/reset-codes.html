@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">குறியீடுகளை மீட்டமை</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">குறியீடுகளை மீட்டமை</h1>
+  <p translate="yes">குறியீடுகள் பயனர்கள் அல்லது நிர்வாகிகளால் உருவாக்கப்பட்டு கடவுச்சொற்கள் மறக்கப்படும்போது அணுகலை மீட்டமைக்கின்றன.</p>
+  <div id="message-container"></div>
+  <div id="no-reset-codes">
+    <p translate="yes">மீட்டமைப்பு குறியீடுகள் இதுவரை இல்லை.</p>
+  </div>
+  <table id="reset-codes-table" class="pure-table pure-table-striped list-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th translate="yes">கணக்கு</th>
+        <th translate="yes">பெயர்</th>
+        <th translate="yes">மின்னஞ்சல்</th>
+        <th translate="yes">உருவாக்கப்பட்டது</th>
+      </tr>
+    </thead>
+  </table>
+  <ul id="page-links" class="pagination"></ul>
+  <template id="page-link">
+    <li>
+      <a href="/administrator/reset-codes?offset=${page.offset}" id="page-link-${page.pageNumber}">${page.pageNumber}</a>
+    </li>
+  </template>
+  <template id="reset-code-row">
+    <tr id="${resetCode.codeid}">
+      <td>
+        <a href="/administrator/reset-code?codeid=${resetCode.codeid}">${resetCode.codeid}</a>
+      </td>
+      <td>
+        <a href="/administrator/account?accountid=${resetCode.accountid}">${resetCode.accountid}</a>
+      </td>
+      <td>${resetCode.firstName} ${resetCode.lastName}</td>
+      <td>
+        <a href="mailto:${resetCode.email}">${resetCode.email}</a>
+      </td>
+      <td>${resetCode.createdFormatted}</td>
+    </tr>
+  </template>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Jezik računa</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Jezik računa</h1>
+  <p translate="yes">Odaberite svoj jezik i tamo gdje je to moguće, sadržaj će biti serviran na željenom jeziku.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/language" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Jezik</label>
+        <select id="language" name="language">
+          <option value="" translate="yes">
+            Odaberite jezik
+          </option>
+        </select>
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Promijeni jezik</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="language-option">
+    <option value="${language.code}">
+      ${language.name}
+    </option>
+  </template>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Uspeh! Vaša jezična preferencija stupa na snagu od sada.
+    </div>
+  </template>
+  <template id="invalid-language">
+    <div class="error message" translate="yes">
+      Greška! Izabran je nevažeći jezik
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Greška! Došlo je do nepoznate pogreške
+    </div>
+  </template>
+</body>
+</html>

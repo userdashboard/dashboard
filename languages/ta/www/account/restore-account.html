@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">எனது கணக்கை மீட்டமை</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">எனது கணக்கை மீட்டமை</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">பயனர்பெயர்</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">கடவுச்சொல்</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">எனது கணக்கை மீட்டமை</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">ஒரு கணக்கை பதிவு செய்யுங்கள்</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">கடவுச்சொல்லை மறந்துவிட்டீர்களா</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">கணக்கை நீக்குவதை ரத்துசெய்</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      பிழை! தவறான கணக்கு அல்லது ரத்து காலம் முடிந்தது
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      பிழை! கணக்கு நீக்கப்பட்டது அல்லது ரத்துசெய்யப்பட்ட காலம் முடிந்தது
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      பிழை! தவறான அல்லது காணாமல் போன பயனர்பெயர்
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      பிழை! கடவுச்சொல் தவறான அல்லது காணவில்லை
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      பிழை! தவறான பயனர்பெயர் நீளம்
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      பிழை! கடவுச்சொல் நீளம் தவறானது
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      அறியப்படாத பிழை ஏற்பட்டது
+    </div>
+  </template>
+</body>
+</html>

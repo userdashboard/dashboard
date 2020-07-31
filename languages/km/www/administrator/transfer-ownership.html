@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">ផ្ទេរកម្មសិទ្ធិទៅ ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">ផ្ទេរកម្មសិទ្ធិទៅ ${account.accountid}</h1>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/transfer-ownership?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ផ្ទេរកម្មសិទ្ធិ</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      ជោគជ័យ! អ្នកប្រើប្រាស់បានក្លាយជាម្ចាស់
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      កំហុស! កំហុសមិនស្គាល់បានកើតឡើង
+    </div>
+  </template>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      កំហុស! មានតែម្ចាស់បច្ចុប្បន្នទេដែលអាចផ្ទេរកម្មសិទ្ធិបាន
+    </div>
+  </template>
+</body>
+</html>

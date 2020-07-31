@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">恢復我的帳戶</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">恢復我的帳戶</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">用戶名</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">密碼</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">恢復我的帳戶</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">註冊帳號</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">忘記密碼</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">取消刪除帳戶</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      錯誤！帳戶無效或取消期限已結束
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      錯誤！帳戶已刪除或取消期已結束
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      錯誤！用戶名不正確或丟失
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      錯誤！密碼錯誤或丟失
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      錯誤！用戶名長度無效
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      錯誤！無效的密碼長度
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      出現未知錯誤
+    </div>
+  </template>
+</body>
+</html>

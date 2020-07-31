@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">アカウント</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">アカウント</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">アカウントを削除する</a></p>
+  <h2 translate="yes">回復コード</h2>
+  <p translate="yes">これらの使い捨てコードは、パスワードをリセットし、認証トークンを無効にすることができます。</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">コードを作成する</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">コードをリセット</a></p>
+  <h2 translate="yes">プロフィール情報</h2>
+  <p translate="yes">管理上の理由から、時々連絡する必要があるかもしれません。</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">セッションを管理する</h2>
+  <p translate="yes">最近のサインインを表示します。</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">セッション</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">すべてのセッションを終了</a>
+  </p>
+  <h2 translate="yes">資格情報のログインを変更する</h2>
+  <p translate="yes">ユーザー名とパスワードは秘密にされており、サインインにのみ使用されます。</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">ユーザー名を変更</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">パスワードを変更する</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">言語</h2>
+    <p translate="yes">言語設定をカスタマイズします。</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">言語を選択する</a></p>
+  </div>
+  <h2 translate="yes">アカウントを削除する</h2>
+  <p translate="yes">近いうちにアカウントの削除をスケジュールし、気が変わった場合はキャンセルしてください。</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">アカウントを削除する</a></p>
+</body>
+</html>

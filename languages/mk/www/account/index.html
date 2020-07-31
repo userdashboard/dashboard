@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Сметка</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Сметка</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Избриши сметка</a></p>
+  <h2 translate="yes">Кодови за наплата</h2>
+  <p translate="yes">Овие кодови со една употреба можат да ја ресетираат вашата лозинка и да ги оневозможат токените за автентикација.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">Создадете код</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">Ресетирање на кодови</a></p>
+  <h2 translate="yes">Информации за профилот</h2>
+  <p translate="yes">Од административни причини можеби ќе треба понекогаш да ве контактираме.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">Управувајте со сесиите</h2>
+  <p translate="yes">Погледнете ги неодамнешните најави.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">Седници</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">Заврши ги сите сесии</a>
+  </p>
+  <h2 translate="yes">Променете ги најавите во ингеренциите</h2>
+  <p translate="yes">Вашето корисничко име и лозинка се тајни и се користат само за најавување.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">Променете го корисничкото име</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">Промени го пасвордот</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">Јазик</h2>
+    <p translate="yes">Прилагодете го вашиот избор на јазик.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">Одбери јазик</a></p>
+  </div>
+  <h2 translate="yes">Избриши сметка</h2>
+  <p translate="yes">Закажете ја вашата сметка за бришење во блиска иднина и откажете се ако се премислите.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Избриши сметка</a></p>
+</body>
+</html>

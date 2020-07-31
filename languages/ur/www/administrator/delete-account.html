@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">ںیرک فذح ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">ںیرک فذح ${account.accountid}</h1>
+  <p translate="yes">۔ےہ اتکساج ایک فذح وک نا دعب ےک ےنرک ےط داعیم یک ےنوہ فذح وک ٹنؤاکا</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ود اٹم ہتاھک</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      ےہ ایگ ایدرک فذح ٹنؤاکا !یبایماک
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      یئگآ شیپ یبارخ ناجنا کیا !یطلغ
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      ےئہاچ انوہ لوڈیش ٹنؤاکا ےئل ےک ےنرک فذح ےلہپ !یطلغ
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      اتکساج ایک ںیہن فذح وک ٹنؤاکا کت دعب ےک خیرات ہررقم یک سا !یطلغ
+    </div>
+  </template>
+</body>
+</html>

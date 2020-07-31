@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">लेखा</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">लेखा</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">खाता हटा दो</a></p>
+  <h2 translate="yes">रिकवरी कोड</h2>
+  <p translate="yes">ये एकल-उपयोग कोड आपके पासवर्ड को रीसेट कर सकते हैं और प्रमाणीकरण टोकन को अक्षम कर सकते हैं।</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">एक कोड बनाएँ</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">कोड रीसेट करें</a></p>
+  <h2 translate="yes">प्रोफ़ाइल जानकारी</h2>
+  <p translate="yes">प्रशासनिक कारणों से हमें आपसे कभी-कभी संपर्क करने की आवश्यकता हो सकती है।</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">सत्र प्रबंधित करें</h2>
+  <p translate="yes">अपने हाल के संकेत देखें।</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">सत्र</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">सभी सत्र समाप्त करें</a>
+  </p>
+  <h2 translate="yes">क्रेडेंशियल में लॉगिन बदलें</h2>
+  <p translate="yes">आपका उपयोगकर्ता नाम और पासवर्ड गुप्त है और केवल साइन इन करने के लिए उपयोग किया जाता है।</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">उपयोगकर्ता नाम परिवर्तन करें</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">पासवर्ड बदलें</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">भाषा: हिन्दी</h2>
+    <p translate="yes">अपनी भाषा वरीयता को अनुकूलित करें।</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">भाषा का चयन करें</a></p>
+  </div>
+  <h2 translate="yes">खाता हटा दो</h2>
+  <p translate="yes">निकट भविष्य में विलोपन के लिए अपने खाते को शेड्यूल करें, और यदि आप अपना मन बदलते हैं तो रद्द कर दें।</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">खाता हटा दो</a></p>
+</body>
+</html>

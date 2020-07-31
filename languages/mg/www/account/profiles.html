@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-profiles.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Profiles</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Profiles</h1>
+  <p translate="yes">Ny profil dia mitazona ny fifandraisanao sy ny mombamomba ny mombamomba anao.</p>
+  <p><a href="/account/create-profile" class="pure-button pure-button-primary" translate="yes">Mamorona mombamomba</a></p>
+  <div id="no-profiles">
+    <p translate="yes">Mitana ny fifandraisanao sy ny mombamomba anao ny mombamomba.</p>
+  </div>
+  <table id="profiles-table" class="pure-table pure-table-striped list-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th translate="yes">toerana misy anao</th>
+        <th id="full-name" translate="yes">Anarana feno</th>
+        <th id="contact-email" translate="yes">Mifandraisa mailaka</th>
+        <th id="display-name" translate="yes">Anarana isehoana</th>
+        <th id="display-email" translate="yes">Asehoy ny mailaka</th>
+        <th id="dob" >DOB</th>
+        <th id="phone" translate="yes">Phone</th>
+        <th id="occupation" translate="yes">asa</th>
+        <th id="location" translate="yes">Location</th>
+        <th id="company-name" translate="yes">Anaran'ny orinasa</th>
+        <th id="website" translate="yes">Website</th>
+        <th translate="yes">Noforonina</th>
+      </tr>
+    </thead>
+  </table>
+  <ul id="page-links" class="pagination"></ul>
+  <template id="page-link">
+    <li>
+      <a href="/account/profiles?offset=${page.offset}" id="page-link-${page.pageNumber}">${page.pageNumber}</a>
+    </li>
+  </template>
+  <template id="profile-row">
+    <tr id="${profile.profileid}">
+      <td>
+        <a href="/account/profile?profileid=${profile.profileid}">${profile.profileid}</a>
+      </td>
+      <td id="full-name-${profile.profileid}">${profile.firstName} ${profile.lastName}</td>
+      <td id="contact-email-${profile.profileid}">
+        <a href="mailto:${profile.contactEmail}">${profile.contactEmail}</a>
+      </td>
+      <td id="display-name-${profile.profileid}">${profile.displayName}</td>
+      <td id="display-email-${profile.profileid}">
+        <a href="mailto:${profile.displayEmail}">${profile.displayEmail}</a>
+      </td>
+      <td id="dob-${profile.profileid}">${profile.dob}</td>
+      <td id="phone-${profile.profileid}">${profile.phone}</td>
+      <td id="occupation-${profile.profileid}">${profile.occupation}</td>
+      <td id="location-${profile.profileid}">${profile.location}</td>
+      <td id="company-name-${profile.profileid}">${profile.companyName}</td>
+      <td id="website-${profile.profileid}">
+        <a href="${profile.website}">${profile.website}</a>
+      </td>
+      <td id="is-default-${profile.profileid}">Yes</td>
+      <td id="is-not-default-${profile.profileid}">No</td>
+      <td>${profile.createdFormatted}</td>
+    </tr>
+  </template>
+</body>
+</html>

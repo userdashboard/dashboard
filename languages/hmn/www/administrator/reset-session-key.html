@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Rov pib qhib qhov tseem ceeb</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Rov pib qhib qhov tseem ceeb rau ${account.accountid}</h1>
+  <p translate="yes">Txhua tus account kos npe nws cov kev sib ntsib nrog tus yuam sij zais cia yog li thaum nws hloov txhua ntu ua ntej xaus.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/reset-session-key?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Rov pib qhib qhov tseem ceeb</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Kev vam meej! Tus neeg siv ntu tau xaus rau
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Yuam Kev! Ib qho yuam kev tsis paub tshwm sim
+    </div>
+  </template>
+</body>
+</html>

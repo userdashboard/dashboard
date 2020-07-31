@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Προφίλ</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Προφίλ</h1>
+  <p translate="yes">Τα προφίλ δημιουργούνται από χρήστες για διοικητικούς σκοπούς.</p>
+  <div id="no-profiles">
+    <p translate="yes">Δεν υπάρχουν ακόμη προφίλ.</p>
+  </div>
+  <table id="profiles-table" class="pure-table pure-table-striped list-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th translate="yes">λογαριασμός</th>
+        <th id="full-name" translate="yes">Πλήρες όνομα</th>
+        <th id="contact-email" translate="yes">Επικοινωνία μέσω email</th>
+        <th id="display-name" translate="yes">Εμφανιζόμενο όνομα</th>
+        <th id="display-email" translate="yes">Εμφάνιση email</th>
+        <th id="dob" >DOB</th>
+        <th id="phone" translate="yes">Τηλέφωνο</th>
+        <th id="occupation" translate="yes">Κατοχή</th>
+        <th id="location" translate="yes">Τοποθεσία</th>
+        <th id="company-name" translate="yes">Ονομα εταιρείας</th>
+        <th id="website" translate="yes">Δικτυακός τόπος</th>
+        <th translate="yes">Δημιουργήθηκε</th>
+      </tr>
+    </thead>
+  </table>
+  <ul id="page-links" class="pagination"></ul>
+  <template id="page-link">
+    <li>
+      <a href="/administrator/profiles?offset=${page.offset}" id="page-link-${page.pageNumber}">${page.pageNumber}</a>
+    </li>
+  </template>
+  <template id="profile-row">
+    <tr id="${profile.profileid}">
+      <td>
+        <a href="/administrator/profile?profileid=${profile.profileid}">${profile.profileid}</a>
+      </td>
+      <td>
+        <a href="/administrator/account?accountid=${profile.accountid}">${profile.accountid}</a>
+      </td>
+      <td id="full-name-${profile.profileid}">${profile.firstName} ${profile.lastName}</td>
+      <td id="contact-email-${profile.profileid}">
+        <a href="mailto:${profile.contactEmail}">${profile.contactEmail}</a>
+      </td>
+      <td id="display-name-${profile.profileid}">${profile.displayName}</td>
+      <td id="display-email-${profile.profileid}">
+        <a href="mailto:${profile.displayEmail}">${profile.displayEmail}</a>
+      </td>
+      <td id="dob-${profile.profileid}">${profile.dob}</td>
+      <td id="phone-${profile.profileid}">${profile.phone}</td>
+      <td id="occupation-${profile.profileid}">${profile.occupation}</td>
+      <td id="location-${profile.profileid}">${profile.location}</td>
+      <td id="company-name-${profile.profileid}">${profile.companyName}</td>
+      <td id="website-${profile.profileid}">
+        <a href="${profile.website}">${profile.website}</a>
+      </td>
+      <td>${profile.createdFormatted}</td>
+    </tr>
+  </template>
+</body>
+</html>

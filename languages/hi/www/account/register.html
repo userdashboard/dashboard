@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">रजिस्टर करें</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/register" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">रजिस्टर करें</h1>
+      <div id="message-container"></div>
+      <div id="form-container">
+        <div class="pure-control-group">
+          <label for="username" translate="yes">साइन इन उपयोगकर्ता नाम</label>
+          <input placeholder="${requirements.minimumUsernameLength}+ characters" name="username" id="username" type="text" maxlength="1000">
+        </div>
+        <div class="pure-control-group">
+          <label for="password" translate="yes">सांकेतिक पासवर्ड</label>
+          <input placeholder="${requirements.minimumPasswordLength}+ characters" name="password" id="password" type="password" maxlength="1000">
+        </div>
+        <div class="pure-control-group">
+          <label for="confirm" translate="yes">अपने पासवर्ड की पुष्टि करें</label>
+          <input name="confirm" id="confirm" type="password" maxlength="1000">
+        </div>
+        <div id="display-name-container" class="pure-control-group">
+          <label for="display-name" translate="yes">प्रदर्शित होने वाला नाम</label>
+          <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
+        </div>
+        <div id="display-email-container" class="pure-control-group">
+          <label for="display-email" translate="yes">ईमेल प्रदर्शित करें</label>
+          <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
+        </div>
+        <div id="contact-email-container" class="pure-control-group">
+          <label for="contact-email" translate="yes">ई - मेल से संपर्क करे</label>
+          <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
+        </div>
+        <div id="full-name-container">
+          <div class="pure-control-group">
+            <label for="first-name" translate="yes">पहला नाम</label>
+            <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+          </div>
+          <div class="pure-control-group">
+            <label for="last-name" translate="yes">अंतिम नाम</label>
+            <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+          </div>
+        </div>
+        <div id="dob-container">
+          <div class="pure-control-group">
+            <label for="dob" translate="yes">जन्म की तारीख</label>
+            <input required="required" id="dob" name="dob" type="text" maxlength="11">
+          </div>
+        </div>
+        <div id="phone-container" class="pure-control-group">
+          <label for="phone" translate="yes">टेलीफोन</label>
+          <input required="required" id="phone" name="phone" type="text" maxlength="1000">
+        </div>
+        <div id="occupation-container" class="pure-control-group">
+          <label for="occupation" translate="yes">व्यवसाय</label>
+          <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
+        </div>
+        <div id="location-container" class="pure-control-group">
+          <label for="location" translate="yes">स्थान</label>
+          <input required="required" id="location" name="location" type="text" maxlength="1000">
+        </div>
+        <div id="company-name-container" class="pure-control-group">
+          <label for="company-name" translate="yes">कंपनी का नाम</label>
+          <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
+        </div>
+        <div id="website-container" class="pure-control-group">
+          <label for="website" translate="yes">वेबसाइट</label>
+          <input required="required" id="website" name="website" type="text" maxlength="1000">
+        </div>
+        <div class="pure-controls">
+          <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">रजिस्टर करें</button>
+        </div>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/signin" translate="yes">मेरे पास एक खाता है</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="registration-disabled">
+    <div class="error message" translate="yes">
+      पंजीकरण अक्षम कर दिया गया है।
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      त्रुटि! अमान्य या पंजीकृत उपयोगकर्ता नाम
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      त्रुटि! अमान्य या पंजीकृत उपयोगकर्ता नाम
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      त्रुटि! अमान्य पासवर्ड या पुष्टिकरण पासवर्ड
+    </div>
+  </template>
+  <template id="invalid-confirm">
+    <div class="error message" translate="yes">
+      त्रुटि! अमान्य पुष्टिकरण पासवर्ड
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      त्रुटि! अमान्य उपयोगकर्ता नाम लंबाई
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      त्रुटि! अमान्य पासवर्ड लंबाई
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      त्रुटि! अमान्य उपयोगकर्ता नाम या पासवर्ड
+    </div>
+  </template>
+  <template id="invalid-first-name">
+    <div class="error message" translate="yes">
+      त्रुटि! एक लापता या अमान्य पहला नाम प्रदान किया गया
+    </div>
+  </template>
+  <template id="invalid-first-name-length">
+    <div class="error message" translate="yes">
+      त्रुटि! एक अमान्य पहला नाम प्रदान किया गया था
+    </div>
+  </template>
+  <template id="invalid-last-name">
+    <div class="error message" translate="yes">
+      त्रुटि! एक गुम या अमान्य अंतिम नाम प्रदान किया गया था
+    </div>
+  </template>
+  <template id="invalid-last-name-length">
+    <div class="error message" translate="yes">
+      त्रुटि! एक अमान्य अंतिम नाम प्रदान किया गया था
+    </div>
+  </template>
+  <template id="invalid-contact-email">
+    <div class="error message" translate="yes">
+      त्रुटि! अवैध संपर्क ईमेल पता
+    </div>
+  </template>
+  <template id="invalid-display-email">
+    <div class="error message" translate="yes">
+      त्रुटि! अमान्य प्रदर्शन ईमेल पता
+    </div>
+  </template>
+  <template id="invalid-display-name">
+    <div class="error message" translate="yes">
+      त्रुटि! एक अनुपलब्ध या अमान्य प्रदर्शन नाम प्रदान किया गया था
+    </div>
+  </template>
+  <template id="invalid-dob">
+    <div class="error message" translate="yes">
+      त्रुटि! गुम या अमान्य जन्म तिथि प्रदान की गई थी
+    </div>
+  </template>
+  <template id="invalid-phone">
+    <div class="error message" translate="yes">
+      त्रुटि! एक लापता या अमान्य फोन प्रदान किया गया था।
+    </div>
+  </template>
+  <template id="invalid-occupation">
+    <div class="error message" translate="yes">
+      त्रुटि! एक लापता या अवैध व्यवसाय प्रदान किया गया था।
+    </div>
+  </template>
+  <template id="invalid-location">
+    <div class="error message" translate="yes">
+      त्रुटि! गुम या अमान्य स्थान प्रदान किया गया था।
+    </div>
+  </template>
+  <template id="invalid-company-name">
+    <div class="error message" translate="yes">
+      त्रुटि! गुम या अमान्य कंपनी का नाम प्रदान किया गया था।
+    </div>
+  </template>
+  <template id="invalid-website">
+    <div class="error message" translate="yes">
+      त्रुटि! गुम या अमान्य वेबसाइट प्रदान की गई थी।
+    </div>
+  </template>
+  <template id="invalid-address-postal-code">
+    <div class="error message" translate="yes">
+      त्रुटि! एक लापता या अमान्य पता डाक कोड प्रदान किया गया था।
+    </div>
+  </template>
+  <template id="invalid-display-name-length">
+    <div class="error message" translate="yes">
+      त्रुटि! एक अनुपलब्ध या अमान्य प्रदर्शन नाम प्रदान किया गया था
+    </div>
+  </template>
+</body>
+</html>

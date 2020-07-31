@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Վերագործարկեք նիստի բանալին</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Վերագործարկեք նիստի բանալին ${account.accountid}</h1>
+  <p translate="yes">Յուրաքանչյուր հաշիվ ստորագրում է իր նիստերը գաղտնի բանալին, այնպես որ, երբ այն փոխվում է բոլոր նախորդ նիստերը ավարտվում են:</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/reset-session-key?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Վերագործարկեք նիստի բանալին</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Հաջողություն: Օգտագործողի նիստերն ավարտվել են
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Սխալ: Անհայտ սխալ է տեղի ունեցել
+    </div>
+  </template>
+</body>
+</html>

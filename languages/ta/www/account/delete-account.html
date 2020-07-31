@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">கணக்கை நீக்குக</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">கணக்கை நீக்குக</h1>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/delete-account" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">தற்போதைய கடவுச்சொல்</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">கணக்கை நீக்குக</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      பிழை! உங்கள் தற்போதைய கடவுச்சொல் தவறானது
+    </div>
+  </template>
+  <template id="instant-delete">
+    <p translate="yes">உங்கள் கணக்கு உடனடியாக நீக்க திட்டமிடப்படும், அதை மீட்டெடுக்க முடியாது.</p>
+  </template>
+  <template id="scheduled-delete">
+    <p translate="yes">உங்கள் கணக்கு நீக்க திட்டமிடப்படும் ${data.numDays} days and you may cancel before then.</p>
+  </template>
+  <template id="owner-account">
+    <div class="error message" translate="yes">
+      பிழை! நீங்கள் முதலில் இயங்குதள உரிமையை வேறு ஒருவருக்கு மாற்ற வேண்டும்
+    </div>
+  </template>
+  <template id="administrator-account">
+    <div class="error message" translate="yes">
+      பிழை! நீங்கள் முதலில் உங்கள் நிர்வாகி சலுகைகளை ரத்து செய்ய வேண்டும்
+    </div>
+  </template>
+</body>
+</html>

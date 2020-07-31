@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">mpitantana</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">mpitantana</h1>
+  <p translate="yes">Ireo kaonty ireo dia afaka miditra amin'ny zava-drehetra amin'ny fitantanana afa-tsy ny famindra ny fananana.</p>
+  <div id="message-container"></div>
+  <div id="no-administrators">
+    <p translate="yes">Tsy misy kaonty tompon'andraikitra.</p>
+  </div>
+  <table id="administrators-table" class="pure-table pure-table-striped list-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th translate="yes">Anarana</th>
+        <th translate="yes">Email</th>
+        <th translate="yes">Noforonina</th>
+        <th translate="yes">Administrator nanomboka</th>
+        <th translate="yes">Voasonia farany</th>
+      </tr>
+    </thead>
+  </table>
+  <ul id="page-links" class="pagination"></ul>
+  <template id="page-link">
+    <li>
+      <a href="/administrator/administrators?offset=${page.offset}" id="page-link-${page.pageNumber}">${page.pageNumber}</a>
+    </li>
+  </template>
+  <template id="administrator-row">
+    <tr id="${account.accountid}">
+      <td>
+        <a href="/administrator/account?accountid=${account.accountid}">${account.accountid}</a>
+      </td>
+      <td>${account.firstName} ${account.lastName}</td>
+      <td>
+        <a href="mailto:${account.email}">${account.email}</a>
+      </td>
+      <td>${account.createdFormatted}</td>
+      <td>${account.administratorFormatted}</td>
+      <td>${account.lastSignedInFormatted}</td>
+    </tr>
+  </template>
+</body>
+</html>

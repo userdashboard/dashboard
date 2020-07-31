@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Slet ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Slet ${account.accountid}</h1>
+  <p translate="yes">Konti kan slettes, når den planlagte sletningsperiode er passeret.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Slet konto</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Succes! Kontoen er blevet slettet
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Fejl! Der opstod en ukendt fejl
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      Fejl! Kontoen skal først planlægges slettet
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      Fejl! Kontoen kan ikke slettes før efter den planlagte dato
+    </div>
+  </template>
+</body>
+</html>

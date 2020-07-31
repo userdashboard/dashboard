@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Mbusak ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Mbusak ${account.accountid}</h1>
+  <p translate="yes">Akun bisa dibusak sawise ngliwati jadwal pambusakan sing dijadwal.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Mbusak akun</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Sukses! Akun wis dibusak
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Kesalahan! Kesalahan sing ora dingerteni kedadeyan
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      Kesalahan! Akun kudu dijadwal kanggo mbusak dhisik
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      Kesalahan! Akun kasebut ora bisa dicopot nganti sawise tanggal sing dijadwalake
+    </div>
+  </template>
+</body>
+</html>

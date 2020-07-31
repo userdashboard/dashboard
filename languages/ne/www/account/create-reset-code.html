@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-reset-codes.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">रिसेट कोड सिर्जना गर्नुहोस्</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">रिसेट कोड सिर्जना गर्नुहोस्</h1>
+  <p translate="yes">कोडहरू रिसेट गर्नुहोस् तपाईंको खाता पहुँच गर्न दिनुहोस् यदि तपाईं आफ्नो पासवर्ड बिर्सनुभयो भने।</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-reset-code" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="secret-code" translate="yes">गोप्य कोड</label>
+        <input id="secret-code" name="secret-code" type="text" maxlength="1000">
+      </div>
+      <div id="form-buttons" class="pure-controls spaced-buttons">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">कोड बचत गर्नुहोस्</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      सफलता! तपाईंको नयाँ कोड कहिँ सुरक्षित सुरक्षित राखिएको छ
+    </div>
+  </template>
+  <template id="invalid-secret-code">
+    <div class="error message" translate="yes">
+      त्रुटि! अवैध गोप्य कोड
+    </div>
+  </template>
+  <template id="invalid-secret-code-length">
+    <div class="error message" translate="yes">
+      त्रुटि! अवैध गोप्य कोड length
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      त्रुटि! एउटा अज्ञात त्रुटि देखा पर्u200dयो
+    </div>
+  </template>
+</body>
+</html>

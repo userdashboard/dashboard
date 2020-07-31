@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">దీనికి నిర్వాహకుడిని కేటాయించండి ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">దీనికి నిర్వాహకుడిని కేటాయించండి ${account.accountid}</h1>
+  <p translate="yes">ఇది నిర్వాహకుల వ్యవస్థకు నామినేటెడ్ ఖాతా ప్రాప్యతను మంజూరు చేస్తుంది.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/assign-administrator?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">నిర్వాహకుడిని కేటాయించండి</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      విజయం! వినియోగదారు ఇప్పుడు నిర్వాహకుడు
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      లోపం! తెలియని లోపం సంభవించింది
+    </div>
+  </template>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Rho tawm ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Rho tawm ${account.accountid}</h1>
+  <p translate="yes">Tus as khauj muaj peev xwm muab lwv tawm tom qab dhau lub sijhawm raug rho tawm.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Rho tawm cov account</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Kev vam meej! Tus as khauj tau raug lwv tawm
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Yuam Kev! Ib qho yuam kev tsis paub tshwm sim
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      Yuam Kev! Tus as khauj yuav tsum tau teem rau kev tshem tawm ua ntej
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      Yuam Kev! Tus as-khauj tsis tuaj yeem muab lwv tawm kom txog thaum tom qab lub sijhawm teem
+    </div>
+  </template>
+</body>
+</html>

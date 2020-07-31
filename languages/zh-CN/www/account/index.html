@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">帐户</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">帐户</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">删除帐户</a></p>
+  <h2 translate="yes">恢复码</h2>
+  <p translate="yes">这些一次性代码可以重置您的密码并禁用身份验证令牌。</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">创建代码</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">重置密码</a></p>
+  <h2 translate="yes">档案信息</h2>
+  <p translate="yes">出于管理原因，我们有时可能需要与您联系。</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">管理会议</h2>
+  <p translate="yes">查看您最近的登录信息。</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">届会</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">结束所有会议</a>
+  </p>
+  <h2 translate="yes">更改登录凭证</h2>
+  <p translate="yes">您的用户名和密码是秘密的，仅用于登录。</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">变更使用者名称</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">更改密码</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">语言</h2>
+    <p translate="yes">自定义您的语言首选项。</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">选择语言</a></p>
+  </div>
+  <h2 translate="yes">删除帐户</h2>
+  <p translate="yes">安排您的帐户在不久的将来被删除，如果您改变主意，则取消该帐户。</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">删除帐户</a></p>
+</body>
+</html>

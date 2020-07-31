@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">பயனர்பெயரை மாற்றவும்</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">பயனர்பெயரை மாற்றவும்</h1>
+  <p translate="yes">Bcrypt + பகிரப்பட்ட உப்புடன் தரவைச் சேமிப்பதற்கு முன்பு அனைத்து பயனர்பெயர்களும் மாற்றமுடியாமல் குறியாக்கம் செய்யப்படுகின்றன.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="new-username" translate="yes">புதிய பயனர்பெயர்</label>
+        <input id="new-username" name="new-username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">தற்போதைய கடவுச்சொல்</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">புதிய பயனர்பெயரை அமைக்கவும்</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      வெற்றி! உங்கள் புதிய பயனர்பெயர் இனிமேல் பயன்படுத்தப்பட வேண்டும்
+    </div>
+  </template>
+  <template id="invalid-new-username">
+    <div class="error message" translate="yes">
+      பிழை! புதிய பயனர்பெயர் தவறானது அல்லது நகல்
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      பிழை! உங்கள் தற்போதைய கடவுச்சொல் தவறானது
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      பிழை! அறியப்படாத பிழை ஏற்பட்டது
+    </div>
+  </template>
+  <template id="invalid-new-username-length">
+    <div class="error message" translate="yes">
+      பிழை! தவறான புதிய பயனர்பெயர் நீளம்
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      பிழை! வேறு யாரோ அந்த பயனர்பெயரைப் பயன்படுத்துகிறார்கள்
+    </div>
+  </template>
+</body>
+</html>

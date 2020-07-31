@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Supprimer ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Supprimer ${account.accountid}</h1>
+  <p translate="yes">Les comptes peuvent être supprimés après avoir dépassé leur période de suppression programmée.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Supprimer le compte</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Succès! Le compte a été supprimé
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Erreur! Une erreur inconnue est survenue
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      Erreur! La suppression du compte doit d'abord être planifiée
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      Erreur! Le compte ne peut être supprimé qu'après sa date prévue
+    </div>
+  </template>
+</body>
+</html>

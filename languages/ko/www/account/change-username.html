@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">사용자 이름 변경</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">사용자 이름 변경</h1>
+  <p translate="yes">bcrypt + 공유 소금으로 데이터를 저장하기 전에 모든 사용자 이름이 되돌릴 수 없도록 암호화됩니다.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="new-username" translate="yes">새로운 사용자 이름</label>
+        <input id="new-username" name="new-username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">현재 비밀번호</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">새로운 사용자 이름 설정</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      성공! 지금부터 새로운 사용자 이름을 사용해야합니다
+    </div>
+  </template>
+  <template id="invalid-new-username">
+    <div class="error message" translate="yes">
+      오류! 유효하지 않거나 중복 된 새로운 사용자 이름
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      오류! 현재 비밀번호가 유효하지 않습니다
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      오류! 알 수없는 오류가 발생했습니다
+    </div>
+  </template>
+  <template id="invalid-new-username-length">
+    <div class="error message" translate="yes">
+      오류! 새로운 사용자 이름 길이가 잘못되었습니다
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      오류! 다른 사용자가 해당 사용자 이름을 사용하고 있습니다
+    </div>
+  </template>
+</body>
+</html>

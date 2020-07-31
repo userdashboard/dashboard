@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Seans tugmachasini tiklash</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Sessiya kalitini asl holatiga qaytarish ${account.accountid}</h1>
+  <p translate="yes">Har bir hisob sessiyalarini oldingi seanslar tugagach o'zgartirilganda maxfiy kalit bilan imzolaydi.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/reset-session-key?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Seans tugmachasini tiklash</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Muvaffaqiyat! Foydalanuvchi sessiyalari yakunlandi
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Xato! Noma'lum xato yuz berdi
+    </div>
+  </template>
+</body>
+</html>

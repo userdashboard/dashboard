@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-profile.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">ךֹורֲעַל ${profile.profileid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">ךֹורֲעַל ${profile.profileid}</h1>
+  <p translate="yes">.םינכדועמו םינוכנ ךלש רשקה יטרפ תא רומש</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/edit-profile?profileid=${profile.profileid}" name="submit-form">
+    <div class="pure-checkbox">
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">ילש לדחמה תרירב תא השע</span></label>
+    </div>
+    <div id="display-name-container" class="pure-control-group">
+      <label for="display-name" translate="yes">םש גצה</label>
+      <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
+    </div>
+    <div id="display-email-container" class="pure-control-group">
+      <label for="display-email" translate="yes">ל"אוד גצה</label>
+      <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="contact-email-container" class="pure-control-group">
+      <label for="contact-email" translate="yes">רשק תריציל ל"אוד</label>
+      <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="full-name-container">
+      <div class="pure-control-group">
+        <label for="first-name" translate="yes">יטרפ םש</label>
+      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="last-name" translate="yes">החפשמ םש</label>
+      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+      </div>
+    </div>
+    <div id="dob-container">
+      <div class="pure-control-group">
+        <label for="dob" translate="yes">הדיל ךיראת</label>
+        <input required="required" id="dob" name="dob" type="text" maxlength="11">
+      </div>
+    </div>
+    <div id="phone-container" class="pure-control-group">
+      <label for="phone" translate="yes">ןֹופֵלֵט</label>
+      <input required="required" id="phone" name="phone" type="text" maxlength="1000">
+    </div>
+    <div id="occupation-container" class="pure-control-group">
+      <label for="occupation" translate="yes">שוביכ</label>
+      <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
+    </div>
+    <div id="location-container" class="pure-control-group">
+      <label for="location" translate="yes">םוקמ</label>
+      <input required="required" id="location" name="location" type="text" maxlength="1000">
+    </div>
+    <div id="company-name-container" class="pure-control-group">
+      <label for="company-name" translate="yes">הרבחה םש</label>
+      <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
+    </div>
+    <div id="website-container" class="pure-control-group">
+      <label for="website" translate="yes">טנרטניא רתא</label>
+      <input required="required" id="website" name="website" type="text" maxlength="1000">
+    </div>
+    <div id="submit-container" class="pure-controls">
+      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">ליפורפ ןכדע</button>
+    </div>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      ונכדוע ךלש ליפורפה יטרפ !הָחָלצַה
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      העודי אל האיגש העריא !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-first-name">
+    <div class="error message" translate="yes">
+      ףקת אל וא רסח יטרפ םש !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-first-name-length">
+    <div class="error message" translate="yes">
+      קפוס יקוח אל יטרפ םש !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-last-name">
+    <div class="error message" translate="yes">
+      קפוס יקוח אל וא רסח החפשמ םש !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-last-name-length">
+    <div class="error message" translate="yes">
+      קפוס יקוח אל החפשמ םש !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-contact-email">
+    <div class="error message" translate="yes">
+      רשק תריציל תיקוח אל ל"אוד תבותכ !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-display-email">
+    <div class="error message" translate="yes">
+      תיקוח אל הגוצתל ל"אוד תבותכ !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-display-name">
+    <div class="error message" translate="yes">
+      קפוס יקוח אל וא רסח הגוצת םש !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-dob">
+    <div class="error message" translate="yes">
+      קפוס ףקת אל וא רסח הדיל ךיראת !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-phone">
+    <div class="error message" translate="yes">
+      .קפוס יקוח אל וא רסח ןופלט !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-occupation">
+    <div class="error message" translate="yes">
+      .קפוס יקוח אל וא רסח שוביכ !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-location">
+    <div class="error message" translate="yes">
+      .קפוס יקוח אל וא רסח םוקימ !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-company-name">
+    <div class="error message" translate="yes">
+      .יקוח אל וא רסח הרבח םש רסמנ !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-website">
+    <div class="error message" translate="yes">
+      .קפוס יקוח אל וא רסח רתא !הָאיִגְׁש
+    </div>
+  </template>
+  <template id="invalid-display-name-length">
+    <div class="error message" translate="yes">
+      קפוס יקוח אל וא רסח הגוצת םש !הָאיִגְׁש
+    </div>
+  </template>
+</body>
+</html>

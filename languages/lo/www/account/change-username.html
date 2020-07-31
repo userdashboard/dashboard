@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">ປ່ຽນຊື່ຜູ້ໃຊ້</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">ປ່ຽນຊື່ຜູ້ໃຊ້</h1>
+  <p translate="yes">ຊື່ຜູ້ໃຊ້ທັງ ໝົດ ແມ່ນຖືກເຂົ້າລະຫັດທີ່ບໍ່ສາມາດຄວບຄຸມໄດ້ກ່ອນທີ່ຈະເກັບຮັກສາຂໍ້ມູນດ້ວຍເກືອ bcrypt + ທີ່ໃຊ້ຮ່ວມກັນ.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="new-username" translate="yes">ຊື່ຜູ້ໃຊ້ ໃໝ່</label>
+        <input id="new-username" name="new-username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">ລະຫັດປັດຈຸບັນ</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ຕັ້ງຊື່ຜູ້ໃຊ້ ໃໝ່</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      ຄວາມສໍາເລັດ! ຊື່ຜູ້ໃຊ້ ໃໝ່ ຂອງທ່ານຕ້ອງຖືກ ນຳ ໃຊ້ຕັ້ງແຕ່ນີ້
+    </div>
+  </template>
+  <template id="invalid-new-username">
+    <div class="error message" translate="yes">
+      ຜິດພາດ! ຊື່ຜູ້ໃຊ້ ໃໝ່ ບໍ່ຖືກຕ້ອງຫລືຊ້ ຳ ກັນ
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      ຜິດພາດ! ລະຫັດຜ່ານຂອງທ່ານບໍ່ຖືກຕ້ອງ
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      ຜິດພາດ! ເກີດຂໍ້ຜິດພາດທີ່ບໍ່ຮູ້ຕົວ
+    </div>
+  </template>
+  <template id="invalid-new-username-length">
+    <div class="error message" translate="yes">
+      ຜິດພາດ! ຄວາມຍາວຊື່ຜູ້ໃຊ້ ໃໝ່ ບໍ່ຖືກຕ້ອງ
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      ຜິດພາດ! ມີບາງຄົນໃຊ້ຊື່ຜູ້ໃຊ້ນັ້ນ
+    </div>
+  </template>
+</body>
+</html>

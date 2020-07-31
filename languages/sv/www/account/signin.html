@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Logga in på mitt konto</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">Logga in</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">Användarnamn</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Lösenord</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <div class="pure-checkbox">
+          <label for="remember-minutes" translate="yes"><span><input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked"></span> Logga ut om 20 minuter</label>
+        </div>
+        <div class="pure-checkbox">
+          <label for="remember-hours" translate="yes"><span><input type="radio" name="remember" value="hours" id="remember-hours"></span> Logga ut om 8 timmar</label>
+        </div>
+        <div class="pure-checkbox">
+          <label for="remember-days" translate="yes"><span><input type="radio" name="remember" value="days" id="remember-days"></span> Logga ut om 30 dagar</label>
+        </div>
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Logga in</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">Registrera ett konto</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">glömt ditt lösenord</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">Avbryt radering av konto</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      Fel! Ogiltigt användarnamn
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Fel! Felaktigt lösenord
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      Fel! Ogiltig användarnamnslängd
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      Fel! Ogiltig lösenordslängd
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Fel! Ett okänt fel uppstod
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      Fel! Ditt konto raderas <a href="/account/recover-account">and can still be recovered</a>
+    </div>
+  </template>
+</body>
+</html>

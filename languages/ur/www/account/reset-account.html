@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">ںید بیترت ہرابود وک یئاسر کت ٹنؤاکا ےریم</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account" name="submit-form">
+    <fieldset>
+      <div id="message-container"></div>
+      <h1 translate="yes">ںید بیترت ہرابود وک یئاسر کت ٹنؤاکا ےریم</h1>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">مان فراص</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="secret-code" translate="yes">ںید بیترت ہرابود وک ڈوک</label>
+        <input id="secret-code" name="secret-code" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="new-password" translate="yes">ڈرو ساپ این</label>
+        <input id="new-password" name="new-password" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="confirm-password" translate="yes">ںیرک قیثوت یک ڈرو ساپ ےئن</label>
+        <input id="confirm-password" name="confirm-password" type="text" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ںیرک نا نئاس روا ںید بیترت ہرابود</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/signin" translate="yes">ںیئاج سپاو رپ نا نئاس</a>
+        </li>
+        <li>
+          <a href="/account/register" translate="yes">ںیلوھک اتاھک</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-reset-code">
+    <div class="error message" translate="yes">
+      ڈوک ہیفخ طلغ !یطلغ
+    </div>
+  </template>
+  <template id="invalid-secret-code">
+    <div class="error message" translate="yes">
+      ڈوک ہیفخ طلغ !یطلغ
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      مان فراص طلغ !یطلغ
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      مان فراص طلغ !یطلغ
+    </div>
+  </template>
+  <template id="invalid-new-password">
+    <div class="error message" translate="yes">
+      ڈرو ساپ این طلغ !یطلغ
+    </div>
+  </template>
+  <template id="invalid-new-password-length">
+    <div class="error message" translate="yes">
+      ڈرو ساپ این طلغ !یطلغ length
+    </div>
+  </template>
+  <template id="invalid-confirm-password">
+    <div class="error message" translate="yes">
+      ڈرو ساپ یقیدصت طلغ !یطلغ
+    </div>
+  </template>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      ٹنؤاکا طلغ !یطلغ
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      یئگآ شیپ یبارخ ناجنا کیا !یطلغ
+    </div>
+  </template>
+</body>
+</html>

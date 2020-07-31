@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">నమోదు</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/register" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">నమోదు</h1>
+      <div id="message-container"></div>
+      <div id="form-container">
+        <div class="pure-control-group">
+          <label for="username" translate="yes">సైన్ ఇన్ వినియోగదారు పేరు</label>
+          <input placeholder="${requirements.minimumUsernameLength}+ characters" name="username" id="username" type="text" maxlength="1000">
+        </div>
+        <div class="pure-control-group">
+          <label for="password" translate="yes">పాస్వర్డ్ను సైన్ ఇన్ చేయండి</label>
+          <input placeholder="${requirements.minimumPasswordLength}+ characters" name="password" id="password" type="password" maxlength="1000">
+        </div>
+        <div class="pure-control-group">
+          <label for="confirm" translate="yes">మీ గుత్త పదమును ధృవీకరించండి</label>
+          <input name="confirm" id="confirm" type="password" maxlength="1000">
+        </div>
+        <div id="display-name-container" class="pure-control-group">
+          <label for="display-name" translate="yes">ప్రదర్శన పేరు</label>
+          <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
+        </div>
+        <div id="display-email-container" class="pure-control-group">
+          <label for="display-email" translate="yes">ఇమెయిల్u200cను ప్రదర్శించు</label>
+          <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
+        </div>
+        <div id="contact-email-container" class="pure-control-group">
+          <label for="contact-email" translate="yes">ఇమెయిల్u200cను సంప్రదించండి</label>
+          <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
+        </div>
+        <div id="full-name-container">
+          <div class="pure-control-group">
+            <label for="first-name" translate="yes">మొదటి పేరు</label>
+            <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+          </div>
+          <div class="pure-control-group">
+            <label for="last-name" translate="yes">చివరి పేరు</label>
+            <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+          </div>
+        </div>
+        <div id="dob-container">
+          <div class="pure-control-group">
+            <label for="dob" translate="yes">పుట్టిన తేది</label>
+            <input required="required" id="dob" name="dob" type="text" maxlength="11">
+          </div>
+        </div>
+        <div id="phone-container" class="pure-control-group">
+          <label for="phone" translate="yes">టెలిఫోన్</label>
+          <input required="required" id="phone" name="phone" type="text" maxlength="1000">
+        </div>
+        <div id="occupation-container" class="pure-control-group">
+          <label for="occupation" translate="yes">వృత్తి</label>
+          <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
+        </div>
+        <div id="location-container" class="pure-control-group">
+          <label for="location" translate="yes">స్థానం</label>
+          <input required="required" id="location" name="location" type="text" maxlength="1000">
+        </div>
+        <div id="company-name-container" class="pure-control-group">
+          <label for="company-name" translate="yes">కంపెనీ పేరు</label>
+          <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
+        </div>
+        <div id="website-container" class="pure-control-group">
+          <label for="website" translate="yes">వెబ్సైట్</label>
+          <input required="required" id="website" name="website" type="text" maxlength="1000">
+        </div>
+        <div class="pure-controls">
+          <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">నమోదు</button>
+        </div>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/signin" translate="yes">నాకు ఖాతా ఉంది</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="registration-disabled">
+    <div class="error message" translate="yes">
+      నమోదు నిలిపివేయబడింది.
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      లోపం! చెల్లని లేదా నమోదు చేయబడిన వినియోగదారు పేరు
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      లోపం! చెల్లని లేదా నమోదు చేయబడిన వినియోగదారు పేరు
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      లోపం! పాస్వర్డ్ లేదా నిర్ధారణ పాస్వర్డ్ చెల్లదు
+    </div>
+  </template>
+  <template id="invalid-confirm">
+    <div class="error message" translate="yes">
+      లోపం! ధృవీకరణ పాస్u200cవర్డ్ చెల్లదు
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      లోపం! చెల్లని వినియోగదారు పేరు పొడవు
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      లోపం! పాస్u200cవర్డ్ పొడవు చెల్లదు
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      లోపం! తప్పుడు వాడుకరిపేరు లేదా సంకేతపదం
+    </div>
+  </template>
+  <template id="invalid-first-name">
+    <div class="error message" translate="yes">
+      లోపం! తప్పిపోయిన లేదా చెల్లని మొదటి పేరు అందించబడింది
+    </div>
+  </template>
+  <template id="invalid-first-name-length">
+    <div class="error message" translate="yes">
+      లోపం! చెల్లని మొదటి పేరు అందించబడింది
+    </div>
+  </template>
+  <template id="invalid-last-name">
+    <div class="error message" translate="yes">
+      లోపం! తప్పిపోయిన లేదా చెల్లని చివరి పేరు అందించబడింది
+    </div>
+  </template>
+  <template id="invalid-last-name-length">
+    <div class="error message" translate="yes">
+      లోపం! చెల్లని చివరి పేరు అందించబడింది
+    </div>
+  </template>
+  <template id="invalid-contact-email">
+    <div class="error message" translate="yes">
+      లోపం! సంప్రదింపు ఇమెయిల్ చిరునామా చెల్లదు
+    </div>
+  </template>
+  <template id="invalid-display-email">
+    <div class="error message" translate="yes">
+      లోపం! ప్రదర్శన ఇమెయిల్ చిరునామా చెల్లదు
+    </div>
+  </template>
+  <template id="invalid-display-name">
+    <div class="error message" translate="yes">
+      లోపం! తప్పిపోయిన లేదా చెల్లని ప్రదర్శన పేరు అందించబడింది
+    </div>
+  </template>
+  <template id="invalid-dob">
+    <div class="error message" translate="yes">
+      లోపం! తప్పిపోయిన లేదా చెల్లని పుట్టిన తేదీ అందించబడింది
+    </div>
+  </template>
+  <template id="invalid-phone">
+    <div class="error message" translate="yes">
+      లోపం! తప్పిపోయిన లేదా చెల్లని ఫోన్ అందించబడింది.
+    </div>
+  </template>
+  <template id="invalid-occupation">
+    <div class="error message" translate="yes">
+      లోపం! తప్పిపోయిన లేదా చెల్లని వృత్తి అందించబడింది.
+    </div>
+  </template>
+  <template id="invalid-location">
+    <div class="error message" translate="yes">
+      లోపం! తప్పిపోయిన లేదా చెల్లని స్థానం అందించబడింది.
+    </div>
+  </template>
+  <template id="invalid-company-name">
+    <div class="error message" translate="yes">
+      లోపం! తప్పిపోయిన లేదా చెల్లని కంపెనీ పేరు అందించబడింది.
+    </div>
+  </template>
+  <template id="invalid-website">
+    <div class="error message" translate="yes">
+      లోపం! తప్పిపోయిన లేదా చెల్లని వెబ్u200cసైట్ అందించబడింది.
+    </div>
+  </template>
+  <template id="invalid-address-postal-code">
+    <div class="error message" translate="yes">
+      లోపం! తప్పిపోయిన లేదా చెల్లని చిరునామా పోస్టల్ కోడ్ అందించబడింది.
+    </div>
+  </template>
+  <template id="invalid-display-name-length">
+    <div class="error message" translate="yes">
+      లోపం! తప్పిపోయిన లేదా చెల్లని ప్రదర్శన పేరు అందించబడింది
+    </div>
+  </template>
+</body>
+</html>

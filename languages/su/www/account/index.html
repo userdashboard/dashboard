@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Akun</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Akun</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Hapus akun</a></p>
+  <h2 translate="yes">Kodeu pamulihan</h2>
+  <p translate="yes">Kode pamakean tunggal ieu tiasa ngareset sandi sareng mareuman token oténtikasi.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">Jieun kode</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">Reset kodeu</a></p>
+  <h2 translate="yes">Inpormasi profil</h2>
+  <p translate="yes">Kanggo alesan administrasi urang peryogi waé pikeun ngahubungan anjeun sakapeung.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">Ngatur sesi</h2>
+  <p translate="yes">Ningali logén anyar anjeun.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">Sesi</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">Mungkas sadaya sesi</a>
+  </p>
+  <h2 translate="yes">Ngarobih login dina Kapercayaan</h2>
+  <p translate="yes">Jeneng pangguna sareng kecap konci anjeun rusiah ngan dianggo kanggo log in.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">Ngarobih nami landihan</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">Gentos kecap konci</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">Basa Sunda</h2>
+    <p translate="yes">Saluyukeun pilihan basa anjeun.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">Pilih basa</a></p>
+  </div>
+  <h2 translate="yes">Hapus akun</h2>
+  <p translate="yes">Jadwalkeun akun anjeun pikeun ngahapus dina waktos énggal, sareng batal upami anjeun ngarobih pikir.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Hapus akun</a></p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Account</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Account</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Tanggalin ang account</a></p>
+  <h2 translate="yes">Mga code ng pagbawi</h2>
+  <p translate="yes">Ang mga solong gamit na code ay maaaring i-reset ang iyong password at huwag paganahin ang mga token ng pagpapatunay.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">Lumikha ng isang code</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">I-reset ang mga code</a></p>
+  <h2 translate="yes">Impormasyon sa profile</h2>
+  <p translate="yes">Para sa mga kadahilanang pang-administratibo maaaring kailanganin nating makipag-ugnay sa iyo minsan.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">Pamahalaan ang mga sesyon</h2>
+  <p translate="yes">Tingnan ang iyong kamakailang mga pag-signen.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">Mga Session</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">Tapusin ang lahat ng mga session</a>
+  </p>
+  <h2 translate="yes">Baguhin ang pag-login sa mga kredensyal</h2>
+  <p translate="yes">Ang iyong username at password ay lihim at ginagamit lamang para sa pag-sign in.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">Baguhin ang username</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">Palitan ANG password</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">Wika</h2>
+    <p translate="yes">I-customize ang iyong kagustuhan sa wika.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">Piliin ang wika</a></p>
+  </div>
+  <h2 translate="yes">Tanggalin ang account</h2>
+  <p translate="yes">Iskedyul ang iyong account para sa pagtanggal sa malapit na hinaharap, at kanselahin kung binago mo ang iyong isip.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Tanggalin ang account</a></p>
+</body>
+</html>

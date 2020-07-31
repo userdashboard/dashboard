@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">계정</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">계정</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">계정 삭제</a></p>
+  <h2 translate="yes">복구 코드</h2>
+  <p translate="yes">이 일회용 코드는 비밀번호를 재설정하고 인증 토큰을 비활성화 할 수 있습니다.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">코드 만들기</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">리셋 코드</a></p>
+  <h2 translate="yes">프로필 정보</h2>
+  <p translate="yes">관리상의 이유로 때때로 연락해야 할 수도 있습니다.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">세션 관리</h2>
+  <p translate="yes">최근 로그인을 봅니다.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">세션</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">모든 세션을 종료</a>
+  </p>
+  <h2 translate="yes">자격 증명의 로그인 변경</h2>
+  <p translate="yes">사용자 이름과 비밀번호는 비밀이며 로그인시에만 사용됩니다.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">사용자 이름 변경</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">비밀번호 변경</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">언어</h2>
+    <p translate="yes">언어 기본 설정을 사용자 정의하십시오.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">언어를 선택하십시오</a></p>
+  </div>
+  <h2 translate="yes">계정 삭제</h2>
+  <p translate="yes">가까운 시일 내에 계정 삭제를 예약하고 마음이 바뀌면 취소하십시오.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">계정 삭제</a></p>
+</body>
+</html>

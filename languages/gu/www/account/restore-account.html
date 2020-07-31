@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">મારું એકાઉન્ટ પુન Restસ્થાપિત કરો</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">મારું એકાઉન્ટ પુન Restસ્થાપિત કરો</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">વપરાશકર્તા નામ</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">પાસવર્ડ</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">મારું એકાઉન્ટ પુન Restસ્થાપિત કરો</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">ખાતું નોંધણી કરો</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">પાસવર્ડ ભૂલી ગયા છો</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">કા deleી નાખવાનું એકાઉન્ટ રદ કરો</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      ભૂલ! અમાન્ય એકાઉન્ટ અથવા રદ કરવાની અવધિ સમાપ્ત થઈ ગઈ છે
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      ભૂલ! એકાઉન્ટ કા deletedી નાખ્યું અથવા રદ કરવાની અવધિ સમાપ્ત થઈ ગઈ છે
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      ભૂલ! ખોટું અથવા ખોવાયું વપરાશકર્તા નામ
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      ભૂલ! ખોટો અથવા ગુમ થયેલ પાસવર્ડ
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      ભૂલ! અમાન્ય વપરાશકર્તાનામ લંબાઈ
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      ભૂલ! અમાન્ય પાસવર્ડ લંબાઈ
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      અજ્ unknownાત ભૂલ આવી
+    </div>
+  </template>
+</body>
+</html>

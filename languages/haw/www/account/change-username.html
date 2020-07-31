@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Hoʻololi i ka inoa inoa</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Hoʻololi i ka inoa inoa</h1>
+  <p translate="yes">Kāhea ʻole ʻia nā inoa inoa āpau i mua o ka mālama ʻana i ka ʻike me ka paʻakai bcrypt +.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="new-username" translate="yes">Mea inoa inoa hou</label>
+        <input id="new-username" name="new-username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Ōlelo huna i kēia manawa</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">E hoʻonohonoho i ka inoa inoa inoa hou</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Kōleʻa! E hoʻohana ʻia kou inoa inoa hou mai kēia manawa
+    </div>
+  </template>
+  <template id="invalid-new-username">
+    <div class="error message" translate="yes">
+      ʻAno. Loaʻa ʻole kope paha i kahi inoa inoa inoa hou
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      ʻAno. ʻAʻole pololei paha kāu ʻōlelo huna
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      ʻAno. Ua loaʻa mai kahi hewa i ʻike ʻia
+    </div>
+  </template>
+  <template id="invalid-new-username-length">
+    <div class="error message" translate="yes">
+      ʻAno. ʻO ka lōʻihi inoa inoa inoa inoa ʻole
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      ʻAno. Ke hoʻohana nei kekahi mea ʻē aʻe i kēlā inoa inoa inoa
+    </div>
+  </template>
+</body>
+</html>

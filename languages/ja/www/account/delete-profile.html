@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-profile.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">削除する ${profile.profileid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">削除する ${profile.profileid}</h1>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/account/delete-profile?profileid=${profile.profileid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">プロフィールを削除</button>
+    </fieldset>
+  </form>
+  <template id="instant-delete">
+    <p translate="yes">プロファイルはすぐに削除され、復元できません。</p>
+  </template>
+  <template id="success">
+    <div class="success message" translate="yes">
+      成功！プロファイルが削除されました
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      エラー！プロファイルの削除中にエラーが発生しました
+    </div>
+  </template>
+</body>
+</html>

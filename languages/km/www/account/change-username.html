@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">ផ្លាស់ប្តូរឈ្មោះអ្នកប្រើប្រាស់</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">ផ្លាស់ប្តូរឈ្មោះអ្នកប្រើប្រាស់</h1>
+  <p translate="yes">រាល់ឈ្មោះអ្នកប្រើទាំងអស់ត្រូវបានអ៊ិនគ្រីបដោយមិនអាចត្រឡប់វិញបានមុនពេលផ្ទុកទិន្នន័យជាមួយអំបិលប៊ីកគ្រីប។</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="new-username" translate="yes">ឈ្មោះអ្នកប្រើថ្មី</label>
+        <input id="new-username" name="new-username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">លេខសំងាត់បច្ចុប្បន្ន</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">កំណត់ឈ្មោះអ្នកប្រើថ្មី</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      ជោគជ័យ! ឈ្មោះអ្នកប្រើថ្មីរបស់អ្នកត្រូវតែប្រើចាប់ពីពេលនេះតទៅ
+    </div>
+  </template>
+  <template id="invalid-new-username">
+    <div class="error message" translate="yes">
+      កំហុស! ឈ្មោះអ្នកប្រើថ្មីមិនត្រឹមត្រូវឬជាន់គ្នា
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      កំហុស! ពាក្យសម្ងាត់បច្ចុប្បន្នរបស់អ្នកមិនត្រឹមត្រូវ
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      កំហុស! កំហុសមិនស្គាល់បានកើតឡើង
+    </div>
+  </template>
+  <template id="invalid-new-username-length">
+    <div class="error message" translate="yes">
+      កំហុស! ប្រវែងឈ្មោះអ្នកប្រើថ្មីមិនត្រឹមត្រូវ
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      កំហុស! អ្នកផ្សេងទៀតកំពុងប្រើឈ្មោះអ្នកប្រើនោះ
+    </div>
+  </template>
+</body>
+</html>

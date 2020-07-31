@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">ويرڪ متخ ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">ويرڪ متخ ${account.accountid}</h1>
+  <p translate="yes">.اٿ نهگس يٿ متخ ٽنوئاڪا ِءوپناک تدم يج ڻيٿ متخ تقو ليڪ ررقم ندنس</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ويرڪ متخ ٽنوئاڪا</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      يهآ وڪچ يٿ متخ وتاک !يبايماڪ
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      يئو يٿ يطلغ لتاڃس ڻا !صقن
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      يجرهگ ڻجه يمزال لوڊيش نيرهپ ِءال ڻيٿ متخ وتاک !صقن
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      يجهگس يرڪ وٿ هن متخ وتاک نيئات خيرات ليڪ ررقم يجنهنپ !صقن
+    </div>
+  </template>
+</body>
+</html>

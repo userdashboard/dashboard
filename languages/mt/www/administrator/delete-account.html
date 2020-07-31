@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Ħassar ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Ħassar ${account.accountid}</h1>
+  <p translate="yes">Il-kontijiet jistgħu jitħassru wara li jgħaddi l-perjodu ta 'tħassir skedat tagħhom.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Ħassar il-kont</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Suċċess! Il-kont tħassar
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Żball! Żball mhux magħruf seħħ
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      Żball! L-ewwel il-kont għandu jkun skedat għat-tħassir
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      Żball! Il-kont ma jistax jitħassar sa wara d-data skedata tiegħu
+    </div>
+  </template>
+</body>
+</html>

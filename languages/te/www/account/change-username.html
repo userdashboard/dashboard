@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">వినియోగదారు పేరు మార్చండి</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">వినియోగదారు పేరు మార్చండి</h1>
+  <p translate="yes">Bcrypt + షేర్డ్ ఉప్పుతో డేటాను నిల్వ చేయడానికి ముందు అన్ని వినియోగదారు పేర్లు తిరిగి మార్చలేని-గుప్తీకరించబడతాయి.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="new-username" translate="yes">క్రొత్త వినియోగదారు పేరు</label>
+        <input id="new-username" name="new-username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">ప్రస్తుత పాస్వర్డ్</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">క్రొత్త వినియోగదారు పేరును సెట్ చేయండి</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      విజయం! మీ క్రొత్త వినియోగదారు పేరు ఇప్పటి నుండి ఉపయోగించబడాలి
+    </div>
+  </template>
+  <template id="invalid-new-username">
+    <div class="error message" translate="yes">
+      లోపం! క్రొత్త వినియోగదారు పేరు చెల్లదు లేదా నకిలీ
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      లోపం! మీ ప్రస్తుత పాస్u200cవర్డ్ చెల్లదు
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      లోపం! తెలియని లోపం సంభవించింది
+    </div>
+  </template>
+  <template id="invalid-new-username-length">
+    <div class="error message" translate="yes">
+      లోపం! క్రొత్త వినియోగదారు పేరు పొడవు చెల్లదు
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      లోపం! మరొకరు ఆ వినియోగదారు పేరును ఉపయోగిస్తున్నారు
+    </div>
+  </template>
+</body>
+</html>

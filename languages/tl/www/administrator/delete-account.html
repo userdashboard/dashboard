@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Tanggalin ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Tanggalin ${account.accountid}</h1>
+  <p translate="yes">Maaaring tanggalin ang mga account pagkatapos maipasa ang kanilang nakatakdang panahon ng pagtanggal.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Tanggalin ang account</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Tagumpay! Natanggal ang account
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Error! Isang hindi kilalang error ang naganap
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      Error! Ang account ay dapat na naka-iskedyul para sa pagtanggal muna
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      Error! Hindi matanggal ang account hanggang sa matapos ang nakatakdang petsa
+    </div>
+  </template>
+</body>
+</html>

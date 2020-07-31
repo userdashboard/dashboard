@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">ನಿರ್ವಾಹಕರನ್ನು ಹಿಂತೆಗೆದುಕೊಳ್ಳಿ</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">ನಿಂದ ನಿರ್ವಾಹಕರನ್ನು ಹಿಂತೆಗೆದುಕೊಳ್ಳಿ ${account.accountid}</h1>
+  <p translate="yes">ಆಯ್ದ ಖಾತೆಯು ಆಡಳಿತ ವ್ಯವಸ್ಥೆಗೆ ಪ್ರವೇಶವನ್ನು ಕಳೆದುಕೊಳ್ಳುತ್ತದೆ.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/revoke-administrator?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ನಿರ್ವಾಹಕರನ್ನು ಹಿಂತೆಗೆದುಕೊಳ್ಳಿ</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      ಯಶಸ್ಸು! ಬಳಕೆದಾರರು ಇನ್ನು ಮುಂದೆ ನಿರ್ವಾಹಕರಾಗಿಲ್ಲ
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      ದೋಷ! ಅಜ್ಞಾತ ದೋಷ ಸಂಭವಿಸಿದೆ
+    </div>
+  </template>
+</body>
+</html>

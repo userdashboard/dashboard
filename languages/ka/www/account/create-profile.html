@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-profiles.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">შექმენით პროფილი</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">შექმენით პროფილი</h1>
+  <p translate="yes">პროფილები ინახავს თქვენს პირად ინფორმაციას ადმინისტრაციული და სხვა მიზნებისათვის.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile" name="submit-form">
+    <div class="pure-checkbox">
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">გააკეთე ჩემი ნაგულისხმევი</span></label>
+    </div>
+    <div id="display-name-container" class="pure-control-group">
+      <label for="display-name" translate="yes">Ჩვენების სახელი</label>
+      <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
+    </div>
+    <div id="display-email-container" class="pure-control-group">
+      <label for="display-email" translate="yes">ელ.ფოსტის ჩვენება</label>
+      <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="contact-email-container" class="pure-control-group">
+      <label for="contact-email" translate="yes">Საკონტაქტო ელ. ფოსტა</label>
+      <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="full-name-container">
+      <div class="pure-control-group">
+        <label for="first-name" translate="yes">Სახელი</label>
+      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="last-name" translate="yes">Გვარი</label>
+      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+      </div>
+    </div>
+    <div id="dob-container">
+      <div class="pure-control-group">
+        <label for="dob" translate="yes">Დაბადების თარიღი</label>
+      <input required="required" id="dob" name="dob" type="text" maxlength="11">
+      </div>
+    </div>
+    <div id="phone-container" class="pure-control-group">
+      <label for="phone" translate="yes">ტელეფონი</label>
+      <input required="required" id="phone" name="phone" type="text" maxlength="1000">
+    </div>
+    <div id="occupation-container" class="pure-control-group">
+      <label for="occupation" translate="yes">ოკუპაცია</label>
+      <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
+    </div>
+    <div id="location-container" class="pure-control-group">
+      <label for="location" translate="yes">ადგილმდებარეობა</label>
+      <input required="required" id="location" name="location" type="text" maxlength="1000">
+    </div>
+    <div id="company-name-container" class="pure-control-group">
+      <label for="company-name" translate="yes">Კომპანიის სახელი</label>
+      <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
+    </div>
+    <div id="website-container" class="pure-control-group">
+      <label for="website" translate="yes">ვებსაიტზე</label>
+      <input required="required" id="website" name="website" type="text" maxlength="1000">
+    </div>
+    <div id="submit-container" class="pure-controls">
+      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">შექმენით პროფილი</button>
+    </div>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      წარმატებები! თქვენი ახალი პროფილის ინფორმაცია შენახულია
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      შეცდომა! Გაურკვეველი შეცდომა მოხდა
+    </div>
+  </template>
+  <template id="invalid-first-name">
+    <div class="error message" translate="yes">
+      შეცდომა! დაკარგული ან არასწორი სახელი არ არის მოცემული
+    </div>
+  </template>
+  <template id="invalid-first-name-length">
+    <div class="error message" translate="yes">
+      შეცდომა! არასწორი სახელი მიიღო
+    </div>
+  </template>
+  <template id="invalid-last-name">
+    <div class="error message" translate="yes">
+      შეცდომა! მოიპოვა დაკარგული ან არასწორი გვარი
+    </div>
+  </template>
+  <template id="invalid-last-name-length">
+    <div class="error message" translate="yes">
+      შეცდომა! არასწორი გვარი იქნა მოცემული
+    </div>
+  </template>
+  <template id="invalid-contact-email">
+    <div class="error message" translate="yes">
+      შეცდომა! საკონტაქტო ელ.ფოსტის არასწორი მისამართი
+    </div>
+  </template>
+  <template id="invalid-display-email">
+    <div class="error message" translate="yes">
+      შეცდომა! არასწორი ჩვენების ელ.ფოსტის მისამართი
+    </div>
+  </template>
+  <template id="invalid-display-name">
+    <div class="error message" translate="yes">
+      შეცდომა! მოწოდებულია დაკარგული ან არასწორი ჩვენების სახელი
+    </div>
+  </template>
+  <template id="invalid-dob">
+    <div class="error message" translate="yes">
+      შეცდომა! გათვალისწინებული იყო დაკარგული ან არასწორი დაბადების თარიღი
+    </div>
+  </template>
+  <template id="invalid-phone">
+    <div class="error message" translate="yes">
+      შეცდომა! უზრუნველყოფილი იყო დაკარგული ან არასწორი ტელეფონი.
+    </div>
+  </template>
+  <template id="invalid-occupation">
+    <div class="error message" translate="yes">
+      შეცდომა! უზრუნველყოფილი იყო დაკარგული ან არასწორი ოკუპაცია.
+    </div>
+  </template>
+  <template id="invalid-location">
+    <div class="error message" translate="yes">
+      შეცდომა! გათვალისწინებულია დაკარგული ან არასწორი ადგილმდებარეობა.
+    </div>
+  </template>
+  <template id="invalid-company-name">
+    <div class="error message" translate="yes">
+      შეცდომა! კომპანიის სახელი დაკარგული იყო ან არასწორი.
+    </div>
+  </template>
+  <template id="invalid-website">
+    <div class="error message" translate="yes">
+      შეცდომა! მოიპოვა დაკარგული ან არასწორი ვებსაიტები.
+    </div>
+  </template>
+  <template id="invalid-display-name-length">
+    <div class="error message" translate="yes">
+      შეცდომა! მოწოდებულია დაკარგული ან არასწორი ჩვენების სახელი
+    </div>
+  </template>
+</body>
+</html>

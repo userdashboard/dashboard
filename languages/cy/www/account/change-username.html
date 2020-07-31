@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Newid enw defnyddiwr</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Newid enw defnyddiwr</h1>
+  <p translate="yes">Mae pob enw defnyddiwr wedi'i amgryptio yn anadferadwy cyn storio'r data â halen a rennir bcrypt +.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="new-username" translate="yes">Enw defnyddiwr newydd</label>
+        <input id="new-username" name="new-username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Cyfrinair cyfredol</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Gosod enw defnyddiwr newydd</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Llwyddiant! Rhaid defnyddio'ch enw defnyddiwr newydd o hyn ymlaen
+    </div>
+  </template>
+  <template id="invalid-new-username">
+    <div class="error message" translate="yes">
+      Gwall! Enw defnyddiwr newydd annilys neu ddyblyg
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Gwall! Mae eich cyfrinair cyfredol yn annilys
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Gwall! Digwyddodd gwall anhysbys
+    </div>
+  </template>
+  <template id="invalid-new-username-length">
+    <div class="error message" translate="yes">
+      Gwall! Hyd enw defnyddiwr newydd annilys
+    </div>
+  </template>
+  <template id="duplicate-username">
+    <div class="error message" translate="yes">
+      Gwall! Mae rhywun arall yn defnyddio'r enw defnyddiwr hwnnw
+    </div>
+  </template>
+</body>
+</html>

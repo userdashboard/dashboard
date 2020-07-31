@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-profile.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">पूर्वनिर्धारित प्रोफाइल सेट गर्नुहोस्</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">पूर्वनिर्धारित प्रोफाइल सेट गर्नुहोस्</h1>
+  <p translate="yes">तपाईंको पूर्वनिर्धारित प्रोफाइल तपाईंको खाताको लागि सम्पर्कको प्राथमिक बिन्दुको रूपमा कार्य गर्दछ।</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/account/set-default-profile" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <select id="profileid" name="profileid">
+          <option value="" translate="yes">
+            प्रोफाइल चयन गर्नुहोस्
+          </option>
+        </select>
+      </div>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">पूर्वनिर्धारित प्रोफाइल सेट गर्नुहोस्</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      सफलता! प्रोफाइल अब तपाइँको पूर्वनिर्धारित छ
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      त्रुटि! एउटा अज्ञात त्रुटि देखा पर्u200dयो
+    </div>
+  </template>
+  <template id="default-profile">
+    <div class="error message" translate="yes">
+      त्रुटि! यो पहिले नै तपाईंको पूर्वनिर्धारित प्रोफाइल हो
+    </div>
+  </template>
+  <template id="profile-option">
+    <option value="${profile.profileid}">
+      ${profile.contactEmail}, ${profile.firstName} ${profile.lastName}
+    </option>
+  </template>
+</body>
+</html>

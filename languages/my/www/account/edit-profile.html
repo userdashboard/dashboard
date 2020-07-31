@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-profile.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">တည်းဖြတ်ပါ ${profile.profileid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">တည်းဖြတ်ပါ ${profile.profileid}</h1>
+  <p translate="yes">သင်၏အဆက်အသွယ်အချက်အလက်များကိုမှန်ကန်စွာနှင့်နောက်ဆုံးပေါ်ထားပါ။</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/edit-profile?profileid=${profile.profileid}" name="submit-form">
+    <div class="pure-checkbox">
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">ကျွန်ုပ်၏ပုံသေကိုပြင်ဆင်ပါ</span></label>
+    </div>
+    <div id="display-name-container" class="pure-control-group">
+      <label for="display-name" translate="yes">ဖော်ပြမည့်အမည်</label>
+      <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
+    </div>
+    <div id="display-email-container" class="pure-control-group">
+      <label for="display-email" translate="yes">အီးမေးလ်ပြသရန်</label>
+      <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="contact-email-container" class="pure-control-group">
+      <label for="contact-email" translate="yes">အီးမေးလ်ကိုဆက်သွယ်ပါ</label>
+      <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
+    </div>
+    <div id="full-name-container">
+      <div class="pure-control-group">
+        <label for="first-name" translate="yes">နာမည်</label>
+      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="last-name" translate="yes">မျိုးနွယ်အမည်</label>
+      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+      </div>
+    </div>
+    <div id="dob-container">
+      <div class="pure-control-group">
+        <label for="dob" translate="yes">မွေးရက်</label>
+        <input required="required" id="dob" name="dob" type="text" maxlength="11">
+      </div>
+    </div>
+    <div id="phone-container" class="pure-control-group">
+      <label for="phone" translate="yes">တယ်လီဖုန်း</label>
+      <input required="required" id="phone" name="phone" type="text" maxlength="1000">
+    </div>
+    <div id="occupation-container" class="pure-control-group">
+      <label for="occupation" translate="yes">အလုပ်အကိုင်</label>
+      <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
+    </div>
+    <div id="location-container" class="pure-control-group">
+      <label for="location" translate="yes">တည်နေရာ</label>
+      <input required="required" id="location" name="location" type="text" maxlength="1000">
+    </div>
+    <div id="company-name-container" class="pure-control-group">
+      <label for="company-name" translate="yes">ကုမ္ပဏီအမည်</label>
+      <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
+    </div>
+    <div id="website-container" class="pure-control-group">
+      <label for="website" translate="yes">ဝဘ်ဆိုက်</label>
+      <input required="required" id="website" name="website" type="text" maxlength="1000">
+    </div>
+    <div id="submit-container" class="pure-controls">
+      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">ပရိုဖိုင်းကိုအပ်ဒိတ်လုပ်ပါ</button>
+    </div>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      အောင်မြင်ပြီ သင်၏ပရိုဖိုင်းအချက်အလက်ကိုအဆင့်မြှင့်လိုက်ပြီ
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      အမှား! အမည်မသိအမှားတစ်ခုဖြစ်ပွားခဲ့သည်
+    </div>
+  </template>
+  <template id="invalid-first-name">
+    <div class="error message" translate="yes">
+      အမှား! ပျောက်ဆုံးသို့မဟုတ်မမှန်ကန်တဲ့ပထမအမည်ပေး
+    </div>
+  </template>
+  <template id="invalid-first-name-length">
+    <div class="error message" translate="yes">
+      အမှား! မမှန်ကန်တဲ့နာမည်ကိုပေးထားတယ်
+    </div>
+  </template>
+  <template id="invalid-last-name">
+    <div class="error message" translate="yes">
+      အမှား! ပျောက်ဆုံးနေသောသို့မဟုတ်မမှန်ကန်တဲ့နောက်ဆုံးနာမည်ကိုပေးထားသည်
+    </div>
+  </template>
+  <template id="invalid-last-name-length">
+    <div class="error message" translate="yes">
+      အမှား! မမှန်ကန်သောနောက်ဆုံးနာမည်ကိုပေးထားသည်
+    </div>
+  </template>
+  <template id="invalid-contact-email">
+    <div class="error message" translate="yes">
+      အမှား! မမှန်ကန်သောဆက်သွယ်ရန်အီးမေးလ်
+    </div>
+  </template>
+  <template id="invalid-display-email">
+    <div class="error message" translate="yes">
+      အမှား! မမှန်ကန်သောပြသမှုအီးမေးလိပ်စာ
+    </div>
+  </template>
+  <template id="invalid-display-name">
+    <div class="error message" translate="yes">
+      အမှား! ပျောက်ဆုံးနေသောသို့မဟုတ်မမှန်ကန်တဲ့ display name ကိုပေးခဲ့သည်
+    </div>
+  </template>
+  <template id="invalid-dob">
+    <div class="error message" translate="yes">
+      အမှား! ပျောက်ဆုံးနေသောသို့မဟုတ်မမှန်ကန်တဲ့မွေးနေ့ကိုပေးခဲ့သည်
+    </div>
+  </template>
+  <template id="invalid-phone">
+    <div class="error message" translate="yes">
+      အမှား! ပျောက်ဆုံးနေသောသို့မဟုတ်မမှန်ကန်တဲ့ဖုန်းကိုပေးတယ်။
+    </div>
+  </template>
+  <template id="invalid-occupation">
+    <div class="error message" translate="yes">
+      အမှား! တစ် ဦး ကပျောက်ဆုံးနေသို့မဟုတ်မမှန်ကန်တဲ့အလုပ်အကိုင်ထောက်ပံ့ပေးခဲ့သည်။
+    </div>
+  </template>
+  <template id="invalid-location">
+    <div class="error message" translate="yes">
+      အမှား! ပျောက်ဆုံးနေသောသို့မဟုတ်မမှန်ကန်တဲ့တည်နေရာကိုပေးခဲ့သည်။
+    </div>
+  </template>
+  <template id="invalid-company-name">
+    <div class="error message" translate="yes">
+      အမှား! ပျောက်ဆုံးနေသောသို့မဟုတ်မမှန်ကန်တဲ့ကုမ္ပဏီ၏အမည်ကိုပေးခဲ့သည်။
+    </div>
+  </template>
+  <template id="invalid-website">
+    <div class="error message" translate="yes">
+      အမှား! ပျောက်ဆုံးနေသောသို့မဟုတ်မမှန်ကန်တဲ့ ၀ ဘ်ဆိုဒ်ကိုထောက်ပံ့ပေးခဲ့သည်။
+    </div>
+  </template>
+  <template id="invalid-display-name-length">
+    <div class="error message" translate="yes">
+      အမှား! ပျောက်ဆုံးနေသောသို့မဟုတ်မမှန်ကန်တဲ့ display name ကိုပေးခဲ့သည်
+    </div>
+  </template>
+</body>
+</html>

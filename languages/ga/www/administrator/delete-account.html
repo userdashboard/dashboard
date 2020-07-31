@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Scrios ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Scrios ${account.accountid}</h1>
+  <p translate="yes">Is féidir cuntais a scriosadh tar éis dóibh a dtréimhse sceidealaithe scriosadh a rith.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Scrios cuntas</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Rath! Scriosadh an cuntas
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Earráid! Tharla earráid anaithnid
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      Earráid! Caithfear an cuntas a sceidealú lena scriosadh ar dtús
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      Earráid! Ní féidir an cuntas a scriosadh go dtí tar éis a dháta sceidealta
+    </div>
+  </template>
+</body>
+</html>

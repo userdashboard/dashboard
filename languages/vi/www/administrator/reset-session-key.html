@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Đặt lại khóa phiên</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Đặt lại khóa phiên cho ${account.accountid}</h1>
+  <p translate="yes">Mỗi tài khoản ký các phiên của nó bằng một khóa bí mật để khi nó thay đổi tất cả các phiên trước đó kết thúc.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/reset-session-key?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Đặt lại khóa phiên</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Sự thành công! Các phiên của người dùng đã kết thúc
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Lỗi! Xảy ra lỗi không xác định
+    </div>
+  </template>
+</body>
+</html>

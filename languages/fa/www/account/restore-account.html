@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">نم باسح ندنادرگزاب</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">نم باسح ندنادرگزاب</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">یربراک مان</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">روبع هملک</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">نم باسح ندنادرگزاب</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">یربراک باسح کی مان تبث</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">دیا هدرک شومارف ار روبع زمر</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">دینک وغل ار یربراک باسح فذح</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      تسا هتفای نایاپ فارصنا هرود ای ربتعمان باسح !اطخ
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      تسا هتفای نایاپ فارصنا هرود ای هدش فذح باسح !اطخ
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      هدش مگ ای تسردان یربراک مان !اطخ
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      هدشمگ ای تسردان هژاورذگ !اطخ
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      تسا ربتعمان یربراک مان لوط !اطخ
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      تسا ربتعمان روبع زمر لوط !اطخ
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      تسا هداد خر هتخانشان یاطخ
+    </div>
+  </template>
+</body>
+</html>

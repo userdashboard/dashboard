@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Kont</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Kont</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Ħassar il-kont</a></p>
+  <h2 translate="yes">Kodiċijiet ta 'rkupru</h2>
+  <p translate="yes">Dawn il-kodiċijiet ta 'użu uniku jistgħu jirrisettjaw il-password tiegħek u jiddiżattivaw it-tokens tal-awtentikazzjoni.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">Oħloq kodiċi</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">Irrisettja kodiċi</a></p>
+  <h2 translate="yes">Informazzjoni tal-profil</h2>
+  <p translate="yes">Għal raġunijiet amministrattivi kultant jista 'jkollna bżonn nikkuntattjawk.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">Immaniġġja s-sessjonijiet</h2>
+  <p translate="yes">Ara s-sinjali reċenti tiegħek.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">Sessjonijiet</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">Temm it-sessjonijiet kollha</a>
+  </p>
+  <h2 translate="yes">Ibdel l-login fil-kredenzjali</h2>
+  <p translate="yes">Il-username u l-password tiegħek huma sigrieti u jintużaw biss għall-iffirmar.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">Ibdel username</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">Biddel il-password</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">Lingwa</h2>
+    <p translate="yes">Ippersonalizza l-preferenza tal-lingwa tiegħek.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">Agħżel il-lingwa</a></p>
+  </div>
+  <h2 translate="yes">Ħassar il-kont</h2>
+  <p translate="yes">Skeda l-kont tiegħek għat-tħassir fil-futur qarib, u tikkanċella jekk tbiddel fehmtek.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Ħassar il-kont</a></p>
+</body>
+</html>

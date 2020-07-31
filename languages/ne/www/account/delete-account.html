@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">खाता मेटाउनुहोस्</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">खाता मेटाउनुहोस्</h1>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/delete-account" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">वर्तमान पासवर्ड</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">खाता मेटाउनुहोस्</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      त्रुटि! तपाईंको हालको पासवर्ड अवैध छ
+    </div>
+  </template>
+  <template id="instant-delete">
+    <p translate="yes">तपाईंको खाता तुरून्त मेटाउनका लागि तालिकाबद्ध हुनेछ र पुन: प्राप्त गर्न सकिदैन।</p>
+  </template>
+  <template id="scheduled-delete">
+    <p translate="yes">तपाईंको खाता मेटाउनका लागि तालिकाबद्ध गरिनेछ ${data.numDays} days and you may cancel before then.</p>
+  </template>
+  <template id="owner-account">
+    <div class="error message" translate="yes">
+      त्रुटि! तपाईंले अरू कसैलाई पहिले प्लेटफर्म स्वामित्व हस्तान्तरण गर्नु पर्छ
+    </div>
+  </template>
+  <template id="administrator-account">
+    <div class="error message" translate="yes">
+      त्रुटि! तपाईंले पहिले तपाईंको प्रशासकको सुविधाहरू रद्द गर्नु पर्छ
+    </div>
+  </template>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">rekening</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">rekening</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Skrap rekening</a></p>
+  <h2 translate="yes">Herstelkodes</h2>
+  <p translate="yes">Hierdie eenmalige kodes kan u wagwoord terugstel en verifikasie-tekens deaktiveer.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">Skep 'n kode</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">Stel kodes weer in</a></p>
+  <h2 translate="yes">Profielinligting</h2>
+  <p translate="yes">Om administratiewe redes moet ons u soms kontak.</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">Bestuur sessies</h2>
+  <p translate="yes">Kyk na u onlangse aanmeldings.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">sessies</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">Eindig alle sessies</a>
+  </p>
+  <h2 translate="yes">Verander aanmelding in geloofsbriewe</h2>
+  <p translate="yes">U gebruikersnaam en wagwoord is geheim en word slegs gebruik om aan te meld.</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">Verander gebruikersnaam</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">Verander wagwoord</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">Taal</h2>
+    <p translate="yes">Pas u taalvoorkeur aan.</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">Kies taal</a></p>
+  </div>
+  <h2 translate="yes">Skrap rekening</h2>
+  <p translate="yes">Beplan u rekening vir die verwydering in die nabye toekoms, en kanselleer as u van plan is.</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">Skrap rekening</a></p>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">هسلج دیلک ددجم میظنت</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">یارب هسلج دیلک ددجم میظنت ${account.accountid}</h1>
+  <p translate="yes">.دوش یم مامت دنک یم رییغت یلبق تاسلج مامت یتقو نیاربانب دنک یم اضما یفخم دیلک اب ار دوخ تاسلج باسح ره</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/reset-session-key?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">هسلج دیلک ددجم میظنت</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      تسا هدیسر نایاپ هب ربراک تاسلج !تیقفوم
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      تسا هداد خر هتخانشان یاطخ !اطخ
+    </div>
+  </template>
+</body>
+</html>

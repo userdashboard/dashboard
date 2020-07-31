@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">হিসাব</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">হিসাব</h1>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">হিসাব মুছে ফেলা</a></p>
+  <h2 translate="yes">পুনরুদ্ধার কোডগুলি</h2>
+  <p translate="yes">এই একক-ব্যবহার কোডগুলি আপনার পাসওয়ার্ডটি পুনরায় সেট করতে পারে এবং প্রমাণীকরণ টোকেন অক্ষম করতে পারে।</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/create-reset-code" translate="yes">একটি কোড তৈরি করুন</a>
+    <a class="pure-button" href="/account/reset-codes" translate="yes">কোডগুলি রিসেট করুন</a></p>
+  <h2 translate="yes">প্রোফাইল তথ্য</h2>
+  <p translate="yes">প্রশাসনিক কারণে আমাদের মাঝে মাঝে আপনার সাথে যোগাযোগের প্রয়োজন হতে পারে।</p>
+  <p class="pure-button-group"><a id="create-profile-link" class="pure-button" href="/account/create-profile">Create profile</a>
+    <a id="update-profile-link" class="pure-button" href="/account/edit-profile?profileid=${account.profileid}">Update my profile</a></p>
+  <h2 translate="yes">সেশন পরিচালনা করুন</h2>
+  <p translate="yes">আপনার সাম্প্রতিক সাইন ইন দেখুন।</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/sessions" translate="yes">দায়রা</a>
+    <a class="pure-button" href="/account/end-all-sessions" translate="yes">সমস্ত সেশন শেষ</a>
+  </p>
+  <h2 translate="yes">শংসাপত্রগুলিতে লগইন পরিবর্তন করুন</h2>
+  <p translate="yes">আপনার ব্যবহারকারীর নাম এবং পাসওয়ার্ড গোপন এবং শুধুমাত্র সাইন ইন করার জন্য ব্যবহৃত হয়।</p>
+  <p class="pure-button-group">
+    <a class="pure-button" href="/account/change-username" translate="yes">ব্যবহারকারীর নাম পরিবর্তন করুন</a>
+    <a class="pure-button" href="/account/change-password" translate="yes">পাসওয়ার্ড পরিবর্তন করুন</a>
+  </p>
+  <div id="language-preference-container">
+    <h2 translate="yes">ভাষা</h2>
+    <p translate="yes">আপনার ভাষা পছন্দ কাস্টমাইজ করুন।</p>
+    <p class="pure-button-group"><a class="pure-button" href="/account/language" translate="yes">ভাষা নির্বাচন কর</a></p>
+  </div>
+  <h2 translate="yes">হিসাব মুছে ফেলা</h2>
+  <p translate="yes">অদূর ভবিষ্যতে মুছে ফেলার জন্য আপনার অ্যাকাউন্টটি নির্ধারণ করুন, এবং আপনি যদি নিজের মতামত পরিবর্তন করেন তবে বাতিল করুন।</p>
+  <p class="pure-button-group"><a class="pure-button" href="/account/delete-account" translate="yes">হিসাব মুছে ফেলা</a></p>
+</body>
+</html>

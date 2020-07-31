@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Futa ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Futa ${account.accountid}</h1>
+  <p translate="yes">Akaunti zinaweza kufutwa baada ya kupitisha kipindi chao cha kufuta.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Futa akaunti</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      Kufanikiwa! Akaunti imefutwa
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Kosa! Kosa lisilojulikana limetokea
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      Kosa! Akaunti lazima ipangwa ili kufutwa kwanza
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      Kosa! Akaunti haiwezi kufutwa hadi baada ya tarehe yake iliyopangwa
+    </div>
+  </template>
+</body>
+</html>

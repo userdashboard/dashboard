@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">将所有权转让给 ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">将所有权转让给 ${account.accountid}</h1>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/transfer-ownership?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">所有权转让</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      成功！用户已成为所有者
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      错误！出现未知错误
+    </div>
+  </template>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      错误！只有当前所有者可以转让所有权
+    </div>
+  </template>
+</body>
+</html>

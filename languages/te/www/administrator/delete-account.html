@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/administrator/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">తొలగించు ${account.accountid}</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">తొలగించు ${account.accountid}</h1>
+  <p translate="yes">షెడ్యూల్ చేసిన తొలగింపు వ్యవధిని దాటిన తర్వాత ఖాతాలను తొలగించవచ్చు.</p>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
+    <fieldset>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ఖాతాను తొలగించండి</button>
+    </fieldset>
+  </form>
+  <template id="success">
+    <div class="success message" translate="yes">
+      విజయం! ఖాతా తొలగించబడింది
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      లోపం! తెలియని లోపం సంభవించింది
+    </div>
+  </template>
+  <template id="schedule-error">
+    <div class="error message" translate="yes">
+      లోపం! ఖాతాను తొలగించడానికి ముందుగా షెడ్యూల్ చేయాలి
+    </div>
+  </template>
+  <template id="duration-error">
+    <div class="error message" translate="yes">
+      లోపం! షెడ్యూల్ చేసిన తేదీ తర్వాత ఖాతా తొలగించబడదు
+    </div>
+  </template>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Rejesha akaunti yangu</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">Rejesha akaunti yangu</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">Jina la mtumiaji</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Nywila</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Rejesha akaunti yangu</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">Sajili akaunti</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">Umesahau nywila</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">Ghairi kufuta akaunti</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-account">
+    <div class="error message" translate="yes">
+      Kosa! Akaunti batili au kipindi cha kufuta kimeisha
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      Kosa! Akaunti imefutwa au kipindi cha kufuta kimeisha
+    </div>
+  </template>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      Kosa! Jina la mtumiaji lisilofaa au kukosa
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Kosa! Nenosiri lisilo sahihi au linalokosekana
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      Kosa! Urefu wa jina batili
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      Kosa! Urefu usio sahihi wa nenosiri
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Kosa lisilojulikana limetokea
+    </div>
+  </template>
+</body>
+</html>

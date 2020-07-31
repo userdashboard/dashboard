@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Pa iroyin rẹ</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Pa iroyin rẹ</h1>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/delete-account" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Ọrọ igbaniwọle lọwọlọwọ</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Pa iroyin rẹ</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Aṣiṣe! Ọrọ aṣina lọwọlọwọ rẹ ko wulo
+    </div>
+  </template>
+  <template id="instant-delete">
+    <p translate="yes">Àkọọlẹ rẹ ni yoo ṣeto eto fun piparẹ lẹsẹkẹsẹ ati pe ko le gba pada.</p>
+  </template>
+  <template id="scheduled-delete">
+    <p translate="yes">Àkọọlẹ rẹ ni yoo ṣeto eto fun piparẹ ni ${data.numDays} days and you may cancel before then.</p>
+  </template>
+  <template id="owner-account">
+    <div class="error message" translate="yes">
+      Aṣiṣe! O gbọdọ gbe ohun-ini Syeed si elomiran akọkọ
+    </div>
+  </template>
+  <template id="administrator-account">
+    <div class="error message" translate="yes">
+      Aṣiṣe! O gbọdọ fagilee awọn anfani alakoso rẹ ni akọkọ
+    </div>
+  </template>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-navbar="/account/navbar-account.html">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Pagwagtang account</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <base target="_top" href="/">
+</head>
+<body>
+  <h1 translate="yes">Pagwagtang account</h1>
+  <div id="message-container"></div>
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/delete-account" name="submit-form">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">Kasamtangang password</label>
+        <input required="required" id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Pagwagtang account</button>
+      </div>
+    </fieldset>
+  </form>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Sayop! Dili husto ang imong kasamtangan nga password
+    </div>
+  </template>
+  <template id="instant-delete">
+    <p translate="yes">Ang imong account gikatakda alang sa pagtangtang dayon ug dili na mabawi.</p>
+  </template>
+  <template id="scheduled-delete">
+    <p translate="yes">Ang imong account gieskedyul alang sa pagtangtang sa ${data.numDays} days and you may cancel before then.</p>
+  </template>
+  <template id="owner-account">
+    <div class="error message" translate="yes">
+      Sayop! Kinahanglan nimong ibalhin ang una nga panag-iya sa plataporma sa una nga tawo
+    </div>
+  </template>
+  <template id="administrator-account">
+    <div class="error message" translate="yes">
+      Sayop! Kinahanglan nimo nga wagtangon una ang imong mga pribilehiyo sa tagdumala
+    </div>
+  </template>
+</body>
+</html>

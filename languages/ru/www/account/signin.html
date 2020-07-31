@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-auth="false" data-template="false">
+<head>
+  <meta charset="utf-8" /> 
+  <title translate="yes">Войдите в мой аккаунт</title>
+  <link href="/public/pure-min.css" rel="stylesheet">
+  <link href="/public/content.css" rel="stylesheet">
+  <link href="/public/content-additional.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="entry">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin" name="submit-form">
+    <fieldset>
+      <h1 translate="yes">войти в систему</h1>
+      <div id="message-container"></div>
+      <div class="pure-control-group">
+        <label for="username" translate="yes">имя пользователя</label>
+        <input id="username" name="username" type="text" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <label for="password" translate="yes">пароль</label>
+        <input id="password" name="password" type="password" maxlength="1000">
+      </div>
+      <div class="pure-control-group">
+        <div class="pure-checkbox">
+          <label for="remember-minutes" translate="yes"><span><input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked"></span> Выйти через 20 минут</label>
+        </div>
+        <div class="pure-checkbox">
+          <label for="remember-hours" translate="yes"><span><input type="radio" name="remember" value="hours" id="remember-hours"></span> Выйти через 8 часов</label>
+        </div>
+        <div class="pure-checkbox">
+          <label for="remember-days" translate="yes"><span><input type="radio" name="remember" value="days" id="remember-days"></span> Выйти через 30 дней</label>
+        </div>
+      </div>
+      <div class="pure-controls">
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">войти в систему</button>
+      </div>
+      <ul>
+        <li>
+          <a href="/account/register" translate="yes">Зарегистрировать аккаунт</a>
+        </li>
+        <li>
+          <a href="/account/reset-account" translate="yes">Забыли пароль</a>
+        </li>
+        <li>
+          <a href="/account/restore-account" translate="yes">Отменить удаление аккаунта</a>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <template id="invalid-username">
+    <div class="error message" translate="yes">
+      Ошибка! Неверное имя пользователя
+    </div>
+  </template>
+  <template id="invalid-password">
+    <div class="error message" translate="yes">
+      Ошибка! Неправильный пароль
+    </div>
+  </template>
+  <template id="invalid-username-length">
+    <div class="error message" translate="yes">
+      Ошибка! Неверное имя пользователя length
+    </div>
+  </template>
+  <template id="invalid-password-length">
+    <div class="error message" translate="yes">
+      Ошибка! Неправильный пароль length
+    </div>
+  </template>
+  <template id="unknown-error">
+    <div class="error message" translate="yes">
+      Ошибка! Произошла неизвестная ошибка
+    </div>
+  </template>
+  <template id="account-deleted">
+    <div class="error message" translate="yes">
+      Ошибка! Ваш аккаунт удален <a href="/account/recover-account">and can still be recovered</a>
+    </div>
+  </template>
+</body>
+</html>
