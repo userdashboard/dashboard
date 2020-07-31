@@ -43,6 +43,7 @@ jobs:
         MONGODB_DATABASE: "dashboard"
         GENERATE_SITEMAP_TXT: "false"
         GENERATE_API_TXT: "false"
+        LOG_LEVEL: "info,warn,error,log"
     - name: Test encrypted MongoDB storage
       run: mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
@@ -58,4 +59,4 @@ jobs:
         GENERATE_API_TXT: "false"
         ENCRYPTION_SECRET: "12345678901234567890123456789012"
         ENCRYPTION_SECRET_IV: "1234123412341234"
-        
+        LOG_LEVEL: "info,warn,error,log"
