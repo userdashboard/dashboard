@@ -34,7 +34,6 @@ jobs:
         rm -rf node_modules/@userdashboard/dashboard/languages
         cp /home/runner/work/dashboard/dashboard/*.js node_modules/@userdashboard/dashboard
         cp -R $HERE/src/ node_modules/@userdashboard/dashboard/src/
-        cp -R $HERE/languages/ node_modules/@userdashboard/dashboard/languages/
         echo "global.applicationPath = __dirname" > main.js
     - name: Generate translations
       run: |
