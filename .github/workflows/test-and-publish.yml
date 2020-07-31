@@ -62,12 +62,6 @@ jobs:
         REDIS_URL: "redis://localhost:6379"
         GENERATE_SITEMAP_TXT: false
         GENERATE_API_TXT: false
-      env:
-        NODE_ENV: sitemap
-        EXIT_ON_START: true
-        FAST_START: true
-        DASHBOARD_SERVER: "http://localhost:9000"
-        DOMAIN: "localhost"
     - name: Generate supporting texts
       run: node main.js
       env:
