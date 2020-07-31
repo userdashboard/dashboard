@@ -19,10 +19,10 @@ jobs:
         number of databases: 1
     - name: Set up as module
       run: |
+        HERE=`pwd`
         git config --global user.name "${{ secrets.NAME }}"
         git config --global user.email "${{ secrets.EMAIL }}"
         npm install
-        HERE=`pwd`
         npm version patch
         mkdir /tmp/project
         cd /tmp/project
