@@ -42,7 +42,7 @@ jobs:
         cd /tmp/localization
         for LOCALE in `cat languages`; do
           node clean-cache.js "$LOCALE" "/home/runner/work/localization/localization/project/dashboard" "/home/runner/work/dashboard/dashboard"
-          node localize.js "$LOCALE"
+          node localize.js "$LOCALE" "/home/runner/work/dashboard/dashboard"
         done
     - name: Generate documentation
       run: |
