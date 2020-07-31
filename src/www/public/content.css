@@ -1,0 +1,107 @@
+html { height: 100% }
+html, body { padding: 0; margin: 0; font-family: sans-serif; width: 100% }
+body { background-color: #FFF; width: auto; min-height: 100%; max-width: 100%; padding: 0 1rem }
+h1 {   margin-top: 0; font-weight: 400; color: #036; font-size: 1.6rem }
+h2 { font-weight: 400; margin-top: 0; margin-bottom: 0.5rem; font-size: 1.2rem }
+h3 { font-weight: normal; margin-top: 0; margin-bottom: 0.5rem; font-size: 1rem }
+h1, 
+h2, 
+h3,
+a { color: #036 }
+p, 
+form, 
+table { margin-bottom: 2rem }
+fieldset { padding: 0 !important }
+label { color: #369 }
+a, input, select, textarea, button { outline: 0 }
+a { text-decoration: none }
+a:focus,
+a:hover { color: #19F; text-decoration: underline }
+a.pure-button:focus,
+a.pure-button:hover { text-decoration: none }
+
+/* pure overrides */
+.pure-form-aligned .pure-control-group label { width: 11rem; margin-right: 1rem }
+.pure-form-aligned .pure-controls { margin: 1.5rem 0 0 0 }
+@media (min-width: 480px) {
+  .pure-form-aligned .pure-controls { margin: 1.5rem 0 0 12rem }
+}
+
+.spaced-buttons .pure-button { margin: 0 1rem 1rem 0 }
+.pure-control-group { margin-bottom: 1rem}
+.pure-control-group label { text-transform: uppercase; font-size: 0.8rem; color: #666 }
+.pure-control-group textarea,
+.pure-control-group input[type="text"],
+.pure-control-group input[type="password"],
+.pure-control-group input[type="email"],
+.pure-control-group input[type="number"] { border: 1px solid #BBB; box-shadow: inset 0 0 3px #BBB; background-color: #DDD; border-radius: 0; color: #333; font-size: 0.9rem; max-width: 100% }
+.pure-control-group input:focus { border-color: #0078e7; box-shadow: inset 0 0 3px #FFF }
+.pure-checkbox span { background-color: rgba(255, 255, 255, 0.25); display: inline-block; padding: 0; margin: 0 0.5rem 0 0; border-radius: 0.25rem; border: 1px solid rgba(255, 255, 255, 0.5) }}
+.pure-checkbox input { display: inline-block }
+.pure-checkbox label { font-size: 0.8rem; color: #333;  text-transform: none; font-size: 1rem }
+.pure-button { background-color: #FFF; color: #666; border: 1px solid #CCC; border-radius: 0.5rem }
+.pure-button:hover,
+.pure-button:focus { background-color: #CCC; color: rgba(0, 0, 0, 0.5); border-color: rgba(0, 0, 0, 0.5) }
+.pure-button-primary { background-image: linear-gradient(#07C, #369); color: rgba(255, 255, 255, 0.9); border-color: #07C }
+.pure-button-primary:hover,
+.pure-button-primary:focus { background-image: linear-gradient(#369, #036); color: rgba(255, 255, 255, 0.5) }
+.pure-button-group .pure-button { border-right: 1px solid rgba(255, 255, 255, 0.5) }
+.pure-button-group .pure-button:first-child { border-top-left-radius: 0.5rem; border-bottom-left-radius: 0.5rem }
+.pure-button-group .pure-button:last-child { border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem }
+
+.pure-table { width: 100%; border: none; border-collapse: collapse }
+.pure-table td:first-child,
+.pure-table td { border: 1px solid #036 }
+.pure-table th:first-child,
+.pure-table th { border: 1px solid #036 }
+
+.object-table { width: auto }
+.object-table th:first-child,
+.object-table th { background-color: #333; border-color: #333; color: #FFF }
+.object-table th,
+.object-table td { padding: 0.5rem 4rem 0.5rem 0.5rem; text-align: left; font-size: 0.9rem }
+
+.list-table { width: auto; min-width: 50% }
+.list-table th { background-color: #333; border-color: #333; color: #FFF }
+.list-table td { border-color: #333 }
+.list-table th,
+.list-table td { padding: 0.5rem 4rem 0.5rem 0.5rem; text-align: left; font-size: 0.9rem }
+
+.data-table { width: auto }
+.data-table th { color: #036 }
+.data-table th,
+.data-table td { border: 1px solid #036; padding: 0.5rem 4rem 0.5rem 0.5rem; text-align: left; font-size: 0.9rem }
+
+/* alerts */
+.message { font-weight: bold; font-size: 0.9rem; margin-bottom: 1rem }
+.success.message { color: #060 }
+.error.message { color: #900 }
+.info.message { color: #666 }
+
+/* entry forms for signing in, registration */
+body.entry { background-color: #036; display: flex; align-items: center; justify-content: center }
+.entry-form { width: 20rem; padding: 1rem; text-align: center }
+.entry-form h1 { font-size: 1.2rem; color: rgba(255, 255, 255, 0.5) }
+.entry-form ul { margin: 1rem 0 0 0; color: rgba(255, 255, 255, 0.75) }
+.entry-form li { margin-top: 0.5rem }
+.entry-form a { color: inherit }
+.entry-form fieldset { text-align: left }
+.entry-form input[type="text"], 
+.entry-form input[type="password"],
+.entry-form input[type="email"]{ width: 100%; border-color: #DDD; box-shadow: none; border-radius: 0 }
+.entry-form label { color: rgba(255, 255, 255, 0.5) }
+
+@media (max-width: 600px) {
+  .entry-form { width: unset; box-shadow: none; transform: none; position: unset }
+  body { padding: 0 0.5rem }
+  table { max-width: 100%; overflow: hidden }
+  .pure-table th,
+  .pure-table td { padding-right: 0.5rem }
+}
+
+/* pagination */
+.pagination { list-style-type: none; margin: 1rem 0; padding: 0 }
+.pagination li { display: inline-block; margin: 0.25rem 0.25rem 0 }
+.pagination a { border: 1px solid #CCC; display: inline-block; background-color: #EEE; padding: 0.25rem 0.5rem; font-size: 0.9rem; color: #999; text-decoration: none }
+.pagination a:hover { background-color: #666; color: #CCC }
+.pagination a.current-page { background-color: #FFF; color: #666 } 

@@ -1,0 +1,70 @@
+name: test-node-cache
+
+on: [push]
+
+jobs:
+  test-node-cache:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Set up as module
+      run: |
+        HERE=`pwd`
+        mkdir /tmp/project
+        cd /tmp/project
+        npm init -y
+        npm install faker puppeteer@2.1.1 @userdashboard/dashboard @userdashboard/storage-postgresql
+        npm install -g mocha
+        rm node_modules/@userdashboard/dashboard/*.js
+        rm -rf node_modules/@userdashboard/dashboard/src
+        rm -rf node_modules/@userdashboard/dashboard/languages
+        cp $HERE/*.js node_modules/@userdashboard/dashboard
+        cp -R $HERE/src/ node_modules/@userdashboard/dashboard/src/
+        cp -R $HERE/languages/ node_modules/@userdashboard/dashboard/languages/
+        echo "global.applicationPath = __dirname" > main.js
+    - name: Test NodeJS caching with unencrypted data
+      run: mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
+      working-directory: "/tmp/project"
+      env:
+        NODE_ENV: testing
+        FAST_START: true
+        DASHBOARD_SERVER: "http://localhost:9000"
+        DOMAIN: "localhost"
+        STORAGE: "@userdashboard/storage-postgresql"
+        DATABASE_URL: "postgres://postgres:postgres@localhost:5432/postgres"
+        CACHE: "node"
+        GENERATE_SITEMAP_TXT: false
+        GENERATE_API_TXT: false
+    - name: Test NodeJS caching with encrypted data
+      run: mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
+      working-directory: "/tmp/project"
+      env:
+        NODE_ENV: testing
+        FAST_START: true
+        DASHBOARD_SERVER: "http://localhost:9000"
+        DOMAIN: "localhost"
+        STORAGE: "@userdashboard/storage-postgresql"
+        DATABASE_URL: "postgres://postgres:postgres@localhost:5432/postgres"
+        CACHE: "node"
+        GENERATE_SITEMAP_TXT: false
+        GENERATE_API_TXT: false
+        ENCRYPTION_SECRET: "12345678901234567890123456789012"
+        ENCRYPTION_SECRET_IV: "1234123412341234"

@@ -1,0 +1,91 @@
+name: test-and-publish
+
+on: [push]
+
+jobs:
+  test-and-publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - uses: zhulik/redis-action@1.1.0
+      with:
+        redis version: "5"
+        number of databases: 1
+    - name: Set up as module
+      run: |
+        git config --global user.name "${{ secrets.NAME }}"
+        git config --global user.email "${{ secrets.EMAIL }}"
+        npm install
+        HERE=`pwd`
+        npm version patch
+        mkdir /tmp/project
+        cd /tmp/project
+        npm init -y
+        npm install faker puppeteer@2.1.1 @userdashboard/dashboard @userdashboard/storage-redis
+        npm install -g mocha standard
+        rm node_modules/@userdashboard/dashboard/*.js
+        rm -rf node_modules/@userdashboard/dashboard/src
+        rm -rf node_modules/@userdashboard/dashboard/languages
+        cp /home/runner/work/dashboard/dashboard/*.js node_modules/@userdashboard/dashboard
+        cp -R $HERE/src/ node_modules/@userdashboard/dashboard/src/
+        cp -R $HERE/languages/ node_modules/@userdashboard/dashboard/
+        echo "global.applicationPath = __dirname" > main.js
+    - name: Lint (standard.js)
+      run: standard src
+    - name: Test (redis)
+      run: |
+        mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js" | tee /home/runner/work/dashboard/dashboard/tests.txt
+        TESTS=`cat /home/runner/work/dashboard/dashboard/tests.txt`
+        if [[ "$TESTS" == *" 1)"* ]]; then
+          exit 1
+        fi
+      working-directory: "/tmp/project"
+      env:
+        NODE_ENV: testing
+        FAST_START: true
+        DASHBOARD_SERVER: "http://localhost:9000"
+        DOMAIN: "localhost"
+        STORAGE: "@userdashboard/storage-redis"
+        REDIS_URL: "redis://localhost:6379"
+        GENERATE_SITEMAP_TXT: false
+        GENERATE_API_TXT: false
+    - name: Generate localized content
+      run: |
+        HERE=`pwd`
+        rm -rf languages
+        mkdir -p languages
+        git clone https://github.com/userdashboard/localization.git /tmp/localize
+        cd /tmp/localize
+        bash localize.sh
+        cp -R /tmp/project/node_modules/@userdashboard/dashboard/languages $HERE/languages
+      env:
+        NODE_ENV: sitemap
+        EXIT_ON_START: true
+        FAST_START: true
+        DASHBOARD_SERVER: "http://localhost:9000"
+        DOMAIN: "localhost"
+    - name: Generate supporting texts
+      run: node main.js
+      env:
+        NODE_ENV: sitemap
+        EXIT_ON_START: true
+        FAST_START: true
+        DASHBOARD_SERVER: "http://localhost:9000"
+        DOMAIN: "localhost"
+    - name: Publish to Github
+      uses: stefanzweifel/git-auto-commit-action@v4.1.6
+      with:
+        commit_message: Automatically regenerated against current version
+        branch: ${{ github.head_ref }}
+        commit_options: "--no-verify --signoff"
+        repository: .
+    - name: Publish to NPM
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}

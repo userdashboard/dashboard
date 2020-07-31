@@ -1,0 +1,60 @@
+name: test-redis
+
+on: [push]
+
+jobs:
+  test-redis:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - uses: zhulik/redis-action@1.1.0
+      with:
+        redis version: '5'
+        number of databases: 1
+    - name: Set up as module
+      run: |
+        HERE=`pwd`
+        mkdir /tmp/project
+        cd /tmp/project
+        npm init -y
+        npm install faker puppeteer@2.1.1 @userdashboard/dashboard @userdashboard/storage-redis
+        npm install -g mocha
+        rm node_modules/@userdashboard/dashboard/*.js
+        rm -rf node_modules/@userdashboard/dashboard/src
+        rm -rf node_modules/@userdashboard/dashboard/languages
+        cp $HERE/*.js node_modules/@userdashboard/dashboard
+        cp -R $HERE/src/ node_modules/@userdashboard/dashboard/src/
+        cp -R $HERE/languages/ node_modules/@userdashboard/dashboard/languages/
+        echo "global.applicationPath = __dirname" > main.js
+    - name: Test unencrypted Redis storage
+      run: mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
+      working-directory: "/tmp/project"
+      env:
+        NODE_ENV: testing
+        FAST_START: true
+        DASHBOARD_SERVER: "http://localhost:9000"
+        DOMAIN: "localhost"
+        STORAGE: "@userdashboard/storage-redis"
+        REDIS_URL: "redis://localhost:6379"
+        GENERATE_SITEMAP_TXT: false
+        GENERATE_API_TXT: false
+    - name: Test encrypted Redis storage
+      run: mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
+      working-directory: "/tmp/project"
+      env:
+        NODE_ENV: testing
+        FAST_START: true
+        DASHBOARD_SERVER: "http://localhost:9000"
+        DOMAIN: "localhost"
+        STORAGE: "@userdashboard/storage-redis"
+        REDIS_URL: "redis://localhost:6379"
+        GENERATE_SITEMAP_TXT: false
+        GENERATE_API_TXT: false
+        ENCRYPTION_SECRET: "12345678901234567890123456789012"
+        ENCRYPTION_SECRET_IV: "1234123412341234"

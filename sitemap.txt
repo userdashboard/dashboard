@@ -1,0 +1,115 @@
+@userdashboard/dashboard 1.0.289
+http://localhost:9000
+
+Administrator menu:
+/administrator "Dashboard administration"
+
+Account menu:
+/account "My account"
+
+Special HTML files:
+/src/template.html
+/src/error.html
+/src/redirect.html
+
+URL ------------------------------------------- AUTH - TEMPLATE - HTTP REQUESTS - NODEJS ----- HTML -------
+/                                               GUEST  FULLSCREEN GET                          /src/www    
+/account                                                          GET             /src/www     /src/www    
+/account/change-password                                          GET POST        /src/www     /src/www    
+/account/change-username                                          GET POST        /src/www     /src/www    
+/account/create-profile                                           GET POST        /src/www     /src/www    
+/account/create-reset-code                                        GET POST        /src/www     /src/www    
+/account/delete-account                                           GET POST        /src/www     /src/www    
+/account/delete-account-complete                GUEST  FULLSCREEN GET             /src/www     /src/www    
+/account/delete-profile                                           GET POST        /src/www     /src/www    
+/account/delete-reset-code                                        GET POST        /src/www     /src/www    
+/account/edit-profile                                             GET POST        /src/www     /src/www    
+/account/end-all-sessions                                         GET POST        /src/www     /src/www    
+/account/end-session                                              GET POST        /src/www     /src/www    
+/account/language                                                 GET POST        /src/www     /src/www    
+/account/profile                                                  GET             /src/www     /src/www    
+/account/profiles                                                 GET             /src/www     /src/www    
+/account/register                               GUEST  FULLSCREEN GET POST        /src/www     /src/www    
+/account/reset-account                          GUEST  FULLSCREEN GET POST        /src/www     /src/www    
+/account/reset-code                                               GET             /src/www     /src/www    
+/account/reset-codes                                              GET             /src/www     /src/www    
+/account/restore-account                        GUEST  FULLSCREEN GET POST        /src/www     /src/www    
+/account/session                                                  GET             /src/www     /src/www    
+/account/sessions                                                 GET             /src/www     /src/www    
+/account/set-default-profile                                      GET POST        /src/www     /src/www    
+/account/signin                                 GUEST  FULLSCREEN GET POST        /src/www     /src/www    
+/account/signout                                GUEST  FULLSCREEN GET             /src/www     /src/www    
+/account/signout-complete                       GUEST  FULLSCREEN GET                          /src/www    
+/account/verify                                 GUEST  FULLSCREEN GET POST        /src/www     /src/www    
+/administrator                                                    GET                          /src/www    
+/administrator/account                                            GET             /src/www     /src/www    
+/administrator/account-profiles                                   GET             /src/www     /src/www    
+/administrator/account-reset-codes                                GET             /src/www     /src/www    
+/administrator/account-sessions                                   GET             /src/www     /src/www    
+/administrator/accounts                                           GET             /src/www     /src/www    
+/administrator/administrators                                     GET             /src/www     /src/www    
+/administrator/assign-administrator                               GET POST        /src/www     /src/www    
+/administrator/create-reset-code                                  GET POST        /src/www     /src/www    
+/administrator/delete-account                                     GET POST        /src/www     /src/www    
+/administrator/delete-schedule                                    GET             /src/www     /src/www    
+/administrator/profile                                            GET             /src/www     /src/www    
+/administrator/profiles                                           GET             /src/www     /src/www    
+/administrator/reset-code                                         GET             /src/www     /src/www    
+/administrator/reset-codes                                        GET             /src/www     /src/www    
+/administrator/reset-session-key                                  GET POST        /src/www     /src/www    
+/administrator/revoke-administrator                               GET POST        /src/www     /src/www    
+/administrator/schedule-account-delete                            GET POST        /src/www     /src/www    
+/administrator/session                                            GET             /src/www     /src/www    
+/administrator/sessions                                           GET             /src/www     /src/www    
+/administrator/transfer-ownership                                 GET POST        /src/www     /src/www    
+/api/administrator/account                                        GET             /src/www                 
+/api/administrator/accounts                                       GET             /src/www                 
+/api/administrator/accounts-count                                 GET             /src/www                 
+/api/administrator/administrator-accounts                         GET             /src/www                 
+/api/administrator/administrator-accounts-count                   GET             /src/www                 
+/api/administrator/create-reset-code                              POST            /src/www                 
+/api/administrator/delete-account                                 DELETE          /src/www                 
+/api/administrator/deleted-accounts                               GET             /src/www                 
+/api/administrator/deleted-accounts-count                         GET             /src/www                 
+/api/administrator/profile                                        GET             /src/www                 
+/api/administrator/profiles                                       GET             /src/www                 
+/api/administrator/profiles-count                                 GET             /src/www                 
+/api/administrator/reset-account-administrator                    PATCH           /src/www                 
+/api/administrator/reset-code                                     GET             /src/www                 
+/api/administrator/reset-codes                                    GET             /src/www                 
+/api/administrator/reset-codes-count                              GET             /src/www                 
+/api/administrator/reset-session-key                              PATCH           /src/www                 
+/api/administrator/session                                        GET             /src/www                 
+/api/administrator/sessions                                       GET             /src/www                 
+/api/administrator/sessions-count                                 GET             /src/www                 
+/api/administrator/set-account-administrator                      PATCH           /src/www                 
+/api/administrator/set-account-deleted                            PATCH           /src/www                 
+/api/administrator/set-owner-account                              PATCH           /src/www                 
+/api/user/account                                                 GET             /src/www                 
+/api/user/create-account                        GUEST             POST            /src/www                 
+/api/user/create-profile                                          POST            /src/www                 
+/api/user/create-reset-code                                       POST            /src/www                 
+/api/user/create-session                        GUEST             POST            /src/www                 
+/api/user/delete-profile                                          DELETE          /src/www                 
+/api/user/delete-reset-code                                       DELETE          /src/www                 
+/api/user/profile                                                 GET             /src/www                 
+/api/user/profiles                                                GET             /src/www                 
+/api/user/profiles-count                                          GET             /src/www                 
+/api/user/reset-account-deleted                 GUEST             PATCH           /src/www                 
+/api/user/reset-account-password                GUEST             PATCH           /src/www                 
+/api/user/reset-code                                              GET             /src/www                 
+/api/user/reset-codes                                             GET             /src/www                 
+/api/user/reset-codes-count                                       GET             /src/www                 
+/api/user/reset-session-key                                       PATCH           /src/www                 
+/api/user/session                                                 GET             /src/www                 
+/api/user/sessions                                                GET             /src/www                 
+/api/user/sessions-count                                          GET             /src/www                 
+/api/user/set-account-deleted                                     PATCH           /src/www                 
+/api/user/set-account-language                                    PATCH           /src/www                 
+/api/user/set-account-password                                    PATCH           /src/www                 
+/api/user/set-account-profile                                     PATCH           /src/www                 
+/api/user/set-account-username                                    PATCH           /src/www                 
+/api/user/set-session-ended                                       PATCH           /src/www                 
+/api/user/set-session-verified                                    PATCH           /src/www                 
+/api/user/update-profile                                          PATCH           /src/www                 
+/home                                                             GET                          /src/www    
