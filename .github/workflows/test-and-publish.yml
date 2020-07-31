@@ -31,11 +31,18 @@ jobs:
         npm install -g mocha standard
         rm node_modules/@userdashboard/dashboard/*.js
         rm -rf node_modules/@userdashboard/dashboard/src
-        rm -rf node_modules/@userdashboard/dashboard/languages
         cp /home/runner/work/dashboard/dashboard/*.js node_modules/@userdashboard/dashboard
         cp -R $HERE/src/ node_modules/@userdashboard/dashboard/src/
-        cp -R $HERE/languages/ node_modules/@userdashboard/dashboard/
         echo "global.applicationPath = __dirname" > main.js
+    - name: Generate localized content
+      run: |
+        HERE=`pwd`
+        rm -rf languages
+        mkdir -p languages
+        git clone https://github.com/userdashboard/localization.git /tmp/localize
+        cd /tmp/localize
+        bash localize.sh
+        cp -R /tmp/project/node_modules/@userdashboard/dashboard/languages $HERE/languages
     - name: Lint (standard.js)
       run: standard src
     - name: Test (redis)
@@ -55,15 +62,6 @@ jobs:
         REDIS_URL: "redis://localhost:6379"
         GENERATE_SITEMAP_TXT: false
         GENERATE_API_TXT: false
-    - name: Generate localized content
-      run: |
-        HERE=`pwd`
-        rm -rf languages
-        mkdir -p languages
-        git clone https://github.com/userdashboard/localization.git /tmp/localize
-        cd /tmp/localize
-        bash localize.sh
-        cp -R /tmp/project/node_modules/@userdashboard/dashboard/languages $HERE/languages
       env:
         NODE_ENV: sitemap
         EXIT_ON_START: true
