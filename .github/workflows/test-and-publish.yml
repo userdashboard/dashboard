@@ -41,8 +41,11 @@ jobs:
         mkdir -p languages
         git clone https://github.com/userdashboard/localization.git /tmp/localize
         cd /tmp/localize
-        bash localize.sh
-        cp -R /tmp/project/node_modules/@userdashboard/dashboard/languages $HERE/languages
+        npm install @userdashboard/dashboard
+        for LOCALE in `cat languages`; do
+          node clean-cache.js "$LOCALE" "/home/runner/work/localization/localization/project/dashboard /home/runner/work/dashboard/dashboard
+          node localize.js "$LOCALE"
+        done
     - name: Lint (standard.js)
       run: standard src
     - name: Test (redis)
