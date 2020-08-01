@@ -8,15 +8,33 @@ const TestHelper = require('../test-helper.js')
 
 describe('internal-api/proxy', () => {
   describe('Proxy#pass', () => {
-    it('should include x-accountid header', async () => {
-      global.applicationServerToken = 'secret'
-      const server = http.createServer((_, res) => {
-        res.end()
-        server.close()
+    let server, port, requestHandler
+    before(async () => {
+      server = http.createServer((req, res) => {
+        if (requestHandler) {
+          requestHandler(req, res)
+        } else if (res) {
+          res.end()
+        }
       })
-      const port = global.port + 2000 + Math.floor((Math.random() * 2000))
+      port = global.port + 2007
       server.listen(port, 'localhost')
+    })
+
+    beforeEach(async () => {
       global.applicationServer = `http://localhost:${port}`
+      global.applicationServerToken = 'secret'
+      requestHandler = null
+    })
+
+    after(async () => {
+      if (server) {
+        server.close()
+        server = null
+      }
+    })
+
+    it('should include x-accountid header', async () => {
       const user = await TestHelper.createUser()
       const req = TestHelper.createRequest('/some-application-page')
       req.account = user.account
@@ -34,14 +52,6 @@ describe('internal-api/proxy', () => {
     })
 
     it('should include x-sessionid header', async () => {
-      global.applicationServerToken = 'secret'
-      const server = http.createServer((_, res) => {
-        res.end()
-        server.close()
-      })
-      const port = global.port + 2000 + Math.floor((Math.random() * 2000))
-      server.listen(port, 'localhost')
-      global.applicationServer = `http://localhost:${port}`
       const user = await TestHelper.createUser()
       const req = TestHelper.createRequest('/some-application-page')
       req.account = user.account
@@ -59,14 +69,6 @@ describe('internal-api/proxy', () => {
     })
 
     it('should include x-dashboard-server header', async () => {
-      global.applicationServerToken = 'secret'
-      const server = http.createServer((_, res) => {
-        res.end()
-        server.close()
-      })
-      const port = global.port + 2000 + Math.floor((Math.random() * 2000))
-      server.listen(port, 'localhost')
-      global.applicationServer = `http://localhost:${port}`
       const user = await TestHelper.createUser()
       const req = TestHelper.createRequest('/some-application-page')
       req.account = user.account
@@ -84,14 +86,6 @@ describe('internal-api/proxy', () => {
     })
 
     it('should create x-application-server-token header', async () => {
-      global.applicationServerToken = 'secret'
-      const server = http.createServer((_, res) => {
-        res.end()
-        server.close()
-      })
-      const port = global.port + 2000 + Math.floor((Math.random() * 2000))
-      server.listen(port, 'localhost')
-      global.applicationServer = `http://localhost:${port}`
       const user = await TestHelper.createUser()
       const req = TestHelper.createRequest('/some-application-page')
       req.account = user.account
@@ -111,14 +105,6 @@ describe('internal-api/proxy', () => {
     })
 
     it('should include referer header', async () => {
-      global.applicationServerToken = 'secret'
-      const server = http.createServer((_, res) => {
-        res.end()
-        server.close()
-      })
-      const port = global.port + 2000 + Math.floor((Math.random() * 2000))
-      server.listen(port, 'localhost')
-      global.applicationServer = `http://localhost:${port}`
       const user = await TestHelper.createUser()
       const req = TestHelper.createRequest('/some-application-page')
       req.account = user.account
@@ -136,8 +122,7 @@ describe('internal-api/proxy', () => {
     })
 
     it('should send POST data', async () => {
-      global.applicationServerToken = 'secret'
-      const server = http.createServer((req, res) => {
+      requestHandler = (req, res) => {
         let body = ''
         req.on('data', (data) => {
           body += data
@@ -146,12 +131,8 @@ describe('internal-api/proxy', () => {
           req.body = querystring.parse(body, '&', '=')
           assert.strictEqual(req.body.simple, 'payload')
           res.end()
-          server.close()
         })
-      })
-      const port = global.port + 2000 + Math.floor((Math.random() * 2000))
-      server.listen(port, 'localhost')
-      global.applicationServer = `http://localhost:${port}`
+      }
       const user = await TestHelper.createUser()
       const req = TestHelper.createRequest('/api/user/some-application-page')
       req.account = user.account
@@ -167,8 +148,7 @@ describe('internal-api/proxy', () => {
     })
 
     it('should send multipart POST data', async () => {
-      global.applicationServerToken = 'secret'
-      const server = http.createServer((req, res) => {
+      requestHandler = (req, res) => {
         const form = new Multiparty.Form()
         return form.parse(req, async (error, fields) => {
           if (error) {
@@ -180,12 +160,8 @@ describe('internal-api/proxy', () => {
           }
           assert.strictEqual(req.body.complex, 'payload')
           res.end()
-          server.close()
         })
-      })
-      const port = global.port + 2000 + Math.floor((Math.random() * 2000))
-      server.listen(port, 'localhost')
-      global.applicationServer = `http://localhost:${port}`
+      }
       const user = await TestHelper.createUser()
       const req = TestHelper.createRequest('/api/user/some-application-page')
       req.account = user.account
@@ -198,8 +174,7 @@ describe('internal-api/proxy', () => {
     })
 
     it('should send file upload POST data', async () => {
-      global.applicationServerToken = 'secret'
-      const server = http.createServer((req, res) => {
+      requestHandler = (req, res) => {
         const form = new Multiparty.Form()
         return form.parse(req, async (error, _, files) => {
           if (error) {
@@ -208,12 +183,8 @@ describe('internal-api/proxy', () => {
           assert.notStrictEqual(files['upload-name'], null)
           assert.notStrictEqual(files['upload-name'], undefined)
           res.end()
-          server.close()
         })
-      })
-      const port = global.port + 2000 + Math.floor((Math.random() * 2000))
-      server.listen(port, 'localhost')
-      global.applicationServer = `http://localhost:${port}`
+      }
       const user = await TestHelper.createUser()
       const req = TestHelper.createRequest('/api/user/some-application-page')
       req.account = user.account
@@ -230,7 +201,6 @@ describe('internal-api/proxy', () => {
     })
 
     it('should execute proxy handlers', async () => {
-      global.applicationServerToken = 'secret'
       global.packageJSON.dashboard = {
         proxy: [
           async (_, requestOptions) => {
@@ -238,13 +208,6 @@ describe('internal-api/proxy', () => {
           }
         ]
       }
-      const server = http.createServer((_, res) => {
-        res.end()
-        server.close()
-      })
-      const port = global.port + 2000 + Math.floor((Math.random() * 2000))
-      server.listen(port, 'localhost')
-      global.applicationServer = `http://localhost:${port}`
       const user = await TestHelper.createUser()
       const req = TestHelper.createRequest('/some-application-page')
       req.account = user.account
