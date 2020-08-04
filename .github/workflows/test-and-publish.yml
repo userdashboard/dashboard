@@ -60,6 +60,11 @@ jobs:
         REDIS_URL: "redis://localhost:6379"
         GENERATE_SITEMAP_TXT: false
         GENERATE_API_TXT: false
+        GENERATE_RESPONSE: true
+        GENERATE_SCREENSHOTS: true
+        RESPONSE_PATH: "/home/runner/work/dashboard/dashboard/documentation"
+        SCREENSHOT_PATH: "/home/runner/work/dashboard/dashboard/documentation/screenshots"
+        SCREENSHOT_LANGUAGES: "en,es,af,bg,pl,tr,hu,vi"
     - name: Generate supporting texts
       run: node main.js
       env:
@@ -79,3 +84,11 @@ jobs:
       uses: JS-DevTools/npm-publish@v1
       with:
         token: ${{ secrets.NPM_TOKEN }}
+    - name: Publish documentation assets
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        external_repository: "userdashboard/userdashboard.github.io"
+        personal_token: ${{ secrets.DOCUMENTATION_PAT }}
+        publish_dir: documentation
+        publish_branch: master
+        keep_files: true
