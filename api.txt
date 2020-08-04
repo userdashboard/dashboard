@@ -1,61 +1,61 @@
-@userdashboard/dashboard 1.0.295
+@userdashboard/dashboard 1.0.296
 http://localhost:9000
 
-|--------------------------------------------------|
-| /account/delete-profile                          |
-| EXCEPTIONS---------------------------------------|
-| before                                           |
-|  * invalid-profileid                             |
-|  * invalid-profile                               |
-|  * invalid-account (67ms)                        |
-| view                                             |
-|  * should present the form (516ms)               |
-| submit                                           |
-|  * should delete profile (screenshots) (3658ms)  |
-|--------------------------------------------------|
+|---------------------------------------------------|
+| /account/delete-profile                           |
+| EXCEPTIONS----------------------------------------|
+| before                                            |
+|  * invalid-profileid                              |
+|  * invalid-profile                                |
+|  * invalid-account (66ms)                         |
+| view                                              |
+|  * should present the form (496ms)                |
+| submit                                            |
+|  * should delete profile (screenshots) (59650ms)  |
+|---------------------------------------------------|
 
-|-----------------------------------------------------|
-| /account/delete-reset-code                          |
-| EXCEPTIONS------------------------------------------|
-| before                                              |
-|  * invalid-reset-codeid                             |
-|  * invalid-account (79ms)                           |
-| view                                                |
-|  * should present the form (519ms)                  |
-| submit                                              |
-|  * should delete reset code (screenshots) (2963ms)  |
-|-----------------------------------------------------|
+|------------------------------------------------------|
+| /account/delete-reset-code                           |
+| EXCEPTIONS-------------------------------------------|
+| before                                               |
+|  * invalid-reset-codeid                              |
+|  * invalid-account (47ms)                            |
+| view                                                 |
+|  * should present the form (505ms)                   |
+| submit                                               |
+|  * should delete reset code (screenshots) (49251ms)  |
+|------------------------------------------------------|
+
+|--------------------------------------------------------|
+| /account/language                                      |
+| EXCEPTIONS---------------------------------------------|
+| undefined                                              |
+|  * should require language enabled                     |
+| view                                                   |
+|  * should present the form (466ms)                     |
+| submit                                                 |
+|  * should change the language (screenshots) (31024ms)  |
+|--------------------------------------------------------|
 
 |-------------------------------------------------------|
-| /account/language                                     |
+| /administrator/delete-account                         |
 | EXCEPTIONS--------------------------------------------|
 | undefined                                             |
-|  * should require language enabled                    |
+|  * should reject invalid accountid                    |
+| before                                                |
+|  * should bind data to req (41ms)                     |
 | view                                                  |
-|  * should present the form (621ms)                    |
+|  * should present the form (538ms)                    |
 | submit                                                |
-|  * should change the language (screenshots) (2183ms)  |
+|  * should immediately delete (screenshots) (53773ms)  |
 |-------------------------------------------------------|
-
-|------------------------------------------------------|
-| /administrator/delete-account                        |
-| EXCEPTIONS-------------------------------------------|
-| undefined                                            |
-|  * should reject invalid accountid                   |
-| before                                               |
-|  * should bind data to req (47ms)                    |
-| view                                                 |
-|  * should present the form (491ms)                   |
-| submit                                               |
-|  * should immediately delete (screenshots) (3234ms)  |
-|------------------------------------------------------|
 
 |-------------------------------------------------------------------------------|
 | /api/administrator/account                                                    |
 | RETURNS--------| REDACTS--------------| EXCEPTIONS----------------------------|
-| object (41ms)  | usernameHash (46ms)  | invalid-accountid                     |
-|                | passwordHash (42ms)  |  * unspecified querystring accountid  |
-|                | sessionKey           |  * invalid querystring accountid      |
+| object (44ms)  | usernameHash (40ms)  | invalid-accountid                     |
+|                | passwordHash         |  * unspecified querystring accountid  |
+|                | sessionKey (38ms)    |  * invalid querystring accountid      |
 |----------------|----------------------|---------------------------------------|
 
 |--------------------------------------------------------------------------------------------|
@@ -69,7 +69,7 @@ http://localhost:9000
 |------------------------------------|
 | /api/administrator/accounts-count  |
 | RETURNS----------------------------|
-| integer (73ms)                     |
+| integer (70ms)                     |
 |------------------------------------|
 
 |--------------------------------------------------------------------------------------------|
@@ -83,43 +83,43 @@ http://localhost:9000
 |--------------------------------------------------|
 | /api/administrator/administrator-accounts-count  |
 | RETURNS------------------------------------------|
-| integer (41ms)                                   |
+| integer (40ms)                                   |
 |--------------------------------------------------|
 
-|----------------------------------------------------------------------------------------------------------------------------------------|
-| /api/administrator/create-reset-code                                                                                                   |
-| RECEIVES----------------------------| RETURNS--| EXCEPTIONS----------------------------| CONFIGURATION---------------------------------|
-| required posted secret-code (38ms)  | object   | invalid-accountid                     | environment MINIMUM_RESET_CODE_LENGTH (62ms)  |
-|                                     |          |  * unspecified querystring accountid  | environment MAXIMUM_RESET_CODE_LENGTH         |
-|                                     |          |  * invalid querystring accountid      |                                               |
-|                                     |          | invalid-secret-code                   |                                               |
-|                                     |          |  * missing posted secret-code (38ms)  |                                               |
-|                                     |          | invalid-secret-code-length            |                                               |
-|                                     |          |  * invalid posted secret-code length  |                                               |
-|-------------------------------------|----------|---------------------------------------|-----------------------------------------------|
+|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| /api/administrator/create-reset-code                                                                                                                |
+| RECEIVES----------------------------| RETURNS--------| EXCEPTIONS-----------------------------------| CONFIGURATION---------------------------------|
+| required posted secret-code (39ms)  | object (49ms)  | invalid-accountid                            | environment MINIMUM_RESET_CODE_LENGTH (40ms)  |
+|                                     |                |  * unspecified querystring accountid         | environment MAXIMUM_RESET_CODE_LENGTH         |
+|                                     |                |  * invalid querystring accountid             |                                               |
+|                                     |                | invalid-secret-code                          |                                               |
+|                                     |                |  * missing posted secret-code (39ms)         |                                               |
+|                                     |                | invalid-secret-code-length                   |                                               |
+|                                     |                |  * invalid posted secret-code length (39ms)  |                                               |
+|-------------------------------------|----------------|----------------------------------------------|-----------------------------------------------|
 
 |---------------------------------------------------------------------------------------|
 | /api/administrator/delete-account                                                     |
 | RECEIVES------------------------| RETURNS---------| EXCEPTIONS------------------------|
-| required querystring accountid  | boolean (53ms)  | invalid-accountid                 |
+| required querystring accountid  | boolean (43ms)  | invalid-accountid                 |
 |                                 |                 |  * missing querystring accountid  |
 |                                 |                 |  * invalid querystring accountid  |
 |                                 |                 | receieves                         |
-|                                 |                 |  * querystring accountid (44ms)   |
+|                                 |                 |  * querystring accountid (41ms)   |
 |---------------------------------|-----------------|-----------------------------------|
 
 |-----------------------------------------------------------------------------------------------------------------------|
 | /api/administrator/deleted-accounts                                                                                   |
 | RECEIVES--------------------------------------| RETURNS-------| REDACTS--------------| CONFIGURATION------------------|
-| optional querystring offset (integer) (83ms)  | array (92ms)  | usernameHash (60ms)  | environment PAGE_SIZE (110ms)  |
-| optional querystring limit (integer) (60ms)   |               | passwordHash (40ms)  |                                |
-| optional querystring all (boolean) (79ms)     |               | sessionKey (40ms)    |                                |
+| optional querystring offset (integer) (81ms)  | array (62ms)  | usernameHash (41ms)  | environment PAGE_SIZE (103ms)  |
+| optional querystring limit (integer) (67ms)   |               | passwordHash (39ms)  |                                |
+| optional querystring all (boolean) (85ms)     |               | sessionKey (49ms)    |                                |
 |-----------------------------------------------|---------------|----------------------|--------------------------------|
 
 |--------------------------------------------|
 | /api/administrator/deleted-accounts-count  |
 | RETURNS------------------------------------|
-| querystring accountid (89ms)               |
+| querystring accountid (91ms)               |
 |--------------------------------------------|
 
 |--------------------------------------------------------------------------------|
@@ -142,24 +142,24 @@ http://localhost:9000
 |------------------------------------|
 | /api/administrator/profiles-count  |
 | RETURNS----------------------------|
-| integer (87ms)                     |
+| integer (80ms)                     |
 |------------------------------------|
 
-|---------------------------------------------------------------------------------------------------|
-| /api/administrator/reset-account-administrator                                                    |
-| RECEIVES------------------------| RETURNS--------| EXCEPTIONS-------------------------------------|
-| required querystring accountid  | object (51ms)  | invalid-accountid                              |
-|                                 |                |  * missing querystring accountid               |
-|                                 |                |  * invalid querystring accountid               |
-|                                 |                | invalid-account                                |
-|                                 |                |  * accessing account is not owner              |
-|                                 |                |  * querystring accountid is not administrator  |
-|---------------------------------|----------------|------------------------------------------------|
+|----------------------------------------------------------------------------------------------------------|
+| /api/administrator/reset-account-administrator                                                           |
+| RECEIVES------------------------| RETURNS--------| EXCEPTIONS--------------------------------------------|
+| required querystring accountid  | object (54ms)  | invalid-accountid                                     |
+|                                 |                |  * missing querystring accountid                      |
+|                                 |                |  * invalid querystring accountid                      |
+|                                 |                | invalid-account                                       |
+|                                 |                |  * accessing account is not owner (39ms)              |
+|                                 |                |  * querystring accountid is not administrator (38ms)  |
+|---------------------------------|----------------|-------------------------------------------------------|
 
 |---------------------------------------------------------------------------------------------------------|
 | /api/administrator/reset-code                                                                           |
 | RECEIVES---------------------| RETURNS--------| REDACTS----------------| EXCEPTIONS---------------------|
-| required querystring codeid  | object (41ms)  | secretCodeHash (43ms)  | invalid-reset-codeid           |
+| required querystring codeid  | object (40ms)  | secretCodeHash (46ms)  | invalid-reset-codeid           |
 |                              |                |                        |  * missing querystring codeid  |
 |                              |                |                        |  * invalid querystring codeid  |
 |------------------------------|----------------|------------------------|--------------------------------|
@@ -176,25 +176,25 @@ http://localhost:9000
 |---------------------------------------|
 | /api/administrator/reset-codes-count  |
 | RETURNS-------------------------------|
-| integer (81ms)                        |
+| integer (87ms)                        |
 |---------------------------------------|
 
 |---------------------------------------------------------------------------------------------------------|
 | /api/administrator/reset-session-key                                                                    |
 | RECEIVES------------------------| RETURNS--------| EXCEPTIONS-------------------------------------------|
-| required querystring accountid  | object (44ms)  | invalid-accountid                                    |
+| required querystring accountid  | object (49ms)  | invalid-accountid                                    |
 |                                 |                |  * missing querystring accountid                     |
 |                                 |                |  * invalid querystring accountid                     |
 |                                 |                | invalid-account                                      |
-|                                 |                |  * ineligible querystring account is deleted (45ms)  |
+|                                 |                |  * ineligible querystring account is deleted (42ms)  |
 |                                 |                | requires                                             |
-|                                 |                |  * querystring accountid is not deleted (41ms)       |
+|                                 |                |  * querystring accountid is not deleted (55ms)       |
 |---------------------------------|----------------|------------------------------------------------------|
 
 |----------------------------------------------------------------------|
 | /api/administrator/session                                           |
 | RETURNS--| REDACTS-----------| EXCEPTIONS----------------------------|
-| object   | tokenHash (42ms)  | invalid-sessionid                     |
+| object   | tokenHash (39ms)  | invalid-sessionid                     |
 |          |                   |  * unspecified querystring accountid  |
 |          |                   |  * invalid querystring sessionid      |
 |----------|-------------------|---------------------------------------|
@@ -211,7 +211,7 @@ http://localhost:9000
 |------------------------------------|
 | /api/administrator/sessions-count  |
 | RETURNS----------------------------|
-| integer (72ms)                     |
+| integer (75ms)                     |
 |------------------------------------|
 
 |------------------------------------------------------------------------|
@@ -226,41 +226,41 @@ http://localhost:9000
 |          |  * querystring accountid is not administrator               |
 |----------|-------------------------------------------------------------|
 
-|------------------------------------------------------------------------------------------------------------------|
-| /api/administrator/set-account-deleted                                                                           |
-| RETURNS--------| EXCEPTIONS---------------------------------------------------| CONFIGURATION--------------------|
-| object (42ms)  | invalid-accountid                                            | environment DELETE_DELAY (46ms)  |
-|                |  * unspecified querystring accountid                         |                                  |
-|                |  * invalid querystring accountid                             |                                  |
-|                | invalid-account                                              |                                  |
-|                |  * ineligible querystring account is already deleted (39ms)  |                                  |
-|                |  * querystring accountid is deleted (53ms)                   |                                  |
-|----------------|--------------------------------------------------------------|----------------------------------|
+|-----------------------------------------------------------------------------------------------------------|
+| /api/administrator/set-account-deleted                                                                    |
+| RETURNS--------| EXCEPTIONS---------------------------------------------------| CONFIGURATION-------------|
+| object (47ms)  | invalid-accountid                                            | environment DELETE_DELAY  |
+|                |  * unspecified querystring accountid                         |                           |
+|                |  * invalid querystring accountid                             |                           |
+|                | invalid-account                                              |                           |
+|                |  * ineligible querystring account is already deleted (40ms)  |                           |
+|                |  * querystring accountid is deleted (46ms)                   |                           |
+|----------------|--------------------------------------------------------------|---------------------------|
 
 |--------------------------------------------------------------------------------------------------------|
 | /api/administrator/set-owner-account                                                                   |
 | RECEIVES------------------------| RETURNS--------| EXCEPTIONS------------------------------------------|
-| required querystring accountid  | object (44ms)  | invalid-accountid                                   |
+| required querystring accountid  | object (40ms)  | invalid-accountid                                   |
 |                                 |                |  * missing querystring accountid                    |
 |                                 |                |  * invalid querystring accountid                    |
 |                                 |                | invalid-account                                     |
-|                                 |                |  * ineligible accessing account (60ms)              |
+|                                 |                |  * ineligible accessing account (62ms)              |
 |                                 |                |  * ineligible querystring account is already owner  |
 |                                 |                | requires                                            |
-|                                 |                |  * accessing account is owner (63ms)                |
+|                                 |                |  * accessing account is owner (72ms)                |
 |                                 |                |  * querystring account is not owner                 |
-|                                 |                |  * querystring account is not deleted (38ms)        |
+|                                 |                |  * querystring account is not deleted (41ms)        |
 |---------------------------------|----------------|-----------------------------------------------------|
 
-|------------------------------------------------------------------------------------------------|
-| /api/user/account                                                                              |
-| RECEIVES------------------------| RETURNS--| REDACTS-------| EXCEPTIONS------------------------|
-| required querystring accountid  | object   | usernameHash  | invalid-accountid                 |
-|                                 |          | passwordHash  |  * missing querystring accountid  |
-|                                 |          | sessionKey    |  * invalid querystring accountid  |
-|                                 |          |               | invalid-account                   |
-|                                 |          |               |  * ineligible accessing account   |
-|---------------------------------|----------|---------------|-----------------------------------|
+|------------------------------------------------------------------------------------------------------|
+| /api/user/account                                                                                    |
+| RECEIVES------------------------| RETURNS--| REDACTS-------| EXCEPTIONS------------------------------|
+| required querystring accountid  | object   | usernameHash  | invalid-accountid                       |
+|                                 |          | passwordHash  |  * missing querystring accountid        |
+|                                 |          | sessionKey    |  * invalid querystring accountid        |
+|                                 |          |               | invalid-account                         |
+|                                 |          |               |  * ineligible accessing account (40ms)  |
+|---------------------------------|----------|---------------|-----------------------------------------|
 
 |---------------------------------------------------------------------------------------------------------------------------------------------|
 | /api/user/create-account                                                                                                                    |
@@ -270,7 +270,7 @@ http://localhost:9000
 | required posted occupation                |          | invalid-username-length           | environment MINIMUM_PASSWORD_LENGTH              |
 | required posted location                  |          |  * posted username too short      | environment MAXIMUM_PASSWORD_LENGTH              |
 | required posted display-email             |          |  * posted username too long       | environment REQUIRE_PROFILE                      |
-| required posted contact-email             |          | invalid-password                  | environment USER_PROFILE_FIELDS (62ms)           |
+| required posted contact-email             |          | invalid-password                  | environment USER_PROFILE_FIELDS (58ms)           |
 | required posted company-name              |          |  * missing posted password        | environment MINIMUM_PROFILE_FIRST_NAME_LENGTH    |
 | required posted display-name              |          | invalid-password-length           | environment MAXIMUM_PROFILE_FIRST_NAME_LENGTH    |
 | required posted last-name                 |          |  * posted password too short      | environment MINIMUM_PROFILE_LAST_NAME_LENGTH     |
@@ -279,7 +279,7 @@ http://localhost:9000
 | required posted username                  |          |  * missing posted first-name      | environment MAXIMUM_PROFILE_DISPLAY_NAME_LENGTH  |
 | optionally-required posted first-name     |          | invalid-first-name-length         | environment MINIMUM_PROFILE_COMPANY_NAME_LENGTH  |
 | optionally-required posted last-name      |          |  * posted first-name too short    | environment MAXIMUM_PROFILE_COMPANY_NAME_LENGTH  |
-| optionally-required posted display-name   |          |  * posted first-name too long     | override req.userProfileFields (57ms)            |
+| optionally-required posted display-name   |          |  * posted first-name too long     | override req.userProfileFields (51ms)            |
 | optionally-required posted company-name   |          | invalid-last-name                 |                                                  |
 | optionally-required posted contact-email  |          |  * missing posted last-name       |                                                  |
 | optionally-required posted display-email  |          | invalid-last-name-length          |                                                  |
@@ -306,45 +306,45 @@ http://localhost:9000
 |                                           |          |  * missing posted dob             |                                                  |
 |-------------------------------------------|----------|-----------------------------------|--------------------------------------------------|
 
-|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| /api/user/create-profile                                                                                                                                 |
-| RECEIVES----------------------------------| RETURNS--| EXCEPTIONS------------------------------| CONFIGURATION-------------------------------------------|
-| required posted dob                       | object   | invalid-accountid                       | environment USER_PROFILE_FIELDS (51ms)                  |
-| required posted phone                     |          |  * missing querystring accountid        | environment MINIMUM_PROFILE_FIRST_NAME_LENGTH           |
-| required posted occupation                |          |  * invalid querystring accountid        | environment MAXIMUM_PROFILE_FIRST_NAME_LENGTH           |
-| required posted location                  |          |  * ineligible accessing account         | environment MINIMUM_PROFILE_LAST_NAME_LENGTH            |
-| required posted display-email             |          | invalid-first-name                      | environment MAXIMUM_PROFILE_LAST_NAME_LENGTH            |
-| required posted contact-email (46ms)      |          |  * missing posted first-name            | environment MINIMUM_PROFILE_DISPLAY_NAME_LENGTH         |
-| required posted display-name              |          | invalid-first-name-length               | environment MAXIMUM_PROFILE_DISPLAY_NAME_LENGTH         |
-| required posted last-name                 |          |  * posted first-name too short          | environment MINIMUM_PROFILE_COMPANY_NAME_LENGTH         |
-| required posted first-name                |          |  * posted first-name too long           | environment MAXIMUM_PROFILE_COMPANY_NAME_LENGTH (40ms)  |
-| required querystring accountid            |          | invalid-last-name                       | override req.userProfileFields (40ms)                   |
-| optionally-required posted first-name     |          |  * missing posted last-name             |                                                         |
-| optionally-required posted last-name      |          | invalid-last-name-length                |                                                         |
-| optionally-required posted display-name   |          |  * posted last-name too short           |                                                         |
-| optionally-required posted company-name   |          |  * posted last-name too long            |                                                         |
-| optionally-required posted contact-email  |          | invalid-display-name                    |                                                         |
-| optionally-required posted display-email  |          |  * missing posted display-name          |                                                         |
-| optionally-required posted location       |          | invalid-display-name-length             |                                                         |
-| optionally-required posted occupation     |          |  * posted display-name too short        |                                                         |
-| optionally-required posted phone          |          |  * posted display-name too long         |                                                         |
-| optionally-required posted dob            |          | invalid-company-name-length             |                                                         |
-|                                           |          |  * posted company-name too short        |                                                         |
-|                                           |          |  * posted company-name too long         |                                                         |
-|                                           |          |  * invalid-company-name-length          |                                                         |
-|                                           |          | invalid-contact-email                   |                                                         |
-|                                           |          |  * missing posted contact-email (46ms)  |                                                         |
-|                                           |          | invalid-display-email                   |                                                         |
-|                                           |          |  * missing posted display-email         |                                                         |
-|                                           |          | invalid-location                        |                                                         |
-|                                           |          |  * missing posted location              |                                                         |
-|                                           |          | invalid-occupation                      |                                                         |
-|                                           |          |  * missing posted occupation            |                                                         |
-|                                           |          | invalid-phone                           |                                                         |
-|                                           |          |  * missing posted phone                 |                                                         |
-|                                           |          | invalid-dob                             |                                                         |
-|                                           |          |  * missing posted dob                   |                                                         |
-|-------------------------------------------|----------|-----------------------------------------|---------------------------------------------------------|
+|---------------------------------------------------------------------------------------------------------------------------------------------|
+| /api/user/create-profile                                                                                                                    |
+| RECEIVES----------------------------------| RETURNS--| EXCEPTIONS------------------------| CONFIGURATION------------------------------------|
+| required posted dob                       | object   | invalid-accountid                 | environment USER_PROFILE_FIELDS (50ms)           |
+| required posted phone                     |          |  * missing querystring accountid  | environment MINIMUM_PROFILE_FIRST_NAME_LENGTH    |
+| required posted occupation                |          |  * invalid querystring accountid  | environment MAXIMUM_PROFILE_FIRST_NAME_LENGTH    |
+| required posted location                  |          |  * ineligible accessing account   | environment MINIMUM_PROFILE_LAST_NAME_LENGTH     |
+| required posted display-email             |          | invalid-first-name                | environment MAXIMUM_PROFILE_LAST_NAME_LENGTH     |
+| required posted contact-email             |          |  * missing posted first-name      | environment MINIMUM_PROFILE_DISPLAY_NAME_LENGTH  |
+| required posted display-name              |          | invalid-first-name-length         | environment MAXIMUM_PROFILE_DISPLAY_NAME_LENGTH  |
+| required posted last-name                 |          |  * posted first-name too short    | environment MINIMUM_PROFILE_COMPANY_NAME_LENGTH  |
+| required posted first-name                |          |  * posted first-name too long     | environment MAXIMUM_PROFILE_COMPANY_NAME_LENGTH  |
+| required querystring accountid            |          | invalid-last-name                 | override req.userProfileFields                   |
+| optionally-required posted first-name     |          |  * missing posted last-name       |                                                  |
+| optionally-required posted last-name      |          | invalid-last-name-length          |                                                  |
+| optionally-required posted display-name   |          |  * posted last-name too short     |                                                  |
+| optionally-required posted company-name   |          |  * posted last-name too long      |                                                  |
+| optionally-required posted contact-email  |          | invalid-display-name              |                                                  |
+| optionally-required posted display-email  |          |  * missing posted display-name    |                                                  |
+| optionally-required posted location       |          | invalid-display-name-length       |                                                  |
+| optionally-required posted occupation     |          |  * posted display-name too short  |                                                  |
+| optionally-required posted phone          |          |  * posted display-name too long   |                                                  |
+| optionally-required posted dob            |          | invalid-company-name-length       |                                                  |
+|                                           |          |  * posted company-name too short  |                                                  |
+|                                           |          |  * posted company-name too long   |                                                  |
+|                                           |          |  * invalid-company-name-length    |                                                  |
+|                                           |          | invalid-contact-email             |                                                  |
+|                                           |          |  * missing posted contact-email   |                                                  |
+|                                           |          | invalid-display-email             |                                                  |
+|                                           |          |  * missing posted display-email   |                                                  |
+|                                           |          | invalid-location                  |                                                  |
+|                                           |          |  * missing posted location        |                                                  |
+|                                           |          | invalid-occupation                |                                                  |
+|                                           |          |  * missing posted occupation      |                                                  |
+|                                           |          | invalid-phone                     |                                                  |
+|                                           |          |  * missing posted phone           |                                                  |
+|                                           |          | invalid-dob                       |                                                  |
+|                                           |          |  * missing posted dob             |                                                  |
+|-------------------------------------------|----------|-----------------------------------|--------------------------------------------------|
 
 |--------------------------------------------------------------------------------------|
 | /api/user/create-reset-code                                                          |
@@ -352,7 +352,7 @@ http://localhost:9000
 | required posted secret-code     | object   | invalid-accountid                       |
 | required querystring accountid  |          |  * missing querystring accountid        |
 |                                 |          |  * invalid querystring accountid        |
-|                                 |          |  * ineligible accessing account (55ms)  |
+|                                 |          |  * ineligible accessing account (38ms)  |
 |                                 |          | invalid-secret-code                     |
 |                                 |          |  * missing posted secret-code           |
 |                                 |          | invalid-secret-code-length              |
@@ -388,38 +388,38 @@ http://localhost:9000
 |                              |          |  * missing querystring codeid            |
 |                              |          |  * invalid querystring codeid            |
 |                              |          | invalid-account                          |
-|                              |          |  * ineligible querystring codeid (40ms)  |
+|                              |          |  * ineligible querystring codeid (42ms)  |
 |------------------------------|----------|------------------------------------------|
 
-|-----------------------------------------------------------------------------------|
-| /api/user/profile                                                                 |
-| RECEIVES------------------------| RETURNS--| EXCEPTIONS---------------------------|
-| required querystring profileid  | object   | invalid-profileid                    |
-|                                 |          |  * missing querystring profileid     |
-|                                 |          |  * invalid querystring profileid     |
-|                                 |          | invalid-account                      |
-|                                 |          |  * ineligible querystring profileid  |
-|---------------------------------|----------|--------------------------------------|
+|------------------------------------------------------------------------------------------|
+| /api/user/profile                                                                        |
+| RECEIVES------------------------| RETURNS--| EXCEPTIONS----------------------------------|
+| required querystring profileid  | object   | invalid-profileid                           |
+|                                 |          |  * missing querystring profileid            |
+|                                 |          |  * invalid querystring profileid            |
+|                                 |          | invalid-account                             |
+|                                 |          |  * ineligible querystring profileid (39ms)  |
+|---------------------------------|----------|---------------------------------------------|
 
-|----------------------------------------------------------------------------------------------------------------------|
-| /api/user/profiles                                                                                                   |
-| RECEIVES-------------------------------| RETURNS--| EXCEPTIONS------------------------------| CONFIGURATION----------|
-| required querystring accountid         | array    | invalid-accountid                       | environment PAGE_SIZE  |
-| optional querystring offset (integer)  |          |  * missing querystring accountid        |                        |
-| optional querystring limit (integer)   |          |  * invalid querystring accountid        |                        |
-| optional querystring all (boolean)     |          | invalid-account                         |                        |
-|                                        |          |  * ineligible accessing account (46ms)  |                        |
-|----------------------------------------|----------|-----------------------------------------|------------------------|
+|----------------------------------------------------------------------------------------------------------------|
+| /api/user/profiles                                                                                             |
+| RECEIVES-------------------------------| RETURNS--| EXCEPTIONS------------------------| CONFIGURATION----------|
+| required querystring accountid         | array    | invalid-accountid                 | environment PAGE_SIZE  |
+| optional querystring offset (integer)  |          |  * missing querystring accountid  |                        |
+| optional querystring limit (integer)   |          |  * invalid querystring accountid  |                        |
+| optional querystring all (boolean)     |          | invalid-account                   |                        |
+|                                        |          |  * ineligible accessing account   |                        |
+|----------------------------------------|----------|-----------------------------------|------------------------|
 
-|--------------------------------------------------------------------------------|
-| /api/user/profiles-count                                                       |
-| RECEIVES------------------------| RETURNS--| EXCEPTIONS------------------------|
-| required querystring accountid  | integer  | invalid-accountid                 |
-|                                 |          |  * missing querystring accountid  |
-|                                 |          |  * invalid querystring accountid  |
-|                                 |          | invalid-account                   |
-|                                 |          |  * ineligible accessing account   |
-|---------------------------------|----------|-----------------------------------|
+|---------------------------------------------------------------------------------------|
+| /api/user/profiles-count                                                              |
+| RECEIVES------------------------| RETURNS---------| EXCEPTIONS------------------------|
+| required querystring accountid  | integer (38ms)  | invalid-accountid                 |
+|                                 |                 |  * missing querystring accountid  |
+|                                 |                 |  * invalid querystring accountid  |
+|                                 |                 | invalid-account                   |
+|                                 |                 |  * ineligible accessing account   |
+|---------------------------------|-----------------|-----------------------------------|
 
 |-----------------------------------------------------------------------------------------------|
 | /api/user/reset-account-deleted                                                               |
@@ -455,18 +455,18 @@ http://localhost:9000
 |                              |          |                 |  * missing querystring codeid            |
 |                              |          |                 |  * invalid querystring codeid            |
 |                              |          |                 | invalid-account                          |
-|                              |          |                 |  * ineligible querystring codeid (42ms)  |
+|                              |          |                 |  * ineligible querystring codeid (39ms)  |
 |------------------------------|----------|-----------------|------------------------------------------|
 
-|----------------------------------------------------------------------------------------------------------------------------------|
-| /api/user/reset-codes                                                                                                            |
-| RECEIVES-------------------------------| RETURNS--| REDACTS---------| EXCEPTIONS------------------------| CONFIGURATION----------|
-| required querystring accountid         | array    | secretCodeHash  | invalid-accountid                 | environment PAGE_SIZE  |
-| optional querystring offset (integer)  |          |                 |  * missing querystring accountid  |                        |
-| optional querystring limit (integer)   |          |                 |  * invalid querystring accountid  |                        |
-| optional querystring all (boolean)     |          |                 | invalid-account                   |                        |
-|                                        |          |                 |  * ineligible accessing account   |                        |
-|----------------------------------------|----------|-----------------|-----------------------------------|------------------------|
+|----------------------------------------------------------------------------------------------------------------------------------------|
+| /api/user/reset-codes                                                                                                                  |
+| RECEIVES-------------------------------| RETURNS--| REDACTS---------| EXCEPTIONS------------------------------| CONFIGURATION----------|
+| required querystring accountid         | array    | secretCodeHash  | invalid-accountid                       | environment PAGE_SIZE  |
+| optional querystring offset (integer)  |          |                 |  * missing querystring accountid        |                        |
+| optional querystring limit (integer)   |          |                 |  * invalid querystring accountid        |                        |
+| optional querystring all (boolean)     |          |                 | invalid-account                         |                        |
+|                                        |          |                 |  * ineligible accessing account (38ms)  |                        |
+|----------------------------------------|----------|-----------------|-----------------------------------------|------------------------|
 
 |--------------------------------------------------------------------------------------|
 | /api/user/reset-codes-count                                                          |
@@ -475,7 +475,7 @@ http://localhost:9000
 |                                 |          |  * missing querystring accountid        |
 |                                 |          |  * invalid querystring accountid        |
 |                                 |          | invalid-account                         |
-|                                 |          |  * ineligible accessing account (39ms)  |
+|                                 |          |  * ineligible accessing account (46ms)  |
 |---------------------------------|----------|-----------------------------------------|
 
 |--------------------------------------------------------------------------------|
@@ -488,35 +488,35 @@ http://localhost:9000
 |                                 |          |  * ineligible accessing account   |
 |---------------------------------|----------|-----------------------------------|
 
-|-------------------------------------------------------------------------------------------------------|
-| /api/user/session                                                                                     |
-| RECEIVES------------------------| RETURNS--| REDACTS----| EXCEPTIONS----------------------------------|
-| required querystring sessionid  | object   | tokenHash  | invalid-sessionid                           |
-|                                 |          |            |  * missing querystring sessionid            |
-|                                 |          |            |  * invalid querystring sessionid            |
-|                                 |          |            | invalid-account                             |
-|                                 |          |            |  * ineligible querystring sessionid (39ms)  |
-|---------------------------------|----------|------------|---------------------------------------------|
+|------------------------------------------------------------------------------------------------|
+| /api/user/session                                                                              |
+| RECEIVES------------------------| RETURNS--| REDACTS----| EXCEPTIONS---------------------------|
+| required querystring sessionid  | object   | tokenHash  | invalid-sessionid                    |
+|                                 |          |            |  * missing querystring sessionid     |
+|                                 |          |            |  * invalid querystring sessionid     |
+|                                 |          |            | invalid-account                      |
+|                                 |          |            |  * ineligible querystring sessionid  |
+|---------------------------------|----------|------------|--------------------------------------|
 
-|----------------------------------------------------------------------------------------------------------------|
-| /api/user/sessions                                                                                             |
-| RECEIVES-------------------------------| RETURNS--| EXCEPTIONS------------------------| CONFIGURATION----------|
-| required querystring accountid         | array    | invalid-accountid                 | environment PAGE_SIZE  |
-| optional querystring offset (integer)  |          |  * missing querystring accountid  |                        |
-| optional querystring limit (integer)   |          |  * invalid querystring accountid  |                        |
-| optional querystring all (boolean)     |          | invalid-account                   |                        |
-|                                        |          |  * ineligible accessing account   |                        |
-|----------------------------------------|----------|-----------------------------------|------------------------|
+|----------------------------------------------------------------------------------------------------------------------|
+| /api/user/sessions                                                                                                   |
+| RECEIVES-------------------------------| RETURNS--| EXCEPTIONS------------------------------| CONFIGURATION----------|
+| required querystring accountid         | array    | invalid-accountid                       | environment PAGE_SIZE  |
+| optional querystring offset (integer)  |          |  * missing querystring accountid        |                        |
+| optional querystring limit (integer)   |          |  * invalid querystring accountid        |                        |
+| optional querystring all (boolean)     |          | invalid-account                         |                        |
+|                                        |          |  * ineligible accessing account (40ms)  |                        |
+|----------------------------------------|----------|-----------------------------------------|------------------------|
 
-|--------------------------------------------------------------------------------|
-| /api/user/sessions-count                                                       |
-| RECEIVES------------------------| RETURNS--| EXCEPTIONS------------------------|
-| required querystring accountid  | integer  | invalid-accountid                 |
-|                                 |          |  * missing querystring accountid  |
-|                                 |          |  * invalid querystring accountid  |
-|                                 |          | invalid-account                   |
-|                                 |          |  * ineligible accessing account   |
-|---------------------------------|----------|-----------------------------------|
+|---------------------------------------------------------------------------------------------|
+| /api/user/sessions-count                                                                    |
+| RECEIVES------------------------| RETURNS---------| EXCEPTIONS------------------------------|
+| required querystring accountid  | integer (43ms)  | invalid-accountid                       |
+|                                 |                 |  * missing querystring accountid        |
+|                                 |                 |  * invalid querystring accountid        |
+|                                 |                 | invalid-account                         |
+|                                 |                 |  * ineligible accessing account (43ms)  |
+|---------------------------------|-----------------|-----------------------------------------|
 
 |------------------------------------------------------------------------------------------------------------|
 | /api/user/set-account-deleted                                                                              |
@@ -531,18 +531,18 @@ http://localhost:9000
 |                                 |          |  * invalid posted password        |                           |
 |---------------------------------|----------|-----------------------------------|---------------------------|
 
-|--------------------------------------------------------------------------------|
-| /api/user/set-account-language                                                 |
-| RECEIVES------------------------| RETURNS--| EXCEPTIONS------------------------|
-| required posted language        | object   | invalid-accountid                 |
-| required querystring accountid  |          |  * missing querystring accountid  |
-| required posted language        |          |  * invalid querystring accountid  |
-|                                 |          | invalid-account                   |
-|                                 |          |  * ineligible accessing account   |
-|                                 |          | invalid-language                  |
-|                                 |          |  * missing posted language        |
-|                                 |          |  * invalid posted language        |
-|---------------------------------|----------|-----------------------------------|
+|--------------------------------------------------------------------------------------|
+| /api/user/set-account-language                                                       |
+| RECEIVES------------------------| RETURNS--| EXCEPTIONS------------------------------|
+| required posted language        | object   | invalid-accountid                       |
+| required querystring accountid  |          |  * missing querystring accountid        |
+| required posted language        |          |  * invalid querystring accountid        |
+|                                 |          | invalid-account                         |
+|                                 |          |  * ineligible accessing account (44ms)  |
+|                                 |          | invalid-language                        |
+|                                 |          |  * missing posted language              |
+|                                 |          |  * invalid posted language              |
+|---------------------------------|----------|-----------------------------------------|
 
 |--------------------------------------------------------------------------------|
 | /api/user/set-account-password                                                 |
@@ -562,36 +562,36 @@ http://localhost:9000
 |                                 |          |  * posted new-password too long   |
 |---------------------------------|----------|-----------------------------------|
 
-|--------------------------------------------------------------------------------|
-| /api/user/set-account-profile                                                  |
-| RECEIVES------------------------| RETURNS--| EXCEPTIONS------------------------|
-| required posted profileid       | object   | invalid-accountid                 |
-| required querystring accountid  |          |  * missing querystring accountid  |
-|                                 |          |  * invalid querystring accountid  |
-|                                 |          | invalid-account                   |
-|                                 |          |  * ineligible accessing account   |
-|                                 |          | invalid-profileid                 |
-|                                 |          |  * missing posted profileid       |
-|                                 |          |  * invalid posted profileid       |
-|---------------------------------|----------|-----------------------------------|
+|--------------------------------------------------------------------------------------|
+| /api/user/set-account-profile                                                        |
+| RECEIVES------------------------| RETURNS--| EXCEPTIONS------------------------------|
+| required posted profileid       | object   | invalid-accountid                       |
+| required querystring accountid  |          |  * missing querystring accountid        |
+|                                 |          |  * invalid querystring accountid        |
+|                                 |          | invalid-account                         |
+|                                 |          |  * ineligible accessing account (45ms)  |
+|                                 |          | invalid-profileid                       |
+|                                 |          |  * missing posted profileid             |
+|                                 |          |  * invalid posted profileid             |
+|---------------------------------|----------|-----------------------------------------|
 
-|-------------------------------------------------------------------------------------------|
-| /api/user/set-account-username                                                            |
-| RECEIVES-----------------------------| RETURNS--| EXCEPTIONS------------------------------|
-| required posted new-username (61ms)  | object   | invalid-accountid                       |
-| required posted password             |          |  * missing querystring accountid        |
-| required querystring accountid       |          |  * invalid querystring accountid        |
-|                                      |          | invalid-account                         |
-|                                      |          |  * ineligible accessing account (38ms)  |
-|                                      |          | invalid-password                        |
-|                                      |          |  * missing posted password              |
-|                                      |          |  * invalid posted password              |
-|                                      |          | invalid-new-username                    |
-|                                      |          |  * missing posted new-username (61ms)   |
-|                                      |          | invalid-new-username-length             |
-|                                      |          |  * posted new-username too short        |
-|                                      |          |  * posted new-username too long         |
-|--------------------------------------|----------|-----------------------------------------|
+|---------------------------------------------------------------------------------------|
+| /api/user/set-account-username                                                        |
+| RECEIVES------------------------| RETURNS--| EXCEPTIONS-------------------------------|
+| required posted new-username    | object   | invalid-accountid                        |
+| required posted password        |          |  * missing querystring accountid         |
+| required querystring accountid  |          |  * invalid querystring accountid         |
+|                                 |          | invalid-account                          |
+|                                 |          |  * ineligible accessing account (40ms)   |
+|                                 |          | invalid-password                         |
+|                                 |          |  * missing posted password               |
+|                                 |          |  * invalid posted password               |
+|                                 |          | invalid-new-username                     |
+|                                 |          |  * missing posted new-username           |
+|                                 |          | invalid-new-username-length              |
+|                                 |          |  * posted new-username too short (39ms)  |
+|                                 |          |  * posted new-username too long          |
+|---------------------------------|----------|------------------------------------------|
 
 |----------------------------------------------------------------------------------------------|
 | /api/user/set-session-ended                                                                  |
@@ -602,7 +602,7 @@ http://localhost:9000
 |                                 |          | invalid-session                                 |
 |                                 |          |  * querystring sessionid is not active session  |
 |                                 |          | invalid-account                                 |
-|                                 |          |  * ineligible querystring sessionid (41ms)      |
+|                                 |          |  * ineligible querystring sessionid             |
 |---------------------------------|----------|-------------------------------------------------|
 
 |-----------------------------------------------------------------------------------|
@@ -615,43 +615,43 @@ http://localhost:9000
 |                                 |          |  * ineligible querystring sessionid  |
 |---------------------------------|----------|--------------------------------------|
 
-|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| /api/user/update-profile                                                                                                                          |
-| RECEIVES----------------------------------| RETURNS--| EXCEPTIONS------------------------------| CONFIGURATION------------------------------------|
-| required posted dob                       | object   | invalid-profileid                       | environment USER_PROFILE_FIELDS (44ms)           |
-| required posted phone                     |          |  * missing querystring profileid        | environment MINIMUM_PROFILE_FIRST_NAME_LENGTH    |
-| required posted occupation                |          |  * invalid querystring profileid        | environment MAXIMUM_PROFILE_FIRST_NAME_LENGTH    |
-| required posted location                  |          |  * ineligible querystring profileid     | environment MINIMUM_PROFILE_LAST_NAME_LENGTH     |
-| required posted display-email             |          | invalid-first-name                      | environment MAXIMUM_PROFILE_LAST_NAME_LENGTH     |
-| required posted contact-email             |          |  * missing posted first-name            | environment MINIMUM_PROFILE_DISPLAY_NAME_LENGTH  |
-| required posted company-name              |          | invalid-first-name-length               | environment MAXIMUM_PROFILE_DISPLAY_NAME_LENGTH  |
-| required posted display-name              |          |  * posted first-name too short          | environment MINIMUM_PROFILE_COMPANY_NAME_LENGTH  |
-| required posted last-name                 |          |  * posted first-name too long           | environment MAXIMUM_PROFILE_COMPANY_NAME_LENGTH  |
-| required posted first-name                |          | invalid-last-name                       | override req.userProfileFields                   |
-| required querystring profileid            |          |  * missing posted last-name             |                                                  |
-| optionally-required posted first-name     |          | invalid-last-name-length                |                                                  |
-| optionally-required posted last-name      |          |  * posted last-name too short           |                                                  |
-| optionally-required posted display-name   |          |  * posted last-name too long            |                                                  |
-| optionally-required posted company-name   |          | invalid-display-name                    |                                                  |
-| optionally-required posted contact-email  |          |  * missing posted display-name          |                                                  |
-| optionally-required posted display-email  |          | invalid-display-name-length             |                                                  |
-| optionally-required posted location       |          |  * posted display-name too short        |                                                  |
-| optionally-required posted occupation     |          |  * posted display-name too long (46ms)  |                                                  |
-| optionally-required posted phone          |          | invalid-company-name                    |                                                  |
-| optionally-required posted dob            |          |  * missing posted company-name          |                                                  |
-|                                           |          | invalid-company-name-length             |                                                  |
-|                                           |          |  * posted company-name too short        |                                                  |
-|                                           |          |  * posted company-name too long         |                                                  |
-|                                           |          | invalid-contact-email                   |                                                  |
-|                                           |          |  * missing posted contact-email         |                                                  |
-|                                           |          | invalid-display-email                   |                                                  |
-|                                           |          |  * missing posted display-email         |                                                  |
-|                                           |          | invalid-location                        |                                                  |
-|                                           |          |  * missing posted location              |                                                  |
-|                                           |          | invalid-occupation                      |                                                  |
-|                                           |          |  * missing posted occupation            |                                                  |
-|                                           |          | invalid-phone                           |                                                  |
-|                                           |          |  * missing posted phone                 |                                                  |
-|                                           |          | invalid-dob                             |                                                  |
-|                                           |          |  * missing posted dob                   |                                                  |
-|-------------------------------------------|----------|-----------------------------------------|--------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------|
+| /api/user/update-profile                                                                                                                       |
+| RECEIVES----------------------------------| RETURNS--| EXCEPTIONS---------------------------| CONFIGURATION------------------------------------|
+| required posted dob                       | object   | invalid-profileid                    | environment USER_PROFILE_FIELDS (44ms)           |
+| required posted phone                     |          |  * missing querystring profileid     | environment MINIMUM_PROFILE_FIRST_NAME_LENGTH    |
+| required posted occupation                |          |  * invalid querystring profileid     | environment MAXIMUM_PROFILE_FIRST_NAME_LENGTH    |
+| required posted location                  |          |  * ineligible querystring profileid  | environment MINIMUM_PROFILE_LAST_NAME_LENGTH     |
+| required posted display-email             |          | invalid-first-name                   | environment MAXIMUM_PROFILE_LAST_NAME_LENGTH     |
+| required posted contact-email             |          |  * missing posted first-name         | environment MINIMUM_PROFILE_DISPLAY_NAME_LENGTH  |
+| required posted company-name              |          | invalid-first-name-length            | environment MAXIMUM_PROFILE_DISPLAY_NAME_LENGTH  |
+| required posted display-name              |          |  * posted first-name too short       | environment MINIMUM_PROFILE_COMPANY_NAME_LENGTH  |
+| required posted last-name                 |          |  * posted first-name too long        | environment MAXIMUM_PROFILE_COMPANY_NAME_LENGTH  |
+| required posted first-name                |          | invalid-last-name                    | override req.userProfileFields                   |
+| required querystring profileid            |          |  * missing posted last-name          |                                                  |
+| optionally-required posted first-name     |          | invalid-last-name-length             |                                                  |
+| optionally-required posted last-name      |          |  * posted last-name too short        |                                                  |
+| optionally-required posted display-name   |          |  * posted last-name too long         |                                                  |
+| optionally-required posted company-name   |          | invalid-display-name                 |                                                  |
+| optionally-required posted contact-email  |          |  * missing posted display-name       |                                                  |
+| optionally-required posted display-email  |          | invalid-display-name-length          |                                                  |
+| optionally-required posted location       |          |  * posted display-name too short     |                                                  |
+| optionally-required posted occupation     |          |  * posted display-name too long      |                                                  |
+| optionally-required posted phone          |          | invalid-company-name                 |                                                  |
+| optionally-required posted dob            |          |  * missing posted company-name       |                                                  |
+|                                           |          | invalid-company-name-length          |                                                  |
+|                                           |          |  * posted company-name too short     |                                                  |
+|                                           |          |  * posted company-name too long      |                                                  |
+|                                           |          | invalid-contact-email                |                                                  |
+|                                           |          |  * missing posted contact-email      |                                                  |
+|                                           |          | invalid-display-email                |                                                  |
+|                                           |          |  * missing posted display-email      |                                                  |
+|                                           |          | invalid-location                     |                                                  |
+|                                           |          |  * missing posted location           |                                                  |
+|                                           |          | invalid-occupation                   |                                                  |
+|                                           |          |  * missing posted occupation         |                                                  |
+|                                           |          | invalid-phone                        |                                                  |
+|                                           |          |  * missing posted phone              |                                                  |
+|                                           |          | invalid-dob                          |                                                  |
+|                                           |          |  * missing posted dob                |                                                  |
+|-------------------------------------------|----------|--------------------------------------|--------------------------------------------------|
