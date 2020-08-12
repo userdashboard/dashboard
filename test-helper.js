@@ -59,12 +59,27 @@ async function setupBefore () {
   Log.info('finished before')
 }
 
+let firstRun = true
+let persistentApplicationServer = false
+let persistentApplicationServerToken = false
+
 async function setupBeforeEach () {
   Log.info('beforeEach')
+  if (firstRun) {
+    firstRun = false
+    if (global.applicationServer) {
+      persistentApplicationServer = global.applicationServer
+      persistentApplicationServerToken = global.applicationServerToken
+    }
+  }
   global.domain = 'localhost'
   global.sitemap['/api/require-verification'] = helperRoutes.requireVerification
   global.applicationServer = undefined
   global.applicationServerToken = undefined
+  if (persistentApplicationServer) {
+    global.applicationServer = persistentApplicationServer
+    global.applicationServerToken = persistentApplicationServerToken
+  }
   global.language = undefined
   global.languages = require('./languages.json')
   if (process.env.SCREENSHOT_LANGUAGES) {
