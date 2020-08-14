@@ -71,9 +71,6 @@ async function setupBefore () {
     helperRoutes = require('./test-helper-routes.js')
     TestHelperPuppeteer = require('./test-helper-puppeteer.js')
   }
-  defaultConfig.appid = `tests_${dashboard.Timestamp.now}`
-  defaultConfig.testNumber = dashboard.Timestamp.now
-  Log.info('before')
   defaultConfig.port = 9000
   let dashboardServer = global.dashboardServer || 'http://localhost:9000'
   if (dashboardServer.lastIndexOf(':') > dashboardServer.indexOf(':')) {
@@ -92,6 +89,8 @@ async function setupBefore () {
       defaultConfig.dashboardServer = `${dashboardServer}:${defaultConfig.port}`
     }
   }
+  defaultConfig.appid = `tests_${dashboard.Timestamp.now}`
+  defaultConfig.testNumber = dashboard.Timestamp.now
   if (process.env.SCREENSHOT_LANGUAGES) {
     const supported = []
     if (process.env.SCREENSHOT_LANGUAGES.indexOf(',') > -1) {
