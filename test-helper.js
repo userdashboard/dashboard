@@ -20,7 +20,7 @@ const mimeTypes = {
   svg: 'image/svg+xml'
 }
 
-const defaultConfig = {
+const defaultConfiguration = {
   domain: 'localhost',
   applicationServer: undefined,
   applicationServerToken: undefined,
@@ -71,26 +71,26 @@ async function setupBefore () {
     helperRoutes = require('./test-helper-routes.js')
     TestHelperPuppeteer = require('./test-helper-puppeteer.js')
   }
-  defaultConfig.port = 9000
+  defaultConfiguration.port = 9000
   let dashboardServer = global.dashboardServer || 'http://localhost:9000'
   if (dashboardServer.lastIndexOf(':') > dashboardServer.indexOf(':')) {
     dashboardServer = dashboardServer.substring(0, dashboardServer.lastIndexOf(':'))
   }
-  defaultConfig.dashboardServer = `${dashboardServer}:${defaultConfig.port}`
+  defaultConfiguration.dashboardServer = `${dashboardServer}:${defaultConfiguration.port}`
   Log.info('starting server')
   while (true) {
-    global.port = defaultConfig.port
+    global.port = defaultConfiguration.port
     try {
       await dashboard.start(global.applicationPath || __dirname)
       break
     } catch (error) {
       Log.error('error starting server', error)
-      defaultConfig.port++
-      defaultConfig.dashboardServer = `${dashboardServer}:${defaultConfig.port}`
+      defaultConfiguration.port++
+      defaultConfiguration.dashboardServer = `${dashboardServer}:${defaultConfiguration.port}`
     }
   }
-  defaultConfig.appid = `tests_${dashboard.Timestamp.now}`
-  defaultConfig.testNumber = dashboard.Timestamp.now
+  defaultConfiguration.appid = `tests_${dashboard.Timestamp.now}`
+  defaultConfiguration.testNumber = dashboard.Timestamp.now
   if (process.env.SCREENSHOT_LANGUAGES) {
     const supported = []
     if (process.env.SCREENSHOT_LANGUAGES.indexOf(',') > -1) {
@@ -108,7 +108,7 @@ async function setupBefore () {
         newLanguages.push(language)
       }
     }
-    defaultConfig.languages = newLanguages
+    defaultConfiguration.languages = newLanguages
   }
 }
 
@@ -117,8 +117,8 @@ async function setupBeforeEach () {
   const mergePackageJSON = require(`${__dirname}/src/merge-package-json.js`)
   global.packageJSON = mergePackageJSON()
   global.sitemap['/api/require-verification'] = helperRoutes.requireVerification
-  for (const property in defaultConfig) {
-    global[property] = defaultConfig[property]
+  for (const property in defaultConfiguration) {
+    global[property] = defaultConfiguration[property]
   }
 }
 
@@ -148,7 +148,7 @@ module.exports = {
   createSession,
   createResetCode,
   createUser,
-  defaultConfig,
+  defaultConfiguration,
   deleteResetCode,
   endSession,
   nextIdentity,
