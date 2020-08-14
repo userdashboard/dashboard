@@ -20,6 +20,41 @@ const mimeTypes = {
   svg: 'image/svg+xml'
 }
 
+const defaultConfig = {
+  domain: 'localhost',
+  applicationServer: undefined,
+  applicationServerToken: undefined,
+  language: undefined,
+  enableLanguagePreference: false,
+  testModuleJSON: null,
+  encryptionSecret: process.env.ENCRYPTION_SECRET || '',
+  encryptionSecretIV: process.env.ENCRYPTION_SECRET_IV || '',
+  requireProfile: false,
+  disableRegistration: false,
+  userProfileFields: ['full-name', 'contact-email'],
+  apiDependencies: [],
+  minimumUsernameLength: 1,
+  maximumUsernameLength: 100,
+  minimumPasswordLength: 1,
+  maximumPasswordLength: 100,
+  minimumResetCodeLength: 1,
+  maximumResetCodeLength: 100,
+  minimumProfileFirstNameLength: 1,
+  maximumProfileFirstNameLength: 100,
+  minimumProfileLastNameLength: 1,
+  maximumProfileLastNameLength: 100,
+  minimumProfileDisplayNameLength: 1,
+  maximumProfileDisplayNameLength: 100,
+  minimumProfileCompanyNameLength: 1,
+  maximumProfileCompanyNameLength: 100,
+  deleteDelay: 7,
+  pageSize: 2,
+  idLength: 7,
+  allowPublicAPI: true,
+  delayDiskWrites: false,
+  bcryptWorkloadFactor: 4
+}
+
 let dashboard, helperRoutes, TestHelperPuppeteer, Log
 async function setupBefore () {
   const logPath = path.join(global.applicationPath, 'node_modules/@userdashboard/dashboard/src/log.js')
@@ -36,52 +71,27 @@ async function setupBefore () {
     helperRoutes = require('./test-helper-routes.js')
     TestHelperPuppeteer = require('./test-helper-puppeteer.js')
   }
+  defaultConfig.appid = `tests_${dashboard.Timestamp.now}`
+  defaultConfig.testNumber = dashboard.Timestamp.now
   Log.info('before')
-  global.port = 9000
+  defaultConfig.port = 9000
   let dashboardServer = global.dashboardServer || 'http://localhost:9000'
   if (dashboardServer.lastIndexOf(':') > dashboardServer.indexOf(':')) {
     dashboardServer = dashboardServer.substring(0, dashboardServer.lastIndexOf(':'))
   }
-  global.dashboardServer = `${dashboardServer}:${global.port}`
+  defaultConfig.dashboardServer = `${dashboardServer}:${defaultConfig.port}`
   Log.info('starting server')
   while (true) {
+    global.port = defaultConfig.port
     try {
       await dashboard.start(global.applicationPath || __dirname)
       break
     } catch (error) {
       Log.error('error starting server', error)
-      global.port++
-      global.dashboardServer = `${dashboardServer}:${global.port}`
+      defaultConfig.port++
+      defaultConfig.dashboardServer = `${dashboardServer}:${defaultConfig.port}`
     }
   }
-  global.usingPort = global.port
-  global.usingDashboardServer = dashboardServer
-  Log.info('finished before')
-}
-
-let firstRun = true
-let persistentApplicationServer = false
-let persistentApplicationServerToken = false
-
-async function setupBeforeEach () {
-  Log.info('beforeEach')
-  if (firstRun) {
-    firstRun = false
-    if (global.applicationServer) {
-      persistentApplicationServer = global.applicationServer
-      persistentApplicationServerToken = global.applicationServerToken
-    }
-  }
-  global.domain = 'localhost'
-  global.sitemap['/api/require-verification'] = helperRoutes.requireVerification
-  global.applicationServer = undefined
-  global.applicationServerToken = undefined
-  if (persistentApplicationServer) {
-    global.applicationServer = persistentApplicationServer
-    global.applicationServerToken = persistentApplicationServerToken
-  }
-  global.language = undefined
-  global.languages = require('./languages.json')
   if (process.env.SCREENSHOT_LANGUAGES) {
     const supported = []
     if (process.env.SCREENSHOT_LANGUAGES.indexOf(',') > -1) {
@@ -93,47 +103,24 @@ async function setupBeforeEach () {
       supported.push(process.env.SCREENSHOT_LANGUAGES)
     }
     const newLanguages = []
-    for (const language of global.languages) {
+    const languages = require('./languages.json')
+    for (const language of languages) {
       if (supported.indexOf(language.code) > -1) {
         newLanguages.push(language)
       }
     }
-    global.languages = newLanguages
+    defaultConfig.languages = newLanguages
   }
-  global.enableLanguagePreference = false
-  global.port = global.usingPort
-  global.dashboardServer = `${global.usingDashboardServer}:${global.port}`
+}
+
+async function setupBeforeEach () {
+  Log.info('beforeEach')
   const mergePackageJSON = require(`${__dirname}/src/merge-package-json.js`)
   global.packageJSON = mergePackageJSON()
-  global.appid = `tests_${dashboard.Timestamp.now}`
-  global.testNumber = dashboard.Timestamp.now
-  global.testModuleJSON = null
-  global.encryptionSecret = process.env.ENCRYPTION_SECRET || ''
-  global.encryptionSecretIV = process.env.ENCRYPTION_SECRET_IV || ''
-  global.requireProfile = false
-  global.disableRegistration = false
-  global.userProfileFields = ['full-name', 'contact-email']
-  global.apiDependencies = []
-  global.minimumUsernameLength = 1
-  global.maximumUsernameLength = 100
-  global.minimumPasswordLength = 1
-  global.maximumPasswordLength = 100
-  global.minimumResetCodeLength = 1
-  global.maximumResetCodeLength = 100
-  global.minimumProfileFirstNameLength = 1
-  global.maximumProfileFirstNameLength = 100
-  global.minimumProfileLastNameLength = 1
-  global.maximumProfileLastNameLength = 100
-  global.minimumProfileDisplayNameLength = 1
-  global.maximumProfileDisplayNameLength = 100
-  global.minimumProfileCompanyNameLength = 1
-  global.maximumProfileCompanyNameLength = 100
-  global.deleteDelay = 7
-  global.pageSize = 2
-  global.idLength = 7
-  global.allowPublicAPI = true
-  global.delayDiskWrites = false
-  global.bcryptWorkloadFactor = 4
+  global.sitemap['/api/require-verification'] = helperRoutes.requireVerification
+  for (const property in defaultConfig) {
+    global[property] = defaultConfig[property]
+  }
 }
 
 before(setupBefore)
@@ -162,6 +149,7 @@ module.exports = {
   createSession,
   createResetCode,
   createUser,
+  defaultConfig,
   deleteResetCode,
   endSession,
   nextIdentity,
