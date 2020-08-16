@@ -1,26 +1,7 @@
 /* eslint-env mocha */
 global.applicationPath = global.applicationPath || __dirname
 global.appid = global.appid || 'tests'
-
-const faker = require('faker')
-const fs = require('fs')
-const http = require('http')
-const https = require('https')
-const path = require('path')
-const querystring = require('querystring')
-const util = require('util')
-const mimeTypes = {
-  js: 'text/javascript;',
-  css: 'text/css',
-  txt: 'text/plain',
-  html: 'text/html',
-  jpg: 'image/jpeg',
-  png: 'image/png',
-  ico: 'image/x-icon',
-  svg: 'image/svg+xml'
-}
-
-const defaultConfiguration = {
+global.defaultConfiguration = {
   domain: 'localhost',
   applicationServer: undefined,
   applicationServerToken: undefined,
@@ -55,6 +36,24 @@ const defaultConfiguration = {
   bcryptWorkloadFactor: 4
 }
 
+const faker = require('faker')
+const fs = require('fs')
+const http = require('http')
+const https = require('https')
+const path = require('path')
+const querystring = require('querystring')
+const util = require('util')
+const mimeTypes = {
+  js: 'text/javascript;',
+  css: 'text/css',
+  txt: 'text/plain',
+  html: 'text/html',
+  jpg: 'image/jpeg',
+  png: 'image/png',
+  ico: 'image/x-icon',
+  svg: 'image/svg+xml'
+}
+
 let dashboard, helperRoutes, TestHelperPuppeteer, Log
 async function setupBefore () {
   const logPath = path.join(global.applicationPath, 'node_modules/@userdashboard/dashboard/src/log.js')
@@ -71,26 +70,26 @@ async function setupBefore () {
     helperRoutes = require('./test-helper-routes.js')
     TestHelperPuppeteer = require('./test-helper-puppeteer.js')
   }
-  defaultConfiguration.port = 9000
+  global.defaultConfiguration.port = 9000
   let dashboardServer = global.dashboardServer || 'http://localhost:9000'
   if (dashboardServer.lastIndexOf(':') > dashboardServer.indexOf(':')) {
     dashboardServer = dashboardServer.substring(0, dashboardServer.lastIndexOf(':'))
   }
-  defaultConfiguration.dashboardServer = `${dashboardServer}:${defaultConfiguration.port}`
+  global.defaultConfiguration.dashboardServer = `${dashboardServer}:${global.defaultConfiguration.port}`
   Log.info('starting server')
   while (true) {
-    global.port = defaultConfiguration.port
+    global.port = global.defaultConfiguration.port
     try {
       await dashboard.start(global.applicationPath || __dirname)
       break
     } catch (error) {
       Log.error('error starting server', error)
-      defaultConfiguration.port++
-      defaultConfiguration.dashboardServer = `${dashboardServer}:${defaultConfiguration.port}`
+      global.defaultConfiguration.port++
+      global.defaultConfiguration.dashboardServer = `${dashboardServer}:${global.defaultConfiguration.port}`
     }
   }
-  defaultConfiguration.appid = `tests_${dashboard.Timestamp.now}`
-  defaultConfiguration.testNumber = dashboard.Timestamp.now
+  global.defaultConfiguration.appid = `tests_${dashboard.Timestamp.now}`
+  global.defaultConfiguration.testNumber = dashboard.Timestamp.now
   if (process.env.SCREENSHOT_LANGUAGES) {
     const supported = []
     if (process.env.SCREENSHOT_LANGUAGES.indexOf(',') > -1) {
@@ -108,7 +107,7 @@ async function setupBefore () {
         newLanguages.push(language)
       }
     }
-    defaultConfiguration.languages = newLanguages
+    global.defaultConfiguration.languages = newLanguages
   }
 }
 
@@ -117,8 +116,8 @@ async function setupBeforeEach () {
   const mergePackageJSON = require(`${__dirname}/src/merge-package-json.js`)
   global.packageJSON = mergePackageJSON()
   global.sitemap['/api/require-verification'] = helperRoutes.requireVerification
-  for (const property in defaultConfiguration) {
-    global[property] = defaultConfiguration[property]
+  for (const property in global.defaultConfiguration) {
+    global[property] = global.defaultConfiguration[property]
   }
 }
 
@@ -148,7 +147,6 @@ module.exports = {
   createSession,
   createResetCode,
   createUser,
-  defaultConfiguration,
   deleteResetCode,
   endSession,
   nextIdentity,
