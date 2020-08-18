@@ -38,7 +38,7 @@ const defaultConfigurationValues = {
   bcryptWorkloadFactor: 4
 }
 for (const property in defaultConfigurationValues) {
-  global.testConfiguration = global.testConfiguration || defaultConfigurationValues[property]
+  global.testConfiguration[property] = global.testConfiguration[property] || defaultConfigurationValues[property]
 }
 
 const faker = require('faker')
