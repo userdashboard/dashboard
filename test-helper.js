@@ -1,11 +1,13 @@
 /* eslint-env mocha */
 global.applicationPath = global.applicationPath || __dirname
 global.appid = global.appid || 'tests'
-global.defaultConfiguration = {
+global.testConfiguration = global.testConfiguration || {}
+
+const defaultConfigurationValues = {
   domain: 'localhost',
-  applicationServer: undefined,
-  applicationServerToken: undefined,
-  language: undefined,
+  applicationServer: null,
+  applicationServerToken: null,
+  language: null,
   enableLanguagePreference: false,
   testModuleJSON: null,
   encryptionSecret: process.env.ENCRYPTION_SECRET || '',
@@ -34,6 +36,9 @@ global.defaultConfiguration = {
   allowPublicAPI: true,
   delayDiskWrites: false,
   bcryptWorkloadFactor: 4
+}
+for (const property in defaultConfigurationValues) {
+  global.testConfiguration = global.testConfiguration || defaultConfigurationValues[property]
 }
 
 const faker = require('faker')
@@ -70,26 +75,26 @@ async function setupBefore () {
     helperRoutes = require('./test-helper-routes.js')
     TestHelperPuppeteer = require('./test-helper-puppeteer.js')
   }
-  global.defaultConfiguration.port = 9000
+  global.testConfiguration.port = 9000
   let dashboardServer = global.dashboardServer || 'http://localhost:9000'
   if (dashboardServer.lastIndexOf(':') > dashboardServer.indexOf(':')) {
     dashboardServer = dashboardServer.substring(0, dashboardServer.lastIndexOf(':'))
   }
-  global.defaultConfiguration.dashboardServer = `${dashboardServer}:${global.defaultConfiguration.port}`
+  global.testConfiguration.dashboardServer = `${dashboardServer}:${global.testConfiguration.port}`
   Log.info('starting server')
   while (true) {
-    global.port = global.defaultConfiguration.port
+    global.port = global.testConfiguration.port
     try {
       await dashboard.start(global.applicationPath || __dirname)
       break
     } catch (error) {
       Log.error('error starting server', error)
-      global.defaultConfiguration.port++
-      global.defaultConfiguration.dashboardServer = `${dashboardServer}:${global.defaultConfiguration.port}`
+      global.testConfiguration.port++
+      global.testConfiguration.dashboardServer = `${dashboardServer}:${global.testConfiguration.port}`
     }
   }
-  global.defaultConfiguration.appid = `tests_${dashboard.Timestamp.now}`
-  global.defaultConfiguration.testNumber = dashboard.Timestamp.now
+  global.testConfiguration.appid = `tests_${dashboard.Timestamp.now}`
+  global.testConfiguration.testNumber = dashboard.Timestamp.now
   if (process.env.SCREENSHOT_LANGUAGES) {
     const supported = []
     if (process.env.SCREENSHOT_LANGUAGES.indexOf(',') > -1) {
@@ -107,7 +112,7 @@ async function setupBefore () {
         newLanguages.push(language)
       }
     }
-    global.defaultConfiguration.languages = newLanguages
+    global.testConfiguration.languages = newLanguages
   }
 }
 
@@ -116,8 +121,8 @@ async function setupBeforeEach () {
   const mergePackageJSON = require(`${__dirname}/src/merge-package-json.js`)
   global.packageJSON = mergePackageJSON()
   global.sitemap['/api/require-verification'] = helperRoutes.requireVerification
-  for (const property in global.defaultConfiguration) {
-    global[property] = global.defaultConfiguration[property]
+  for (const property in global.testConfiguration) {
+    global[property] = global.testConfiguration[property]
   }
 }
 
