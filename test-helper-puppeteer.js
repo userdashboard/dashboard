@@ -479,7 +479,7 @@ async function execute (action, page, identifier) {
   try {
     const element = await getElement(page, identifier)
     if (element) {
-      return method(element)
+      return method(element, page)
     }
     throw new Error('element not found ' + identifier)
   } catch (error) {
@@ -800,7 +800,7 @@ async function getTags (page, tag) {
   }
 }
 
-async function hoverElement (element) {
+async function hoverElement (element, page) {
   let fails = 0
   while (true) {
     try {
@@ -811,7 +811,8 @@ async function hoverElement (element) {
     }
     fails++
     if (fails > 10) {
-      Log.error('puppeteer hoverElement fail ten times', element, global.testConfiguration, global.packageJSON)
+      const content = page ? await getContent(page) : null
+      Log.error('puppeteer hoverElement fail ten times', content, global.testConfiguration, global.packageJSON)
       throw new Error('hoverElement failed ten times')
     }
     await wait(100)
