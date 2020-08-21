@@ -384,7 +384,7 @@ async function setCookie (page, req) {
 async function emulate (page, device) {
   while (true) {
     try {
-      await page.setViewport(device.viewport)
+      await page.emulate(device)
       return
     } catch (error) {
     }
