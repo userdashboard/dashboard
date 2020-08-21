@@ -129,7 +129,7 @@ async function fetch (method, req) {
           for (const language of global.languages) {
             global.language = language.code
             for (const device of devices) {
-              await emulate(page, device)
+              await emulate(page, device)        
               if (lastStep && lastStep.hover === '#account-menu-container') {
                 await execute('hover', page, '#account-menu-container')
               } else if (lastStep && lastStep.hover === '#administrator-menu-container') {
@@ -385,6 +385,7 @@ async function emulate (page, device) {
   while (true) {
     try {
       await page.emulate(device)
+      await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] })
       return
     } catch (error) {
     }
