@@ -116,7 +116,7 @@ async function fetch (method, req) {
               await emulate(page, device)
               if (step.hover === '#administrator-menu-container') {
                 Log.info('language', language, 'device', device)
-                const element = getElement(page, step.hover)
+                const element = await getElement(page, step.hover)
                 if (!element) {
                   console.log('element not found')
                   const element2 = await page.evaluate(() => {
