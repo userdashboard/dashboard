@@ -113,7 +113,26 @@ async function fetch (method, req) {
           for (const language of global.languages) {
             for (const device of devices) {
               global.language = language.code
-              await emulate(page, device, req)
+              await emulate(page, device)
+              if (step.hover === '#administrator-menu-container') {
+                Log.info('language', language, 'device', device)
+                const element = getElement(page, step.hover)
+                if (!element) {
+                  console.log('element not found')
+                  const element2 = await page.evaluate(() => {
+                    return document.getElementById('#administrator-menu-container')
+                  })
+                  if (!element2) {
+                    console.log('element2 not found')
+                    const content = await getContent(page)
+                    if (content.indexOf('#adminstrator-menu-container') === -1) {
+                      console.log('page content does not include menu')
+                    } else {
+                      console.log('page content does include menu')
+                    }
+                  }
+                }
+              }
               await execute('hover', page, step.hover)
               const thisTitle = await saveScreenshot(device, page, screenshotNumber, 'hover', step.hover, req.filename, firstTitle)
               firstTitle = firstTitle || thisTitle
@@ -384,8 +403,7 @@ async function setCookie (page, req) {
 async function emulate (page, device) {
   while (true) {
     try {
-      await page.emulate(device)
-      await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] })
+      await page.setViewPort(device.viewport)
       return
     } catch (error) {
     }
@@ -477,16 +495,11 @@ async function execute (action, page, identifier) {
       method = focusElement
       break
   }
-  try {
-    const element = await getElement(page, identifier)
-    if (element) {
-      return method(element, page)
-    }
-    throw new Error('element not found ' + identifier)
-  } catch (error) {
-    const content = await getContent(page)
-    Log.error('puppeteer execute error', action, identifier, content, global.testConfiguration, global.packageJSON, error)
+  const element = await getElement(page, identifier)
+  if (element) {
+    return method(element, page)
   }
+  throw new Error('element not found ' + identifier)
 }
 
 async function getText (page, element) {
