@@ -114,25 +114,6 @@ async function fetch (method, req) {
             for (const device of devices) {
               global.language = language.code
               await emulate(page, device)
-              if (step.hover === '#administrator-menu-container') {
-                Log.info('language', language, 'device', device)
-                const element = await getElement(page, step.hover)
-                if (!element) {
-                  console.log('element not found')
-                  const element2 = await page.evaluate(() => {
-                    return document.getElementById('#administrator-menu-container')
-                  })
-                  if (!element2) {
-                    console.log('element2 not found')
-                    const content = await getContent(page)
-                    if (content.indexOf('#adminstrator-menu-container') === -1) {
-                      console.log('page content does not include menu')
-                    } else {
-                      console.log('page content does include menu')
-                    }
-                  }
-                }
-              }
               await execute('hover', page, step.hover)
               const thisTitle = await saveScreenshot(device, page, screenshotNumber, 'hover', step.hover, req.filename, firstTitle)
               firstTitle = firstTitle || thisTitle
@@ -403,7 +384,7 @@ async function setCookie (page, req) {
 async function emulate (page, device) {
   while (true) {
     try {
-      await page.setViewPort(device.viewport)
+      await page.setViewport(device.viewport)
       return
     } catch (error) {
     }
@@ -764,7 +745,7 @@ async function evaluate (page, method, element) {
       Log.error('puppeteer evaluate error', error.toString())
     }
     fails++
-    if (fails > 100) {
+    if (fails > 10) {
       const content = await getContent(page)
       Log.error('puppeteer evaluate fail ten times', content, global.testConfiguration, global.packageJSON)
       throw new Error('evaluate failed ten times')
@@ -788,7 +769,7 @@ async function getOptionalApplicationFrame (page) {
       Log.error('puppeteer getOptionalApplicationFrame error', error.toString())
     }
     fails++
-    if (fails > 100) {
+    if (fails > 10) {
       return null
     }
     await wait(100)
@@ -805,7 +786,7 @@ async function getTags (page, tag) {
       Log.error(`puppeteer getTags(${tag}) error`, error.toString())
     }
     fails++
-    if (fails > 100) {
+    if (fails > 10) {
       const content = await getContent(page)
       Log.error('puppeteer getTags fail ten times', content, global.testConfiguration, global.packageJSON)
       throw new Error('getTags failed ten times')
@@ -824,7 +805,7 @@ async function hoverElement (element, page) {
       Log.error('puppeteer hoverElement error', error.toString())
     }
     fails++
-    if (fails > 100) {
+    if (fails > 10) {
       const content = page ? await getContent(page) : null
       Log.error('puppeteer hoverElement fail ten times', content, global.testConfiguration, global.packageJSON)
       throw new Error('hoverElement failed ten times')
@@ -843,7 +824,7 @@ async function clickElement (element) {
       Log.error('puppeteer clickElement error', error.toString())
     }
     fails++
-    if (fails > 100) {
+    if (fails > 10) {
       Log.error('puppeteer clickElement fail ten times', element, global.testConfiguration, global.packageJSON)
       throw new Error('clickElement failed ten times')
     }
@@ -861,7 +842,7 @@ async function focusElement (element) {
       Log.error('puppeteer focusElement error', error.toString())
     }
     fails++
-    if (fails > 100) {
+    if (fails > 10) {
       Log.error('puppeteer focusElement fail ten times', element, global.testConfiguration, global.packageJSON)
       throw new Error('focusElement failed ten times')
     }
@@ -879,7 +860,7 @@ async function uploadFile (element, path) {
       Log.error('puppeteer uploadFile error', error.toString())
     }
     fails++
-    if (fails > 100) {
+    if (fails > 10) {
       Log.error('puppeteer uploadFile fail ten times', element, global.testConfiguration, global.packageJSON)
       throw new Error('uploadFile failed ten times')
     }
@@ -903,7 +884,7 @@ async function typeInElement (element, text) {
       Log.error('puppeteer typeInElement error', error.toString())
     }
     fails++
-    if (fails > 100) {
+    if (fails > 10) {
       Log.error('puppeteer typeInElement fail ten times', element, global.testConfiguration, global.packageJSON)
       throw new Error('typeElement failed ten times')
     }
@@ -933,7 +914,7 @@ async function selectOption (element, value) {
       Log.error('puppeteer selectOption error', error.toString())
     }
     fails++
-    if (fails > 100) {
+    if (fails > 10) {
       Log.error('puppeteer selectOption fail ten times', element, global.testConfiguration, global.packageJSON)
       throw new Error('selectOption failed ten times')
     }
