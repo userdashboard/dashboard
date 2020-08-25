@@ -8,13 +8,16 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+    services:
+      mongodb:
+        image: mongo:3.4.23
+        ports:
+          - 27017:27017
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install MongoDB
-      run: sudo apt-get install -y mongodb
     - name: Set up as module
       run: |
         HERE=`pwd`
