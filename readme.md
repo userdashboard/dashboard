@@ -30,8 +30,8 @@ Check the `env.txt` or online documentation for more configuration variables.
 
 By default users may register with just a username and password, both of which are encrypted so they cannot be used for anything but signing in.  You can specify some personal information fields to require in an environment variable:
 
-        REQUIRE_PROFILE=true
-        PROFILE_FIELDS=any,combination
+    REQUIRE_PROFILE=true
+    PROFILE_FIELDS=any,combination
 
 | Field         | Description                |
 |---------------|----------------------------|
@@ -52,51 +52,51 @@ The account and administrator drop-down menus are created from stub HTML files p
 
 ### Account menu compilation
 
-    1) Your project's `/src/menu-account.html`
-    2) Any module you use in order specified in your `package.json` `/src/menu-account.html`
-    3) Dashboard's `/src/menu-account.html`
+1) Your project's `/src/menu-account.html`
+2) Any module you use in order specified in your `package.json` `/src/menu-account.html`
+3) Dashboard's `/src/menu-account.html`
 
 ### Administrator menu compilation
 
-    1) Your project's `/src/menu-administrator.html`
-    2) Any module you use in order specified in your `package.json` `/src/menu-administrator.html`
-    3) Dashboard's `/src/menu-administrator.html`
+1) Your project's `/src/menu-administrator.html`
+2) Any module you use in order specified in your `package.json` `/src/menu-administrator.html`
+3) Dashboard's `/src/menu-administrator.html`
 
 # Access user data from your application server
 
 You can access the Dashboard HTTP APIs on behalf of the user making requests.  Dashboard and its modules are entirely API-driven so your application server can retrieve, modify or create any user data.   This example uses NodeJS to fetch the user's account from the Dashboard server.  You can use a shared secret `APPLICATION_SERVER_TOKEN` to verify requests between servers,  dashboard will always send it in `x-application-server-token` and your application server should too.  You can use a firewall to ensure there is no other communication to your server.
 
-        const requestOptions = {
-            host: 'dashboard.example.com',
-            path: `/api/user/sessions?accountid=${accountid}`,
-            port: '443',
-            method: 'GET',
-            headers: {
-                'x-application-server': 'application.example.com',
-                'x-application-server-token': process.env.APPLICATION_SERVER_TOKEN
-            }
+    const requestOptions = {
+        host: 'dashboard.example.com',
+        path: `/api/user/sessions?accountid=${accountid}`,
+        port: '443',
+        method: 'GET',
+        headers: {
+            'x-application-server': 'application.example.com',
+            'x-application-server-token': process.env.APPLICATION_SERVER_TOKEN
         }
-        if (accountid) {
-            requestOptions.headers['x-accountid'] = accountid
-            requestOptions.headers['x-sessionid'] = sessionid
-        }
-        const accountObject = await proxy(requestOptions)
+    }
+    if (accountid) {
+        requestOptions.headers['x-accountid'] = accountid
+        requestOptions.headers['x-sessionid'] = sessionid
+    }
+    const accountObject = await proxy(requestOptions)
 
-        function proxy = util.promisify((requestOptions, callback) => {
-          const proxyRequest = require('https').request(requestOptions, (proxyResponse) => {
-              let body = ''
-              proxyResponse.on('data', (chunk) => {
-                  body += chunk
-              })
-              return proxyResponse.on('end', () => {
-                  return callback(null, JSON.parse(body))
-              })
-          })
-          proxyRequest.on('error', (error) => {
-              return callback(error)
-          })
-          return proxyRequest.end()
+    function proxy = util.promisify((requestOptions, callback) => {
+        const proxyRequest = require('https').request(requestOptions, (proxyResponse) => {
+            let body = ''
+            proxyResponse.on('data', (chunk) => {
+                body += chunk
+            })
+            return proxyResponse.on('end', () => {
+                return callback(null, JSON.parse(body))
+            })
         })
+        proxyRequest.on('error', (error) => {
+            return callback(error)
+        })
+        return proxyRequest.end()
+    })
 
 # Storage backends
 
