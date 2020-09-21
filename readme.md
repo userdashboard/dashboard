@@ -1,17 +1,25 @@
 # Dashboard
-![Test suite status](https://github.com/userdashboard/dashboard/workflows/test-and-publish/badge.svg?branch=master)
 
-Dashboard provides the user boilerplate web apps require for users to register, create groups, subscription billing with Stripe etc.
+1) [What is Dashboard](#what-is-dashboard)
+2) [Hosting Dashboard yourself](#hosting-dashboard-yourself)
+3) [Customize registration information](#customize-registration-information)
+4) [Customizing Dashboard with CSS](#customizing-dashboard-with-css)
+5) [Using the full page for your application](#using-the-full-page-for-your-application)
+6) [Adding links to account or administrator menus](#adding-links-to-account-or-administrator-menus)
+7) [Access account data from your application server](#access-account-data-from-your-application-server)
+8) [Storage backends](#storage-backends)
+9) [Storage caching](#storage-caching)
+10) [Logging](#logging)
+11) [Localization](#localization)
+12) [Dashboard modules](#dashboard-modules)
+13) [Creating modules for Dashboard](#creating-modules-for-dashboard)
+14) [Testing](#testing)
 
-You can write your web app in any language running its own server and Dashboard runs in parallel.  Users browse your Dashboard server's URL and it either responds with its own content or proxies your application.  An application server needs to serve a guest landing page on `/` and your web app on `/home`, and optionally any other URLs you require.
+# What is Dashboard
 
-Dashboard is a stateless web server designed to scale horizontally, written in NodeJS.  You can publish it to Heroku or similar PaaS and run multiple instances, or use web hosts like Digital Ocean, Vultr, AWS etc load balancing services they provide.  In production you should have at least 2 instances of the server sharing requests for basic redundancy.  Dashboard hashes passwords and account reset codes with random salts and usernames and other fields using sha512.  Data is optionally AES-encrypted before writing to your storage.
+Dashboard provides the user boilerplate web apps require for users to register, create groups, subscription billing with Stripe etc.  It ruins separately to your application so you have two web servers instead of one, and Dashboard fuses their content together to provide a single website or interface for your users.  Users browse your Dashboard server's URL and it either responds with its own content or proxies your application to return your content.  All you need to code is your `/` page and `/home`.
 
-Dashboard's UI offers a generic account management and administration interface resembling the last two decades of web applications.  Your application server can serve two special CSS files, `/public/template-additional.css` and `/public/content-additional.css` to theme the Dashboard template and content.  If your server does not provide these files your Dashboard server will respond with blank files rather than 404 errors.
-
-Your content can occupy the full screen with `<html data-template="false">`.  Your content can be accessible to guests by specifying `<html data-auth="false">`.  The content you serve can include a `<template id="head"></template>` with HTML to be copied into Dashboard's template `<HEAD>` tag.  You can use Dashboard's navigation bar by providing a `<template id="navbar"></template>` with your HTML links.
-
-Your application server can access Dashboard's APIs on behalf of your users and administrators to do anything Dashboard's UI offers and more.
+Dashboard provides all the pages your users need to manage their accounts, with modules for more common functionality.  Your application server can serve two special CSS files at `/public/template-additional.css` and `/public/content-additional.css` to theme the Dashboard template and pages to match your application design.  Your application server can access Dashboard's APIs on behalf of your users and administrators to do anything Dashboard's UI offers and more.
 
 # Hosting Dashboard yourself
 
@@ -46,25 +54,37 @@ By default users may register with just a username and password, both of which a
 | website       | Website                    |
 | occupation    | Occupation                 |
 
+# Customizing Dashboard with CSS
+
+Your application server can serve two special CSS files to modify Dashboard and module content and template, `/public/template-additional.css` and `/public/content-additional.css`.  You can use these files to style all of the content from the Dashboard server to match your application.
+
+# Using the full page for your application
+
+Your content can be served mixed with Dashboard's template and optionally sharing its navigation bar, or your page can be served by itself in control of the entire interface `<html data-template="false">`.  You can specify links in Dashboard's navigation bar with `<template id="navbar"></template>` containing your HTML and links.
+
+Your content can be accessible to guests by specifying `<html data-auth="false">`.  
+
+Your content can include a `<template id="head"></template>` with HTML to be copied into Dashboard's template `<HEAD>` tag for things like analytics or other application-wide code snippets.
+
 # Adding links to the account or administrator menus
 
-The account and administrator drop-down menus are created from stub HTML files placed in Dashboard, modules, and your project.  To add your own links create a `/src/menu-account.html` and `/src/menu-administrator.html` in your project with the HTML top include.  Dashboard and its modules use plain links, if you deviate from that you might need to add some styling to your `/public/template-additional.css` to accommodate other tags.
+The account and administrator drop-down menus are created from stub HTML files placed in Dashboard, modules, and your project.  To add your own links create a `/src/menu-account.html` and `/src/menu-administrator.html` in your project with the HTML top include.
 
-### Account menu compilation
+## Account menu compilation
 
 1) Your project's `/src/menu-account.html`
 2) Any module you use in order specified in your `package.json` `/src/menu-account.html`
 3) Dashboard's `/src/menu-account.html`
 
-### Administrator menu compilation
+## Administrator menu compilation
 
 1) Your project's `/src/menu-administrator.html`
 2) Any module you use in order specified in your `package.json` `/src/menu-administrator.html`
 3) Dashboard's `/src/menu-administrator.html`
 
-# Access user data from your application server
+# Access account data from your application server
 
-You can access the Dashboard HTTP APIs on behalf of the user making requests.  Dashboard and its modules are entirely API-driven so your application server can retrieve, modify or create any user data.   This example uses NodeJS to fetch the user's account from the Dashboard server.  You can use a shared secret `APPLICATION_SERVER_TOKEN` to verify requests between servers,  dashboard will always send it in `x-application-server-token` and your application server should too.  You can use a firewall to ensure there is no other communication to your server.
+You can access the Dashboard HTTP APIs on behalf of the user making requests.  This example uses NodeJS to fetch the user's account from the Dashboard server.  You can use a shared secret `APPLICATION_SERVER_TOKEN` to verify requests between servers, both servers send it in an `x-application-server-token` header.
 
     const requestOptions = {
         host: 'dashboard.example.com',
@@ -100,7 +120,7 @@ You can access the Dashboard HTTP APIs on behalf of the user making requests.  D
 
 # Storage backends
 
-Dashboard by default uses local disk, this is good for development and under certain circumstances but generally you should use any of Redis, PostgreSQL, MySQL, MongoDB or S3-compatible for storage.
+Dashboard by default uses local disk, this is good for development and under some circumstances like an app your family uses, but generally you should use any of Redis, PostgreSQL, MySQL, MongoDB or S3-compatible for storage.
 
 |                                                                                                                                             | Name        | Description                             | Package                                                                                          | Repository                                                    |
 |---------------------------------------------------------------------------------------------------------------------------------------------|-------------|-----------------------------------------|--------------------------------------------------------------------------------------------------|---------------------------------------------------------------|
@@ -117,7 +137,7 @@ You can activate a storage backend with an environment variable.  Each have uniq
       MONGODB_URL=mongodb:/.... \
       node main.js
 
-## Storage caching
+# Storage caching
 
 You can complement your storage backend with optional caching, either using RAM if you have a single instance of your Dashboard server, or Redis if you need a cache shared by multiple instances of your Dashboard server.
 
