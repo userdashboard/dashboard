@@ -15,11 +15,13 @@
 
 # What is Dashboard
 
-Modern web applications require coding a user account system, organizations, subscriptions and other 'boilerplate' again and again.  Dashboard packages everything web apps need into reusable, modular software.  It runs separately to your application so you have two web servers instead of one, and Dashboard fuses their content together to provide a single website or interface for your users.  Your application server needs to provide a `/` and `/home` to get started.
+Modern web applications require coding a user account system, organizations, subscriptions and other 'boilerplate' again and again.  Dashboard packages everything web apps need into reusable, modular software.  It runs separately to your application so you have two web servers instead of one, and Dashboard fuses their content together to provide a single website or interface for your users.  Your web app only needs to provide a `/` for guests and `/home` for signed in users to get started.
 
-Dashboard and modules include HTML and CSS pages for all the functionality users need.  Your application server can serve two special CSS files at `/public/template-additional.css` and `/public/content-additional.css` to theme the Dashboard template and pages to match your application design.  Dashboard assumes you must be signed in to access any URL outside of `/` and `/public/*`.  Your content can be accessible to guests by specifying `<html data-auth="false">`.
+Dashboard uses a `template.html` with header, navigation and content structure.  Dashboard and modules use HTML pages and CSS for all the functionality users need.  Your application server can serve two special CSS files at `/public/template-additional.css` and `/public/content-additional.css` to theme the template and pages to match your application design.  Dashboard assumes you must be signed in to access any URL outside of `/` and `/public/*`.
 
-Dashboard uses a `template.html` with header, navigation and content structure.  Dashboard inserts content into the IFRAME using the `srcdoc` attribute.  You can inject HTML snippets into the template by including `<template id="head"></template>` in your HTML.  You can use the template's navigation bar by including `<template id="navbar"></template>` in your HTML.  You can provide your own `template.html` to make broader modifications.  You can serve content without the template - you serve the entire page -  by specifying `<html data-template="false">`.
+Your application server can return special HTML attributes and tags to interoperate with the Dashboard server.  Your content can be accessible to guests by specifying `<html data-auth="false">` and you can serve full-page content by specifying `<html data-template="false">` in your HTML.
+
+You can inject HTML snippets into the template by including `<template id="head"></template>` in your content or populate the template's navigation bar by including `<template id="navbar"></template>` with the links and any other HTML for your menu.  
 
 # Hosting Dashboard yourself
 
@@ -110,14 +112,14 @@ You can access the Dashboard HTTP APIs on behalf of the user making requests.  T
 
 Dashboard by default uses local disk, this is good for development and under some circumstances like an app your family uses, but generally you should use any of Redis, PostgreSQL, MySQL, MongoDB or S3-compatible for storage.
 
-| Name        | Description                             | Package                                                                                          | Repository                                                    |
-|-------------|-----------------------------------------|--------------------------------------------------------------------------------------------------|---------------------------------------------------------------|
-| File system | For development and single-server apps  | -                                                                                                | -                                                             |
-| Amazon S3   | Minimum speed and minimum scaling cost  | [@userdashboard/storage-s3](https://npmjs.com/package/@userdashboard/storage-s3)                 | [github](https://github.com/userdashboard/storage-s3)         |
-| MySQL       | Medium speed and medium scaling cost    | [@userdashboard/storage-mysql](https://npmjs.com/package/@userdashboard/storage-mysql)           | [github](https://github.com/userdashboard/storage-mysql)      |
-| MongoDB     | Medium speed and medium scaling cost    | [@userdashboard/storage-mongodb](https://npmjs.com/package/@userdashboard/storage-mongodb)       | [github](https://github.com/userdashboard/storage-mongodb)    |
-| PostgreSQL  | Medium speed and medium scaling cost    | [@userdashboard/storage-postgresql](https://npmjs.com/package/@userdashboard/storage-postgresql) | [github](https://github.com/userdashboard/storage-postgresql) |
-| Redis       | Maximum speed and maximum scaling cost  | [@userdashboard/storage-redis](https://npmjs.com/package/@userdashboard/storage-redis)           | [github](https://github.com/userdashboard/storage-edis)       |
+| Name                                                                                              | Description                             |
+|---------------------------------------------------------------------------------------------------|-----------------------------------------|
+| File system                                                                                       | For development and single-server apps  |
+| [@userdashboard/storage-s3](https://npmjs.com/package/@userdashboard/storage-s3)                  | Minimum speed and minimum scaling cost  |
+| [@userdashboard/storage-mysql](https://npmjs.com/package/@userdashboard/storage-mysql)            | Medium speed and medium scaling cost    |
+| [@userdashboard/storage-mongodb](https://npmjs.com/package/@userdashboard/storage-mongodb)        | Medium speed and medium scaling cost    |
+| [@userdashboard/storage-postgresql](https://npmjs.com/package/@userdashboard/storage-postgresql)  | Medium speed and medium scaling cost    |
+| [@userdashboard/storage-redis](https://npmjs.com/package/@userdashboard/storage-redis)            | Maximum speed and maximum scaling cost  |
 
 You can activate a storage backend with an environment variable.  Each have unique configuration requirements specified in their readme files.
 
@@ -129,10 +131,10 @@ You can activate a storage backend with an environment variable.  Each have uniq
 
 You can complement your storage backend with optional caching, either using RAM if you have a single instance of your Dashboard server, or Redis if you need a cache shared by multiple instances of your Dashboard server.
 
-|Name    | Description                            | Package                                                                                  | Repository                                             |
-|--------|----------------------------------------|------------------------------------------------------------------------------------------|--------------------------------------------------------|
-| NodeJS | For development and single-server apps | -                                                                                        | -                                                      |
-| Redis  | For speeding up disk-based storage     | [@userdashboard/storage-redis](https://npmjs.com/package/@userdashboard/storage-redis) | [github](https://github.com/userdashboard/storage-redis) |
+|Name                                                                                     | Description                            |
+|-----------------------------------------------------------------------------------------|----------------------------------------|
+| NodeJS                                                                                  | For development and single-server apps |
+| [@userdashboard/storage-redis](https://npmjs.com/package/@userdashboard/storage-redis)  | For speeding up disk-based storage     |
 
 You can optionally use Redis as a cache, this is good for any storage on slow disks.
 
@@ -182,12 +184,12 @@ By default users may not customize language settings.  You can enable the option
 
 Dashboard is modular and by itself it provides only the signing in, account management and basic administration.  Modules add new pages and API routes for additional functionality.
 
-| Name                 | Description                   | Package                                                                                             | Repository                                                      |
-|----------------------|-------------------------------|-----------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-| MaxMind GeoIP        | IP address-based geolocation  | [@userdashboard/maxmind-geoip](https://npmjs.com/package/userdashboard/maxmind-geoip)               | [github](https://github.com/userdashboard/maxmind-geoip)        |
-| Organizations        | User created groups           | [@userdashboard/organizations](https://npmjs.com/package/userdashboard/organizations)               | [github](https://github.com/userdashboard/organizations)        |
-| Stripe Connect       | Marketplace functionality     | [@userdashboard/stripe-connect](https://npmjs.com/package/userdashboard/stripe-connect)             | [github](https://github.com/userdashboard/stripe-connect)       |
-| Stripe Subscriptions | SaaS functionality            | [@userdashboard/stripe-subscriptions](https://npmjs.com/package/userdashboard/stripe-subscriptions) | [github](https://github.com/userdashboard/stripe-subscriptions) |
+| Name                                                                                                | Description                              |
+|-----------------------------------------------------------------------------------------------------|------------------------------------------|
+| [@userdashboard/maxmind-geoip](https://npmjs.com/package/userdashboard/maxmind-geoip)               | IP address-based geolocation by MaxMind  |
+| [@userdashboard/organizations](https://npmjs.com/package/userdashboard/organizations)               | User created groups                      |
+| [@userdashboard/stripe-connect](https://npmjs.com/package/userdashboard/stripe-connect)             | Marketplace functionality by Stripe      |
+| [@userdashboard/stripe-subscriptions](https://npmjs.com/package/userdashboard/stripe-subscriptions) | SaaS functionality by Stripe             |
 
 Modules are NodeJS packages that you install with NPM:
 
