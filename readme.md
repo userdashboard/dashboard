@@ -3,23 +3,23 @@
 1) [What is Dashboard](#what-is-dashboard)
 2) [Hosting Dashboard yourself](#hosting-dashboard-yourself)
 3) [Customize registration information](#customize-registration-information)
-4) [Customizing Dashboard with CSS](#customizing-dashboard-with-css)
-5) [Using the full page for your application](#using-the-full-page-for-your-application)
-6) [Adding links to account or administrator menus](#adding-links-to-account-or-administrator-menus)
-7) [Access account data from your application server](#access-account-data-from-your-application-server)
-8) [Storage backends](#storage-backends)
-9) [Storage caching](#storage-caching)
-10) [Logging](#logging)
-11) [Localization](#localization)
-12) [Dashboard modules](#dashboard-modules)
-13) [Creating modules for Dashboard](#creating-modules-for-dashboard)
-14) [Testing](#testing)
+4) [Adding links to account or administrator menus](#adding-links-to-account-or-administrator-menus)
+5) [Access account data from your application server](#access-account-data-from-your-application-server)
+6) [Storage backends](#storage-backends)
+7) [Storage caching](#storage-caching)
+8) [Logging](#logging)
+9) [Localization](#localization)
+10) [Dashboard modules](#dashboard-modules)
+11) [Creating modules for Dashboard](#creating-modules-for-dashboard)
+12) [Testing](#testing)
 
 # What is Dashboard
 
-Dashboard provides the user boilerplate web apps require for users to register, create groups, subscription billing with Stripe etc.  It ruins separately to your application so you have two web servers instead of one, and Dashboard fuses their content together to provide a single website or interface for your users.  Users browse your Dashboard server's URL and it either responds with its own content or proxies your application to return your content.  All you need to code is your `/` page and `/home`.
+Modern web applications require coding a user account system, organizations, subscriptions and other 'boilerplate' again and again.  Dashboard packages everything web apps need into reusable, modular software.  It runs separately to your application so you have two web servers instead of one, and Dashboard fuses their content together to provide a single website or interface for your users.  Your application server needs to provide a `/` and `/home` to get started.
 
-Dashboard provides all the pages your users need to manage their accounts, with modules for more common functionality.  Your application server can serve two special CSS files at `/public/template-additional.css` and `/public/content-additional.css` to theme the Dashboard template and pages to match your application design.  Your application server can access Dashboard's APIs on behalf of your users and administrators to do anything Dashboard's UI offers and more.
+Dashboard and modules include HTML and CSS pages for all the functionality users need.  Your application server can serve two special CSS files at `/public/template-additional.css` and `/public/content-additional.css` to theme the Dashboard template and pages to match your application design.  Dashboard assumes you must be signed in to access any URL outside of `/` and `/public/*`.  Your content can be accessible to guests by specifying `<html data-auth="false">`.
+
+Dashboard uses a `template.html` with header, navigation and content structure.  Dashboard inserts content into the IFRAME using the `srcdoc` attribute.  You can inject HTML snippets into the template by including `<template id="head"></template>` in your HTML.  You can use the template's navigation bar by including `<template id="navbar"></template>` in your HTML.  You can provide your own `template.html` to make broader modifications.  You can serve content without the template - you serve the entire page -  by specifying `<html data-template="false">`.
 
 # Hosting Dashboard yourself
 
@@ -32,7 +32,7 @@ Dashboard requires NodeJS `12.16.3` be installed.
     $ echo "require('@userdashboard/dashboard').start(__dirname)" > main.js
     $ node main.js
 
-Check the `env.txt` or online documentation for more configuration variables.
+Check the `env.txt` or online documentation for the full list of configuration variables.
 
 # Customize registration information
 
@@ -53,18 +53,6 @@ By default users may register with just a username and password, both of which a
 | company-name  | Company name               |
 | website       | Website                    |
 | occupation    | Occupation                 |
-
-# Customizing Dashboard with CSS
-
-Your application server can serve two special CSS files to modify Dashboard and module content and template, `/public/template-additional.css` and `/public/content-additional.css`.  You can use these files to style all of the content from the Dashboard server to match your application.
-
-# Using the full page for your application
-
-Your content can be served mixed with Dashboard's template and optionally sharing its navigation bar, or your page can be served by itself in control of the entire interface `<html data-template="false">`.  You can specify links in Dashboard's navigation bar with `<template id="navbar"></template>` containing your HTML and links.
-
-Your content can be accessible to guests by specifying `<html data-auth="false">`.  
-
-Your content can include a `<template id="head"></template>` with HTML to be copied into Dashboard's template `<HEAD>` tag for things like analytics or other application-wide code snippets.
 
 # Adding links to the account or administrator menus
 
