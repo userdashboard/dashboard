@@ -1,17 +1,17 @@
 # Dashboard
 
-1) [What is Dashboard](#what-is-dashboard)
-2) [Hosting Dashboard yourself](#hosting-dashboard-yourself)
-3) [Customize registration information](#customize-registration-information)
-4) [Adding links to account or administrator menus](#adding-links-to-account-or-administrator-menus)
-5) [Access account data from your application server](#access-account-data-from-your-application-server)
-6) [Storage backends](#storage-backends)
-7) [Storage caching](#storage-caching)
-8) [Logging](#logging)
-9) [Localization](#localization)
-10) [Dashboard modules](#dashboard-modules)
-11) [Creating modules for Dashboard](#creating-modules-for-dashboard)
-12) [Testing](#testing)
+- [What is Dashboard](#what-is-dashboard)
+- [Hosting Dashboard yourself](#hosting-dashboard-yourself)
+- [Customize registration information](#customize-registration-information)
+- [Adding links to account or administrator menus](#adding-links-to-account-or-administrator-menus)
+- [Access account data from your application server](#access-account-data-from-your-application-server)
+- [Storage backends](#storage-backends)
+- [Storage caching](#storage-caching)
+- [Logging](#logging)
+- [Localization](#localization)
+- [Dashboard modules](#dashboard-modules)
+- [Creating modules for Dashboard](#creating-modules-for-dashboard)
+- [Testing](#testing)
 
 # What is Dashboard
 
