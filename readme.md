@@ -17,7 +17,12 @@
 
 # What is Dashboard
 
-Modern web applications require coding a user account system, organizations, subscriptions and other 'boilerplate' again and again.  Dashboard packages everything web apps need into reusable, modular software.  It runs separately to your application so you have two web servers instead of one, and Dashboard fuses their content together to provide a single website or interface for your users.  Your web app only needs to provide a `/` for guests and `/home` for signed in users to get started.
+Modern web applications require coding a user account system, organizations, subscriptions and other 'boilerplate' again and again.  Dashboard packages everything web apps need into reusable, modular software.  It runs separately to your application so you have two web servers instead of one, and Dashboard fuses their content together to provide a single website or interface for your users.  To get started your web app just needs a `/` for guests and `/home` for signed in users.
+
+| Application | Dashboard      | + modules          |
+|-------------|----------------|--------------------|
+| /           | /account       | /account/...       |
+| /home       | /administrator | /administrator/... |
 
 Dashboard uses a `template.html` with header, navigation and content structure.  Dashboard and modules use HTML pages and CSS for all the functionality users need.  Your application server can serve two special CSS files at `/public/template-additional.css` and `/public/content-additional.css` to theme the template and pages to match your application design.  Dashboard assumes you must be signed in to access any URL outside of `/` and `/public/*`.
 
@@ -36,11 +41,9 @@ Dashboard requires NodeJS `12.16.3` be installed.
     $ echo "require('@userdashboard/dashboard').start(__dirname)" > main.js
     $ node main.js
 
-Check the `env.txt` or online documentation for the full list of configuration variables.
-
 # Configuring Dashboard
 
-Your Dashboard server's `package.json` can configure most of Dashboard:
+Dashboard is configured with a combination of environment variables and hard-coded settings in your `package.json`:
 
     {
         "dashboard": {
@@ -61,16 +64,16 @@ Your Dashboard server's `package.json` can configure most of Dashboard:
             "menus": {
                 "administrator": [
                     {
-                    "href": "/administrator/your_module_name",
-                    "text": "Administrator link",
-                    "object": "link"
+                        "href": "/administrator/your_module_name",
+                        "text": "Administrator link",
+                        "object": "link"
                     }
                 ],
                 "account": [
                     {
-                    "href": "/account/your_module_name",
-                    "text": "Account link",
-                    "object": "link"
+                        "href": "/account/your_module_name",
+                        "text": "Account link",
+                        "object": "link"
                     }
                 ]
             }
