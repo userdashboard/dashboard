@@ -3,8 +3,8 @@
 - [What is Dashboard](#what-is-dashboard)
 - [Hosting Dashboard yourself](#hosting-dashboard-yourself)
 - [Customize registration information](#customize-registration-information)
-- [Adding links to account or administrator menus](#adding-links-to-account-or-administrator-menus)
-- [Access account data from your application server](#access-account-data-from-your-application-server)
+- [Adding links to header menus](#adding-links-to-header-menus)
+- [Access account data from your application](#access-account-data-from-your-application-server)
 - [Storage backends](#storage-backends)
 - [Storage caching](#storage-caching)
 - [Logging](#logging)
@@ -36,12 +36,93 @@ Dashboard requires NodeJS `12.16.3` be installed.
 
 Check the `env.txt` or online documentation for the full list of configuration variables.
 
+# Configuring Dashboard
+
+Your Dashboard server's `package.json` can configure most of Dashboard:
+
+{
+    "dashboard": {
+        "title": "Title to place in Template",
+        "modules: [
+            "@userdashboard/organizations",
+            "@userdashboard/stripe-connect"
+        ],
+        "server": [
+            "/src/to/script/to/run/receiving/requests.js"
+        ],
+        "content": [
+            "/src/to/script/to/modify/content.js"
+        ],
+        "proxy": [
+            "/src/to/script/to/modify/proxy/requests.js
+        ],
+        "menus": {
+            "administrator": [
+                {
+                "href": "/administrator/your_module_name",
+                "text": "Administrator link",
+                "object": "link"
+                }
+            ],
+            "account": [
+                {
+                "href": "/account/your_module_name",
+                "text": "Account link",
+                "object": "link"
+                }
+            ]
+        }
+    }
+}
+
+| Attribute | Purpose                                   |
+|-----------|-------------------------------------------|
+| title     | Template header title                     |
+| modules   | Activates the installed modules           |
+| menus     | Add links to header menus                 |
+| proxy     | Include data in requests to your server   |
+| content   | Modify content before it is served        |
+| server    | Modify requests before they are processed |
+
+Server handlers can execute `before` and/or `after` a visitor is identified as a guest or user:
+
+    module.exports = {
+        before: async (req, res) => {
+            // req.account is not set
+            // req.session is not set
+        },
+        after: async (req, res) => {
+            // req.account may be set
+            // req.session may be set
+        }
+    }
+
+Content handlers can adjust the `template` and `page` documents before they are served to the user:
+
+    module.exports = {
+        page: async (req, res, pageDoc) => {
+            // adjust page before mixing with template
+        },
+        template: async (req, res, templateDoc) => {
+            // page is now in `src-doc` of application iframe
+        }
+    }
+
+Proxy handlers can add to the headers sent to your application servers:
+    
+    module.exports = async (req, proxyRequestOptions) => {
+        proxyRequestOptions.headers.include = 'something'
+    }
+    
+
 # Customize registration information
 
 By default users may register with just a username and password, both of which are encrypted so they cannot be used for anything but signing in.  You can specify some personal information fields to require in an environment variable:
 
     REQUIRE_PROFILE=true
     PROFILE_FIELDS=any,combination
+
+These fields are supported by the registration form:
 
 | Field         | Description                |
 |---------------|----------------------------|
@@ -56,21 +137,21 @@ By default users may register with just a username and password, both of which a
 | website       | Website                    |
 | occupation    | Occupation                 |
 
-# Adding links to the account or administrator menus
+# Adding links to the header menus
 
 The account and administrator drop-down menus are created from stub HTML files placed in Dashboard, modules, and your project.  To add your own links create a `/src/menu-account.html` and `/src/menu-administrator.html` in your project with the HTML top include.
 
 ## Account menu compilation
 
-1) Your project's `/src/menu-account.html`
-2) Any module you use in order specified in your `package.json` `/src/menu-account.html`
-3) Dashboard's `/src/menu-account.html`
+1) Your project's `package.json` and `/src/menu-account.html`
+2) Any activated module `package.json` and `/src/menu-account.html` files
+3) Dashboard's `package.json` and `/src/menu-account.html`
 
 ## Administrator menu compilation
 
-1) Your project's `/src/menu-administrator.html`
-2) Any module you use in order specified in your `package.json` `/src/menu-administrator.html`
-3) Dashboard's `/src/menu-administrator.html`
+1) Your project's `package.json` and `/src/menu-administrator.html`
+2) Any activated module `package.json` and `/src/menu-administrator.html` files
+3) Dashboard's `package.json` and `/src/menu-administrator.html`
 
 # Access account data from your application server
 
@@ -283,68 +364,6 @@ Content can occupy the full screen without the template via a flag in the HTML o
         }
     }
 
-Your module can add links to the account and administrator menus in its `package.json`:
-
-    {
-        dashboard: {
-            "menus": {
-                "administrator": [
-                    {
-                    "href": "/administrator/your_module_name",
-                    "text": "Administrator link",
-                    "object": "link"
-                    }
-                ],
-                "account": [
-                    {
-                    "href": "/account/your_module_name",
-                    "text": "Account link",
-                    "object": "link"
-                    }
-                ]
-            },
-        }
-    }
-
-Your module can add `server` handlers that manipulate requests, `content` handlers that adjust the rendered content, and `proxy` handlers that add to header information sent to application servers.
-
-    {
-        dashboard: {
-            "server": [
-                "/src/server/my-request-modifier.js"
-            ],
-            "content": [
-                "/src/content/my-content-modifier.js"
-            ],
-            "proxy": [
-                "/src/proxy/my-header-additions.js"
-            ]
-        }
-    }
-
-Server handlers can execute `before` and/or `after` a visitor is identified as a guest or user:
-
-    module.exports = {
-        before: async (req, res) => {
-        },
-        after: async (req, res) => {
-        }
-    }
-
-Content handlers can adjust the `template` and `page` documents before they are served to the user:
-
-    module.exports = {
-        page: async (req, res, pageDoc) => {
-        },
-        template: async (req, res, templateDoc) => {
-        }
-    }
-
-Proxy handlers can add to the headers sent to application servers:
-    
-    module.exports = async (req, proxyRequestOptions) => {
-    }
-    
 # Testing
 
 Dashboard's test suite covers the `API` and the `UI`.  The `API` tests are performed by proxying a running instance of the software.  The `UI` tests are performed with `puppeteer` remotely-controlling `Chrome` to browse a running instance of the software.  These tests are performed using each storage type.
