@@ -1,11 +1,12 @@
-# Dashboard 
+# Documentation for Dashboard
 
 #### Index
 
-- [What is Dashboard](#what-is-dashboard)
+- [Introduction](#dashboard)
 - [Hosting Dashboard yourself](#hosting-dashboard-yourself)
+- [Configuring Dashboard](#configuring-dashboard)
 - [Customize registration information](#customize-registration-information)
-- [Adding links to header menus](#adding-links-to-header-menus)
+- [Adding links to the header menus](#adding-links-to-the-header-menus)
 - [Access account data from your application](#access-account-data-from-your-application-server)
 - [Storage backends](#storage-backends)
 - [Storage caching](#storage-caching)
@@ -14,10 +15,14 @@
 - [Dashboard modules](#dashboard-modules)
 - [Creating modules for Dashboard](#creating-modules-for-dashboard)
 - [Testing](#testing)
+- [Github repository](https://github.com/userdashboard/dashboard)
+- [NPM package](https://npmjs.org/userdashboard/dashboard)
 
-# What is Dashboard
+# Introduction
 
-Modern web applications require coding a user account system, organizations, subscriptions and other 'boilerplate' again and again.  Dashboard packages everything web apps need into reusable, modular software.  It runs separately to your application so you have two web servers instead of one, and Dashboard fuses their content together to provide a single website or interface for your users.  To get started your web app just needs a `/` for guests and `/home` for signed in users.
+Web applications often require coding a user account system, organizations, subscriptions and other 'boilerplate' again and again.  
+
+Dashboard packages everything web apps need into reusable, modular software.  It runs separately to your application so you have two web servers instead of one, and Dashboard fuses their content together to provide a single website or interface for your users.  To get started your web app just needs a `/` for guests and `/home` for signed in users.
 
 | Application | Dashboard      | + modules          |
 |-------------|----------------|--------------------|
@@ -160,25 +165,25 @@ The account and administrator drop-down menus are created from stub HTML files p
 
 # Access account data from your application server
 
-You can access the Dashboard HTTP APIs on behalf of the user making requests.  This example uses NodeJS to fetch the user's account from the Dashboard server.  You can use a shared secret `APPLICATION_SERVER_TOKEN` to verify requests between servers, both servers send it in an `x-application-server-token` header.
+Dashboard and official modules are completely API-driven and you can access the same APIs on behalf of the user making requests.  You perform `GET`, `POST`, `PATCH`, and `DELETE` HTTP requests against the API endpoints to fetch or modify data.  You can use a shared secret `APPLICATION_SERVER_TOKEN` to verify requests between servers, both servers send it in an `x-application-server-token` header.  This example fetches the user's session information using NodeJS, you can do this with any language:
 
-    const requestOptions = {
-        host: 'dashboard.example.com',
-        path: `/api/user/sessions?accountid=${accountid}`,
-        port: '443',
-        method: 'GET',
-        headers: {
-            'x-application-server': 'application.example.com',
-            'x-application-server-token': process.env.APPLICATION_SERVER_TOKEN
+    const sessions = await proxy(`/api/user/sessions?accountid=${accountid}`, accountid, sessionid)
+
+    const proxy = util.promisify((path, accountid, sessionid, callback) => {
+        const requestOptions = {
+            host: 'dashboard.example.com',
+            path: path,
+            port: '443',
+            method: 'GET',
+            headers: {
+                'x-application-server': 'application.example.com',
+                'x-application-server-token': process.env.APPLICATION_SERVER_TOKEN
+            }
         }
-    }
-    if (accountid) {
-        requestOptions.headers['x-accountid'] = accountid
-        requestOptions.headers['x-sessionid'] = sessionid
-    }
-    const accountObject = await proxy(requestOptions)
-
-    function proxy = util.promisify((requestOptions, callback) => {
+        if (accountid) {
+            requestOptions.headers['x-accountid'] = accountid
+            requestOptions.headers['x-sessionid'] = sessionid
+        }
         const proxyRequest = require('https').request(requestOptions, (proxyResponse) => {
             let body = ''
             proxyResponse.on('data', (chunk) => {
@@ -192,7 +197,9 @@ You can access the Dashboard HTTP APIs on behalf of the user making requests.  T
             return callback(error)
         })
         return proxyRequest.end()
-    })
+      })
+    }
+
 
 # Storage backends
 
@@ -217,10 +224,10 @@ You can activate a storage backend with an environment variable.  Each have uniq
 
 You can complement your storage backend with optional caching, either using RAM if you have a single instance of your Dashboard server, or Redis if you need a cache shared by multiple instances of your Dashboard server.
 
-|Name                                                                                     | Description                            |
-|-----------------------------------------------------------------------------------------|----------------------------------------|
-| NodeJS                                                                                  | For development and single-server apps |
-| [@userdashboard/storage-redis](https://npmjs.com/package/@userdashboard/storage-redis)  | For speeding up disk-based storage     |
+|Name                                                                                          | Description                            |
+|----------------------------------------------------------------------------------------------|----------------------------------------|
+| NodeJS                                                                                       | For single-server apps                 |
+| [@userdashboard/storage-cache-redis](https://npmjs.com/package/@userdashboard/storage-redis) | For speeding up disk-based storage     |
 
 You can optionally use Redis as a cache, this is good for any storage on slow disks.
 
@@ -341,7 +348,7 @@ These paths have special significance:
 | `/src/www/api/administrator/YOUR_MODULE/` | Your additions (if applicable)                   |
 | `/src/www/webhooks/YOUR_MODULE/`          | Endpoints for receiving webhooks (if applicable) |
 
-Content pages may export `before`, `get` and `post` methods.  API routes may export `before`, `get`, `post`, `patch`, `delete`, `put` methods.   If specified, the `before` methods will execute before any `verb`.
+Content pages may export `before`, `get` for rendering the page and `post` methods for submitting HTML forms.  API routes may export `before`, `get`, `post`, `patch`, `delete`, `put` methods.   If specified, the `before` method will execute before any `verb`.
  
 Guest-accessible content and API routes can be flagged in the HTML or NodeJS:
 
