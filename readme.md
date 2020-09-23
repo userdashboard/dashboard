@@ -1,4 +1,6 @@
-# Dashboard
+# Dashboard 
+
+#### Index
 
 - [What is Dashboard](#what-is-dashboard)
 - [Hosting Dashboard yourself](#hosting-dashboard-yourself)
@@ -40,40 +42,40 @@ Check the `env.txt` or online documentation for the full list of configuration v
 
 Your Dashboard server's `package.json` can configure most of Dashboard:
 
-{
-    "dashboard": {
-        "title": "Title to place in Template",
-        "modules: [
-            "@userdashboard/organizations",
-            "@userdashboard/stripe-connect"
-        ],
-        "server": [
-            "/src/to/script/to/run/receiving/requests.js"
-        ],
-        "content": [
-            "/src/to/script/to/modify/content.js"
-        ],
-        "proxy": [
-            "/src/to/script/to/modify/proxy/requests.js
-        ],
-        "menus": {
-            "administrator": [
-                {
-                "href": "/administrator/your_module_name",
-                "text": "Administrator link",
-                "object": "link"
-                }
+    {
+        "dashboard": {
+            "title": "Title to place in Template",
+            "modules: [
+                "@userdashboard/organizations",
+                "@userdashboard/stripe-connect"
             ],
-            "account": [
-                {
-                "href": "/account/your_module_name",
-                "text": "Account link",
-                "object": "link"
-                }
-            ]
+            "server": [
+                "/src/to/script/to/run/receiving/requests.js"
+            ],
+            "content": [
+                "/src/to/script/to/modify/content.js"
+            ],
+            "proxy": [
+                "/src/to/script/to/modify/proxy/requests.js
+            ],
+            "menus": {
+                "administrator": [
+                    {
+                    "href": "/administrator/your_module_name",
+                    "text": "Administrator link",
+                    "object": "link"
+                    }
+                ],
+                "account": [
+                    {
+                    "href": "/account/your_module_name",
+                    "text": "Account link",
+                    "object": "link"
+                    }
+                ]
+            }
         }
     }
-}
 
 | Attribute | Purpose                                   |
 |-----------|-------------------------------------------|
@@ -144,13 +146,13 @@ The account and administrator drop-down menus are created from stub HTML files p
 ## Account menu compilation
 
 1) Your project's `package.json` and `/src/menu-account.html`
-2) Any activated module `package.json` and `/src/menu-account.html` files
+2) Any activated module's `package.json` links or `/src/menu-account.html` files
 3) Dashboard's `package.json` and `/src/menu-account.html`
 
 ## Administrator menu compilation
 
 1) Your project's `package.json` and `/src/menu-administrator.html`
-2) Any activated module `package.json` and `/src/menu-administrator.html` files
+2) Any activated module's `package.json` links or `/src/menu-administrator.html` files
 3) Dashboard's `package.json` and `/src/menu-administrator.html`
 
 # Access account data from your application server
