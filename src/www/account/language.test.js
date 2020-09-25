@@ -39,7 +39,7 @@ describe('/account/language', () => {
       const languages = global.languages
       let found = false
       for (const language of languages) {
-        if (languge === 'es') {
+        if (language.code === 'es') {
           found = true
           break
         }
@@ -67,6 +67,7 @@ describe('/account/language', () => {
       const messageContainer = doc.getElementById('message-container')
       const message = messageContainer.child[0]
       assert.strictEqual(message.attr.template, 'success')
+      global.languages = JSON.parse(JSON.stringify(languages))
     })
   })
 })
