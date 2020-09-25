@@ -36,6 +36,18 @@ describe('/account/language', () => {
   describe('submit', () => {
     it('should change the language (screenshots)', async () => {
       global.enableLanguagePreference = true
+      const languages = global.languages
+      let found = false
+      for (const language of languages) {
+        if (languge === 'es') {
+          found = true
+          break
+        }
+      }
+      if (!found) {
+        global.languages = JSON.parse(JSON.stringify(languages))
+        global.languages.push({ object: 'language', code: 'es', name: 'Español' })
+      }
       const user = await TestHelper.createUser()
       const req = TestHelper.createRequest('/account/language')
       req.account = user.account
