@@ -1,8 +1,25 @@
 /* eslint-env mocha */
 const assert = require('assert')
+const { setupBeforeEach } = require('../../../test-helper.js')
 const TestHelper = require('../../../test-helper.js')
 
 describe('/account/language', () => {
+  let languages
+  before(() => {
+    languages = global.languages
+  })
+  beforeEach(() => {
+    global.languages = JSON.parse(JSON.stringify(languages))
+    for (const language of global.languages) {
+      if (language.code === 'es') {
+        return
+      }
+    }
+    global.languages.push({ object: 'language', code: 'es', name: 'Español' })
+  })
+  afterEach(() => {
+    global.languages = JSON.parse(JSON.stringify(languages))
+  })
   describe('exceptions', () => {
     it('should require language enabled', async () => {
       const user = await TestHelper.createUser()

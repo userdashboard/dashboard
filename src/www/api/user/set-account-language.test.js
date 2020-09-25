@@ -3,6 +3,22 @@ const assert = require('assert')
 const TestHelper = require('../../../../test-helper.js')
 
 describe('/api/user/set-account-language', () => {
+  let languages
+  before(() => {
+    languages = global.languages
+  })
+  beforeEach(() => {
+    global.languages = JSON.parse(JSON.stringify(languages))
+    for (const language of global.languages) {
+      if (language.code === 'es') {
+        return
+      }
+    }
+    global.languages.push({ object: 'language', code: 'es', name: 'Español' })
+  })
+  afterEach(() => {
+    global.languages = JSON.parse(JSON.stringify(languages))
+  })
   describe('exceptions', () => {
     describe('invalid-accountid', () => {
       it('missing querystring accountid', async () => {
