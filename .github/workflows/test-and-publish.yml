@@ -34,16 +34,6 @@ jobs:
         cp /home/runner/work/dashboard/dashboard/*.js node_modules/@userdashboard/dashboard
         cp -R $HERE/src/ node_modules/@userdashboard/dashboard/src/
         echo "global.applicationPath = __dirname" > main.js
-        wget https://git.io/trans
-        chmod +x ./trans
-        sudo mv trans /usr/local/bin
-        git clone https://github.com/userdashboard/localization.git /tmp/localize
-        cd /tmp/localize
-        npm install
-        for LOCALE in `cat languages`; do
-          node clean-cache.js "$LOCALE" /home/runner/work/localization/localization/project/dashboard $HERE
-          node localize.js "$LOCALE" $HERE
-        done
     - name: Lint (standard.js)
       run: standard src
     - name: Test (redis)
