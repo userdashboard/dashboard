@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" data-navbar="/account/navbar-profiles.html">
+
 <head>
-  <meta charset="utf-8" /> 
-  <title translate="yes">Стварыце профіль</title>
+  <meta charset="utf-8" />
+  <title translate="yes">Стварыць профіль</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
+
 <body>
-  <h1 translate="yes">Стварыце профіль</h1>
-  <p translate="yes">Профілі захоўваюць вашу асабістую інфармацыю ў адміністрацыйных і іншых мэтах.</p>
+  <h1 translate="yes">Стварыць профіль</h1>
+  <p translate="yes">У профілях захоўваецца ваша асабістая інфармацыя ў адміністрацыйных і іншых мэтах.</p>
   <div id="message-container"></div>
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile"
+    name="submit-form">
     <div class="pure-checkbox">
-      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">Зрабі па змаўчанні</span></label>
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span
+          translate="yes">Зрабіць маім па змаўчанні</span></label>
     </div>
     <div id="display-name-container" class="pure-control-group">
-      <label for="display-name" translate="yes">Паказаць імя</label>
+      <label for="display-name" translate="yes">Адлюстраванае імя</label>
       <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
     </div>
     <div id="display-email-container" class="pure-control-group">
-      <label for="display-email" translate="yes">Паказаць электронную пошту</label>
+      <label for="display-email" translate="yes">Адлюстраваць электронную пошту</label>
       <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
     </div>
     <div id="contact-email-container" class="pure-control-group">
-      <label for="contact-email" translate="yes">Кантактная пошта</label>
+      <label for="contact-email" translate="yes">Кантактны адрас электроннай пошты</label>
       <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
     </div>
     <div id="full-name-container">
       <div class="pure-control-group">
         <label for="first-name" translate="yes">Імя</label>
-      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+        <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
         <label for="last-name" translate="yes">Прозвішча</label>
-      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+        <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
       </div>
     </div>
     <div id="dob-container">
       <div class="pure-control-group">
         <label for="dob" translate="yes">Дата нараджэння</label>
-      <input required="required" id="dob" name="dob" type="text" maxlength="11">
+        <input required="required" id="dob" name="dob" type="text" maxlength="11">
       </div>
     </div>
     <div id="phone-container" class="pure-control-group">
@@ -49,7 +53,7 @@
       <input required="required" id="phone" name="phone" type="text" maxlength="1000">
     </div>
     <div id="occupation-container" class="pure-control-group">
-      <label for="occupation" translate="yes">Прафесія</label>
+      <label for="occupation" translate="yes">Акупацыя</label>
       <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
     </div>
     <div id="location-container" class="pure-control-group">
@@ -65,32 +69,32 @@
       <input required="required" id="website" name="website" type="text" maxlength="1000">
     </div>
     <div id="submit-container" class="pure-controls">
-      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">Стварыце профіль</button>
+      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">Стварыць профіль</button>
     </div>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Поспех! Ваша новая інфармацыя профілю была захавана
+      Поспех! Інфармацыя пра ваш новы профіль захавана
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Памылка! Узнікла невядомая памылка
+      Памылка! Адбылася невядомая памылка
     </div>
   </template>
   <template id="invalid-first-name">
     <div class="error message" translate="yes">
-      Памылка! Адсутнічае альбо несапраўднае імя
+      Памылка! Указана імя, якое адсутнічае альбо няправільна
     </div>
   </template>
   <template id="invalid-first-name-length">
     <div class="error message" translate="yes">
-      Памылка! Указана несапраўднае імя
+      Памылка! Указана няправільнае імя
     </div>
   </template>
   <template id="invalid-last-name">
     <div class="error message" translate="yes">
-      Памылка! Адсутнічае альбо несапраўднае прозвішча было прадастаўлена
+      Памылка! Указана прозвішча, якое адсутнічае альбо несапраўднае
     </div>
   </template>
   <template id="invalid-last-name-length">
@@ -100,53 +104,54 @@
   </template>
   <template id="invalid-contact-email">
     <div class="error message" translate="yes">
-      Памылка! Несапраўдны адрас электроннай пошты
+      Памылка! Няправільны кантактны адрас электроннай пошты
     </div>
   </template>
   <template id="invalid-display-email">
     <div class="error message" translate="yes">
-      Памылка! Несапраўдны адрас адлюстравання электроннай пошты
+      Памылка! Няправільны адлюстраваны адрас электроннай пошты
     </div>
   </template>
   <template id="invalid-display-name">
     <div class="error message" translate="yes">
-      Памылка! Указанае імя адсутнічае альбо недапушчальнае
+      Памылка! Указана адсутнічае альбо няправільнае адлюстроўваецца імя
     </div>
   </template>
   <template id="invalid-dob">
     <div class="error message" translate="yes">
-      Памылка! Была прадастаўлена адсутнічае альбо несапраўдная дата нараджэння
+      Памылка! Прадугледжана дата нараджэння, якая адсутнічае альбо несапраўдная
     </div>
   </template>
   <template id="invalid-phone">
     <div class="error message" translate="yes">
-      Памылка! Быў прадастаўлены адсутны альбо несапраўдны тэлефон.
+      Памылка! Быў прадастаўлены зніклы альбо несапраўдны тэлефон.
     </div>
   </template>
   <template id="invalid-occupation">
     <div class="error message" translate="yes">
-      Памылка! Адсутнічае альбо несапраўдны занятак быў прадастаўлены.
+      Памылка! Была прадастаўлена прапажа без вестак альбо несапраўдная занятасць.
     </div>
   </template>
   <template id="invalid-location">
     <div class="error message" translate="yes">
-      Памылка! Адсутнічае альбо недапушчальнае месцазнаходжанне было прадастаўлена.
+      Памылка! Прадстаўлена адсутнае альбо несапраўднае месца.
     </div>
   </template>
   <template id="invalid-company-name">
     <div class="error message" translate="yes">
-      Памылка! Уведзена невядомая ці несапраўдная назва кампаніі.
+      Памылка! Назва кампаніі адсутнічае альбо несапраўдная.
     </div>
   </template>
   <template id="invalid-website">
     <div class="error message" translate="yes">
-      Памылка! Адсутнічае альбо несапраўдны вэб-сайт быў прадастаўлены.
+      Памылка! Прапанаваны зніклы альбо несапраўдны вэб-сайт.
     </div>
   </template>
   <template id="invalid-display-name-length">
     <div class="error message" translate="yes">
-      Памылка! Указанае імя адсутнічае альбо недапушчальнае
+      Памылка! Указана адсутнічае альбо няправільнае адлюстроўваецца імя
     </div>
   </template>
 </body>
+
 </html>

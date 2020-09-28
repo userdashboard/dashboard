@@ -9,8 +9,8 @@
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Restableix la clau de sessió de ${account.accountid}</h1>
-  <p translate="yes">Cada compte signa les seves sessions amb una clau secreta de manera que quan canvia totes les sessions anteriors finalitzen.</p>
+  <h1 translate="yes">Restableix la clau de sessió per a ${account.accountid}</h1>
+  <p translate="yes">Cada compte signa les seves sessions amb una clau secreta, de manera que quan canvia finalitzen totes les sessions anteriors.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/reset-session-key?accountid=${account.accountid}" name="submit-form">
     <fieldset>
@@ -19,7 +19,7 @@
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Èxit! Les sessions de l’usuari s’han finalitzat
+      Èxit! S'han finalitzat les sessions de l'usuari
     </div>
   </template>
   <template id="unknown-error">

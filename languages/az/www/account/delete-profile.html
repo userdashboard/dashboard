@@ -2,22 +2,22 @@
 <html lang="en" data-navbar="/account/navbar-profile.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Silin ${profile.profileid}</title>
+  <title translate="yes">Sil ${profile.profileid}</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Silin ${profile.profileid}</h1>
+  <h1 translate="yes">Sil ${profile.profileid}</h1>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/account/delete-profile?profileid=${profile.profileid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Profili silmək</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Profili silin</button>
     </fieldset>
   </form>
   <template id="instant-delete">
-    <p translate="yes">Profil dərhal silinəcək və bərpa edilə bilməz.</p>
+    <p translate="yes">Profil dərhal silinəcək və bərpa oluna bilməz.</p>
   </template>
   <template id="success">
     <div class="success message" translate="yes">
@@ -26,7 +26,7 @@
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Xəta! Profili silmək zamanı xəta baş verdi
+      Xəta! Profil silinərkən xəta baş verdi
     </div>
   </template>
 </body>

@@ -2,15 +2,15 @@
 <html lang="en" data-navbar="/account/navbar-profile.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Նախադրել կանխադրված պրոֆիլը</title>
+  <title translate="yes">Սահմանել լռելյայն պրոֆիլը</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Նախադրել կանխադրված պրոֆիլը</h1>
-  <p translate="yes">Ձեր լռելյայն պրոֆիլը ծառայում է որպես ձեր հաշվի կապի հիմնական կետ:</p>
+  <h1 translate="yes">Սահմանել լռելյայն պրոֆիլը</h1>
+  <p translate="yes">Ձեր լռելյայն պրոֆիլը ծառայում է որպես ձեր հաշվի հիմնական շփման կետ:</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/account/set-default-profile" name="submit-form">
     <fieldset>
@@ -21,22 +21,22 @@
           </option>
         </select>
       </div>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Նախադրել կանխադրված պրոֆիլը</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Սահմանել լռելյայն պրոֆիլը</button>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Հաջողություն: Պրոֆիլն այժմ ձեր լռելյայն է
+      Հաջողություն Պրոֆիլն այժմ ձեր ստանդարտն է
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Սխալ: Անհայտ սխալ է տեղի ունեցել
+      Սխալ Անհայտ սխալ է տեղի ունեցել
     </div>
   </template>
   <template id="default-profile">
     <div class="error message" translate="yes">
-      Սխալ: Սա արդեն ձեր կանխադրված պրոֆիլն է
+      Սխալ Սա արդեն ձեր լռելյայն պրոֆիլն է
     </div>
   </template>
   <template id="profile-option">

@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1 translate="yes">Змяніць імя карыстальніка</h1>
-  <p translate="yes">Усе імёны карыстальнікаў незваротна шыфруюцца перад захоўваннем дадзеных з дапамогай bcrypt + сумеснай солі.</p>
+  <p translate="yes">Усе імёны карыстальнікаў незваротна шыфруюцца перад захоўваннем дадзеных з агульнай соллю bcrypt +.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
     <fieldset>
@@ -23,18 +23,18 @@
         <input required="required" id="password" name="password" type="password" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Усталяваць новае імя карыстальніка</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Устанавіць новае імя карыстальніка</button>
       </div>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Поспех! Ваша новае імя карыстальніка павінна выкарыстоўвацца з гэтага часу
+      Поспех! З гэтага часу ваша новае імя карыстальніка павінна выкарыстоўвацца
     </div>
   </template>
   <template id="invalid-new-username">
     <div class="error message" translate="yes">
-      Памылка! Несапраўднае альбо дубліраванае новае імя карыстальніка
+      Памылка! Няправільнае альбо прадубліраванае новае імя карыстальніка
     </div>
   </template>
   <template id="invalid-password">
@@ -44,17 +44,17 @@
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Памылка! Узнікла невядомая памылка
+      Памылка! Адбылася невядомая памылка
     </div>
   </template>
   <template id="invalid-new-username-length">
     <div class="error message" translate="yes">
-      Памылка! Несапраўдная даўжыня новага імя карыстальніка
+      Памылка! Няправільная даўжыня новага імя карыстальніка
     </div>
   </template>
   <template id="duplicate-username">
     <div class="error message" translate="yes">
-      Памылка! Хтосьці яшчэ карыстаецца гэтым імем
+      Памылка! Хтосьці яшчэ выкарыстоўвае гэтае імя карыстальніка
     </div>
   </template>
 </body>

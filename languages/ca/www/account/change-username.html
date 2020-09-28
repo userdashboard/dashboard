@@ -2,15 +2,15 @@
 <html lang="en" data-navbar="/account/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Canvia el nom d’usuari</title>
+  <title translate="yes">Canvia el nom d'usuari</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Canvia el nom d’usuari</h1>
-  <p translate="yes">Tots els noms d'usuari són xifrats de manera irreversible abans d'emmagatzemar les dades amb bcrypt + sal compartida.</p>
+  <h1 translate="yes">Canvia el nom d'usuari</h1>
+  <p translate="yes">Tots els noms d’usuari es xifren de manera irreversible abans d’emmagatzemar les dades amb bcrypt + sal compartida.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
     <fieldset>
@@ -23,13 +23,13 @@
         <input required="required" id="password" name="password" type="password" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Estableix un nou nom d'usuari</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Estableix un nou usuari</button>
       </div>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Èxit! El vostre nou nom d’usuari s’ha d’utilitzar a partir d’ara
+      Èxit! A partir d’ara s’ha d’utilitzar el vostre nou nom d’usuari
     </div>
   </template>
   <template id="invalid-new-username">
@@ -49,12 +49,12 @@
   </template>
   <template id="invalid-new-username-length">
     <div class="error message" translate="yes">
-      Error! La longitud del nom d'usuari nova no és vàlida
+      Error! La longitud del nom d'usuari nou no és vàlida
     </div>
   </template>
   <template id="duplicate-username">
     <div class="error message" translate="yes">
-      Error! Algú altre utilitza aquest nom d'usuari
+      Error! Algú altre fa servir aquest nom d'usuari
     </div>
   </template>
 </body>

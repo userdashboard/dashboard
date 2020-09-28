@@ -2,29 +2,29 @@
 <html lang="en" data-navbar="/administrator/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Opozvati administratora</title>
+  <title translate="yes">Opozovi administratora</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Opozovi administrator iz ${account.accountid}</h1>
-  <p translate="yes">Odabrani račun izgubit će pristup administrativnom sistemu.</p>
+  <h1 translate="yes">Opozovi administratora sa ${account.accountid}</h1>
+  <p translate="yes">Odabrani račun će izgubiti pristup administracijskom sistemu.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/revoke-administrator?accountid=${account.accountid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Opozvati administratora</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Opozovi administratora</button>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Uspeh! Korisnik više nije administrator
+      Uspjeh! Korisnik više nije administrator
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Greška! Došlo je do nepoznate pogreške
+      Greška! Došlo je do nepoznate greške
     </div>
   </template>
 </body>

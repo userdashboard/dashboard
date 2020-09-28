@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" data-auth="false" data-template="false">
+
 <head>
-  <meta charset="utf-8" /> 
+  <meta charset="utf-8" />
   <title translate="yes">重置對我帳戶的訪問權限</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
@@ -9,8 +10,10 @@
   <base target="_top" href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="entry">
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account"
+    name="submit-form">
     <fieldset>
       <div id="message-container"></div>
       <h1 translate="yes">重置對我帳戶的訪問權限</h1>
@@ -31,7 +34,8 @@
         <input id="confirm-password" name="confirm-password" type="text" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">重置並登錄</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Reset and sign
+          in</button>
       </div>
       <ul>
         <li>
@@ -60,7 +64,7 @@
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      錯誤！無效的用戶名 length
+      錯誤！用戶名長度無效
     </div>
   </template>
   <template id="invalid-new-password">
@@ -70,7 +74,7 @@
   </template>
   <template id="invalid-new-password-length">
     <div class="error message" translate="yes">
-      錯誤！無效的新密碼 length
+      錯誤！無效的新密碼長度
     </div>
   </template>
   <template id="invalid-confirm-password">
@@ -89,4 +93,5 @@
     </div>
   </template>
 </body>
+
 </html>

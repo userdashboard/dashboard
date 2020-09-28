@@ -9,17 +9,17 @@
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">ለ ዳግም ማስጀመሪያ ኮድ ይፍጠሩ ለ ${account.accountid}</h1>
-  <p translate="yes">የመጀመሪያ ማንነታቸውን ካረጋገጡ በኋላ የመለያ ኮዶች ለሌላቸው ተጠቃሚዎች የመለያ መዳረሻ ዳግም ያስጀምሩ።</p>
+  <h1 translate="yes">ዳግም ማስጀመሪያ ኮድ ይፍጠሩ ${account.accountid}</h1>
+  <p translate="yes">መጀመሪያ ማንነታቸውን ካረጋገጡ በኋላ ያለ ዳግም ማስጀመሪያ ኮዶች ለተጠቃሚዎች የመለያ መዳረሻን ዳግም ያስጀምሩ ፡፡</p>
   <div id="message-container"></div>
   <table id="accounts-table" class="pure-table object-table">
     <thead>
       <tr>
         <th>ID</th>
         <th translate="yes">ስም</th>
-        <th translate="yes">ኢሜይል</th>
-        <th translate="yes">ተፈጠረ</th>
-        <th translate="yes">ለመጨረሻ ጊዜ በመለያ የገቡ</th>
+        <th translate="yes">ኢሜል</th>
+        <th translate="yes">ተፈጥሯል</th>
+        <th translate="yes">ለመጨረሻ ጊዜ በመለያ የገባው</th>
       </tr>
     </thead>
     <tr id="${account.accountid}">
@@ -37,7 +37,7 @@
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/administrator/create-reset-code?accountid=${account.accountid}" name="submit-form">
     <fieldset>
       <div class="pure-control-group">
-        <label for="secret-code" translate="yes">ኮድ ዳግም ያስጀምሩ</label>
+        <label for="secret-code" translate="yes">ዳግም አስጀምር ኮድ</label>
         <input id="secret-code" name="secret-code" type="text" maxlength="1000">
       </div>
       <div id="form-buttons" class="pure-controls spaced-buttons">
@@ -47,7 +47,7 @@
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      ስኬት! ዳግም ማስጀመሪያ ኮዱን ለተጠቃሚው ሊያጋሩ ይችላሉ
+      ስኬት! ዳግም ማስጀመሪያውን ኮድ ለተጠቃሚው ሊያጋሩ ይችላሉ
     </div>
   </template>
   <template id="unknown-error">
@@ -57,12 +57,12 @@
   </template>
   <template id="invalid-secret-code">
     <div class="error message" translate="yes">
-      ስህተት! ልክ ያልሆነ ዳግም ማስጀመሪያ ኮድ
+      ስህተት! ልክ ያልሆነ ዳግም ማስጀመር ኮድ
     </div>
   </template>
   <template id="invalid-secret-code-length">
     <div class="error message" translate="yes">
-      ስህተት! ልክ ያልሆነ ዳግም ማስጀመሪያ ኮድ length
+      ስህተት! ልክ ያልሆነ ዳግም የማስጀመር ኮድ ርዝመት
     </div>
   </template>
 </body>

@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" data-auth="false" data-template="false">
+
 <head>
-  <meta charset="utf-8" /> 
-  <title translate="yes">Възстановяване на достъп до моя акаунт</title>
+  <meta charset="utf-8" />
+  <title translate="yes">Нулирайте достъпа до моя акаунт</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="entry">
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account"
+    name="submit-form">
     <fieldset>
       <div id="message-container"></div>
-      <h1 translate="yes">Възстановяване на достъп до моя акаунт</h1>
+      <h1 translate="yes">Нулирайте достъпа до моя акаунт</h1>
       <div class="pure-control-group">
-        <label for="username" translate="yes">Потребител</label>
+        <label for="username" translate="yes">Потребителско име</label>
         <input id="username" name="username" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
-        <label for="secret-code" translate="yes">Нулиране на код</label>
+        <label for="secret-code" translate="yes">Нулиране на кода</label>
         <input id="secret-code" name="secret-code" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
@@ -31,7 +34,8 @@
         <input id="confirm-password" name="confirm-password" type="text" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Нулиране и влизане</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Reset and sign
+          in</button>
       </div>
       <ul>
         <li>
@@ -45,12 +49,12 @@
   </form>
   <template id="invalid-reset-code">
     <div class="error message" translate="yes">
-      Грешка! Невалиден секретен код
+      Грешка! Невалиден таен код
     </div>
   </template>
   <template id="invalid-secret-code">
     <div class="error message" translate="yes">
-      Грешка! Невалиден секретен код
+      Грешка! Невалиден таен код
     </div>
   </template>
   <template id="invalid-username">
@@ -70,7 +74,7 @@
   </template>
   <template id="invalid-new-password-length">
     <div class="error message" translate="yes">
-      Грешка! Невалидна нова парола length
+      Грешка! Невалидна дължина на новата парола
     </div>
   </template>
   <template id="invalid-confirm-password">
@@ -89,4 +93,5 @@
     </div>
   </template>
 </body>
+
 </html>

@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" data-navbar="/account/navbar-profile.html">
+
 <head>
-  <meta charset="utf-8" /> 
-  <title translate="yes">ያርትዑ ${profile.profileid}</title>
+  <meta charset="utf-8" />
+  <title translate="yes">አርትዕ ${profile.profileid}</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
+
 <body>
-  <h1 translate="yes">ያርትዑ ${profile.profileid}</h1>
-  <p translate="yes">የእውቂያ መረጃዎን ወቅታዊ እና ወቅታዊ ያድርጉት።</p>
+  <h1 translate="yes">አርትዕ ${profile.profileid}</h1>
+  <p translate="yes">የእውቂያ መረጃዎን ትክክለኛ እና ወቅታዊ ያድርጉ።</p>
   <div id="message-container"></div>
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/edit-profile?profileid=${profile.profileid}" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked"
+    action="/account/edit-profile?profileid=${profile.profileid}" name="submit-form">
     <div class="pure-checkbox">
-      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">ነባሪ አድርግ</span></label>
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span
+          translate="yes">የእኔን ነባሪ ያድርጉት</span></label>
     </div>
     <div id="display-name-container" class="pure-control-group">
       <label for="display-name" translate="yes">መጠሪያው ስም</label>
@@ -31,11 +35,11 @@
     <div id="full-name-container">
       <div class="pure-control-group">
         <label for="first-name" translate="yes">የመጀመሪያ ስም</label>
-      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+        <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
         <label for="last-name" translate="yes">የአያት ሥም</label>
-      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+        <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
       </div>
     </div>
     <div id="dob-container">
@@ -53,7 +57,7 @@
       <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
     </div>
     <div id="location-container" class="pure-control-group">
-      <label for="location" translate="yes">ቦታ</label>
+      <label for="location" translate="yes">አካባቢ</label>
       <input required="required" id="location" name="location" type="text" maxlength="1000">
     </div>
     <div id="company-name-container" class="pure-control-group">
@@ -65,12 +69,12 @@
       <input required="required" id="website" name="website" type="text" maxlength="1000">
     </div>
     <div id="submit-container" class="pure-controls">
-      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">መገለጫ አዘምን</button>
+      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">መገለጫ ያዘምኑ</button>
     </div>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      ስኬት! የእርስዎ መገለጫ መረጃ ዘምኗል
+      ስኬት! የመገለጫዎ መረጃ ተዘምኗል
     </div>
   </template>
   <template id="unknown-error">
@@ -80,22 +84,22 @@
   </template>
   <template id="invalid-first-name">
     <div class="error message" translate="yes">
-      ስህተት! የጠፋ ወይም ልክ ያልሆነ የመጀመሪያ ስም ተሰጥቷል
+      ስህተት! የጠፋ ወይም ልክ ያልሆነ የመጀመሪያ ስም ቀርቧል
     </div>
   </template>
   <template id="invalid-first-name-length">
     <div class="error message" translate="yes">
-      ስህተት! ልክ ያልሆነ የመጀመሪያ ስም ተሰጥቷል
+      ስህተት! ልክ ያልሆነ የመጀመሪያ ስም ተሰጠ
     </div>
   </template>
   <template id="invalid-last-name">
     <div class="error message" translate="yes">
-      ስህተት! የጠፋ ወይም ልክ ያልሆነ የአያት ስም ተሰጥቷል
+      ስህተት! የጠፋ ወይም ልክ ያልሆነ የአያት ስም ቀርቧል
     </div>
   </template>
   <template id="invalid-last-name-length">
     <div class="error message" translate="yes">
-      ስህተት! ልክ ያልሆነ የአያት ስም ተሰጥቷል
+      ስህተት! ልክ ያልሆነ የአያት ስም ቀርቧል
     </div>
   </template>
   <template id="invalid-contact-email">
@@ -105,48 +109,49 @@
   </template>
   <template id="invalid-display-email">
     <div class="error message" translate="yes">
-      ስህተት! የተሳሳተ የማሳያ ኢሜይል አድራሻ
+      ስህተት! ልክ ያልሆነ የማሳያ ኢሜይል አድራሻ
     </div>
   </template>
   <template id="invalid-display-name">
     <div class="error message" translate="yes">
-      ስህተት! የጠፋ ወይም ልክ ያልሆነ የማሳያ ስም ተሰጥቷል
+      ስህተት! የጠፋ ወይም ልክ ያልሆነ የማሳያ ስም ቀርቧል
     </div>
   </template>
   <template id="invalid-dob">
     <div class="error message" translate="yes">
-      ስህተት! የጠፋ ወይም ልክ ያልሆነ የልደት ቀን ተሰጥቷል
+      ስህተት! የጠፋ ወይም ልክ ያልሆነ የልደት ቀን ቀርቧል
     </div>
   </template>
   <template id="invalid-phone">
     <div class="error message" translate="yes">
-      ስህተት! የጠፋ ወይም ልክ ያልሆነ ስልክ ተሰጥቷል።
+      ስህተት! የጠፋ ወይም ልክ ያልሆነ ስልክ ቀርቧል ፡፡
     </div>
   </template>
   <template id="invalid-occupation">
     <div class="error message" translate="yes">
-      ስህተት! የጎደለ ወይም ልክ ያልሆነ ሥራ ተሰጥቷል ፡፡
+      ስህተት! የጠፋ ወይም ልክ ያልሆነ ሥራ ተሰጠ ፡፡
     </div>
   </template>
   <template id="invalid-location">
     <div class="error message" translate="yes">
-      ስህተት! የጎደለ ወይም ልክ ያልሆነ ቦታ ተሰጥቷል ፡፡
+      ስህተት! የጠፋ ወይም ልክ ያልሆነ ቦታ ቀርቧል ፡፡
     </div>
   </template>
   <template id="invalid-company-name">
     <div class="error message" translate="yes">
-      ስህተት! የጠፋ ወይም ልክ ያልሆነ የኩባንያ ስም ተሰጥቷል።
+      ስህተት! የጠፋ ወይም ልክ ያልሆነ የኩባንያ ስም ቀርቧል ፡፡
     </div>
   </template>
   <template id="invalid-website">
     <div class="error message" translate="yes">
-      ስህተት! የጎደለ ወይም ልክ ያልሆነ ድር ጣቢያ ቀርቧል።
+      ስህተት! የጠፋ ወይም ልክ ያልሆነ ድር ጣቢያ ቀርቧል።
     </div>
   </template>
   <template id="invalid-display-name-length">
     <div class="error message" translate="yes">
-      ስህተት! የጠፋ ወይም ልክ ያልሆነ የማሳያ ስም ተሰጥቷል
+      ስህተት! የጠፋ ወይም ልክ ያልሆነ የማሳያ ስም ቀርቧል
     </div>
   </template>
 </body>
+
 </html>

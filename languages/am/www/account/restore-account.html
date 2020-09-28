@@ -2,7 +2,7 @@
 <html lang="en" data-auth="false" data-template="false">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">መለያዬን እነበረበት መልስ</title>
+  <title translate="yes">መለያዬን ወደነበረበት መልስ</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
@@ -11,7 +11,7 @@
 <body class="entry">
   <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
     <fieldset>
-      <h1 translate="yes">መለያዬን እነበረበት መልስ</h1>
+      <h1 translate="yes">መለያዬን ወደነበረበት መልስ</h1>
       <div id="message-container"></div>
       <div class="pure-control-group">
         <label for="username" translate="yes">የተጠቃሚ ስም</label>
@@ -22,39 +22,39 @@
         <input id="password" name="password" type="password" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">መለያዬን እነበረበት መልስ</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">መለያዬን ወደነበረበት መልስ</button>
       </div>
       <ul>
         <li>
-          <a href="/account/register" translate="yes">መለያ ይመዝገቡ</a>
+          <a href="/account/register" translate="yes">አንድ መለያ ይመዝገቡ</a>
         </li>
         <li>
           <a href="/account/reset-account" translate="yes">መክፈቻ ቁልፉን ረሳኽው</a>
         </li>
         <li>
-          <a href="/account/restore-account" translate="yes">መለያን መሰረዝ ይቅር</a>
+          <a href="/account/restore-account" translate="yes">መለያ መሰረዝን ይቅር</a>
         </li>
       </ul>
     </fieldset>
   </form>
   <template id="invalid-account">
     <div class="error message" translate="yes">
-      ስህተት! ልክ ያልሆነ መለያ ወይም የስረዛ ጊዜው አብቅቷል
+      ስህተት! ልክ ያልሆነ መለያ ወይም የካንሰሩ ጊዜ አብቅቷል
     </div>
   </template>
   <template id="account-deleted">
     <div class="error message" translate="yes">
-      ስህተት! መለያ ተሰር orል ወይም የስረዛው ጊዜ አብቅቷል
+      ስህተት! መለያ ተሰር orል ወይም የካንሰሩ ጊዜ አብቅቷል
     </div>
   </template>
   <template id="invalid-username">
     <div class="error message" translate="yes">
-      ስህተት! የተሳሳተ ወይም የጎደለው የተጠቃሚ ስም
+      ስህተት! የተሳሳተ ወይም የጠፋ የተጠቃሚ ስም
     </div>
   </template>
   <template id="invalid-password">
     <div class="error message" translate="yes">
-      ስህተት! የተሳሳተ ወይም የሚስጥር የይለፍ ቃል
+      ስህተት! የተሳሳተ ወይም የጠፋ የይለፍ ቃል
     </div>
   </template>
   <template id="invalid-username-length">
@@ -64,7 +64,7 @@
   </template>
   <template id="invalid-password-length">
     <div class="error message" translate="yes">
-      ስህተት! የተሳሳተ የይለፍ ቃል ርዝመት
+      ስህተት! ልክ ያልሆነ የይለፍ ቃል ርዝመት
     </div>
   </template>
   <template id="unknown-error">

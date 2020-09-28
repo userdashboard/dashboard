@@ -10,15 +10,15 @@
 </head>
 <body>
   <h1 translate="yes">Üçün sıfırlama kodu yaradın ${account.accountid}</h1>
-  <p translate="yes">Əvvəlcə şəxsiyyətlərini təsdiqlədikdən sonra istifadəçilər üçün sıfırlama kodları olmadan hesab girişini yenidən qurun.</p>
+  <p translate="yes">Əvvəlcə şəxsiyyətini təsdiqlədikdən sonra sıfırlama kodları olmayan istifadəçilər üçün hesab girişini sıfırlayın.</p>
   <div id="message-container"></div>
   <table id="accounts-table" class="pure-table object-table">
     <thead>
       <tr>
         <th>ID</th>
-        <th translate="yes">Adı</th>
+        <th translate="yes">Ad</th>
         <th translate="yes">Elektron poçt</th>
-        <th translate="yes">Yaradilib</th>
+        <th translate="yes">Yarandı</th>
         <th translate="yes">Son giriş</th>
       </tr>
     </thead>
@@ -47,7 +47,7 @@
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Uğur! Yeniləmə kodunu istifadəçi ilə paylaşa bilərsiniz
+      Uğur! Sıfırlama kodunu istifadəçi ilə paylaşa bilərsiniz
     </div>
   </template>
   <template id="unknown-error">
@@ -62,7 +62,7 @@
   </template>
   <template id="invalid-secret-code-length">
     <div class="error message" translate="yes">
-      Xəta! Yanlış sıfırlama kodu length
+      Xəta! Yanlış sıfırlama kodu uzunluğu
     </div>
   </template>
 </body>

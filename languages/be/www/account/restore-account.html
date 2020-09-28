@@ -2,7 +2,7 @@
 <html lang="en" data-auth="false" data-template="false">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Аднавіць мой уліковы запіс</title>
+  <title translate="yes">Аднавіце мой уліковы запіс</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
@@ -11,7 +11,7 @@
 <body class="entry">
   <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
     <fieldset>
-      <h1 translate="yes">Аднавіць мой уліковы запіс</h1>
+      <h1 translate="yes">Аднавіце мой уліковы запіс</h1>
       <div id="message-container"></div>
       <div class="pure-control-group">
         <label for="username" translate="yes">Імя карыстальніка</label>
@@ -22,29 +22,29 @@
         <input id="password" name="password" type="password" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Аднавіць мой уліковы запіс</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Аднавіце мой уліковы запіс</button>
       </div>
       <ul>
         <li>
-          <a href="/account/register" translate="yes">Рэгістрацыя ўліковага запісу</a>
+          <a href="/account/register" translate="yes">Зарэгістраваць уліковы запіс</a>
         </li>
         <li>
           <a href="/account/reset-account" translate="yes">Забыліся на пароль</a>
         </li>
         <li>
-          <a href="/account/restore-account" translate="yes">Адмена выдалення ўліковага запісу</a>
+          <a href="/account/restore-account" translate="yes">Адмяніць выдаленне ўліковага запісу</a>
         </li>
       </ul>
     </fieldset>
   </form>
   <template id="invalid-account">
     <div class="error message" translate="yes">
-      Памылка! Несапраўдны рахунак або перыяд скасавання скончыўся
+      Памылка! Несапраўдны рахунак альбо перыяд адмены скончыўся
     </div>
   </template>
   <template id="account-deleted">
     <div class="error message" translate="yes">
-      Памылка! Уліковы запіс выдалены, альбо перыяд скасавання скончыўся
+      Памылка! Уліковы запіс выдалены альбо перыяд скасавання скончыўся
     </div>
   </template>
   <template id="invalid-username">
@@ -59,17 +59,17 @@
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Памылка! Несапраўдная даўжыня імя карыстальніка
+      Памылка! Няправільная даўжыня імя карыстальніка
     </div>
   </template>
   <template id="invalid-password-length">
     <div class="error message" translate="yes">
-      Памылка! Несапраўдная даўжыня пароля
+      Памылка! Няправільная даўжыня пароля
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Узнікла невядомая памылка
+      Адбылася невядомая памылка
     </div>
   </template>
 </body>

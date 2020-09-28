@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" data-navbar="/account/navbar-profiles.html">
+
 <head>
-  <meta charset="utf-8" /> 
+  <meta charset="utf-8" />
   <title translate="yes">ಪ್ರೊಫೈಲ್ ರಚಿಸಿ</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
+
 <body>
   <h1 translate="yes">ಪ್ರೊಫೈಲ್ ರಚಿಸಿ</h1>
   <p translate="yes">ಆಡಳಿತಾತ್ಮಕ ಮತ್ತು ಇತರ ಉದ್ದೇಶಗಳಿಗಾಗಿ ಪ್ರೊಫೈಲ್u200cಗಳು ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿಯನ್ನು ಹೊಂದಿರುತ್ತವೆ.</p>
   <div id="message-container"></div>
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile"
+    name="submit-form">
     <div class="pure-checkbox">
-      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">ನನ್ನ ಡೀಫಾಲ್ಟ್ ಮಾಡಿ</span></label>
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span
+          translate="yes">ನನ್ನ ಡೀಫಾಲ್ಟ್ ಮಾಡಿ</span></label>
     </div>
     <div id="display-name-container" class="pure-control-group">
       <label for="display-name" translate="yes">ಪ್ರದರ್ಶಕ ಹೆಸರು</label>
@@ -31,17 +35,17 @@
     <div id="full-name-container">
       <div class="pure-control-group">
         <label for="first-name" translate="yes">ಮೊದಲ ಹೆಸರು</label>
-      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+        <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
         <label for="last-name" translate="yes">ಕೊನೆಯ ಹೆಸರು</label>
-      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+        <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
       </div>
     </div>
     <div id="dob-container">
       <div class="pure-control-group">
         <label for="dob" translate="yes">ಹುಟ್ತಿದ ದಿನ</label>
-      <input required="required" id="dob" name="dob" type="text" maxlength="11">
+        <input required="required" id="dob" name="dob" type="text" maxlength="11">
       </div>
     </div>
     <div id="phone-container" class="pure-control-group">
@@ -149,4 +153,5 @@
     </div>
   </template>
 </body>
+
 </html>

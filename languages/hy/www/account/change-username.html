@@ -2,20 +2,20 @@
 <html lang="en" data-navbar="/account/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Փոխել օգտվողի անունը</title>
+  <title translate="yes">Փոխեք օգտանունը</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Փոխել օգտվողի անունը</h1>
-  <p translate="yes">Բոլոր օգտվողի անուններն անդառնալիորեն կոդավորված են, նախքան տվյալների bcrypt + համօգտագործված աղով պահելը:</p>
+  <h1 translate="yes">Փոխեք օգտանունը</h1>
+  <p translate="yes">Բոլոր օգտագործողների անունները անդառնալիորեն կոդավորված են ՝ նախքան տվյալները bcrypt + ընդհանուր աղով պահելը:</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
     <fieldset>
       <div class="pure-control-group">
-        <label for="new-username" translate="yes">Նոր օգտվողի անուն</label>
+        <label for="new-username" translate="yes">Օգտագործողի նոր անուն</label>
         <input id="new-username" name="new-username" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
@@ -23,38 +23,38 @@
         <input required="required" id="password" name="password" type="password" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Սահմանեք նոր օգտանուն</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Սահմանեք նոր օգտվողի անուն</button>
       </div>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Հաջողություն: Այսուհետ ձեր նոր օգտվողի անունը պետք է օգտագործվի
+      Հաջողություն Ձեր այս նոր օգտվողի անունն այսուհետ պետք է օգտագործվի
     </div>
   </template>
   <template id="invalid-new-username">
     <div class="error message" translate="yes">
-      Սխալ: Անվավեր կամ կրկնօրինակ նոր օգտվողի անուն
+      Սխալ Անվավեր կամ կրկնօրինակեք նոր օգտվողի անուն
     </div>
   </template>
   <template id="invalid-password">
     <div class="error message" translate="yes">
-      Սխալ: Ձեր ընթացիկ գաղտնաբառն անվավեր է
+      Սխալ Ձեր ընթացիկ գաղտնաբառն անվավեր է
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Սխալ: Անհայտ սխալ է տեղի ունեցել
+      Սխալ Անհայտ սխալ է տեղի ունեցել
     </div>
   </template>
   <template id="invalid-new-username-length">
     <div class="error message" translate="yes">
-      Սխալ: Անվան անվավեր նոր գաղտնաբառի երկարություն
+      Սխալ Օգտագործողի անվան նոր անվավեր երկարություն
     </div>
   </template>
   <template id="duplicate-username">
     <div class="error message" translate="yes">
-      Սխալ: Մեկ ուրիշը այդ օգտանունն է օգտագործում
+      Սխալ Որևէ մեկը օգտագործում է այդ օգտվողի անունը
     </div>
   </template>
 </body>

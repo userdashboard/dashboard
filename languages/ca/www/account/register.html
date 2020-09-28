@@ -2,7 +2,7 @@
 <html lang="en" data-auth="false" data-template="false">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Registrar-se</title>
+  <title translate="yes">Registra't</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
@@ -11,11 +11,11 @@
 <body class="entry">
   <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/register" name="submit-form">
     <fieldset>
-      <h1 translate="yes">Registrar-se</h1>
+      <h1 translate="yes">Registra't</h1>
       <div id="message-container"></div>
       <div id="form-container">
         <div class="pure-control-group">
-          <label for="username" translate="yes">Nom d'usuari de sessió d'inici de sessió</label>
+          <label for="username" translate="yes">Nom d'usuari d'inici de sessió</label>
           <input placeholder="${requirements.minimumUsernameLength}+ characters" name="username" id="username" type="text" maxlength="1000">
         </div>
         <div class="pure-control-group">
@@ -27,7 +27,7 @@
           <input name="confirm" id="confirm" type="password" maxlength="1000">
         </div>
         <div id="display-name-container" class="pure-control-group">
-          <label for="display-name" translate="yes">Mostra el nom</label>
+          <label for="display-name" translate="yes">Nom visible</label>
           <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
         </div>
         <div id="display-email-container" class="pure-control-group">
@@ -75,7 +75,7 @@
           <input required="required" id="website" name="website" type="text" maxlength="1000">
         </div>
         <div class="pure-controls">
-          <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Registrar-se</button>
+          <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Registra't</button>
         </div>
       </div>
       <ul>
@@ -92,27 +92,27 @@
   </template>
   <template id="invalid-username">
     <div class="error message" translate="yes">
-      Error! Nom d'usuari no vàlid o registrat
+      Error! Nom d'usuari registrat o no vàlid
     </div>
   </template>
   <template id="duplicate-username">
     <div class="error message" translate="yes">
-      Error! Nom d'usuari no vàlid o registrat
+      Error! Nom d'usuari registrat o no vàlid
     </div>
   </template>
   <template id="invalid-password">
     <div class="error message" translate="yes">
-      Error! Contrasenya o confirmació no vàlides
+      Error! Contrasenya o contrasenya de confirmació no vàlides
     </div>
   </template>
   <template id="invalid-confirm">
     <div class="error message" translate="yes">
-      Error! Contrasenya de confirmació no vàlida
+      Error! La contrasenya de confirmació no és vàlida
     </div>
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Error! La longitud del nom d’usuari no és vàlida
+      Error! La longitud del nom d'usuari no és vàlida
     </div>
   </template>
   <template id="invalid-password-length">
@@ -127,77 +127,77 @@
   </template>
   <template id="invalid-first-name">
     <div class="error message" translate="yes">
-      Error! Es proporciona un nom que falta o no vàlid
+      Error! S'ha proporcionat un nom perdut o no vàlid
     </div>
   </template>
   <template id="invalid-first-name-length">
     <div class="error message" translate="yes">
-      Error! S'ha proporcionat un nom no vàlid
+      Error! S'ha proporcionat un nom incorrecte
     </div>
   </template>
   <template id="invalid-last-name">
     <div class="error message" translate="yes">
-      Error! Es va proporcionar un cognom que falta o no vàlid
+      Error! S'ha proporcionat un cognom que no es troba o no és vàlid
     </div>
   </template>
   <template id="invalid-last-name-length">
     <div class="error message" translate="yes">
-      Error! Es va proporcionar un cognom no vàlid
+      Error! S'ha proporcionat un cognom no vàlid
     </div>
   </template>
   <template id="invalid-contact-email">
     <div class="error message" translate="yes">
-      Error! L'adreça de correu electrònic de contacte no és vàlida
+      Error! L'adreça electrònica de contacte no és vàlida
     </div>
   </template>
   <template id="invalid-display-email">
     <div class="error message" translate="yes">
-      Error! L'adreça de correu electrònic de visualització no és vàlida
+      Error! L'adreça electrònica de visualització no és vàlida
     </div>
   </template>
   <template id="invalid-display-name">
     <div class="error message" translate="yes">
-      Error! S'ha proporcionat un nom de visualització que falta o no vàlid
+      Error! S'ha proporcionat un nom de visualització que falta o no és vàlid
     </div>
   </template>
   <template id="invalid-dob">
     <div class="error message" translate="yes">
-      Error! Es va proporcionar una data de naixement que falta o no vàlida
+      Error! Es va proporcionar una data de naixement que falta o no és vàlida
     </div>
   </template>
   <template id="invalid-phone">
     <div class="error message" translate="yes">
-      Error! S'ha proporcionat un telèfon no vàlid o no vàlid.
+      Error! S'ha proporcionat un telèfon no vàlid o que falta.
     </div>
   </template>
   <template id="invalid-occupation">
     <div class="error message" translate="yes">
-      Error! Es va proporcionar una ocupació no vàlida o no vàlida.
+      Error! S'ha proporcionat una ocupació no vàlida o desapareguda.
     </div>
   </template>
   <template id="invalid-location">
     <div class="error message" translate="yes">
-      Error! Es va proporcionar una ubicació no vàlida.
+      Error! S'ha proporcionat una ubicació que falta o no és vàlida.
     </div>
   </template>
   <template id="invalid-company-name">
     <div class="error message" translate="yes">
-      Error! S'ha proporcionat un nom de l'empresa no vàlid o no vàlid.
+      Error! S'ha proporcionat un nom d'empresa que falta o no és vàlid.
     </div>
   </template>
   <template id="invalid-website">
     <div class="error message" translate="yes">
-      Error! S'ha proporcionat un lloc web no vàlid o no vàlid.
+      Error! S'ha proporcionat un lloc web que no existeix o no és vàlid.
     </div>
   </template>
   <template id="invalid-address-postal-code">
     <div class="error message" translate="yes">
-      Error! S'ha proporcionat un codi postal d'adreça que falta o no vàlid.
+      Error! S'ha proporcionat un codi postal d'adreça que no existeix o no és vàlid.
     </div>
   </template>
   <template id="invalid-display-name-length">
     <div class="error message" translate="yes">
-      Error! S'ha proporcionat un nom de visualització que falta o no vàlid
+      Error! S'ha proporcionat un nom de visualització que falta o no és vàlid
     </div>
   </template>
 </body>

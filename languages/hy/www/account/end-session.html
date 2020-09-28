@@ -9,11 +9,11 @@
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Ավարտ նիստ ${session.sessionid}</h1>
+  <h1 translate="yes">Ավարտվող նստաշրջան ${session.sessionid}</h1>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/account/end-session?sessionid=${session.sessionid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Ավարտ նիստ</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Ավարտվող նստաշրջան</button>
     </fieldset>
   </form>
   <template id="instant-delete">
@@ -21,12 +21,12 @@
   </template>
   <template id="success">
     <div class="success message" translate="yes">
-      Հաջողություն: Նիստն ավարտվեց
+      Հաջողություն Նիստը ավարտվել է
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Սխալ: Անհայտ սխալ է տեղի ունեցել
+      Սխալ Անհայտ սխալ է տեղի ունեցել
     </div>
   </template>
 </body>

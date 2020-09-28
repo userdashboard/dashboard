@@ -9,8 +9,8 @@
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Адклікаць адміністратара ад ${account.accountid}</h1>
-  <p translate="yes">Абраная ўліковы запіс пазбавіцца доступу да сістэмы адміністравання.</p>
+  <h1 translate="yes">Адклікаць адміністратара з ${account.accountid}</h1>
+  <p translate="yes">Абраны ўліковы запіс страціць доступ да сістэмы адміністравання.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/revoke-administrator?accountid=${account.accountid}" name="submit-form">
     <fieldset>
@@ -24,7 +24,7 @@
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Памылка! Узнікла невядомая памылка
+      Памылка! Адбылася невядомая памылка
     </div>
   </template>
 </body>

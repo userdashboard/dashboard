@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" data-auth="false" data-template="false">
+
 <head>
-  <meta charset="utf-8" /> 
-  <title translate="yes">Berrezarri nire kontua sarbidea</title>
+  <meta charset="utf-8" />
+  <title translate="yes">Berrezarri nire konturako sarbidea</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="entry">
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account"
+    name="submit-form">
     <fieldset>
       <div id="message-container"></div>
-      <h1 translate="yes">Berrezarri nire kontua sarbidea</h1>
+      <h1 translate="yes">Berrezarri nire konturako sarbidea</h1>
       <div class="pure-control-group">
         <label for="username" translate="yes">Erabiltzaile izena</label>
         <input id="username" name="username" type="text" maxlength="1000">
@@ -31,7 +34,8 @@
         <input id="confirm-password" name="confirm-password" type="text" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Berrezarri eta hasi saioa</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Reset and sign
+          in</button>
       </div>
       <ul>
         <li>
@@ -45,48 +49,49 @@
   </form>
   <template id="invalid-reset-code">
     <div class="error message" translate="yes">
-      Akatsa! Kode sekretu baliogabea
+      Errorea! Kode sekretu baliogabea
     </div>
   </template>
   <template id="invalid-secret-code">
     <div class="error message" translate="yes">
-      Akatsa! Kode sekretu baliogabea
+      Errorea! Kode sekretu baliogabea
     </div>
   </template>
   <template id="invalid-username">
     <div class="error message" translate="yes">
-      Akatsa! Erabiltzaile-izena baliogabea
+      Errorea! Erabiltzaile izen baliogabea
     </div>
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Akatsa! Erabiltzaile-izenaren luzera baliogabea
+      Errorea! Erabiltzaile izenaren luzera baliogabea
     </div>
   </template>
   <template id="invalid-new-password">
     <div class="error message" translate="yes">
-      Akatsa! Pasahitz berria baliogabea
+      Errorea! Pasahitz berria baliogabea
     </div>
   </template>
   <template id="invalid-new-password-length">
     <div class="error message" translate="yes">
-      Akatsa! Pasahitz berria baliogabea length
+      Errorea! Pasahitz luzera berria baliogabea
     </div>
   </template>
   <template id="invalid-confirm-password">
     <div class="error message" translate="yes">
-      Akatsa! Berrespen-pasahitz baliogabea
+      Errorea! Baieztapen pasahitz baliogabea
     </div>
   </template>
   <template id="invalid-account">
     <div class="error message" translate="yes">
-      Akatsa! Kontu baliogabea
+      Errorea! Kontu baliogabea
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Akatsa! Errore ezezagun bat gertatu da
+      Errorea! Errore ezezaguna gertatu da
     </div>
   </template>
 </body>
+
 </html>

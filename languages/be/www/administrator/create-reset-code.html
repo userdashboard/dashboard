@@ -2,7 +2,7 @@
 <html lang="en" data-navbar="/administrator/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Стварыце код скіду</title>
+  <title translate="yes">Стварыць код скіду</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
@@ -10,16 +10,16 @@
 </head>
 <body>
   <h1 translate="yes">Стварыць код скіду для ${account.accountid}</h1>
-  <p translate="yes">Скіньце доступ да ўліковага запісу для карыстальнікаў без скіду кодаў, папярэдне папярэдне праверце іх асобу.</p>
+  <p translate="yes">Скіньце доступ да ўліковага запісу для карыстальнікаў без кодаў скіду пасля таго, як вы спачатку спраўдзіце іх асобу.</p>
   <div id="message-container"></div>
   <table id="accounts-table" class="pure-table object-table">
     <thead>
       <tr>
         <th>ID</th>
         <th translate="yes">Імя</th>
-        <th translate="yes">Адрас электроннай пошты</th>
-        <th translate="yes">Створаны</th>
-        <th translate="yes">Апошні запіс</th>
+        <th translate="yes">Электронная пошта</th>
+        <th translate="yes">Створана</th>
+        <th translate="yes">Апошні раз увайшоў у сістэму</th>
       </tr>
     </thead>
     <tr id="${account.accountid}">
@@ -37,32 +37,32 @@
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/administrator/create-reset-code?accountid=${account.accountid}" name="submit-form">
     <fieldset>
       <div class="pure-control-group">
-        <label for="secret-code" translate="yes">Скінуць код</label>
+        <label for="secret-code" translate="yes">Скід кода</label>
         <input id="secret-code" name="secret-code" type="text" maxlength="1000">
       </div>
       <div id="form-buttons" class="pure-controls spaced-buttons">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Стварыце код скіду</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Стварыць код скіду</button>
       </div>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Поспех! Вы можаце падзяліцца кодам скіду з карыстальнікам
+      Поспех! Вы можаце падзяліцца з карыстальнікам кодам скіду
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Памылка! Узнікла невядомая памылка
+      Памылка! Адбылася невядомая памылка
     </div>
   </template>
   <template id="invalid-secret-code">
     <div class="error message" translate="yes">
-      Памылка! Несапраўдны код скіду
+      Памылка! Няправільны код скіду
     </div>
   </template>
   <template id="invalid-secret-code-length">
     <div class="error message" translate="yes">
-      Памылка! Несапраўдны код скіду length
+      Памылка! Няправільная даўжыня кода скіду
     </div>
   </template>
 </body>

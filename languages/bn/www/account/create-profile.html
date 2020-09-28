@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" data-navbar="/account/navbar-profiles.html">
+
 <head>
-  <meta charset="utf-8" /> 
+  <meta charset="utf-8" />
   <title translate="yes">প্রোফাইল তৈরি কর</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
+
 <body>
   <h1 translate="yes">প্রোফাইল তৈরি কর</h1>
   <p translate="yes">প্রোফাইলগুলি প্রশাসনিক এবং অন্যান্য উদ্দেশ্যে আপনার ব্যক্তিগত তথ্য রাখে।</p>
   <div id="message-container"></div>
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile"
+    name="submit-form">
     <div class="pure-checkbox">
-      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">আমার ডিফল্ট করুন</span></label>
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span
+          translate="yes">আমার ডিফল্ট করুন</span></label>
     </div>
     <div id="display-name-container" class="pure-control-group">
       <label for="display-name" translate="yes">প্রদর্শন নাম</label>
@@ -31,17 +35,17 @@
     <div id="full-name-container">
       <div class="pure-control-group">
         <label for="first-name" translate="yes">নামের প্রথম অংশ</label>
-      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+        <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
         <label for="last-name" translate="yes">নামের শেষাংশ</label>
-      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+        <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
       </div>
     </div>
     <div id="dob-container">
       <div class="pure-control-group">
         <label for="dob" translate="yes">জন্ম তারিখ</label>
-      <input required="required" id="dob" name="dob" type="text" maxlength="11">
+        <input required="required" id="dob" name="dob" type="text" maxlength="11">
       </div>
     </div>
     <div id="phone-container" class="pure-control-group">
@@ -70,7 +74,7 @@
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      সফল! আপনার নতুন প্রোফাইল তথ্য সংরক্ষণ করা হয়েছে
+      সাফল্য! আপনার নতুন প্রোফাইল তথ্য সংরক্ষণ করা হয়েছে
     </div>
   </template>
   <template id="unknown-error">
@@ -90,7 +94,7 @@
   </template>
   <template id="invalid-last-name">
     <div class="error message" translate="yes">
-      ত্রুটি! অনুপস্থিত বা অবৈধ পদবি সরবরাহ করা হয়েছিল
+      ত্রুটি! অনুপস্থিত বা অবৈধ পদবি দেওয়া হয়েছিল
     </div>
   </template>
   <template id="invalid-last-name-length">
@@ -149,4 +153,5 @@
     </div>
   </template>
 </body>
+
 </html>

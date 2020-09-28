@@ -2,7 +2,7 @@
 <html lang="en" data-auth="false" data-template="false">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Eman izena</title>
+  <title translate="yes">Izena eman</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
@@ -11,15 +11,15 @@
 <body class="entry">
   <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/register" name="submit-form">
     <fieldset>
-      <h1 translate="yes">Eman izena</h1>
+      <h1 translate="yes">Izena eman</h1>
       <div id="message-container"></div>
       <div id="form-container">
         <div class="pure-control-group">
-          <label for="username" translate="yes">Saioa hasi erabiltzaile izena</label>
+          <label for="username" translate="yes">Hasi saioa erabiltzaile izena</label>
           <input placeholder="${requirements.minimumUsernameLength}+ characters" name="username" id="username" type="text" maxlength="1000">
         </div>
         <div class="pure-control-group">
-          <label for="password" translate="yes">Saioa hasteko pasahitza</label>
+          <label for="password" translate="yes">Hasi saioa pasahitza</label>
           <input placeholder="${requirements.minimumPasswordLength}+ characters" name="password" id="password" type="password" maxlength="1000">
         </div>
         <div class="pure-control-group">
@@ -27,15 +27,15 @@
           <input name="confirm" id="confirm" type="password" maxlength="1000">
         </div>
         <div id="display-name-container" class="pure-control-group">
-          <label for="display-name" translate="yes">Bistaratu izena</label>
+          <label for="display-name" translate="yes">Bistaratzeko izena</label>
           <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
         </div>
         <div id="display-email-container" class="pure-control-group">
-          <label for="display-email" translate="yes">Bistaratu helbide elektronikoa</label>
+          <label for="display-email" translate="yes">Erakutsi posta elektronikoa</label>
           <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
         </div>
         <div id="contact-email-container" class="pure-control-group">
-          <label for="contact-email" translate="yes">Harremanetarako posta elektronikoa</label>
+          <label for="contact-email" translate="yes">Harremanetarako helbide elektronikoa</label>
           <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
         </div>
         <div id="full-name-container">
@@ -55,149 +55,149 @@
           </div>
         </div>
         <div id="phone-container" class="pure-control-group">
-          <label for="phone" translate="yes">Telefono</label>
+          <label for="phone" translate="yes">Telefonoa</label>
           <input required="required" id="phone" name="phone" type="text" maxlength="1000">
         </div>
         <div id="occupation-container" class="pure-control-group">
-          <label for="occupation" translate="yes">Lanbidea</label>
+          <label for="occupation" translate="yes">Okupazioa</label>
           <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
         </div>
         <div id="location-container" class="pure-control-group">
-          <label for="location" translate="yes">Kokalekua</label>
+          <label for="location" translate="yes">Kokapena</label>
           <input required="required" id="location" name="location" type="text" maxlength="1000">
         </div>
         <div id="company-name-container" class="pure-control-group">
-          <label for="company-name" translate="yes">Sozietatearen izena</label>
+          <label for="company-name" translate="yes">Enpresaren izena</label>
           <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
         </div>
         <div id="website-container" class="pure-control-group">
-          <label for="website" translate="yes">Web</label>
+          <label for="website" translate="yes">Webgunea</label>
           <input required="required" id="website" name="website" type="text" maxlength="1000">
         </div>
         <div class="pure-controls">
-          <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Eman izena</button>
+          <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Izena eman</button>
         </div>
       </div>
       <ul>
         <li>
-          <a href="/account/signin" translate="yes">Kontua daukat</a>
+          <a href="/account/signin" translate="yes">Kontu bat daukat</a>
         </li>
       </ul>
     </fieldset>
   </form>
   <template id="registration-disabled">
     <div class="error message" translate="yes">
-      Izena ematea desgaituta egon da.
+      Izena ematea desgaituta dago.
     </div>
   </template>
   <template id="invalid-username">
     <div class="error message" translate="yes">
-      Akatsa! Erabiltzaile izena baliogabea edo erregistratua
+      Errorea! Erabiltzaile izen baliogabea edo erregistratua
     </div>
   </template>
   <template id="duplicate-username">
     <div class="error message" translate="yes">
-      Akatsa! Erabiltzaile izena baliogabea edo erregistratua
+      Errorea! Erabiltzaile izen baliogabea edo erregistratua
     </div>
   </template>
   <template id="invalid-password">
     <div class="error message" translate="yes">
-      Akatsa! Pasahitz baliogabea edo berrespen pasahitza
+      Errorea! Pasahitz baliogabea edo berrespen pasahitza
     </div>
   </template>
   <template id="invalid-confirm">
     <div class="error message" translate="yes">
-      Akatsa! Berrespen-pasahitz baliogabea
+      Errorea! Baieztapen pasahitz baliogabea
     </div>
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Akatsa! Erabiltzaile-izenaren luzera baliogabea
+      Errorea! Erabiltzaile izenaren luzera baliogabea
     </div>
   </template>
   <template id="invalid-password-length">
     <div class="error message" translate="yes">
-      Akatsa! Pasahitz luzera baliogabea
+      Errorea! Pasahitzaren luzera baliogabea
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Akatsa! Erabiltzaile edo pasahitz okerra
+      Errorea! Erabiltzaile edo pasahitz okerra
     </div>
   </template>
   <template id="invalid-first-name">
     <div class="error message" translate="yes">
-      Akatsa! Izena edo izen baliogabea eman da
+      Errorea! Izena falta edo baliogabea eman da
     </div>
   </template>
   <template id="invalid-first-name-length">
     <div class="error message" translate="yes">
-      Akatsa! Izena baliogabea eman da
+      Errorea! Izen baliogabea eman da
     </div>
   </template>
   <template id="invalid-last-name">
     <div class="error message" translate="yes">
-      Akatsa! Abizen falta edo baliogabea eman da
+      Errorea! Falta den edo baliogabea den abizena eman da
     </div>
   </template>
   <template id="invalid-last-name-length">
     <div class="error message" translate="yes">
-      Akatsa! Abizen baliogabea eman da
+      Errorea! Abizen baliogabea eman da
     </div>
   </template>
   <template id="invalid-contact-email">
     <div class="error message" translate="yes">
-      Akatsa! Harremanetarako helbide baliogabea
+      Errorea! Harremanetarako helbide elektroniko baliogabea
     </div>
   </template>
   <template id="invalid-display-email">
     <div class="error message" translate="yes">
-      Akatsa! Bistaratzeko helbide elektronikoa baliogabea
+      Errorea! Bistaratzeko helbide elektroniko baliogabea
     </div>
   </template>
   <template id="invalid-display-name">
     <div class="error message" translate="yes">
-      Akatsa! Bistaratzeko izen falta edo baliogabea eman da
+      Errorea! Bistaratzeko izen falta edo baliogabea eman da
     </div>
   </template>
   <template id="invalid-dob">
     <div class="error message" translate="yes">
-      Akatsa! Jaiotze data falta edo baliogabea eman zen
+      Errorea! Jaiotze data falta edo baliogabea eman zen
     </div>
   </template>
   <template id="invalid-phone">
     <div class="error message" translate="yes">
-      Akatsa! Telefono falta edo baliogabea eman da.
+      Errorea! Falta den edo baliogabeko telefono bat eman da.
     </div>
   </template>
   <template id="invalid-occupation">
     <div class="error message" translate="yes">
-      Akatsa! Lanpostu falta edo baliogabea eman zen.
+      Errorea! Okupazio falta edo baliogabea eman zen.
     </div>
   </template>
   <template id="invalid-location">
     <div class="error message" translate="yes">
-      Akatsa! Kokapen falta edo baliogabea eman da.
+      Errorea! Falta den edo baliogabeko kokapena eman da.
     </div>
   </template>
   <template id="invalid-company-name">
     <div class="error message" translate="yes">
-      Akatsa! Enpresaren izen falta edo baliogabea eman da.
+      Errorea! Falta den edo baliogabeko konpainiaren izena eman da.
     </div>
   </template>
   <template id="invalid-website">
     <div class="error message" translate="yes">
-      Akatsa! Webgune falta edo baliogabea eman zen.
+      Errorea! Falta den webgune baliogabea eman da.
     </div>
   </template>
   <template id="invalid-address-postal-code">
     <div class="error message" translate="yes">
-      Akatsa! Helbide postal falta edo baliogabea eman da.
+      Errorea! Falta den edo baliogabea den posta-kodea eman da.
     </div>
   </template>
   <template id="invalid-display-name-length">
     <div class="error message" translate="yes">
-      Akatsa! Bistaratzeko izen falta edo baliogabea eman da
+      Errorea! Bistaratzeko izen falta edo baliogabea eman da
     </div>
   </template>
 </body>

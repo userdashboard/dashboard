@@ -2,7 +2,7 @@
 <html lang="en" data-navbar="/administrator/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Sessiya düyməsini yenidən qurun</title>
+  <title translate="yes">Sessiya düyməsini sıfırlayın</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
@@ -10,16 +10,16 @@
 </head>
 <body>
   <h1 translate="yes">Üçün sessiya düyməsini sıfırlayın ${account.accountid}</h1>
-  <p translate="yes">Hər bir hesab öz seanslarını gizli bir açarla imzalayır, buna görə də bütün əvvəlki seanslar bitdikdə dəyişdirilir.</p>
+  <p translate="yes">Hər bir hesab sessiyalarını gizli bir açarla imzalayır, beləliklə əvvəlki bütün sessiyalar dəyişdikdə sona çatır.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/reset-session-key?accountid=${account.accountid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Sessiya düyməsini yenidən qurun</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Sessiya düyməsini sıfırlayın</button>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Uğur! İstifadəçinin sessiyaları başa çatdı
+      Uğur! İstifadəçinin iclasları başa çatdı
     </div>
   </template>
   <template id="unknown-error">

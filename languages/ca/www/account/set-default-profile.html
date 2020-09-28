@@ -10,14 +10,14 @@
 </head>
 <body>
   <h1 translate="yes">Estableix el perfil predeterminat</h1>
-  <p translate="yes">El vostre perfil predeterminat és el punt de contacte principal del vostre compte.</p>
+  <p translate="yes">El vostre perfil predeterminat serveix com a punt de contacte principal del vostre compte.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/account/set-default-profile" name="submit-form">
     <fieldset>
       <div class="pure-control-group">
         <select id="profileid" name="profileid">
           <option value="" translate="yes">
-            Selecciona el perfil
+            Seleccioneu el perfil
           </option>
         </select>
       </div>
@@ -26,7 +26,7 @@
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Èxit! El perfil ara és el vostre valor predeterminat
+      Èxit! El perfil és ara el vostre predeterminat
     </div>
   </template>
   <template id="unknown-error">

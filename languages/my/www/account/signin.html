@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" data-auth="false" data-template="false">
+
 <head>
-  <meta charset="utf-8" /> 
+  <meta charset="utf-8" />
   <title translate="yes">ငါ့အကောင့်ကိုဆိုင်းအင်လုပ်ပါ</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="entry">
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin"
+    name="submit-form">
     <fieldset>
       <h1 translate="yes">ဆိုင်းအင်လုပ်ခြင်း</h1>
       <div id="message-container"></div>
@@ -23,17 +26,27 @@
       </div>
       <div class="pure-control-group">
         <div class="pure-checkbox">
-          <label for="remember-minutes" translate="yes"><span><input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked"></span> မိနစ် ၂၀ အတွင်းထွက်ပါ</label>
+          <label for="remember-minutes">
+            <input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked">
+            <span translate="yes">မိနစ် ၂၀ အတွင်းထွက်ပါ</span>
+          </label>
         </div>
         <div class="pure-checkbox">
-          <label for="remember-hours" translate="yes"><span><input type="radio" name="remember" value="hours" id="remember-hours"></span> ၈ နာရီအတွင်းထွက်ပါ</label>
+          <label for="remember-hours">
+            <input type="radio" name="remember" value="hours" id="remember-hours">
+            <span translate="yes">၈ နာရီအတွင်းထွက်ပါ</span>
+          </label>
         </div>
         <div class="pure-checkbox">
-          <label for="remember-days" translate="yes"><span><input type="radio" name="remember" value="days" id="remember-days"></span> ရက် ၃၀ အတွင်းထွက်ပါ</label>
+          <label for="remember-days">
+            <input type="radio" name="remember" value="days" id="remember-days">
+            <span translate="yes">ရက် ၃၀ အတွင်းထွက်ပါ</span>
+          </label>
         </div>
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ဆိုင်းအင်လုပ်ခြင်း</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Sign
+          in</button>
       </div>
       <ul>
         <li>
@@ -75,8 +88,9 @@
   </template>
   <template id="account-deleted">
     <div class="error message" translate="yes">
-      အမှား! သင့်အကောင့်ကိုဖျက်လိုက်ပြီ <a href="/account/recover-account">and can still be recovered</a>
+      Error! Your account is deleted <a href="/account/recover-account">and can still be recovered</a>
     </div>
   </template>
 </body>
+
 </html>

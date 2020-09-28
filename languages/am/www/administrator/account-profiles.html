@@ -9,16 +9,16 @@
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">መገለጫዎች የ ${account.accountid}</h1>
+  <h1 translate="yes">የእነሱ የሆኑ መገለጫዎች ${account.accountid}</h1>
   <div id="no-profiles">
-    <p translate="yes">ይህ መለያ ገና መገለጫዎች የሉትም።</p>
+    <p translate="yes">ይህ መለያ እስካሁን ድረስ ምንም መገለጫ የለውም።</p>
   </div>
   <table id="accounts-table" class="pure-table pure-table-striped list-table">
     <thead>
       <tr>
         <th>ID</th>
         <th translate="yes">ስም</th>
-        <th translate="yes">ኢሜይል</th>
+        <th translate="yes">ኢሜል</th>
       </tr>
     </thead>
     <tr id="${account.accountid}">
@@ -42,10 +42,10 @@
         <th id="dob" >DOB</th>
         <th id="phone" translate="yes">ስልክ</th>
         <th id="occupation" translate="yes">ሥራ</th>
-        <th id="location" translate="yes">ቦታ</th>
+        <th id="location" translate="yes">አካባቢ</th>
         <th id="company-name" translate="yes">የድርጅት ስም</th>
         <th id="website" translate="yes">ድህረገፅ</th>
-        <th translate="yes">ተፈጠረ</th>
+        <th translate="yes">ተፈጥሯል</th>
       </tr>
     </thead>
   </table>

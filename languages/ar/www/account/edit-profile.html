@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" data-navbar="/account/navbar-profile.html">
+
 <head>
-  <meta charset="utf-8" /> 
+  <meta charset="utf-8" />
   <title translate="yes">ليدعت ${profile.profileid}</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
+
 <body>
   <h1 translate="yes">ليدعت ${profile.profileid}</h1>
   <p translate="yes">.ةثدحمو ةحيحص كب ةصاخلا لاصتالا تامولعم ىلع ظفاح</p>
   <div id="message-container"></div>
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/edit-profile?profileid=${profile.profileid}" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked"
+    action="/account/edit-profile?profileid=${profile.profileid}" name="submit-form">
     <div class="pure-checkbox">
-      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">يضارتفا لعجا</span></label>
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span
+          translate="yes">يضارتفالا يدلب لعج</span></label>
     </div>
     <div id="display-name-container" class="pure-control-group">
       <label for="display-name" translate="yes">ضرعلا مسا</label>
@@ -31,11 +35,11 @@
     <div id="full-name-container">
       <div class="pure-control-group">
         <label for="first-name" translate="yes">لوالا مسالا</label>
-      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+        <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
         <label for="last-name" translate="yes">ةينكلا</label>
-      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+        <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
       </div>
     </div>
     <div id="dob-container">
@@ -80,27 +84,27 @@
   </template>
   <template id="invalid-first-name">
     <div class="error message" translate="yes">
-      حلاص ريغ وأ دوقفم لوأ مسا ميدقت مت !أطخ
+      حلاص ريغ وأ دوقفم لوألا مسالا ريفوت مت !أطخ
     </div>
   </template>
   <template id="invalid-first-name-length">
     <div class="error message" translate="yes">
-      حلاص ريغ لوأ مسا ميدقت مت !أطخ
+      حلاص ريغ لوألا مسالا ريفوت مت !أطخ
     </div>
   </template>
   <template id="invalid-last-name">
     <div class="error message" translate="yes">
-      حلاص ريغ وأ دوقفم ريخأ مسا ميدقت مت !أطخ
+      حلاص ريغ وأ دوقفم ةلئاع مسا ريفوت مت !أطخ
     </div>
   </template>
   <template id="invalid-last-name-length">
     <div class="error message" translate="yes">
-      حلاص ريغ ريخأ مسا ميدقت مت !أطخ
+      حلاص ريغ ةلئاع مسا ريفوت مت !أطخ
     </div>
   </template>
   <template id="invalid-contact-email">
     <div class="error message" translate="yes">
-      حلاص ريغ لاصتالا ةهجل ينورتكلإلا ديربلا ناونع !أطخ
+      حلاص ريغ لاصتالل ينورتكلإلا ديربلا ناونع !أطخ
     </div>
   </template>
   <template id="invalid-display-email">
@@ -110,7 +114,7 @@
   </template>
   <template id="invalid-display-name">
     <div class="error message" translate="yes">
-      حلاص ريغ وأ دوقفم ضرع مسا ميدقت مت !أطخ
+      حلاص ريغ وأ دوقفم ضرع مسا ريفوت مت !أطخ
     </div>
   </template>
   <template id="invalid-dob">
@@ -140,13 +144,14 @@
   </template>
   <template id="invalid-website">
     <div class="error message" translate="yes">
-      .حلاص ريغ وأ دوقفم عقوم ريفوت مت !أطخ
+      .حلاص ريغ وأ دوقفم بيو عقوم ريفوت مت !أطخ
     </div>
   </template>
   <template id="invalid-display-name-length">
     <div class="error message" translate="yes">
-      حلاص ريغ وأ دوقفم ضرع مسا ميدقت مت !أطخ
+      حلاص ريغ وأ دوقفم ضرع مسا ريفوت مت !أطخ
     </div>
   </template>
 </body>
+
 </html>

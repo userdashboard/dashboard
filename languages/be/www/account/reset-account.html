@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" data-auth="false" data-template="false">
+
 <head>
-  <meta charset="utf-8" /> 
-  <title translate="yes">Скіньце доступ да майго ўліковага запісу</title>
+  <meta charset="utf-8" />
+  <title translate="yes">Скід доступу да майго ўліковага запісу</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="entry">
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account"
+    name="submit-form">
     <fieldset>
       <div id="message-container"></div>
-      <h1 translate="yes">Скіньце доступ да майго ўліковага запісу</h1>
+      <h1 translate="yes">Скід доступу да майго ўліковага запісу</h1>
       <div class="pure-control-group">
         <label for="username" translate="yes">Імя карыстальніка</label>
         <input id="username" name="username" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
-        <label for="secret-code" translate="yes">Скінуць код</label>
+        <label for="secret-code" translate="yes">Скід кода</label>
         <input id="secret-code" name="secret-code" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
@@ -31,14 +34,15 @@
         <input id="confirm-password" name="confirm-password" type="text" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Скіньце і ўвайдзіце</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Reset and sign
+          in</button>
       </div>
       <ul>
         <li>
-          <a href="/account/signin" translate="yes">Вярнуцца для ўваходу</a>
+          <a href="/account/signin" translate="yes">Вярніцеся, каб увайсці</a>
         </li>
         <li>
-          <a href="/account/register" translate="yes">Стварыць уліковы запіс</a>
+          <a href="/account/register" translate="yes">Стварыце рахунак</a>
         </li>
       </ul>
     </fieldset>
@@ -55,38 +59,39 @@
   </template>
   <template id="invalid-username">
     <div class="error message" translate="yes">
-      Памылка! Несапраўднае імя карыстальніка
+      Памылка! Няправільнае імя карыстальніка
     </div>
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Памылка! Несапраўдная даўжыня імя карыстальніка
+      Памылка! Няправільная даўжыня імя карыстальніка
     </div>
   </template>
   <template id="invalid-new-password">
     <div class="error message" translate="yes">
-      Памылка! Несапраўдны новы пароль
+      Памылка! Няправільны новы пароль
     </div>
   </template>
   <template id="invalid-new-password-length">
     <div class="error message" translate="yes">
-      Памылка! Несапраўдны новы пароль length
+      Памылка! Няправільная даўжыня новага пароля
     </div>
   </template>
   <template id="invalid-confirm-password">
     <div class="error message" translate="yes">
-      Памылка! Несапраўдны пароль пацверджання
+      Памылка! Няправільны пароль пацверджання
     </div>
   </template>
   <template id="invalid-account">
     <div class="error message" translate="yes">
-      Памылка! Несапраўдны ўліковы запіс
+      Памылка! Няправільны рахунак
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Памылка! Узнікла невядомая памылка
+      Памылка! Адбылася невядомая памылка
     </div>
   </template>
 </body>
+
 </html>

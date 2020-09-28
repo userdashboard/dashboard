@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1 translate="yes">Выдаліць ${account.accountid}</h1>
-  <p translate="yes">Уліковыя запісы можна выдаліць пасля праходжання запланаванага перыяду выдалення.</p>
+  <p translate="yes">Уліковыя запісы можна выдаліць пасля праходжання планавага перыяду іх выдалення.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
     <fieldset>
@@ -24,17 +24,17 @@
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Памылка! Узнікла невядомая памылка
+      Памылка! Адбылася невядомая памылка
     </div>
   </template>
   <template id="schedule-error">
     <div class="error message" translate="yes">
-      Памылка! Для ўліковага запісу трэба спачатку запланаваць выдаленне
+      Памылка! Спачатку трэба запланаваць выдаленне ўліковага запісу
     </div>
   </template>
   <template id="duration-error">
     <div class="error message" translate="yes">
-      Памылка! Уліковы запіс нельга выдаліць да канца запланаванай даты
+      Памылка! Уліковы запіс можна выдаліць толькі пасля запланаванай даты
     </div>
   </template>
 </body>

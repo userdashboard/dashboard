@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-navbar="/account/navbar-profile.html">
 <head>
-  <title translate="yes">изглед ${profile.profileid}</title>
+  <title translate="yes">Изглед ${profile.profileid}</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">изглед ${profile.profileid}</h1>
+  <h1 translate="yes">Изглед ${profile.profileid}</h1>
   <table id="profiles-table" class="pure-table data-table">
     <tbody id="${profile.profileid}">
       <tr>
@@ -18,7 +18,7 @@
       <tr>
         <th translate="yes">По подразбиране</th>
         <td id="is-default" translate="yes">Да</td>
-        <td id="is-not-default" translate="yes">No</td>
+        <td id="is-not-default" translate="yes">Не</td>
       </tr>
       <tr>
         <th translate="yes">Създаден</th>
@@ -29,13 +29,13 @@
         <td>${profile.firstName} ${profile.lastName}</td>
       </tr>
       <tr id="contact-email">
-        <th translate="yes">Контакт имейл</th>
+        <th translate="yes">Имейл за връзка</th>
         <td>
           <a href="mailto:${profile.contactEmail}">${profile.contactEmail}</a>
         </td>
       </tr>
       <tr id="display-name">
-        <th translate="yes">Показване на име</th>
+        <th translate="yes">Показвано име</th>
         <td>${profile.displayName}</td>
       </tr>
       <tr id="display-email">
@@ -49,7 +49,7 @@
         <td>${profile.dob}</td>
       </tr>
       <tr id="phone">
-        <th translate="yes">телефон</th>
+        <th translate="yes">Телефон</th>
         <td>${profile.phone}</td>
       </tr>
       <tr id="occupation">
@@ -57,7 +57,7 @@
         <td>${profile.occupation}</td>
       </tr>
       <tr id="location">
-        <th translate="yes">местоположение</th>
+        <th translate="yes">Местоположение</th>
         <td>${profile.location}</td>
       </tr>
       <tr id="company-name">
@@ -65,7 +65,7 @@
         <td>${profile.companyName}</td>
       </tr>
       <tr id="website">
-        <th translate="yes">уебсайт</th>
+        <th translate="yes">Уебсайт</th>
         <td>
           <a href="${profile.website}">${profile.website}</a>
         </td>

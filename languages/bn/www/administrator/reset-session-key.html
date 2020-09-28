@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1 translate="yes">এর জন্য সেশন কী পুনরায় সেট করুন ${account.accountid}</h1>
-  <p translate="yes">প্রতিটি অ্যাকাউন্ট তার সেশনগুলিকে একটি গোপন কী দিয়ে স্বাক্ষর করে তাই যখন এটি সমস্ত পূর্ববর্তী সেশনের শেষ পরিবর্তন করে।</p>
+  <p translate="yes">প্রতিটি অ্যাকাউন্ট তার সেশনগুলিকে একটি গোপন কী দিয়ে স্বাক্ষর করে তাই যখন এটি পূর্বের সমস্ত সেশনের শেষ পরিবর্তন করে।</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/reset-session-key?accountid=${account.accountid}" name="submit-form">
     <fieldset>
@@ -19,7 +19,7 @@
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      সফল! ব্যবহারকারীর সেশনগুলি শেষ হয়ে গেছে
+      সাফল্য! ব্যবহারকারীর সেশনগুলি শেষ হয়ে গেছে
     </div>
   </template>
   <template id="unknown-error">

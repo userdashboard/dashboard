@@ -2,31 +2,31 @@
 <html lang="en" data-navbar="/account/navbar-profile.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Pagwagtang ${profile.profileid}</title>
+  <title translate="yes">Pagtangtang ${profile.profileid}</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Pagwagtang ${profile.profileid}</h1>
+  <h1 translate="yes">Pagtangtang ${profile.profileid}</h1>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/account/delete-profile?profileid=${profile.profileid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Pagwagtang profile</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">I-delete ang profile</button>
     </fieldset>
   </form>
   <template id="instant-delete">
-    <p translate="yes">Ang profile kuhaon dayon ug dili mabawi.</p>
+    <p translate="yes">Matanggal dayon ang profile ug dili makuha.</p>
   </template>
   <template id="success">
     <div class="success message" translate="yes">
-      Kalampusan! Ang profile gipapas na
+      Malampuson! Gitangtang ang profile
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Sayop! Adunay usa ka sayup nga nahitabo sa pagtangtang sa profile
+      Sayup! Adunay sayup nga nahitabo sa pagtangtang sa profile
     </div>
   </template>
 </body>

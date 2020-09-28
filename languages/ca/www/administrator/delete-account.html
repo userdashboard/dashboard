@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1 translate="yes">Suprimeix ${account.accountid}</h1>
-  <p translate="yes">Els comptes es poden suprimir un cop passat el període de supressió programada.</p>
+  <p translate="yes">Els comptes es poden suprimir després de passar el període de supressió programat.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
     <fieldset>
@@ -29,7 +29,7 @@
   </template>
   <template id="schedule-error">
     <div class="error message" translate="yes">
-      Error! Primer s'ha de programar el compte per eliminar-lo
+      Error! Primer s’ha de programar la supressió del compte
     </div>
   </template>
   <template id="duration-error">

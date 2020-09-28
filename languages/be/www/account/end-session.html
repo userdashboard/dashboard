@@ -9,24 +9,24 @@
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Заканчэнне сесіі ${session.sessionid}</h1>
+  <h1 translate="yes">Завяршэнне сесіі ${session.sessionid}</h1>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/account/end-session?sessionid=${session.sessionid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Заканчэнне сесіі</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Завяршэнне сесіі</button>
     </fieldset>
   </form>
   <template id="instant-delete">
-    <p translate="yes">Сесія будзе неадкладна скончана.</p>
+    <p translate="yes">Сесія будзе скончана неадкладна.</p>
   </template>
   <template id="success">
     <div class="success message" translate="yes">
-      Поспех! Сесія скончылася
+      Поспех! Сесія скончана
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Памылка! Узнікла невядомая памылка
+      Памылка! Адбылася невядомая памылка
     </div>
   </template>
 </body>

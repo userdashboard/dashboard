@@ -2,15 +2,15 @@
 <html lang="en" data-navbar="/administrator/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Kreirajte kod za resetiranje</title>
+  <title translate="yes">Napravite reset kod</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Kreirajte kôd za resetiranje za ${account.accountid}</h1>
-  <p translate="yes">Poništite pristup računu za korisnike bez resetiranja kodova nakon što prvo provjerite njihov identitet.</p>
+  <h1 translate="yes">Napravite reset kod za ${account.accountid}</h1>
+  <p translate="yes">Resetirajte pristup računu za korisnike bez resetiranja kodova, nakon što prvo potvrdite njihov identitet.</p>
   <div id="message-container"></div>
   <table id="accounts-table" class="pure-table object-table">
     <thead>
@@ -18,8 +18,8 @@
         <th>ID</th>
         <th translate="yes">Ime</th>
         <th translate="yes">Email</th>
-        <th translate="yes">Napravljeno</th>
-        <th translate="yes">Zadnji put prijavljen</th>
+        <th translate="yes">Stvoreno</th>
+        <th translate="yes">Posljednji put prijavljen</th>
       </tr>
     </thead>
     <tr id="${account.accountid}">
@@ -37,22 +37,22 @@
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/administrator/create-reset-code?accountid=${account.accountid}" name="submit-form">
     <fieldset>
       <div class="pure-control-group">
-        <label for="secret-code" translate="yes">Reset kod</label>
+        <label for="secret-code" translate="yes">Resetiraj kod</label>
         <input id="secret-code" name="secret-code" type="text" maxlength="1000">
       </div>
       <div id="form-buttons" class="pure-controls spaced-buttons">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Kreirajte kod za resetiranje</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Napravite reset kod</button>
       </div>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Uspeh! Možete da delite kôd za resetovanje sa korisnikom
+      Uspjeh! Kôd za resetovanje možete podijeliti s korisnikom
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Greška! Došlo je do nepoznate pogreške
+      Greška! Došlo je do nepoznate greške
     </div>
   </template>
   <template id="invalid-secret-code">
@@ -62,7 +62,7 @@
   </template>
   <template id="invalid-secret-code-length">
     <div class="error message" translate="yes">
-      Greška! Nevažeći kod za resetiranje length
+      Greška! Neispravna dužina koda za resetiranje
     </div>
   </template>
 </body>

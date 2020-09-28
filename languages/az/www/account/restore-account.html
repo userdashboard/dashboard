@@ -2,7 +2,7 @@
 <html lang="en" data-auth="false" data-template="false">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Hesabımı bərpa et</title>
+  <title translate="yes">Hesabımı bərpa edin</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
@@ -11,7 +11,7 @@
 <body class="entry">
   <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
     <fieldset>
-      <h1 translate="yes">Hesabımı bərpa et</h1>
+      <h1 translate="yes">Hesabımı bərpa edin</h1>
       <div id="message-container"></div>
       <div class="pure-control-group">
         <label for="username" translate="yes">İstifadəçi adı</label>
@@ -22,29 +22,29 @@
         <input id="password" name="password" type="password" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Hesabımı bərpa et</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Hesabımı bərpa edin</button>
       </div>
       <ul>
         <li>
-          <a href="/account/register" translate="yes">Bir haqq-hesab qeyd edin</a>
+          <a href="/account/register" translate="yes">Bir hesabı qeydiyyatdan keçirin</a>
         </li>
         <li>
           <a href="/account/reset-account" translate="yes">Şifrəni unutmusunuz</a>
         </li>
         <li>
-          <a href="/account/restore-account" translate="yes">Hesabı silməyi ləğv edin</a>
+          <a href="/account/restore-account" translate="yes">Hesab silinməsini ləğv edin</a>
         </li>
       </ul>
     </fieldset>
   </form>
   <template id="invalid-account">
     <div class="error message" translate="yes">
-      Xəta! Yanlış hesab və ya ləğv müddəti başa çatdı
+      Xəta! Yanlış hesab və ya ləğv müddəti bitdi
     </div>
   </template>
   <template id="account-deleted">
     <div class="error message" translate="yes">
-      Xəta! Hesab silindi və ya ləğv müddəti başa çatdı
+      Xəta! Hesab silindi və ya ləğv müddəti bitdi
     </div>
   </template>
   <template id="invalid-username">
@@ -54,17 +54,17 @@
   </template>
   <template id="invalid-password">
     <div class="error message" translate="yes">
-      Xəta! Yanlış və ya çatışmayan parol
+      Xəta! Şifrə səhv və ya itkin
     </div>
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Xəta! Yanlış istifadəçi uzunluğu
+      Xəta! Yanlış istifadəçi adı uzunluğu
     </div>
   </template>
   <template id="invalid-password-length">
     <div class="error message" translate="yes">
-      Xəta! Şifrə uzunluğu
+      Xəta! Yanlış parol uzunluğu
     </div>
   </template>
   <template id="unknown-error">

@@ -2,18 +2,18 @@
 <html lang="en" data-navbar="/administrator/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Skedule verwyder</title>
+  <title translate="yes">Skedule skrap</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Skedule verwyder vir ${account.accountid}</h1>
+  <h1 translate="yes">Skedule skrap vir ${account.accountid}</h1>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/schedule-account-delete?accountid=${account.accountid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Skrap van skedule</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Skedule skrap</button>
     </fieldset>
   </form>
   <template id="success">
@@ -27,7 +27,7 @@
     </div>
   </template>
   <template id="scheduled-delete">
-    <p translate="yes">Die rekening sal geskeduleer word om in te verwyder ${data.numDays} days and you or the user may cancel before then.</p>
+    <p translate="yes">Die rekening sal geskeduleer wees om in ${data.numDays} days and you or the user may cancel before then.</p>
   </template>
 </body>
 </html>

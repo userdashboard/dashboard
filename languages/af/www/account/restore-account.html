@@ -2,7 +2,7 @@
 <html lang="en" data-auth="false" data-template="false">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Herstel my rekening</title>
+  <title translate="yes">Stel my rekening terug</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
@@ -11,18 +11,18 @@
 <body class="entry">
   <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
     <fieldset>
-      <h1 translate="yes">Herstel my rekening</h1>
+      <h1 translate="yes">Stel my rekening terug</h1>
       <div id="message-container"></div>
       <div class="pure-control-group">
         <label for="username" translate="yes">Gebruikersnaam</label>
         <input id="username" name="username" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
-        <label for="password" translate="yes">wagwoord</label>
+        <label for="password" translate="yes">Wagwoord</label>
         <input id="password" name="password" type="password" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Herstel my rekening</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Stel my rekening terug</button>
       </div>
       <ul>
         <li>
@@ -49,7 +49,7 @@
   </template>
   <template id="invalid-username">
     <div class="error message" translate="yes">
-      Fout! Gebruikersnaam verkeerd of ontbreek
+      Fout! Verkeerde of ontbrekende gebruikersnaam
     </div>
   </template>
   <template id="invalid-password">
@@ -59,7 +59,7 @@
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Fout! Ongeldige gebruikersnaamlengte
+      Fout! Ongeldige lengte van die gebruikersnaam
     </div>
   </template>
   <template id="invalid-password-length">

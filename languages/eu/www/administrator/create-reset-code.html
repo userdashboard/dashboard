@@ -2,24 +2,24 @@
 <html lang="en" data-navbar="/administrator/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Sortu berrezarri kodea</title>
+  <title translate="yes">Sortu berrezartzeko kodea</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Sortu berrezarri kodea ${account.accountid}</h1>
-  <p translate="yes">Erabiltzaileentzako kontuak berrezarri kodeak berrabiarazi gabe, lehenik eta behin nortasuna egiaztatu ondoren.</p>
+  <h1 translate="yes">Sortu berrezartzeko kodea ${account.accountid}</h1>
+  <p translate="yes">Berrezarri konturako sarbidea berrezartzeko koderik gabeko erabiltzaileentzat, haien identitatea lehenbailehen egiaztatu ondoren.</p>
   <div id="message-container"></div>
   <table id="accounts-table" class="pure-table object-table">
     <thead>
       <tr>
         <th>ID</th>
-        <th translate="yes">izena</th>
-        <th translate="yes">Emaila</th>
+        <th translate="yes">Izena</th>
+        <th translate="yes">Posta elektronikoa</th>
         <th translate="yes">Sortu</th>
-        <th translate="yes">Saioa hasi da</th>
+        <th translate="yes">Azkeneko saioa</th>
       </tr>
     </thead>
     <tr id="${account.accountid}">
@@ -41,28 +41,28 @@
         <input id="secret-code" name="secret-code" type="text" maxlength="1000">
       </div>
       <div id="form-buttons" class="pure-controls spaced-buttons">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Sortu berrezarri kodea</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Sortu berrezartzeko kodea</button>
       </div>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Arrakasta! Era berean, berrezarri kodea erabiltzailearekin partekatu dezakezu
+      Arrakasta! Erabiltzailearekin berrezartzeko kodea parteka dezakezu
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Akatsa! Errore ezezagun bat gertatu da
+      Errorea! Errore ezezaguna gertatu da
     </div>
   </template>
   <template id="invalid-secret-code">
     <div class="error message" translate="yes">
-      Akatsa! Berrezarri kodea baliogabea
+      Errorea! Berrezartzeko kodea baliogabea
     </div>
   </template>
   <template id="invalid-secret-code-length">
     <div class="error message" translate="yes">
-      Akatsa! Berrezarri kodea baliogabea length
+      Errorea! Berrezartzeko kodearen luzera baliogabea
     </div>
   </template>
 </body>

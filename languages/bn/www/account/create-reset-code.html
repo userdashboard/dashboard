@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1 translate="yes">রিসেট কোড তৈরি করুন</h1>
-  <p translate="yes">কোডগুলি রিসেট করুন আপনি যদি আপনার পাসওয়ার্ড ভুলে যান তবে আপনাকে আপনার অ্যাকাউন্টে অ্যাক্সেস করতে দেয়।</p>
+  <p translate="yes">কোডগুলি রিসেট করুন আপনি যদি নিজের পাসওয়ার্ড ভুলে যান তবে আপনাকে আপনার অ্যাকাউন্টে অ্যাক্সেস করতে দেয়।</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-reset-code" name="submit-form">
     <fieldset>
@@ -25,7 +25,7 @@
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      সফল! আপনার নতুন কোডটি নিরাপদে কোথাও স্ট্যাশ করার জন্য প্রস্তুত
+      সাফল্য! আপনার নতুন কোডটি নিরাপদে কোথাও স্ট্যাশ করার জন্য প্রস্তুত
     </div>
   </template>
   <template id="invalid-secret-code">
@@ -35,7 +35,7 @@
   </template>
   <template id="invalid-secret-code-length">
     <div class="error message" translate="yes">
-      ত্রুটি! অবৈধ গোপন কোড length
+      ত্রুটি! অবৈধ গোপন কোড দৈর্ঘ্য
     </div>
   </template>
   <template id="unknown-error">

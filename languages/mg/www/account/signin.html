@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" data-auth="false" data-template="false">
+
 <head>
-  <meta charset="utf-8" /> 
+  <meta charset="utf-8" />
   <title translate="yes">Midira ao amin'ny kaontiko</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="entry">
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin"
+    name="submit-form">
     <fieldset>
       <h1 translate="yes">Hiditra</h1>
       <div id="message-container"></div>
@@ -23,17 +26,27 @@
       </div>
       <div class="pure-control-group">
         <div class="pure-checkbox">
-          <label for="remember-minutes" translate="yes"><span><input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked"></span> Midira rehefa afaka 20 minitra</label>
+          <label for="remember-minutes">
+            <input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked">
+            <span translate="yes">Midira rehefa afaka 20 minitra</span>
+          </label>
         </div>
         <div class="pure-checkbox">
-          <label for="remember-hours" translate="yes"><span><input type="radio" name="remember" value="hours" id="remember-hours"></span> Midira miditra amin'ny 8 ora</label>
+          <label for="remember-hours">
+            <input type="radio" name="remember" value="hours" id="remember-hours">
+            <span translate="yes">Midira miditra amin'ny 8 ora</span>
+          </label>
         </div>
         <div class="pure-checkbox">
-          <label for="remember-days" translate="yes"><span><input type="radio" name="remember" value="days" id="remember-days"></span> Midira rehefa afaka 30 andro</label>
+          <label for="remember-days">
+            <input type="radio" name="remember" value="days" id="remember-days">
+            <span translate="yes">Midira rehefa afaka 30 andro</span>
+          </label>
         </div>
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Hiditra</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Sign
+          in</button>
       </div>
       <ul>
         <li>
@@ -60,12 +73,12 @@
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Error! Lisitra anarana tsy mety length
+      Error! Ny halavan'ny mpampiasa anarana tsy diso
     </div>
   </template>
   <template id="invalid-password-length">
     <div class="error message" translate="yes">
-      Error! Ny tenimiafina tsy nahy length
+      Error! Halavan'ny tenimiafina tsy diso
     </div>
   </template>
   <template id="unknown-error">
@@ -75,8 +88,9 @@
   </template>
   <template id="account-deleted">
     <div class="error message" translate="yes">
-      Error! Voafafa ny kaontinao <a href="/account/recover-account">and can still be recovered</a>
+      Error! Your account is deleted <a href="/account/recover-account">and can still be recovered</a>
     </div>
   </template>
 </body>
+
 </html>

@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1 translate="yes">Izbriši ${account.accountid}</h1>
-  <p translate="yes">Računi se mogu izbrisati nakon prolaska zakazanog roka brisanja.</p>
+  <p translate="yes">Računi se mogu brisati nakon što prođu predviđeni period brisanja.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
     <fieldset>
@@ -19,22 +19,22 @@
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Uspeh! Račun je obrisan
+      Uspjeh! Račun je izbrisan
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Greška! Došlo je do nepoznate pogreške
+      Greška! Došlo je do nepoznate greške
     </div>
   </template>
   <template id="schedule-error">
     <div class="error message" translate="yes">
-      Greška! Račun mora prvo biti zakazan za brisanje
+      Greška! Prvo mora biti zakazano brisanje računa
     </div>
   </template>
   <template id="duration-error">
     <div class="error message" translate="yes">
-      Greška! Račun se ne može izbrisati do zakazanog datuma
+      Greška! Račun se može izbrisati tek nakon zakazanog datuma
     </div>
   </template>
 </body>

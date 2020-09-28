@@ -9,25 +9,25 @@
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Izbrišite raspored za ${account.accountid}</h1>
+  <h1 translate="yes">Raspored brisanja za ${account.accountid}</h1>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/schedule-account-delete?accountid=${account.accountid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Brisanje rasporeda</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Raspored brisanja</button>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Uspeh! Račun je obrisan
+      Uspjeh! Račun je izbrisan
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Greška! Došlo je do nepoznate pogreške
+      Greška! Došlo je do nepoznate greške
     </div>
   </template>
   <template id="scheduled-delete">
-    <p translate="yes">Račun će biti zakazan za brisanje u ${data.numDays} days and you or the user may cancel before then.</p>
+    <p translate="yes">Račun će biti zakazan za brisanje za ${data.numDays} days and you or the user may cancel before then.</p>
   </template>
 </body>
 </html>

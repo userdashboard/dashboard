@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1 translate="yes">Мова ўліковага запісу</h1>
-  <p translate="yes">Выберыце сваю мову і, дзе магчыма, змест будзе пададзены на абранай вам мове.</p>
+  <p translate="yes">Выберыце мову і, дзе гэта магчыма, змест будзе падавацца на абранай мове.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/language" name="submit-form">
     <fieldset>
@@ -18,12 +18,12 @@
         <label for="password" translate="yes">Мова</label>
         <select id="language" name="language">
           <option value="" translate="yes">
-            Абярыце мову
+            Выберыце мову
           </option>
         </select>
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Змена мовы</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Змяніць мову</button>
       </div>
     </fieldset>
   </form>
@@ -34,17 +34,17 @@
   </template>
   <template id="success">
     <div class="success message" translate="yes">
-      Поспех! Вашы моўныя перавагі ўступяць у сілу з гэтага часу.
+      Поспех! Вашы моўныя параметры ўступяць у сілу з гэтага часу.
     </div>
   </template>
   <template id="invalid-language">
     <div class="error message" translate="yes">
-      Памылка! Выбрана недапушчальная мова
+      Памылка! Выбрана несапраўдная мова
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Памылка! Узнікла невядомая памылка
+      Памылка! Адбылася невядомая памылка
     </div>
   </template>
 </body>

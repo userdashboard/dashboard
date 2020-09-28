@@ -2,14 +2,14 @@
 <html lang="en" data-navbar="/account/navbar-session.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">ikusi ${session.sessionid}</title>
+  <title translate="yes">Ikusi ${session.sessionid}</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">ikusi ${session.sessionid}</h1>
+  <h1 translate="yes">Ikusi ${session.sessionid}</h1>
   <div id="message-container"></div>
   <table id="sessions-table" class="pure-table data-table">
     <tbody id="${session.sessionid}">
@@ -22,7 +22,7 @@
         <td>${session.createdFormatted}</td>
       </tr>
       <tr>
-        <th translate="yes">iraungitzear</th>
+        <th translate="yes">Iraungitzen da</th>
         <td>${session.expiresFormatted}</td>
       </tr>
     </tbody>

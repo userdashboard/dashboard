@@ -23,11 +23,11 @@
           <input placeholder="${requirements.minimumPasswordLength}+ characters" name="password" id="password" type="password" maxlength="1000">
         </div>
         <div class="pure-control-group">
-          <label for="confirm" translate="yes">Parolunuzu təsdiqləyin</label>
+          <label for="confirm" translate="yes">Şifrənizi təsdiq edin</label>
           <input name="confirm" id="confirm" type="password" maxlength="1000">
         </div>
         <div id="display-name-container" class="pure-control-group">
-          <label for="display-name" translate="yes">Göstərilən ad</label>
+          <label for="display-name" translate="yes">Ekran adı</label>
           <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
         </div>
         <div id="display-email-container" class="pure-control-group">
@@ -59,7 +59,7 @@
           <input required="required" id="phone" name="phone" type="text" maxlength="1000">
         </div>
         <div id="occupation-container" class="pure-control-group">
-          <label for="occupation" translate="yes">İşğal</label>
+          <label for="occupation" translate="yes">Peşə</label>
           <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
         </div>
         <div id="location-container" class="pure-control-group">
@@ -71,7 +71,7 @@
           <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
         </div>
         <div id="website-container" class="pure-control-group">
-          <label for="website" translate="yes">Veb sayt</label>
+          <label for="website" translate="yes">Veb səhifə</label>
           <input required="required" id="website" name="website" type="text" maxlength="1000">
         </div>
         <div class="pure-controls">
@@ -102,22 +102,22 @@
   </template>
   <template id="invalid-password">
     <div class="error message" translate="yes">
-      Xəta! Yanlış parol və ya təsdiq şifrəsi
+      Xəta! Yanlış parol və ya təsdiq parolu
     </div>
   </template>
   <template id="invalid-confirm">
     <div class="error message" translate="yes">
-      Xəta! Yanlış təsdiq şifrəsi
+      Xəta! Yanlış təsdiq parolu
     </div>
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Xəta! Yanlış istifadəçi uzunluğu
+      Xəta! Yanlış istifadəçi adı uzunluğu
     </div>
   </template>
   <template id="invalid-password-length">
     <div class="error message" translate="yes">
-      Xəta! Şifrə uzunluğu
+      Xəta! Yanlış parol uzunluğu
     </div>
   </template>
   <template id="unknown-error">
@@ -127,22 +127,22 @@
   </template>
   <template id="invalid-first-name">
     <div class="error message" translate="yes">
-      Xəta! İtirilmiş və ya etibarsız bir ad göstərilmişdir
+      Xəta! Bir itkin və ya etibarsız bir ad verilir
     </div>
   </template>
   <template id="invalid-first-name-length">
     <div class="error message" translate="yes">
-      Xəta! Etibarsız bir ad verildi
+      Xəta! Yanlış bir ad verildi
     </div>
   </template>
   <template id="invalid-last-name">
     <div class="error message" translate="yes">
-      Xəta! Itkin və ya etibarsız bir soyad verildi
+      Xəta! İtkin və ya etibarsız bir soyad verildi
     </div>
   </template>
   <template id="invalid-last-name-length">
     <div class="error message" translate="yes">
-      Xəta! Etibarsız bir soyad təmin edildi
+      Xəta! Yanlış bir soyad verildi
     </div>
   </template>
   <template id="invalid-contact-email">
@@ -152,52 +152,52 @@
   </template>
   <template id="invalid-display-email">
     <div class="error message" translate="yes">
-      Xəta! Yanlış göstərilən e-poçt ünvanı
+      Xəta! Yanlış ekran e-poçt ünvanı
     </div>
   </template>
   <template id="invalid-display-name">
     <div class="error message" translate="yes">
-      Xəta! İtirilmiş və ya etibarsız görüntüləmə adı təqdim edildi
+      Xəta! Eksik və ya etibarsız bir ekran adı verildi
     </div>
   </template>
   <template id="invalid-dob">
     <div class="error message" translate="yes">
-      Xəta! Itkin və ya etibarsız doğum tarixi verildi
+      Xəta! İtkin və ya etibarsız bir doğum tarixi təmin edildi
     </div>
   </template>
   <template id="invalid-phone">
     <div class="error message" translate="yes">
-      Xəta! Itkin və ya etibarsız telefon təqdim edildi.
+      Xəta! İtkin və ya etibarsız bir telefon təmin edildi.
     </div>
   </template>
   <template id="invalid-occupation">
     <div class="error message" translate="yes">
-      Xəta! Itkin və ya etibarsız bir peşə təmin edildi.
+      Xəta! İtkin və ya etibarsız bir peşə təmin edildi.
     </div>
   </template>
   <template id="invalid-location">
     <div class="error message" translate="yes">
-      Xəta! Itkin və ya etibarsız bir yer təmin edildi.
+      Xəta! İtkin və ya etibarsız bir yer təmin edildi.
     </div>
   </template>
   <template id="invalid-company-name">
     <div class="error message" translate="yes">
-      Xəta! Itkin və ya etibarsız bir şirkət adı təqdim edildi.
+      Xəta! İtkin və ya etibarsız bir şirkət adı verildi.
     </div>
   </template>
   <template id="invalid-website">
     <div class="error message" translate="yes">
-      Xəta! Itkin və ya etibarsız veb sayt təqdim edildi.
+      Xəta! Eksik və ya etibarsız bir veb sayt təmin edildi.
     </div>
   </template>
   <template id="invalid-address-postal-code">
     <div class="error message" translate="yes">
-      Xəta! Itkin və ya etibarsız bir ünvan poçt kodu təqdim edildi.
+      Xəta! İtkin və ya etibarsız bir poçt kodu göstərildi.
     </div>
   </template>
   <template id="invalid-display-name-length">
     <div class="error message" translate="yes">
-      Xəta! İtirilmiş və ya etibarsız görüntüləmə adı təqdim edildi
+      Xəta! Eksik və ya etibarsız bir ekran adı verildi
     </div>
   </template>
 </body>

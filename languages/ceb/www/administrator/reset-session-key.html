@@ -2,29 +2,29 @@
 <html lang="en" data-navbar="/administrator/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">I-reset ang yawi sa sesyon</title>
+  <title translate="yes">Ig-usab ang yawi sa sesyon</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">I-reset ang yawi sa sesyon alang sa ${account.accountid}</h1>
-  <p translate="yes">Ang matag account nagpirma sa mga sesyon sa usa ka tinago nga yawi busa kung giusab ang tanan nga nahauna nga mga sesyon natapos.</p>
+  <h1 translate="yes">I-reset ang key sa sesyon alang sa ${account.accountid}</h1>
+  <p translate="yes">Ang matag account pirmahan sa mga sesyon niini gamit ang usa ka tinago nga yawi aron kung kini magbag-o sa tanan nga wala pa matapos nga sesyon natapos na.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/reset-session-key?accountid=${account.accountid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">I-reset ang yawi sa sesyon</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Ig-usab ang yawi sa sesyon</button>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Kalampusan! Ang mga sesyon sa gumagamit natapos na
+      Malampuson! Ang mga sesyon sa mogamit natapos na
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Sayop! Usa ka wala mailhi nga sayup ang nahitabo
+      Sayup! Usa ka wala nahibal-an nga sayup ang nahitabo
     </div>
   </template>
 </body>

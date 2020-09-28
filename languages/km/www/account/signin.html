@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" data-auth="false" data-template="false">
+
 <head>
-  <meta charset="utf-8" /> 
+  <meta charset="utf-8" />
   <title translate="yes">ចូលទៅគណនីរបស់ខ្ញុំ</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="entry">
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin"
+    name="submit-form">
     <fieldset>
       <h1 translate="yes">ចូល</h1>
       <div id="message-container"></div>
@@ -23,17 +26,27 @@
       </div>
       <div class="pure-control-group">
         <div class="pure-checkbox">
-          <label for="remember-minutes" translate="yes"><span><input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked"></span> ចាកចេញក្នុងរយៈពេល ២០ នាទី</label>
+          <label for="remember-minutes">
+            <input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked">
+            <span translate="yes">ចាកចេញក្នុងរយៈពេល ២០ នាទី</span>
+          </label>
         </div>
         <div class="pure-checkbox">
-          <label for="remember-hours" translate="yes"><span><input type="radio" name="remember" value="hours" id="remember-hours"></span> ចុះឈ្មោះចូលក្នុងរយៈពេល ៨ ម៉ោង</label>
+          <label for="remember-hours">
+            <input type="radio" name="remember" value="hours" id="remember-hours">
+            <span translate="yes">ចុះឈ្មោះចូលក្នុងរយៈពេល ៨ ម៉ោង</span>
+          </label>
         </div>
         <div class="pure-checkbox">
-          <label for="remember-days" translate="yes"><span><input type="radio" name="remember" value="days" id="remember-days"></span> ចេញក្នុងរយៈពេល ៣០ ថ្ងៃ</label>
+          <label for="remember-days">
+            <input type="radio" name="remember" value="days" id="remember-days">
+            <span translate="yes">ចេញក្នុងរយៈពេល ៣០ ថ្ងៃ</span>
+          </label>
         </div>
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ចូល</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Sign
+          in</button>
       </div>
       <ul>
         <li>
@@ -75,8 +88,9 @@
   </template>
   <template id="account-deleted">
     <div class="error message" translate="yes">
-      កំហុស! គណនីរបស់អ្នកត្រូវបានលុបចោល <a href="/account/recover-account">and can still be recovered</a>
+      Error! Your account is deleted <a href="/account/recover-account">and can still be recovered</a>
     </div>
   </template>
 </body>
+
 </html>

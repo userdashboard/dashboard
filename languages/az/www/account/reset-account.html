@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" data-auth="false" data-template="false">
+
 <head>
-  <meta charset="utf-8" /> 
-  <title translate="yes">Hesabıma giriş bərpa edin</title>
+  <meta charset="utf-8" />
+  <title translate="yes">Hesabıma girişi sıfırlayın</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="entry">
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account"
+    name="submit-form">
     <fieldset>
       <div id="message-container"></div>
-      <h1 translate="yes">Hesabıma giriş bərpa edin</h1>
+      <h1 translate="yes">Hesabıma girişi sıfırlayın</h1>
       <div class="pure-control-group">
         <label for="username" translate="yes">İstifadəçi adı</label>
         <input id="username" name="username" type="text" maxlength="1000">
@@ -31,11 +34,12 @@
         <input id="confirm-password" name="confirm-password" type="text" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Sıfırlayın və daxil olun</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Reset and sign
+          in</button>
       </div>
       <ul>
         <li>
-          <a href="/account/signin" translate="yes">Girişə qayıt</a>
+          <a href="/account/signin" translate="yes">Giriş etmək üçün qayıdın</a>
         </li>
         <li>
           <a href="/account/register" translate="yes">Hesab yarat</a>
@@ -60,22 +64,22 @@
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Xəta! Yanlış istifadəçi uzunluğu
+      Xəta! Yanlış istifadəçi adı uzunluğu
     </div>
   </template>
   <template id="invalid-new-password">
     <div class="error message" translate="yes">
-      Xəta! Etibarsız yeni parol
+      Xəta! Yanlış parol
     </div>
   </template>
   <template id="invalid-new-password-length">
     <div class="error message" translate="yes">
-      Xəta! Etibarsız yeni parol length
+      Xəta! Yanlış parol uzunluğu
     </div>
   </template>
   <template id="invalid-confirm-password">
     <div class="error message" translate="yes">
-      Xəta! Yanlış təsdiq şifrəsi
+      Xəta! Yanlış təsdiq parolu
     </div>
   </template>
   <template id="invalid-account">
@@ -89,4 +93,5 @@
     </div>
   </template>
 </body>
+
 </html>

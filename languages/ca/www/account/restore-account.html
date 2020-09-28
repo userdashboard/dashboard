@@ -2,7 +2,7 @@
 <html lang="en" data-auth="false" data-template="false">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Restaure el meu compte</title>
+  <title translate="yes">Restaura el meu compte</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
@@ -11,7 +11,7 @@
 <body class="entry">
   <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
     <fieldset>
-      <h1 translate="yes">Restaure el meu compte</h1>
+      <h1 translate="yes">Restaura el meu compte</h1>
       <div id="message-container"></div>
       <div class="pure-control-group">
         <label for="username" translate="yes">Nom d'usuari</label>
@@ -22,29 +22,29 @@
         <input id="password" name="password" type="password" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Restaure el meu compte</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Restaura el meu compte</button>
       </div>
       <ul>
         <li>
-          <a href="/account/register" translate="yes">Registre un compte</a>
+          <a href="/account/register" translate="yes">Registra un compte</a>
         </li>
         <li>
           <a href="/account/reset-account" translate="yes">Has oblidat la contrasenya</a>
         </li>
         <li>
-          <a href="/account/restore-account" translate="yes">Cancel·la la supressió del compte</a>
+          <a href="/account/restore-account" translate="yes">Cancel·lar la supressió del compte</a>
         </li>
       </ul>
     </fieldset>
   </form>
   <template id="invalid-account">
     <div class="error message" translate="yes">
-      Error! Un compte no vàlid o el període de cancel·lació ha finalitzat
+      Error! El compte no és vàlid o el període de cancel·lació ha finalitzat
     </div>
   </template>
   <template id="account-deleted">
     <div class="error message" translate="yes">
-      Error! S'ha suprimit el compte o s'ha finalitzat el període de cancel·lació
+      Error! S'ha suprimit el compte o ha finalitzat el període de cancel·lació
     </div>
   </template>
   <template id="invalid-username">
@@ -54,12 +54,12 @@
   </template>
   <template id="invalid-password">
     <div class="error message" translate="yes">
-      Error! Contrasenya incorrecta o que falta
+      Error! Falta una contrasenya incorrecta o no
     </div>
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Error! La longitud del nom d’usuari no és vàlida
+      Error! La longitud del nom d'usuari no és vàlida
     </div>
   </template>
   <template id="invalid-password-length">

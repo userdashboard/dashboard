@@ -9,24 +9,24 @@
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Katapusan nga sesyon ${session.sessionid}</h1>
+  <h1 translate="yes">Pagtapos sa sesyon ${session.sessionid}</h1>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/account/end-session?sessionid=${session.sessionid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Katapusan nga sesyon</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Pagtapos sa sesyon</button>
     </fieldset>
   </form>
   <template id="instant-delete">
-    <p translate="yes">Tapuson dayon ang session.</p>
+    <p translate="yes">Tapuson dayon ang sesyon.</p>
   </template>
   <template id="success">
     <div class="success message" translate="yes">
-      Kalampusan! Natapos ang session
+      Malampuson! Natapos na ang sesyon
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Sayop! Usa ka wala mailhi nga sayup ang nahitabo
+      Sayup! Usa ka wala nahibal-an nga sayup ang nahitabo
     </div>
   </template>
 </body>

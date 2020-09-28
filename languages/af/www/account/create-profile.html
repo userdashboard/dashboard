@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" data-navbar="/account/navbar-profiles.html">
+
 <head>
-  <meta charset="utf-8" /> 
+  <meta charset="utf-8" />
   <title translate="yes">Skep profiel</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
+
 <body>
   <h1 translate="yes">Skep profiel</h1>
-  <p translate="yes">Profiele hou u persoonlike inligting vir administratiewe en ander doeleindes.</p>
+  <p translate="yes">Profiele bevat u persoonlike inligting vir administratiewe en ander doeleindes.</p>
   <div id="message-container"></div>
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile"
+    name="submit-form">
     <div class="pure-checkbox">
-      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">Maak my verstek</span></label>
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span
+          translate="yes">Stel my verstek op</span></label>
     </div>
     <div id="display-name-container" class="pure-control-group">
       <label for="display-name" translate="yes">Vertoonnaam</label>
@@ -31,21 +35,21 @@
     <div id="full-name-container">
       <div class="pure-control-group">
         <label for="first-name" translate="yes">Eerste naam</label>
-      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+        <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
         <label for="last-name" translate="yes">Van</label>
-      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+        <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
       </div>
     </div>
     <div id="dob-container">
       <div class="pure-control-group">
         <label for="dob" translate="yes">Geboortedatum</label>
-      <input required="required" id="dob" name="dob" type="text" maxlength="11">
+        <input required="required" id="dob" name="dob" type="text" maxlength="11">
       </div>
     </div>
     <div id="phone-container" class="pure-control-group">
-      <label for="phone" translate="yes">telefoon</label>
+      <label for="phone" translate="yes">Telefoon</label>
       <input required="required" id="phone" name="phone" type="text" maxlength="1000">
     </div>
     <div id="occupation-container" class="pure-control-group">
@@ -53,7 +57,7 @@
       <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
     </div>
     <div id="location-container" class="pure-control-group">
-      <label for="location" translate="yes">plek</label>
+      <label for="location" translate="yes">Ligging</label>
       <input required="required" id="location" name="location" type="text" maxlength="1000">
     </div>
     <div id="company-name-container" class="pure-control-group">
@@ -61,7 +65,7 @@
       <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
     </div>
     <div id="website-container" class="pure-control-group">
-      <label for="website" translate="yes">webwerf</label>
+      <label for="website" translate="yes">Webwerf</label>
       <input required="required" id="website" name="website" type="text" maxlength="1000">
     </div>
     <div id="submit-container" class="pure-controls">
@@ -70,7 +74,7 @@
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Sukses! U nuwe profielinligting is gestoor
+      Sukses! Jou nuwe profielinligting is gestoor
     </div>
   </template>
   <template id="unknown-error">
@@ -80,7 +84,7 @@
   </template>
   <template id="invalid-first-name">
     <div class="error message" translate="yes">
-      Fout! 'N Voornaam of ontbrekende naam word voorsien
+      Fout! 'N Ontbrekende of ongeldige voornaam word verskaf
     </div>
   </template>
   <template id="invalid-first-name-length">
@@ -90,7 +94,7 @@
   </template>
   <template id="invalid-last-name">
     <div class="error message" translate="yes">
-      Fout! Daar is 'n ontbrekende of ongeldige van gegee
+      Fout! 'N Ontbrekende of ongeldige van is verskaf
     </div>
   </template>
   <template id="invalid-last-name-length">
@@ -110,12 +114,12 @@
   </template>
   <template id="invalid-display-name">
     <div class="error message" translate="yes">
-      Fout! 'N Vermiste of ongeldige vertoonnaam is verskaf
+      Fout! 'N Ontbrekende of ongeldige vertoonnaam is verskaf
     </div>
   </template>
   <template id="invalid-dob">
     <div class="error message" translate="yes">
-      Fout! 'N Ontbrekende of ongeldige geboortedatum is voorsien
+      Fout! 'N Ontbrekende of ongeldige geboortedatum is verskaf
     </div>
   </template>
   <template id="invalid-phone">
@@ -130,23 +134,24 @@
   </template>
   <template id="invalid-location">
     <div class="error message" translate="yes">
-      Fout! 'N Ontbrekende of ongeldige ligging is voorsien.
+      Fout! 'N Ontbrekende of ongeldige ligging is verskaf.
     </div>
   </template>
   <template id="invalid-company-name">
     <div class="error message" translate="yes">
-      Fout! 'N Vermiste of ongeldige maatskappy se naam is verskaf.
+      Fout! 'N Ontbrekende of ongeldige maatskappy se naam is verskaf.
     </div>
   </template>
   <template id="invalid-website">
     <div class="error message" translate="yes">
-      Fout! 'N Ontbrekende of ongeldige webwerf is voorsien.
+      Fout! 'N Ontbrekende of ongeldige webwerf is verskaf.
     </div>
   </template>
   <template id="invalid-display-name-length">
     <div class="error message" translate="yes">
-      Fout! 'N Vermiste of ongeldige vertoonnaam is verskaf
+      Fout! 'N Ontbrekende of ongeldige vertoonnaam is verskaf
     </div>
   </template>
 </body>
+
 </html>

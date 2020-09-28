@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" data-auth="false" data-template="false">
+
 <head>
-  <meta charset="utf-8" /> 
+  <meta charset="utf-8" />
   <title translate="yes">Հաստատեք Ձեր հաշիվը</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="entry">
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/verify" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/verify"
+    name="submit-form">
     <fieldset>
       <h1 translate="yes">Հաստատեք Ձեր հաշիվը</h1>
       <div id="message-container"></div>
@@ -22,34 +25,36 @@
         <input id="password" name="password" type="password" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Ստուգեք հաշիվը</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Verify
+          account</button>
       </div>
     </fieldset>
   </form>
   <template id="invalid-username">
     <div class="error message" translate="yes">
-      Սխալ: Անվավեր անուն
+      Սխալ Անվավեր օգտվողի անուն
     </div>
   </template>
   <template id="invalid-password">
     <div class="error message" translate="yes">
-      Սխալ: Անվավեր գաղտնաբառ
+      Սխալ Անվավեր գաղտնաբառ
     </div>
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Սխալ: Անվավեր օգտվողի երկարություն
+      Սխալ Օգտանունի անվավեր երկարություն
     </div>
   </template>
   <template id="invalid-password-length">
     <div class="error message" translate="yes">
-      Սխալ: Գաղտնաբառի անվավեր տևողություն
+      Սխալ Գաղտնաբառի անվավեր երկարություն
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Սխալ: Անհայտ սխալ է տեղի ունեցել
+      Սխալ Անհայտ սխալ է տեղի ունեցել
     </div>
   </template>
 </body>
+
 </html>

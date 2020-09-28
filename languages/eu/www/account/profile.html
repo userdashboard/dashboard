@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-navbar="/account/navbar-profile.html">
 <head>
-  <title translate="yes">ikusi ${profile.profileid}</title>
+  <title translate="yes">Ikusi ${profile.profileid}</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">ikusi ${profile.profileid}</h1>
+  <h1 translate="yes">Ikusi ${profile.profileid}</h1>
   <table id="profiles-table" class="pure-table data-table">
     <tbody id="${profile.profileid}">
       <tr>
@@ -16,9 +16,9 @@
         <td>${profile.profileid}</td>
       </tr>
       <tr>
-        <th translate="yes">Default</th>
+        <th translate="yes">Lehenetsia</th>
         <td id="is-default" translate="yes">Bai</td>
-        <td id="is-not-default" translate="yes">No</td>
+        <td id="is-not-default" translate="yes">Ez</td>
       </tr>
       <tr>
         <th translate="yes">Sortu</th>
@@ -29,17 +29,17 @@
         <td>${profile.firstName} ${profile.lastName}</td>
       </tr>
       <tr id="contact-email">
-        <th translate="yes">Harremanetarako posta elektronikoa</th>
+        <th translate="yes">Harremanetarako helbide elektronikoa</th>
         <td>
           <a href="mailto:${profile.contactEmail}">${profile.contactEmail}</a>
         </td>
       </tr>
       <tr id="display-name">
-        <th translate="yes">Bistaratu izena</th>
+        <th translate="yes">Bistaratzeko izena</th>
         <td>${profile.displayName}</td>
       </tr>
       <tr id="display-email">
-        <th translate="yes">Bistaratu helbide elektronikoa</th>
+        <th translate="yes">Erakutsi posta elektronikoa</th>
         <td>
           <a href="mailto:${profile.displayEmail}">${profile.displayEmail}</a>
         </td>
@@ -53,19 +53,19 @@
         <td>${profile.phone}</td>
       </tr>
       <tr id="occupation">
-        <th translate="yes">Lanbidea</th>
+        <th translate="yes">Okupazioa</th>
         <td>${profile.occupation}</td>
       </tr>
       <tr id="location">
-        <th translate="yes">Kokalekua</th>
+        <th translate="yes">Kokapena</th>
         <td>${profile.location}</td>
       </tr>
       <tr id="company-name">
-        <th translate="yes">Sozietatearen izena</th>
+        <th translate="yes">Enpresaren izena</th>
         <td>${profile.companyName}</td>
       </tr>
       <tr id="website">
-        <th translate="yes">Web</th>
+        <th translate="yes">Webgunea</th>
         <td>
           <a href="${profile.website}">${profile.website}</a>
         </td>

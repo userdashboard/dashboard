@@ -10,12 +10,12 @@
 </head>
 <body>
   <h1 translate="yes">Erabiltzaile izena aldatu</h1>
-  <p translate="yes">Erabiltzaile-izen guztiak modu itzulezinean enkriptatzen dira datuak bcrypt + gatz partekatuarekin gorde aurretik.</p>
+  <p translate="yes">Erabiltzaile izen guztiak atzeraezin enkriptatuta daude datuak bcrypt + gatz partekatuarekin gorde aurretik.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
     <fieldset>
       <div class="pure-control-group">
-        <label for="new-username" translate="yes">Erabiltzaile-izen berria</label>
+        <label for="new-username" translate="yes">Erabiltzaile izen berria</label>
         <input id="new-username" name="new-username" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
@@ -29,32 +29,32 @@
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Arrakasta! Aurrerantzean zure erabiltzaile izen berria erabili beharko da
+      Arrakasta! Zure erabiltzaile izen berria hemendik aurrera erabili behar da
     </div>
   </template>
   <template id="invalid-new-username">
     <div class="error message" translate="yes">
-      Akatsa! Erabiltzaile-izen berria baliogabea edo bikoiztua
+      Errorea! Erabiltzaile izen berria baliogabea edo bikoiztua
     </div>
   </template>
   <template id="invalid-password">
     <div class="error message" translate="yes">
-      Akatsa! Zure pasahitza baliogabea da
+      Errorea! Zure uneko pasahitza baliogabea da
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Akatsa! Errore ezezagun bat gertatu da
+      Errorea! Errore ezezaguna gertatu da
     </div>
   </template>
   <template id="invalid-new-username-length">
     <div class="error message" translate="yes">
-      Akatsa! Erabiltzaile-izenaren luzera berria baliogabea
+      Errorea! Erabiltzaile izenaren luzera baliogabea
     </div>
   </template>
   <template id="duplicate-username">
     <div class="error message" translate="yes">
-      Akatsa! Beste norbaitek erabiltzaile izen hori erabiltzen du
+      Errorea! Beste norbaitek erabiltzen du erabiltzaile izen hori
     </div>
   </template>
 </body>

@@ -2,15 +2,15 @@
 <html lang="en" data-navbar="/account/navbar-profile.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Stel verstekprofiel</title>
+  <title translate="yes">Stel standaardprofiel</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Stel verstekprofiel</h1>
-  <p translate="yes">U standaardprofiel dien as die primêre kontakpunt vir u rekening.</p>
+  <h1 translate="yes">Stel standaardprofiel</h1>
+  <p translate="yes">U verstekprofiel dien as die primêre kontakpunt vir u rekening.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/account/set-default-profile" name="submit-form">
     <fieldset>
@@ -21,12 +21,12 @@
           </option>
         </select>
       </div>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Stel verstekprofiel</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Stel standaardprofiel</button>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Sukses! Die profiel is nou u verstek
+      Sukses! Die profiel is nou u verstekwaarde
     </div>
   </template>
   <template id="unknown-error">
@@ -36,7 +36,7 @@
   </template>
   <template id="default-profile">
     <div class="error message" translate="yes">
-      Fout! Dit is reeds u standaardprofiel
+      Fout! Dit is reeds u verstekprofiel
     </div>
   </template>
   <template id="profile-option">

@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1 translate="yes">Paghimo reset code</h1>
-  <p translate="yes">I-reset ang mga code nga gitugotan ka nga maka-access sa imong account kung nakalimtan nimo ang imong password.</p>
+  <p translate="yes">Ang pag-reset sa mga code magtugot kanimo nga ma-access ang imong account kung nakalimtan nimo ang imong password.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-reset-code" name="submit-form">
     <fieldset>
@@ -19,28 +19,28 @@
         <input id="secret-code" name="secret-code" type="text" maxlength="1000">
       </div>
       <div id="form-buttons" class="pure-controls spaced-buttons">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Pag-save code</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Tipigi ang code</button>
       </div>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Kalampusan! Andam ang imong bag-ong kodigo nga luwas sa usa ka lugar nga luwas
+      Malampuson! Andam na ang imong bag-ong code nga itago sa bisan diin nga luwas
     </div>
   </template>
   <template id="invalid-secret-code">
     <div class="error message" translate="yes">
-      Sayop! Ang dili husto nga sekreto nga code
+      Sayup! Dili husto nga tinago nga code
     </div>
   </template>
   <template id="invalid-secret-code-length">
     <div class="error message" translate="yes">
-      Sayop! Ang dili husto nga sekreto nga code length
+      Sayup! Dili husto ang gitas-on sa tinago nga code
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Sayop! Usa ka wala mailhi nga sayup ang nahitabo
+      Sayup! Usa ka wala nahibal-an nga sayup ang nahitabo
     </div>
   </template>
 </body>

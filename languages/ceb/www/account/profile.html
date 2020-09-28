@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-navbar="/account/navbar-profile.html">
 <head>
-  <title translate="yes">Panglantaw ${profile.profileid}</title>
+  <title translate="yes">Tan-awa ${profile.profileid}</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Panglantaw ${profile.profileid}</h1>
+  <h1 translate="yes">Tan-awa ${profile.profileid}</h1>
   <table id="profiles-table" class="pure-table data-table">
     <tbody id="${profile.profileid}">
       <tr>
@@ -18,18 +18,18 @@
       <tr>
         <th translate="yes">Default</th>
         <td id="is-default" translate="yes">Oo</td>
-        <td id="is-not-default" translate="yes">No</td>
+        <td id="is-not-default" translate="yes">Dili</td>
       </tr>
       <tr>
-        <th translate="yes">Gihimo</th>
+        <th translate="yes">Gibuhat</th>
         <td>${profile.createdFormatted}</td>
       </tr>
       <tr id="full-name">
-        <th translate="yes">Tibuok nga ngalan</th>
+        <th translate="yes">Tibuuk nga ngalan</th>
         <td>${profile.firstName} ${profile.lastName}</td>
       </tr>
       <tr id="contact-email">
-        <th translate="yes">Pakig-email sa email</th>
+        <th translate="yes">Email sa pagkontak</th>
         <td>
           <a href="mailto:${profile.contactEmail}">${profile.contactEmail}</a>
         </td>
@@ -53,11 +53,11 @@
         <td>${profile.phone}</td>
       </tr>
       <tr id="occupation">
-        <th translate="yes">Pagtrabaho</th>
+        <th translate="yes">Pagpangabudlay</th>
         <td>${profile.occupation}</td>
       </tr>
       <tr id="location">
-        <th translate="yes">Ang lokasyon</th>
+        <th translate="yes">Lokasyon</th>
         <td>${profile.location}</td>
       </tr>
       <tr id="company-name">

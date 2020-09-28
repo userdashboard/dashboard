@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-navbar="/account/navbar-profile.html">
 <head>
-  <title translate="yes">দৃশ্য ${profile.profileid}</title>
+  <title translate="yes">দেখুন ${profile.profileid}</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">দৃশ্য ${profile.profileid}</h1>
+  <h1 translate="yes">দেখুন ${profile.profileid}</h1>
   <table id="profiles-table" class="pure-table data-table">
     <tbody id="${profile.profileid}">
       <tr>
@@ -18,10 +18,10 @@
       <tr>
         <th translate="yes">ডিফল্ট</th>
         <td id="is-default" translate="yes">হ্যাঁ</td>
-        <td id="is-not-default" translate="yes">No</td>
+        <td id="is-not-default" translate="yes">না</td>
       </tr>
       <tr>
-        <th translate="yes">নির্মিত</th>
+        <th translate="yes">তৈরি হয়েছে</th>
         <td>${profile.createdFormatted}</td>
       </tr>
       <tr id="full-name">

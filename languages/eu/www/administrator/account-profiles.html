@@ -2,23 +2,23 @@
 <html lang="en" data-navbar="/administrator/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">profilak</title>
+  <title translate="yes">Profilak</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Profilak ${account.accountid}</h1>
+  <h1 translate="yes">Profileko profilak ${account.accountid}</h1>
   <div id="no-profiles">
-    <p translate="yes">Kontu honek oraindik ez du profilik.</p>
+    <p translate="yes">Kontu honek ez du profilik oraindik.</p>
   </div>
   <table id="accounts-table" class="pure-table pure-table-striped list-table">
     <thead>
       <tr>
         <th>ID</th>
-        <th translate="yes">izena</th>
-        <th translate="yes">Emaila</th>
+        <th translate="yes">Izena</th>
+        <th translate="yes">Posta elektronikoa</th>
       </tr>
     </thead>
     <tr id="${account.accountid}">
@@ -36,15 +36,15 @@
       <tr>
         <th>ID</th>
         <th id="full-name" translate="yes">Izen osoa</th>
-        <th id="contact-email" translate="yes">Harremanetarako posta elektronikoa</th>
-        <th id="display-name" translate="yes">Bistaratu izena</th>
-        <th id="display-email" translate="yes">Bistaratu helbide elektronikoa</th>
+        <th id="contact-email" translate="yes">Harremanetarako helbide elektronikoa</th>
+        <th id="display-name" translate="yes">Bistaratzeko izena</th>
+        <th id="display-email" translate="yes">Erakutsi posta elektronikoa</th>
         <th id="dob" >DOB</th>
         <th id="phone" translate="yes">Mugikorra</th>
-        <th id="occupation" translate="yes">Lanbidea</th>
-        <th id="location" translate="yes">Kokalekua</th>
-        <th id="company-name" translate="yes">Sozietatearen izena</th>
-        <th id="website" translate="yes">Web</th>
+        <th id="occupation" translate="yes">Okupazioa</th>
+        <th id="location" translate="yes">Kokapena</th>
+        <th id="company-name" translate="yes">Enpresaren izena</th>
+        <th id="website" translate="yes">Webgunea</th>
         <th translate="yes">Sortu</th>
       </tr>
     </thead>

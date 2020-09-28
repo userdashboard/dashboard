@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" data-navbar="/account/navbar-profiles.html">
+
 <head>
-  <meta charset="utf-8" /> 
+  <meta charset="utf-8" />
   <title translate="yes">Paghimo profile</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
+
 <body>
   <h1 translate="yes">Paghimo profile</h1>
-  <p translate="yes">Gihuptan sa mga profile ang imong personal nga kasayuran alang sa administratibo ug uban pang mga katuyoan.</p>
+  <p translate="yes">Ang mga profile naghupot sa imong kaugalingon nga kasayuran alang sa pangdumala ug uban pang katuyoan.</p>
   <div id="message-container"></div>
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile"
+    name="submit-form">
     <div class="pure-checkbox">
-      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">Himua akong default</span></label>
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span
+          translate="yes">Himua ang akong default</span></label>
     </div>
     <div id="display-name-container" class="pure-control-group">
       <label for="display-name" translate="yes">Ipakita ang ngalan</label>
@@ -25,23 +29,23 @@
       <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
     </div>
     <div id="contact-email-container" class="pure-control-group">
-      <label for="contact-email" translate="yes">Pakig-email sa email</label>
+      <label for="contact-email" translate="yes">Email sa pagkontak</label>
       <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
     </div>
     <div id="full-name-container">
       <div class="pure-control-group">
-        <label for="first-name" translate="yes">Una nga ngalan</label>
-      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+        <label for="first-name" translate="yes">Panguna nga ngalan</label>
+        <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
-        <label for="last-name" translate="yes">Katapusan nga ngalan</label>
-      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+        <label for="last-name" translate="yes">Apelyido</label>
+        <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
       </div>
     </div>
     <div id="dob-container">
       <div class="pure-control-group">
         <label for="dob" translate="yes">Petsa sa pagkatawo</label>
-      <input required="required" id="dob" name="dob" type="text" maxlength="11">
+        <input required="required" id="dob" name="dob" type="text" maxlength="11">
       </div>
     </div>
     <div id="phone-container" class="pure-control-group">
@@ -49,11 +53,11 @@
       <input required="required" id="phone" name="phone" type="text" maxlength="1000">
     </div>
     <div id="occupation-container" class="pure-control-group">
-      <label for="occupation" translate="yes">Pagtrabaho</label>
+      <label for="occupation" translate="yes">Pagpangabudlay</label>
       <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
     </div>
     <div id="location-container" class="pure-control-group">
-      <label for="location" translate="yes">Ang lokasyon</label>
+      <label for="location" translate="yes">Lokasyon</label>
       <input required="required" id="location" name="location" type="text" maxlength="1000">
     </div>
     <div id="company-name-container" class="pure-control-group">
@@ -70,83 +74,84 @@
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Kalampusan! Ang imong bag-ong kasayuran sa profile naluwas
+      Malampuson! Ang imong bag-ong kasayuran sa profile naluwas
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Sayop! Usa ka wala mailhi nga sayup ang nahitabo
+      Sayup! Usa ka wala nahibal-an nga sayup ang nahitabo
     </div>
   </template>
   <template id="invalid-first-name">
     <div class="error message" translate="yes">
-      Sayop! Gihatag ang usa ka nawala o dili husto nga una nga ngalan
+      Sayup! Usa ka nawala o dili balido nga gihatag nga ngalan
     </div>
   </template>
   <template id="invalid-first-name-length">
     <div class="error message" translate="yes">
-      Sayop! Gihatag ang usa ka dili husto nga una nga ngalan
+      Sayup! Usa ka dili balido nga unang ngalan gihatag
     </div>
   </template>
   <template id="invalid-last-name">
     <div class="error message" translate="yes">
-      Sayop! Gihatag ang usa ka nawala o dili husto nga katapusang ngalan
+      Sayup! Usa ka nawala o dili balido nga apelyido gihatag
     </div>
   </template>
   <template id="invalid-last-name-length">
     <div class="error message" translate="yes">
-      Sayop! Gihatag ang usa ka dili husto nga katapusang ngalan
+      Sayup! Usa ka dili wasto nga apelyido gihatag
     </div>
   </template>
   <template id="invalid-contact-email">
     <div class="error message" translate="yes">
-      Sayop! Dili husto nga address sa email sa pagkontak
+      Sayup! Dili husto nga email address sa pagkontak
     </div>
   </template>
   <template id="invalid-display-email">
     <div class="error message" translate="yes">
-      Sayop! Dili husto nga adres nga email address
+      Sayup! Dili husto ang gipakita nga email address
     </div>
   </template>
   <template id="invalid-display-name">
     <div class="error message" translate="yes">
-      Sayop! Gihatag ang usa ka nawala o dili peke nga ngalan sa pagpakita
+      Sayup! Usa ka nawala o dili husto nga gipakita nga ngalan ang gihatag
     </div>
   </template>
   <template id="invalid-dob">
     <div class="error message" translate="yes">
-      Sayop! Gihatag ang usa ka nawala o dili husto nga petsa sa pagkahimugso
+      Sayup! Usa ka nawala o dili wastong petsa sa pagkatawo ang gihatag
     </div>
   </template>
   <template id="invalid-phone">
     <div class="error message" translate="yes">
-      Sayop! Gihatag ang usa ka nawala o dili husto nga telepono.
+      Sayup! Usa ka nawala o dili balido nga telepono ang gihatag.
     </div>
   </template>
   <template id="invalid-occupation">
     <div class="error message" translate="yes">
-      Sayop! Gihatag ang usa ka nawala o dili husto nga trabaho.
+      Sayup! Usa ka nawala o dili wasto nga trabaho ang gihatag.
     </div>
   </template>
   <template id="invalid-location">
     <div class="error message" translate="yes">
-      Sayop! Gihatag ang usa ka nawala o dili husto nga lokasyon
+      Sayup! Usa ka nawala o dili wasto nga lokasyon ang gihatag.
     </div>
   </template>
   <template id="invalid-company-name">
     <div class="error message" translate="yes">
-      Sayop! Gihatag ang usa ka nawala o dili husto nga ngalan sa kompanya.
+      Sayup! Usa ka nawala o dili wasto nga ngalan sa kompanya gihatag.
     </div>
   </template>
   <template id="invalid-website">
     <div class="error message" translate="yes">
-      Sayop! Gihatag ang usa ka nawala o dili husto nga website.
+      Sayup! Usa ka nawala o dili wasto nga website ang gihatag.
     </div>
   </template>
   <template id="invalid-display-name-length">
     <div class="error message" translate="yes">
-      Sayop! Gihatag ang usa ka nawala o dili peke nga ngalan sa pagpakita
+      Sayup! Usa ka nawala o dili husto nga gipakita nga ngalan ang gihatag
     </div>
   </template>
 </body>
+
 </html>

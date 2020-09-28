@@ -2,7 +2,7 @@
 <html lang="en" data-auth="false" data-template="false">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Възстановяване на акаунта ми</title>
+  <title translate="yes">Възстановете моя акаунт</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
@@ -11,18 +11,18 @@
 <body class="entry">
   <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
     <fieldset>
-      <h1 translate="yes">Възстановяване на акаунта ми</h1>
+      <h1 translate="yes">Възстановете моя акаунт</h1>
       <div id="message-container"></div>
       <div class="pure-control-group">
-        <label for="username" translate="yes">Потребител</label>
+        <label for="username" translate="yes">Потребителско име</label>
         <input id="username" name="username" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
-        <label for="password" translate="yes">парола</label>
+        <label for="password" translate="yes">Парола</label>
         <input id="password" name="password" type="password" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Възстановяване на акаунта ми</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Възстановете моя акаунт</button>
       </div>
       <ul>
         <li>
@@ -32,14 +32,14 @@
           <a href="/account/reset-account" translate="yes">Забравена парола</a>
         </li>
         <li>
-          <a href="/account/restore-account" translate="yes">Отказ за изтриване на акаунта</a>
+          <a href="/account/restore-account" translate="yes">Анулиране на изтриване на акаунт</a>
         </li>
       </ul>
     </fieldset>
   </form>
   <template id="invalid-account">
     <div class="error message" translate="yes">
-      Грешка! Невалиден акаунт или периодът на анулиране е приключил
+      Грешка! Невалиден акаунт или периодът на анулиране приключи
     </div>
   </template>
   <template id="account-deleted">

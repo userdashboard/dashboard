@@ -2,7 +2,7 @@
 <html lang="en" data-auth="false" data-template="false">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Berrezarri nire kontua</title>
+  <title translate="yes">Berreskuratu nire kontua</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
@@ -11,7 +11,7 @@
 <body class="entry">
   <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/restore-account" name="submit-form">
     <fieldset>
-      <h1 translate="yes">Berrezarri nire kontua</h1>
+      <h1 translate="yes">Berreskuratu nire kontua</h1>
       <div id="message-container"></div>
       <div class="pure-control-group">
         <label for="username" translate="yes">Erabiltzaile izena</label>
@@ -22,54 +22,54 @@
         <input id="password" name="password" type="password" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Berrezarri nire kontua</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Berreskuratu nire kontua</button>
       </div>
       <ul>
         <li>
-          <a href="/account/register" translate="yes">Eman izena</a>
+          <a href="/account/register" translate="yes">Erregistratu kontua</a>
         </li>
         <li>
           <a href="/account/reset-account" translate="yes">Pasahitza ahaztua</a>
         </li>
         <li>
-          <a href="/account/restore-account" translate="yes">Utzi kontua ezabatzea</a>
+          <a href="/account/restore-account" translate="yes">Utzi kontua ezabatzen</a>
         </li>
       </ul>
     </fieldset>
   </form>
   <template id="invalid-account">
     <div class="error message" translate="yes">
-      Akatsa! Kontu baliogabea edo baliogabetze epea amaitu da
+      Errorea! Kontu baliogabea edo bertan behera uzteko epea amaitu da
     </div>
   </template>
   <template id="account-deleted">
     <div class="error message" translate="yes">
-      Akatsa! Kontua ezabatu edo ezeztatze epea amaitu da
+      Errorea! Ezabatu da kontua edo bertan behera uzteko epea amaitu da
     </div>
   </template>
   <template id="invalid-username">
     <div class="error message" translate="yes">
-      Akatsa! Erabiltzaile-izena okerra edo falta da
+      Errorea! Erabiltzaile izena okerra edo falta da
     </div>
   </template>
   <template id="invalid-password">
     <div class="error message" translate="yes">
-      Akatsa! Pasahitz okerra edo falta da
+      Errorea! Pasahitz okerra edo falta da
     </div>
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Akatsa! Erabiltzaile-izenaren luzera baliogabea
+      Errorea! Erabiltzaile izenaren luzera baliogabea
     </div>
   </template>
   <template id="invalid-password-length">
     <div class="error message" translate="yes">
-      Akatsa! Pasahitz luzera baliogabea
+      Errorea! Pasahitzaren luzera baliogabea
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Errore ezezagun bat gertatu da
+      Errore ezezaguna gertatu da
     </div>
   </template>
 </body>

@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" data-navbar="/account/navbar-profiles.html">
+
 <head>
-  <meta charset="utf-8" /> 
-  <title translate="yes">Ստեղծեք պրոֆիլ</title>
+  <meta charset="utf-8" />
+  <title translate="yes">Ստեղծել պրոֆիլ</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
+
 <body>
-  <h1 translate="yes">Ստեղծեք պրոֆիլ</h1>
-  <p translate="yes">Պրոֆիլները պահում են ձեր անձնական տեղեկատվությունը վարչական և այլ նպատակներով:</p>
+  <h1 translate="yes">Ստեղծել պրոֆիլ</h1>
+  <p translate="yes">Պրոֆիլները պահում են ձեր անձնական տվյալները վարչական և այլ նպատակների համար:</p>
   <div id="message-container"></div>
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-profile"
+    name="submit-form">
     <div class="pure-checkbox">
-      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">Դարձրեք իմ լռելյայն</span></label>
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span
+          translate="yes">Լռելյայն դարձրու</span></label>
     </div>
     <div id="display-name-container" class="pure-control-group">
-      <label for="display-name" translate="yes">Displayուցադրել անունը</label>
+      <label for="display-name" translate="yes">Displayուցադրման անունը</label>
       <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
     </div>
     <div id="display-email-container" class="pure-control-group">
@@ -31,17 +35,17 @@
     <div id="full-name-container">
       <div class="pure-control-group">
         <label for="first-name" translate="yes">Անուն</label>
-      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+        <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
         <label for="last-name" translate="yes">Ազգանուն</label>
-      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+        <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
       </div>
     </div>
     <div id="dob-container">
       <div class="pure-control-group">
         <label for="dob" translate="yes">Ծննդյան ամսաթիվ</label>
-      <input required="required" id="dob" name="dob" type="text" maxlength="11">
+        <input required="required" id="dob" name="dob" type="text" maxlength="11">
       </div>
     </div>
     <div id="phone-container" class="pure-control-group">
@@ -49,11 +53,11 @@
       <input required="required" id="phone" name="phone" type="text" maxlength="1000">
     </div>
     <div id="occupation-container" class="pure-control-group">
-      <label for="occupation" translate="yes">Զբաղմունք</label>
+      <label for="occupation" translate="yes">Բաղմունք</label>
       <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
     </div>
     <div id="location-container" class="pure-control-group">
-      <label for="location" translate="yes">Գտնվելու վայրը</label>
+      <label for="location" translate="yes">Որտեղից</label>
       <input required="required" id="location" name="location" type="text" maxlength="1000">
     </div>
     <div id="company-name-container" class="pure-control-group">
@@ -65,88 +69,89 @@
       <input required="required" id="website" name="website" type="text" maxlength="1000">
     </div>
     <div id="submit-container" class="pure-controls">
-      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">Ստեղծեք պրոֆիլ</button>
+      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">Ստեղծել պրոֆիլ</button>
     </div>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Հաջողություն: Ձեր նոր պրոֆիլի տեղեկությունները պահպանվել են
+      Հաջողություն Ձեր պրոֆիլի նոր տեղեկությունները պահվել են
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Սխալ: Անհայտ սխալ է տեղի ունեցել
+      Սխալ Անհայտ սխալ է տեղի ունեցել
     </div>
   </template>
   <template id="invalid-first-name">
     <div class="error message" translate="yes">
-      Սխալ: Տրված է անվավեր կամ անվավեր անուն
+      Սխալ Տրված է բացակայող կամ անվավեր անուն
     </div>
   </template>
   <template id="invalid-first-name-length">
     <div class="error message" translate="yes">
-      Սխալ: Անվավեր անուն տրվեց
+      Սխալ Անվավեր անուն է տրամադրվել
     </div>
   </template>
   <template id="invalid-last-name">
     <div class="error message" translate="yes">
-      Սխալ: Տրամադրվել է անհայտ կորած կամ անվավեր ազգանուն
+      Սխալ Տրվել է բացակայող կամ անվավեր ազգանուն
     </div>
   </template>
   <template id="invalid-last-name-length">
     <div class="error message" translate="yes">
-      Սխալ: Տրամադրվեց անվավեր ազգանուն
+      Սխալ Անվավեր ազգանուն է տրամադրվել
     </div>
   </template>
   <template id="invalid-contact-email">
     <div class="error message" translate="yes">
-      Սխալ: Կապի անվավեր հասցե
+      Սխալ Կոնտակտային էլ. Փոստի հասցեն անվավեր է
     </div>
   </template>
   <template id="invalid-display-email">
     <div class="error message" translate="yes">
-      Սխալ: Displayուցադրման էլփոստի անվավեր հասցե
+      Սխալ Displayուցադրման էլփոստի հասցեն անվավեր է
     </div>
   </template>
   <template id="invalid-display-name">
     <div class="error message" translate="yes">
-      Սխալ: Տրամադրվեց բացված կամ անվավեր ցուցադրման անուն
+      Սխալ Տրամադրվել է անհայտ կամ անվավեր ցուցադրության անուն
     </div>
   </template>
   <template id="invalid-dob">
     <div class="error message" translate="yes">
-      Սխալ: Տրամադրվեց անհայտ կորած կամ անվավեր ծննդյան ամսաթիվ
+      Սխալ Նշվել է անհայտ կամ անվավեր ծննդյան ամսաթիվը
     </div>
   </template>
   <template id="invalid-phone">
     <div class="error message" translate="yes">
-      Սխալ: Տրամադրվել է անհայտ կորած կամ անվավեր հեռախոս:
+      Սխալ Անհայտ կամ անվավեր հեռախոս է տրամադրվել:
     </div>
   </template>
   <template id="invalid-occupation">
     <div class="error message" translate="yes">
-      Սխալ: Ապահովվեց անհայտ կորած կամ անվավեր զբաղմունք:
+      Սխալ Տրվել է բացակայող կամ անվավեր զբաղմունք:
     </div>
   </template>
   <template id="invalid-location">
     <div class="error message" translate="yes">
-      Սխալ: Տրամադրվել է անհայտ կորած կամ անվավեր վայր:
+      Սխալ Բացակայված կամ անվավեր տեղադրություն է տրամադրվել:
     </div>
   </template>
   <template id="invalid-company-name">
     <div class="error message" translate="yes">
-      Սխալ: Տրվեց անհայտ կորած կամ անվավեր ընկերության անուն:
+      Սխալ Տրվել է բացակայող կամ անվավեր ընկերության անուն:
     </div>
   </template>
   <template id="invalid-website">
     <div class="error message" translate="yes">
-      Սխալ: Տրամադրվել է անհայտ կորած կամ անվավեր կայք:
+      Սխալ Տրամադրվել է անհայտ կամ անվավեր կայք:
     </div>
   </template>
   <template id="invalid-display-name-length">
     <div class="error message" translate="yes">
-      Սխալ: Տրամադրվեց բացված կամ անվավեր ցուցադրման անուն
+      Սխալ Տրամադրվել է անհայտ կամ անվավեր ցուցադրության անուն
     </div>
   </template>
 </body>
+
 </html>

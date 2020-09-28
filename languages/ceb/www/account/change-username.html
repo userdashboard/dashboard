@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1 translate="yes">Usba ang username</h1>
-  <p translate="yes">Ang tanan nga mga ngalan sa us aka us aka wala mausab-usab nga na-encrypt sa wala pa itago ang datos gamit ang bcrypt + nga gipaambit nga asin.</p>
+  <p translate="yes">Ang tanan nga mga username dili mabalik nga naka-encrypt sa wala pa gitipig ang datos nga adunay gipaambitan nga asin nga bcrypt +.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
     <fieldset>
@@ -19,42 +19,42 @@
         <input id="new-username" name="new-username" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
-        <label for="password" translate="yes">Kasamtangang password</label>
+        <label for="password" translate="yes">Karon nga password</label>
         <input required="required" id="password" name="password" type="password" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Paghimo bag-ong username</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Pagtakda bag-ong username</button>
       </div>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Kalampusan! Ang imong bag-ong username kinahanglan gamiton gikan karon
+      Malampuson! Kinahanglan gamiton ang imong bag-ong username gikan karon
     </div>
   </template>
   <template id="invalid-new-username">
     <div class="error message" translate="yes">
-      Sayop! Dili husto o pagdoble ang bag-ong username
+      Sayup! Dili balido o doble sa bag-ong username
     </div>
   </template>
   <template id="invalid-password">
     <div class="error message" translate="yes">
-      Sayop! Dili husto ang imong kasamtangan nga password
+      Sayup! Ang imong karon password dili husto
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Sayop! Usa ka wala mailhi nga sayup ang nahitabo
+      Sayup! Usa ka wala nahibal-an nga sayup ang nahitabo
     </div>
   </template>
   <template id="invalid-new-username-length">
     <div class="error message" translate="yes">
-      Sayop! Dili husto nga gitas-on sa bag-ong username
+      Sayup! Dili husto ang bag-ong gitas-on sa username
     </div>
   </template>
   <template id="duplicate-username">
     <div class="error message" translate="yes">
-      Sayop! May naggamit sa kana nga username
+      Sayup! Adunay uban pa nga naggamit niana nga username
     </div>
   </template>
 </body>

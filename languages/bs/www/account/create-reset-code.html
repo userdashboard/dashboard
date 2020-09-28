@@ -2,15 +2,15 @@
 <html lang="en" data-navbar="/account/navbar-reset-codes.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Kreirajte kod za resetiranje</title>
+  <title translate="yes">Napravite reset kod</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Kreirajte kod za resetiranje</h1>
-  <p translate="yes">Reset kodovi omogućavaju vam pristup računu ako zaboravite lozinku.</p>
+  <h1 translate="yes">Napravite reset kod</h1>
+  <p translate="yes">Resetiraj kodove omogućava vam pristup računu ako zaboravite lozinku.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/create-reset-code" name="submit-form">
     <fieldset>
@@ -25,7 +25,7 @@
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Uspeh! Vaš novi kôd spreman je biti spremljen na sigurno mjesto
+      Uspjeh! Vaš novi kôd spreman je za pohranu negdje na sigurno
     </div>
   </template>
   <template id="invalid-secret-code">
@@ -35,12 +35,12 @@
   </template>
   <template id="invalid-secret-code-length">
     <div class="error message" translate="yes">
-      Greška! Nevažeći tajni kod length
+      Greška! Nevažeća dužina tajnog koda
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Greška! Došlo je do nepoznate pogreške
+      Greška! Došlo je do nepoznate greške
     </div>
   </template>
 </body>

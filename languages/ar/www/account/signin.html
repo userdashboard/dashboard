@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" data-auth="false" data-template="false">
+
 <head>
-  <meta charset="utf-8" /> 
+  <meta charset="utf-8" />
   <title translate="yes">يباسح ىلإ لوخدلا ليجست</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="entry">
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin"
+    name="submit-form">
     <fieldset>
       <h1 translate="yes">لوخدلا ليجست</h1>
       <div id="message-container"></div>
@@ -23,17 +26,27 @@
       </div>
       <div class="pure-control-group">
         <div class="pure-checkbox">
-          <label for="remember-minutes" translate="yes"><span><input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked"></span> ةقيقد 02 لالخ جورخلا ليجستب مق</label>
+          <label for="remember-minutes">
+            <input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked">
+            <span translate="yes">ةقيقد 02 يف جورخلا ليجست</span>
+          </label>
         </div>
         <div class="pure-checkbox">
-          <label for="remember-hours" translate="yes"><span><input type="radio" name="remember" value="hours" id="remember-hours"></span> تاعاس 8 لالخ جورخلا ليجستب مق</label>
+          <label for="remember-hours">
+            <input type="radio" name="remember" value="hours" id="remember-hours">
+            <span translate="yes">تاعاس 8 جورخلا ليجست</span>
+          </label>
         </div>
         <div class="pure-checkbox">
-          <label for="remember-days" translate="yes"><span><input type="radio" name="remember" value="days" id="remember-days"></span> اًموي 03 يف لوخدلا ليجست</label>
+          <label for="remember-days">
+            <input type="radio" name="remember" value="days" id="remember-days">
+            <span translate="yes">اًموي 03 جورخلا ليجست</span>
+          </label>
         </div>
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">لوخدلا ليجست</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Sign
+          in</button>
       </div>
       <ul>
         <li>
@@ -50,7 +63,7 @@
   </form>
   <template id="invalid-username">
     <div class="error message" translate="yes">
-      حلاص ريغ مدختسم مسا !أطخ
+      حيحص ريغ مدختسملا مسا !أطخ
     </div>
   </template>
   <template id="invalid-password">
@@ -60,12 +73,12 @@
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      حلاص ريغ مدختسم مسا !أطخ length
+      حلاص ريغ مدختسملا مسا لوط !أطخ
     </div>
   </template>
   <template id="invalid-password-length">
     <div class="error message" translate="yes">
-      ئطاخ رورم زمر !أطخ length
+      حيحص ريغ رورملا ةملك لوط !أطخ
     </div>
   </template>
   <template id="unknown-error">
@@ -75,8 +88,9 @@
   </template>
   <template id="account-deleted">
     <div class="error message" translate="yes">
-      كباسح فذح مت !أطخ <a href="/account/recover-account">and can still be recovered</a>
+      Error! Your account is deleted <a href="/account/recover-account">and can still be recovered</a>
     </div>
   </template>
 </body>
+
 </html>

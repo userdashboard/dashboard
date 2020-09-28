@@ -2,15 +2,15 @@
 <html lang="en" data-navbar="/account/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">İstifadəçi adınızı dəyişdirin</title>
+  <title translate="yes">İstifadəçi adını dəyişdirin</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">İstifadəçi adınızı dəyişdirin</h1>
-  <p translate="yes">Məlumatları bcrypt + ortaq duz ilə saxlamadan əvvəl bütün istifadəçi adları geri dönmədən şifrələnir.</p>
+  <h1 translate="yes">İstifadəçi adını dəyişdirin</h1>
+  <p translate="yes">Verilənləri bcrypt + paylaşılan duzla saxlamadan əvvəl bütün istifadəçi adları dönməz şəkildə şifrələnir.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
     <fieldset>
@@ -34,12 +34,12 @@
   </template>
   <template id="invalid-new-username">
     <div class="error message" translate="yes">
-      Xəta! Yanlış istifadəçi adı və ya dublikat
+      Xəta! Yeni istifadəçi adı etibarsız və ya çoxaldıldı
     </div>
   </template>
   <template id="invalid-password">
     <div class="error message" translate="yes">
-      Xəta! Cari parolunuz yanlışdır
+      Xəta! Cari parolunuz səhvdir
     </div>
   </template>
   <template id="unknown-error">
@@ -49,12 +49,12 @@
   </template>
   <template id="invalid-new-username-length">
     <div class="error message" translate="yes">
-      Xəta! Yeni istifadəçi adı uzunluğu
+      Xəta! Yanlış istifadəçi adı uzunluğu
     </div>
   </template>
   <template id="duplicate-username">
     <div class="error message" translate="yes">
-      Xəta! Başqası həmin istifadəçi adından istifadə edir
+      Xəta! Başqa biri bu istifadəçi adından istifadə edir
     </div>
   </template>
 </body>

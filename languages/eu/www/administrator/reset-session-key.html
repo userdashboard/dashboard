@@ -2,19 +2,19 @@
 <html lang="en" data-navbar="/administrator/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Berrezarri saioko gakoa</title>
+  <title translate="yes">Berrezarri saioaren gakoa</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Berrezarri saioko gakoa ${account.accountid}</h1>
-  <p translate="yes">Kontu bakoitzak bere saioak gako sekretu batekin sinatzen ditu, beraz, aurreko saio guztiak bukatzen direnean aldatzen direnean.</p>
+  <h1 translate="yes">Berrezarri saioaren gakoa ${account.accountid}</h1>
+  <p translate="yes">Kontu bakoitzak bere saioak gako sekretu batekin sinatzen ditu, beraz, aurreko saio guztiak aldatzen direnean amaitzen dira.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/reset-session-key?accountid=${account.accountid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Berrezarri saioko gakoa</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Berrezarri saioaren gakoa</button>
     </fieldset>
   </form>
   <template id="success">
@@ -24,7 +24,7 @@
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Akatsa! Errore ezezagun bat gertatu da
+      Errorea! Errore ezezaguna gertatu da
     </div>
   </template>
 </body>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" data-auth="false" data-template="false">
+
 <head>
-  <meta charset="utf-8" /> 
+  <meta charset="utf-8" />
   <title translate="yes">I-reset ang pag-access sa akong account</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
@@ -9,8 +10,10 @@
   <base target="_top" href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="entry">
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/reset-account"
+    name="submit-form">
     <fieldset>
       <div id="message-container"></div>
       <h1 translate="yes">I-reset ang pag-access sa akong account</h1>
@@ -19,7 +22,7 @@
         <input id="username" name="username" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
-        <label for="secret-code" translate="yes">I-reset ang code</label>
+        <label for="secret-code" translate="yes">Reset code</label>
         <input id="secret-code" name="secret-code" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
@@ -27,15 +30,16 @@
         <input id="new-password" name="new-password" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
-        <label for="confirm-password" translate="yes">Pagkumpirma sa bag-ong password</label>
+        <label for="confirm-password" translate="yes">Gikumpirma ang bag-ong password</label>
         <input id="confirm-password" name="confirm-password" type="text" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">I-reset ug pag-sign in</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Reset and sign
+          in</button>
       </div>
       <ul>
         <li>
-          <a href="/account/signin" translate="yes">Balik sa pag-sign in</a>
+          <a href="/account/signin" translate="yes">Pagbalik sa pag-sign in</a>
         </li>
         <li>
           <a href="/account/register" translate="yes">Paghimo usa ka account</a>
@@ -45,48 +49,49 @@
   </form>
   <template id="invalid-reset-code">
     <div class="error message" translate="yes">
-      Sayop! Ang dili husto nga sekreto nga code
+      Sayup! Dili husto nga tinago nga code
     </div>
   </template>
   <template id="invalid-secret-code">
     <div class="error message" translate="yes">
-      Sayop! Ang dili husto nga sekreto nga code
+      Sayup! Dili husto nga tinago nga code
     </div>
   </template>
   <template id="invalid-username">
     <div class="error message" translate="yes">
-      Sayop! Dili husto nga username
+      Sayup! Dili balido nga username
     </div>
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Sayop! Dili husto nga gitas-on sa username
+      Sayup! Dili husto ang gitas-on sa username
     </div>
   </template>
   <template id="invalid-new-password">
     <div class="error message" translate="yes">
-      Sayop! Dili husto nga bag-ong password
+      Sayup! Dili balido nga bag-ong password
     </div>
   </template>
   <template id="invalid-new-password-length">
     <div class="error message" translate="yes">
-      Sayop! Dili husto nga bag-ong password length
+      Sayup! Dili husto nga bag-ong gitas-on sa password
     </div>
   </template>
   <template id="invalid-confirm-password">
     <div class="error message" translate="yes">
-      Sayop! Ang dili husto nga password sa kumpirmasyon
+      Sayup! Dili husto nga password sa pagkumpirma
     </div>
   </template>
   <template id="invalid-account">
     <div class="error message" translate="yes">
-      Sayop! Dili husto nga asoy
+      Sayup! Dili balido nga asoy
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Sayop! Usa ka wala mailhi nga sayup ang nahitabo
+      Sayup! Usa ka wala nahibal-an nga sayup ang nahitabo
     </div>
   </template>
 </body>
+
 </html>

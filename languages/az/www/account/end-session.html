@@ -9,15 +9,15 @@
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Sessiyanın sona çatması ${session.sessionid}</h1>
+  <h1 translate="yes">Sessiyanı bitir ${session.sessionid}</h1>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/account/end-session?sessionid=${session.sessionid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Sessiyanın sona çatması</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Sessiyanı bitir</button>
     </fieldset>
   </form>
   <template id="instant-delete">
-    <p translate="yes">Sessiya dərhal başa çatacaqdır.</p>
+    <p translate="yes">Sessiya dərhal başa çatacaq.</p>
   </template>
   <template id="success">
     <div class="success message" translate="yes">

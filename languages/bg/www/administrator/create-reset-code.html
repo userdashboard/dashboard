@@ -10,13 +10,13 @@
 </head>
 <body>
   <h1 translate="yes">Създайте код за нулиране за ${account.accountid}</h1>
-  <p translate="yes">Нулирайте достъпа до акаунта за потребители без нулиране на кодове, след като първо потвърдите самоличността им.</p>
+  <p translate="yes">Нулирайте достъпа до акаунт за потребители без нулиране на кодове, след като първо проверите самоличността им.</p>
   <div id="message-container"></div>
   <table id="accounts-table" class="pure-table object-table">
     <thead>
       <tr>
         <th>ID</th>
-        <th translate="yes">име</th>
+        <th translate="yes">Име</th>
         <th translate="yes">електронна поща</th>
         <th translate="yes">Създаден</th>
         <th translate="yes">Последно влизане</th>
@@ -37,7 +37,7 @@
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/administrator/create-reset-code?accountid=${account.accountid}" name="submit-form">
     <fieldset>
       <div class="pure-control-group">
-        <label for="secret-code" translate="yes">Нулиране на код</label>
+        <label for="secret-code" translate="yes">Нулиране на кода</label>
         <input id="secret-code" name="secret-code" type="text" maxlength="1000">
       </div>
       <div id="form-buttons" class="pure-controls spaced-buttons">
@@ -62,7 +62,7 @@
   </template>
   <template id="invalid-secret-code-length">
     <div class="error message" translate="yes">
-      Грешка! Невалиден код за нулиране length
+      Грешка! Невалидна дължина на кода за нулиране
     </div>
   </template>
 </body>

@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" data-navbar="/account/navbar-profile.html">
+
 <head>
-  <meta charset="utf-8" /> 
+  <meta charset="utf-8" />
   <title translate="yes">редактиране ${profile.profileid}</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
+
 <body>
   <h1 translate="yes">редактиране ${profile.profileid}</h1>
-  <p translate="yes">Поддържайте Вашата информация за контакт точна и актуална.</p>
+  <p translate="yes">Поддържайте информацията за връзка правилна и актуална.</p>
   <div id="message-container"></div>
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/edit-profile?profileid=${profile.profileid}" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked"
+    action="/account/edit-profile?profileid=${profile.profileid}" name="submit-form">
     <div class="pure-checkbox">
-      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span translate="yes">Направете по подразбиране</span></label>
+      <label for="default"><input required="required" id="default" name="default" value="true" type="checkbox"> <span
+          translate="yes">Направи моя по подразбиране</span></label>
     </div>
     <div id="display-name-container" class="pure-control-group">
-      <label for="display-name" translate="yes">Показване на име</label>
+      <label for="display-name" translate="yes">Показвано име</label>
       <input required="required" id="display-name" name="display-name" type="text" maxlength="1000">
     </div>
     <div id="display-email-container" class="pure-control-group">
@@ -25,17 +29,17 @@
       <input required="required" id="display-email" name="display-email" type="text" maxlength="1000" size="50">
     </div>
     <div id="contact-email-container" class="pure-control-group">
-      <label for="contact-email" translate="yes">Контакт имейл</label>
+      <label for="contact-email" translate="yes">Имейл за връзка</label>
       <input required="required" id="contact-email" name="contact-email" type="text" maxlength="1000" size="50">
     </div>
     <div id="full-name-container">
       <div class="pure-control-group">
         <label for="first-name" translate="yes">Първо име</label>
-      <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
+        <input required="required" id="first-name" name="first-name" type="text" maxlength="1000">
       </div>
       <div class="pure-control-group">
         <label for="last-name" translate="yes">Фамилия</label>
-      <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
+        <input required="required" id="last-name" name="last-name" type="text" maxlength="1000">
       </div>
     </div>
     <div id="dob-container">
@@ -53,7 +57,7 @@
       <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
     </div>
     <div id="location-container" class="pure-control-group">
-      <label for="location" translate="yes">местоположение</label>
+      <label for="location" translate="yes">Местоположение</label>
       <input required="required" id="location" name="location" type="text" maxlength="1000">
     </div>
     <div id="company-name-container" class="pure-control-group">
@@ -61,11 +65,11 @@
       <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
     </div>
     <div id="website-container" class="pure-control-group">
-      <label for="website" translate="yes">уебсайт</label>
+      <label for="website" translate="yes">Уебсайт</label>
       <input required="required" id="website" name="website" type="text" maxlength="1000">
     </div>
     <div id="submit-container" class="pure-controls">
-      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">Актуализиране на потребителския профил</button>
+      <button id="submit-button" class="pure-button pure-button-primary" translate="yes">Актуализиране на профила</button>
     </div>
   </form>
   <template id="success">
@@ -80,22 +84,22 @@
   </template>
   <template id="invalid-first-name">
     <div class="error message" translate="yes">
-      Грешка! Въведено е липсващо или невалидно име
+      Грешка! Предоставено липсващо или невалидно собствено име
     </div>
   </template>
   <template id="invalid-first-name-length">
     <div class="error message" translate="yes">
-      Грешка! Въведено е невалидно първо име
+      Грешка! Посочено е невалидно собствено име
     </div>
   </template>
   <template id="invalid-last-name">
     <div class="error message" translate="yes">
-      Грешка! Въведено е липсващо или невалидно фамилно име
+      Грешка! Предоставено е липсващо или невалидно фамилно име
     </div>
   </template>
   <template id="invalid-last-name-length">
     <div class="error message" translate="yes">
-      Грешка! Беше предоставено невалидно фамилно име
+      Грешка! Посочено е невалидно фамилно име
     </div>
   </template>
   <template id="invalid-contact-email">
@@ -105,48 +109,49 @@
   </template>
   <template id="invalid-display-email">
     <div class="error message" translate="yes">
-      Грешка! Невалиден дисплейен имейл адрес
+      Грешка! Невалиден показан имейл адрес
     </div>
   </template>
   <template id="invalid-display-name">
     <div class="error message" translate="yes">
-      Грешка! Въведено е липсващо или невалидно екранно име
+      Грешка! Предоставено е липсващо или невалидно показвано име
     </div>
   </template>
   <template id="invalid-dob">
     <div class="error message" translate="yes">
-      Грешка! Беше предоставена липсваща или невалидна дата на раждане
+      Грешка! Предоставена е липсваща или невалидна дата на раждане
     </div>
   </template>
   <template id="invalid-phone">
     <div class="error message" translate="yes">
-      Грешка! Беше предоставен липсващ или невалиден телефон.
+      Грешка! Предоставен е липсващ или невалиден телефон.
     </div>
   </template>
   <template id="invalid-occupation">
     <div class="error message" translate="yes">
-      Грешка! Беше осигурено липсващо или невалидно занятие.
+      Грешка! Осигурена е липсваща или невалидна професия.
     </div>
   </template>
   <template id="invalid-location">
     <div class="error message" translate="yes">
-      Грешка! Беше предоставено липсващо или невалидно местоположение.
+      Грешка! Предоставено е липсващо или невалидно местоположение.
     </div>
   </template>
   <template id="invalid-company-name">
     <div class="error message" translate="yes">
-      Грешка! Въведено е липсващо или невалидно име на фирмата.
+      Грешка! Посочено е липсващо или невалидно име на фирма.
     </div>
   </template>
   <template id="invalid-website">
     <div class="error message" translate="yes">
-      Грешка! Беше предоставен липсващ или невалиден уебсайт.
+      Грешка! Предоставен е липсващ или невалиден уебсайт.
     </div>
   </template>
   <template id="invalid-display-name-length">
     <div class="error message" translate="yes">
-      Грешка! Въведено е липсващо или невалидно екранно име
+      Грешка! Предоставено е липсващо или невалидно показвано име
     </div>
   </template>
 </body>
+
 </html>

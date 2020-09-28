@@ -2,15 +2,15 @@
 <html lang="en" data-navbar="/administrator/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Delete ${account.accountid}</title>
+  <title translate="yes">Vee uit ${account.accountid}</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Delete ${account.accountid}</h1>
-  <p translate="yes">Rekeninge kan uitgevee word nadat die geskeduleerde uitvee-periode geslaag is.</p>
+  <h1 translate="yes">Vee uit ${account.accountid}</h1>
+  <p translate="yes">Rekeninge kan verwyder word nadat die geskeduleerde skrapperiode verby is.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/delete-account?accountid=${account.accountid}" name="submit-form">
     <fieldset>
@@ -29,7 +29,7 @@
   </template>
   <template id="schedule-error">
     <div class="error message" translate="yes">
-      Fout! Die rekening moet eers geskeduleer word om uit te vee
+      Fout! Die rekening moet eers uitgevee word
     </div>
   </template>
   <template id="duration-error">

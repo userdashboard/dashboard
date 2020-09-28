@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" data-auth="false" data-template="false">
+
 <head>
-  <meta charset="utf-8" /> 
-  <title translate="yes">ወደ እኔ መለያ ይግቡ</title>
+  <meta charset="utf-8" />
+  <title translate="yes">ወደ የእኔ መለያ ይግቡ</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="entry">
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin"
+    name="submit-form">
     <fieldset>
       <h1 translate="yes">ስግን እን</h1>
       <div id="message-container"></div>
@@ -23,34 +26,44 @@
       </div>
       <div class="pure-control-group">
         <div class="pure-checkbox">
-          <label for="remember-minutes" translate="yes"><span><input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked"></span> በ 20 ደቂቃዎች ውስጥ ዘግተው ይውጡ</label>
+          <label for="remember-minutes">
+            <input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked">
+            <span translate="yes">በ 20 ደቂቃዎች ውስጥ ዘግተው ይግቡ</span>
+          </label>
         </div>
         <div class="pure-checkbox">
-          <label for="remember-hours" translate="yes"><span><input type="radio" name="remember" value="hours" id="remember-hours"></span> በ 8 ሰዓታት ውስጥ ዘግተው ይውጡ</label>
+          <label for="remember-hours">
+            <input type="radio" name="remember" value="hours" id="remember-hours">
+            <span translate="yes">በ 8 ሰዓታት ውስጥ ዘግተው ይግቡ</span>
+          </label>
         </div>
         <div class="pure-checkbox">
-          <label for="remember-days" translate="yes"><span><input type="radio" name="remember" value="days" id="remember-days"></span> በ 30 ቀናት ውስጥ ዘግተው ይውጡ</label>
+          <label for="remember-days">
+            <input type="radio" name="remember" value="days" id="remember-days">
+            <span translate="yes">በ 30 ቀናት ውስጥ ዘግተው ይግቡ</span>
+          </label>
         </div>
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">ስግን እን</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Sign
+          in</button>
       </div>
       <ul>
         <li>
-          <a href="/account/register" translate="yes">መለያ ይመዝገቡ</a>
+          <a href="/account/register" translate="yes">አንድ መለያ ይመዝገቡ</a>
         </li>
         <li>
           <a href="/account/reset-account" translate="yes">መክፈቻ ቁልፉን ረሳኽው</a>
         </li>
         <li>
-          <a href="/account/restore-account" translate="yes">መለያን መሰረዝ ይቅር</a>
+          <a href="/account/restore-account" translate="yes">መለያ መሰረዝን ይቅር</a>
         </li>
       </ul>
     </fieldset>
   </form>
   <template id="invalid-username">
     <div class="error message" translate="yes">
-      ስህተት! የተሳሳተ የተጠቃሚ ስም
+      ስህተት! ልክ ያልሆነ የተጠቃሚ ስም
     </div>
   </template>
   <template id="invalid-password">
@@ -60,12 +73,12 @@
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      ስህተት! የተሳሳተ የተጠቃሚ ስም length
+      ስህተት! ልክ ያልሆነ የተጠቃሚ ስም ርዝመት
     </div>
   </template>
   <template id="invalid-password-length">
     <div class="error message" translate="yes">
-      ስህተት! የተሳሳተ የሚስጥርቃል length
+      ስህተት! ልክ ያልሆነ የይለፍ ቃል ርዝመት
     </div>
   </template>
   <template id="unknown-error">
@@ -75,8 +88,9 @@
   </template>
   <template id="account-deleted">
     <div class="error message" translate="yes">
-      ስህተት! የእርስዎ መለያ ተሰር isል <a href="/account/recover-account">and can still be recovered</a>
+      Error! Your account is deleted <a href="/account/recover-account">and can still be recovered</a>
     </div>
   </template>
 </body>
+
 </html>

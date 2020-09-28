@@ -2,24 +2,24 @@
 <html lang="en" data-navbar="/administrator/navbar-account.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">saioak</title>
+  <title translate="yes">Saioak</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Egon diren saioak ${account.accountid}</h1>
+  <h1 translate="yes">Saioetakoak ${account.accountid}</h1>
   <div id="message-container"></div>
   <div id="no-sessions">
-    <p translate="yes">Kontu honek ez du oraindik sesiorik.</p>
+    <p translate="yes">Kontu honek ez du oraindik saiorik.</p>
   </div>
   <table id="accounts-table" class="pure-table pure-table-striped list-table">
     <thead>
       <tr>
         <th>ID</th>
-        <th translate="yes">izena</th>
-        <th translate="yes">Emaila</th>
+        <th translate="yes">Izena</th>
+        <th translate="yes">Posta elektronikoa</th>
       </tr>
     </thead>
     <tr id="${account.accountid}">
@@ -37,7 +37,7 @@
       <tr>
         <th>ID</th>
         <th translate="yes">Sortu</th>
-        <th translate="yes">iraungitzear</th>
+        <th translate="yes">Iraungitzen da</th>
       </tr>
     </thead>
   </table>

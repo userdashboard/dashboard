@@ -2,26 +2,26 @@
 <html lang="en" data-navbar="/account/navbar-session.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">einde ${session.sessionid}</title>
+  <title translate="yes">Einde ${session.sessionid}</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Eind sessie ${session.sessionid}</h1>
+  <h1 translate="yes">Beëindig sessie ${session.sessionid}</h1>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/account/end-session?sessionid=${session.sessionid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Eind sessie</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Beëindig sessie</button>
     </fieldset>
   </form>
   <template id="instant-delete">
-    <p translate="yes">Die sessie word onmiddellik afgesluit.</p>
+    <p translate="yes">Die sessie sal onmiddellik beëindig word.</p>
   </template>
   <template id="success">
     <div class="success message" translate="yes">
-      Sukses! Die sessie is afgesluit
+      Sukses! Die sessie is beëindig
     </div>
   </template>
   <template id="unknown-error">

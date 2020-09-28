@@ -2,7 +2,7 @@
 <html lang="en" data-auth="false" data-template="false">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">registreer</title>
+  <title translate="yes">Registreer</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
@@ -11,15 +11,15 @@
 <body class="entry">
   <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/register" name="submit-form">
     <fieldset>
-      <h1 translate="yes">registreer</h1>
+      <h1 translate="yes">Registreer</h1>
       <div id="message-container"></div>
       <div id="form-container">
         <div class="pure-control-group">
-          <label for="username" translate="yes">Meld gebruikersnaam aan</label>
+          <label for="username" translate="yes">Aanmelding gebruikersnaam</label>
           <input placeholder="${requirements.minimumUsernameLength}+ characters" name="username" id="username" type="text" maxlength="1000">
         </div>
         <div class="pure-control-group">
-          <label for="password" translate="yes">Meld wagwoord aan</label>
+          <label for="password" translate="yes">Aanmeldwagwoord</label>
           <input placeholder="${requirements.minimumPasswordLength}+ characters" name="password" id="password" type="password" maxlength="1000">
         </div>
         <div class="pure-control-group">
@@ -55,7 +55,7 @@
           </div>
         </div>
         <div id="phone-container" class="pure-control-group">
-          <label for="phone" translate="yes">telefoon</label>
+          <label for="phone" translate="yes">Telefoon</label>
           <input required="required" id="phone" name="phone" type="text" maxlength="1000">
         </div>
         <div id="occupation-container" class="pure-control-group">
@@ -63,7 +63,7 @@
           <input required="required" id="occupation" name="occupation" type="text" maxlength="1000">
         </div>
         <div id="location-container" class="pure-control-group">
-          <label for="location" translate="yes">plek</label>
+          <label for="location" translate="yes">Ligging</label>
           <input required="required" id="location" name="location" type="text" maxlength="1000">
         </div>
         <div id="company-name-container" class="pure-control-group">
@@ -71,11 +71,11 @@
           <input required="required" id="company-name" name="company-name" type="text" maxlength="1000">
         </div>
         <div id="website-container" class="pure-control-group">
-          <label for="website" translate="yes">webwerf</label>
+          <label for="website" translate="yes">Webwerf</label>
           <input required="required" id="website" name="website" type="text" maxlength="1000">
         </div>
         <div class="pure-controls">
-          <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">registreer</button>
+          <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Registreer</button>
         </div>
       </div>
       <ul>
@@ -87,7 +87,7 @@
   </form>
   <template id="registration-disabled">
     <div class="error message" translate="yes">
-      Registrasie is gedeaktiveer.
+      Registrasie is uitgeskakel.
     </div>
   </template>
   <template id="invalid-username">
@@ -112,7 +112,7 @@
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Fout! Ongeldige gebruikersnaamlengte
+      Fout! Ongeldige lengte van die gebruikersnaam
     </div>
   </template>
   <template id="invalid-password-length">
@@ -127,7 +127,7 @@
   </template>
   <template id="invalid-first-name">
     <div class="error message" translate="yes">
-      Fout! 'N Voornaam of ontbrekende naam word voorsien
+      Fout! 'N Ontbrekende of ongeldige voornaam word verskaf
     </div>
   </template>
   <template id="invalid-first-name-length">
@@ -137,7 +137,7 @@
   </template>
   <template id="invalid-last-name">
     <div class="error message" translate="yes">
-      Fout! Daar is 'n ontbrekende of ongeldige van gegee
+      Fout! 'N Ontbrekende of ongeldige van is verskaf
     </div>
   </template>
   <template id="invalid-last-name-length">
@@ -157,12 +157,12 @@
   </template>
   <template id="invalid-display-name">
     <div class="error message" translate="yes">
-      Fout! 'N Vermiste of ongeldige vertoonnaam is verskaf
+      Fout! 'N Ontbrekende of ongeldige vertoonnaam is verskaf
     </div>
   </template>
   <template id="invalid-dob">
     <div class="error message" translate="yes">
-      Fout! 'N Ontbrekende of ongeldige geboortedatum is voorsien
+      Fout! 'N Ontbrekende of ongeldige geboortedatum is verskaf
     </div>
   </template>
   <template id="invalid-phone">
@@ -177,27 +177,27 @@
   </template>
   <template id="invalid-location">
     <div class="error message" translate="yes">
-      Fout! 'N Ontbrekende of ongeldige ligging is voorsien.
+      Fout! 'N Ontbrekende of ongeldige ligging is verskaf.
     </div>
   </template>
   <template id="invalid-company-name">
     <div class="error message" translate="yes">
-      Fout! 'N Vermiste of ongeldige maatskappy se naam is verskaf.
+      Fout! 'N Ontbrekende of ongeldige maatskappy se naam is verskaf.
     </div>
   </template>
   <template id="invalid-website">
     <div class="error message" translate="yes">
-      Fout! 'N Ontbrekende of ongeldige webwerf is voorsien.
+      Fout! 'N Ontbrekende of ongeldige webwerf is verskaf.
     </div>
   </template>
   <template id="invalid-address-postal-code">
     <div class="error message" translate="yes">
-      Fout! 'N Ontbrekende of ongeldige poskode is verskaf.
+      Fout! 'N Ontbrekende of ongeldige adres poskode is verskaf.
     </div>
   </template>
   <template id="invalid-display-name-length">
     <div class="error message" translate="yes">
-      Fout! 'N Vermiste of ongeldige vertoonnaam is verskaf
+      Fout! 'N Ontbrekende of ongeldige vertoonnaam is verskaf
     </div>
   </template>
 </body>

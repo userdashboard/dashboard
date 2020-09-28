@@ -10,21 +10,21 @@
 </head>
 <body>
   <h1 translate="yes">Dodijelite administratora ${account.accountid}</h1>
-  <p translate="yes">Ovim će se nominiranom nalogu omogućiti pristup administratorima.</p>
+  <p translate="yes">Ovo će nominiranom računu odobriti pristup administratorskom sistemu.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form" action="/administrator/assign-administrator?accountid=${account.accountid}" name="submit-form">
     <fieldset>
-      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Dodijeli administratora</button>
+      <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Dodeli administratora</button>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Uspeh! Korisnik je sada administrator
+      Uspjeh! Korisnik je sada administrator
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Greška! Došlo je do nepoznate pogreške
+      Greška! Došlo je do nepoznate greške
     </div>
   </template>
 </body>

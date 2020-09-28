@@ -10,7 +10,7 @@
 </head>
 <body>
   <h1 translate="yes">Verander gebruikersnaam</h1>
-  <p translate="yes">Alle gebruikersname word onomkeerbaar geënkripteer voordat die data met bcrypt + gedeelde sout geberg word.</p>
+  <p translate="yes">Alle gebruikersname word onomkeerbaar gekodeer voordat die data met bcrypt + gedeelde sout gestoor word.</p>
   <div id="message-container"></div>
   <form id="submit-form" method="post" class="pure-form pure-form-stacked" action="/account/change-username" name="submit-form">
     <fieldset>
@@ -23,18 +23,18 @@
         <input required="required" id="password" name="password" type="password" maxlength="1000">
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Stel nuwe gebruikersnaam in</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Stel 'n nuwe gebruikersnaam in</button>
       </div>
     </fieldset>
   </form>
   <template id="success">
     <div class="success message" translate="yes">
-      Sukses! U nuwe gebruikersnaam moet van nou af gebruik word
+      Sukses! U nuwe gebruikersnaam moet voortaan gebruik word
     </div>
   </template>
   <template id="invalid-new-username">
     <div class="error message" translate="yes">
-      Fout! Ongeldige of duplikaat nuwe gebruikersnaam
+      Fout! Ongeldige of dubbele nuwe gebruikersnaam
     </div>
   </template>
   <template id="invalid-password">
@@ -49,12 +49,12 @@
   </template>
   <template id="invalid-new-username-length">
     <div class="error message" translate="yes">
-      Fout! Ongeldige nuwe gebruikersnaamlengte
+      Fout! Ongeldige lengte van die nuwe gebruikersnaam
     </div>
   </template>
   <template id="duplicate-username">
     <div class="error message" translate="yes">
-      Fout! Iemand anders gebruik daardie gebruikersnaam
+      Fout! Iemand anders gebruik die gebruikersnaam
     </div>
   </template>
 </body>

@@ -2,14 +2,14 @@
 <html lang="en" data-navbar="/administrator/navbar-profile.html">
 <head>
   <meta charset="utf-8" /> 
-  <title translate="yes">Տեսարան ${profile.profileid}</title>
+  <title translate="yes">Դիտել ${profile.profileid}</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <base target="_top" href="/">
 </head>
 <body>
-  <h1 translate="yes">Անձնագիր</h1>
+  <h1 translate="yes">Պրոֆիլ</h1>
   <table id="profiles-table" class="pure-table data-table">
     <tbody id="${profile.profileid}">
       <tr>
@@ -23,7 +23,7 @@
         <td>${profile.createdFormatted}</td>
       </tr>
       <tr id="full-name">
-        <th translate="yes">Ամբողջական անուն</th>
+        <th translate="yes">Լրիվ անվանումը</th>
         <td>${profile.firstName} ${profile.lastName}</td>
       </tr>
       <tr id="contact-email">
@@ -33,7 +33,7 @@
         </td>
       </tr>
       <tr id="display-name">
-        <th translate="yes">Displayուցադրել անունը</th>
+        <th translate="yes">Displayուցադրման անունը</th>
         <td>${profile.displayName}</td>
       </tr>
       <tr id="display-email">
@@ -51,11 +51,11 @@
         <td>${profile.phone}</td>
       </tr>
       <tr id="occupation">
-        <th translate="yes">Զբաղմունք</th>
+        <th translate="yes">Բաղմունք</th>
         <td>${profile.occupation}</td>
       </tr>
       <tr id="location">
-        <th translate="yes">Գտնվելու վայրը</th>
+        <th translate="yes">Որտեղից</th>
         <td>${profile.location}</td>
       </tr>
       <tr id="company-name">

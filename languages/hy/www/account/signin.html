@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" data-auth="false" data-template="false">
+
 <head>
-  <meta charset="utf-8" /> 
-  <title translate="yes">Մուտք գործեք իմ հաշվին</title>
+  <meta charset="utf-8" />
+  <title translate="yes">Մուտք գործեք իմ հաշիվ</title>
   <link href="/public/pure-min.css" rel="stylesheet">
   <link href="/public/content.css" rel="stylesheet">
   <link href="/public/content-additional.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body class="entry">
-  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin" name="submit-form">
+  <form id="submit-form" method="post" class="pure-form pure-form-stacked entry-form" action="/account/signin"
+    name="submit-form">
     <fieldset>
       <h1 translate="yes">Մուտք գործել</h1>
       <div id="message-container"></div>
@@ -23,21 +26,31 @@
       </div>
       <div class="pure-control-group">
         <div class="pure-checkbox">
-          <label for="remember-minutes" translate="yes"><span><input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked"></span> Մուտք գործեք 20 րոպեի ընթացքում</label>
+          <label for="remember-minutes">
+            <input type="radio" name="remember" value="minutes" id="remember-nothing" checked="checked">
+            <span translate="yes">Դուրս եկեք 20 րոպեից</span>
+          </label>
         </div>
         <div class="pure-checkbox">
-          <label for="remember-hours" translate="yes"><span><input type="radio" name="remember" value="hours" id="remember-hours"></span> Մուտք գործեք 8 ժամվա ընթացքում</label>
+          <label for="remember-hours">
+            <input type="radio" name="remember" value="hours" id="remember-hours">
+            <span translate="yes">Դուրս եկեք 8 ժամից</span>
+          </label>
         </div>
         <div class="pure-checkbox">
-          <label for="remember-days" translate="yes"><span><input type="radio" name="remember" value="days" id="remember-days"></span> Մուտք գործեք 30 օրվա ընթացքում</label>
+          <label for="remember-days">
+            <input type="radio" name="remember" value="days" id="remember-days">
+            <span translate="yes">Դուրս եկեք 30 օրվա ընթացքում</span>
+          </label>
         </div>
       </div>
       <div class="pure-controls">
-        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Մուտք գործել</button>
+        <button id="submit-button" type="submit" class="pure-button pure-button-primary" translate="yes">Sign
+          in</button>
       </div>
       <ul>
         <li>
-          <a href="/account/register" translate="yes">Գրանցեք հաշիվ</a>
+          <a href="/account/register" translate="yes">Գրանցել հաշիվ</a>
         </li>
         <li>
           <a href="/account/reset-account" translate="yes">Մոռացել եք գաղտնաբառը</a>
@@ -50,33 +63,34 @@
   </form>
   <template id="invalid-username">
     <div class="error message" translate="yes">
-      Սխալ: Անվավեր անուն
+      Սխալ Անվավեր օգտվողի անուն
     </div>
   </template>
   <template id="invalid-password">
     <div class="error message" translate="yes">
-      Սխալ: Անվավեր գաղտնաբառ
+      Սխալ Անվավեր գաղտնաբառ
     </div>
   </template>
   <template id="invalid-username-length">
     <div class="error message" translate="yes">
-      Սխալ: Անվավեր օգտվողի երկարություն
+      Սխալ Օգտանունի անվավեր երկարություն
     </div>
   </template>
   <template id="invalid-password-length">
     <div class="error message" translate="yes">
-      Սխալ: Գաղտնաբառի անվավեր տևողություն
+      Սխալ Գաղտնաբառի անվավեր երկարություն
     </div>
   </template>
   <template id="unknown-error">
     <div class="error message" translate="yes">
-      Սխալ: Անհայտ սխալ է տեղի ունեցել
+      Սխալ Անհայտ սխալ է տեղի ունեցել
     </div>
   </template>
   <template id="account-deleted">
     <div class="error message" translate="yes">
-      Սխալ: Ձեր հաշիվը ջնջված է <a href="/account/recover-account">and can still be recovered</a>
+      Error! Your account is deleted <a href="/account/recover-account">and can still be recovered</a>
     </div>
   </template>
 </body>
+
 </html>
