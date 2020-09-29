@@ -2,7 +2,7 @@
 
 #### Index
 
-- [Introduction](#dashboard)
+- [Introduction](#introduction)
 - [Hosting Dashboard yourself](#hosting-dashboard-yourself)
 - [Configuring Dashboard](#configuring-dashboard)
 - [Customize registration information](#customize-registration-information)
