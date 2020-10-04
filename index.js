@@ -9,7 +9,7 @@ if (process.env.DASHBOARD_SERVER) {
   global.dashboardServer = process.env.DASHBOARD_SERVER
 } else {
   const protocol = global.port === 443 ? 'https' : 'http'
-  global.dashboardServer = '${protocol}://${global.host}:${global.port}'
+  global.dashboardServer = `${protocol}://${global.host}:${global.port}`
 }
 global.applicationServer = process.env.APPLICATION_SERVER
 global.applicationServerToken = process.env.APPLICATION_SERVER_TOKEN
