@@ -1,4 +1,3 @@
-const fs = require('fs')
 let defaultSessionKey
 if (process.env.NODE_ENV !== 'production') {
   defaultSessionKey = 'dashboard-session-key'
