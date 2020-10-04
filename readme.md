@@ -7,11 +7,11 @@
 - [Configuring Dashboard](#configuring-dashboard)
 - [Customize registration information](#customize-registration-information)
 - [Adding links to the header menus](#adding-links-to-the-header-menus)
-- [Access account data from your application](#access-account-data-from-your-application-server)
+- [Access the API from your application server](#access-the-api)
+- [Localization](#localization)
 - [Storage backends](#storage-backends)
 - [Storage caching](#storage-caching)
 - [Logging](#logging)
-- [Localization](#localization)
 - [Dashboard modules](#dashboard-modules)
 - [Creating modules for Dashboard](#creating-modules-for-dashboard)
 - [Testing](#testing)
@@ -163,7 +163,7 @@ The account and administrator drop-down menus are created from stub HTML files p
 2) Any activated module's `package.json` links or `/src/menu-administrator.html` files
 3) Dashboard's `package.json` and `/src/menu-administrator.html`
 
-# Access account data from your application server
+# Access the API
 
 Dashboard and official modules are completely API-driven and you can access the same APIs on behalf of the user making requests.  You perform `GET`, `POST`, `PATCH`, and `DELETE` HTTP requests against the API endpoints to fetch or modify data.  You can use a shared secret `APPLICATION_SERVER_TOKEN` to verify requests between servers, both servers send it in an `x-application-server-token` header.  This example fetches the user's session information using NodeJS, you can do this with any language:
 
@@ -177,12 +177,10 @@ Dashboard and official modules are completely API-driven and you can access the 
             method: 'GET',
             headers: {
                 'x-application-server': 'application.example.com',
-                'x-application-server-token': process.env.APPLICATION_SERVER_TOKEN
+                'x-application-server-token': process.env.APPLICATION_SERVER_TOKEN,
+                'x-accountid': accountid,
+                'x-sessionid': sessionid
             }
-        }
-        if (accountid) {
-            requestOptions.headers['x-accountid'] = accountid
-            requestOptions.headers['x-sessionid'] = sessionid
         }
         const proxyRequest = require('https').request(requestOptions, (proxyResponse) => {
             let body = ''
@@ -199,8 +197,6 @@ Dashboard and official modules are completely API-driven and you can access the 
         return proxyRequest.end()
       })
     }
-
-
 # Storage backends
 
 Dashboard by default uses local disk, this is good for development and under some circumstances like an app your family uses, but generally you should use any of Redis, PostgreSQL, MySQL, MongoDB or S3-compatible for storage.
