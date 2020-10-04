@@ -44,7 +44,7 @@ function minify (doc) {
   return doc
 }
 
-function parse (fileOrHTML, dataObject, dataObjectName, language) {
+function parse (fileOrHTML, dataObject, dataObjectName) {
   if (!fileOrHTML) {
     throw new Error('invalid-html')
   }
@@ -87,12 +87,6 @@ function parse (fileOrHTML, dataObject, dataObjectName, language) {
         }
       }
       if (navbarPath) {
-        if (language && language !== 'en') {
-          const altNavbarPath = navbarPath.replace('/src/www', '/languages/' + language)
-          if (fs.existsSync(altNavbarPath)) {
-            navbarPath = altNavbarPath
-          }
-        }
         const navbarHTML = fs.readFileSync(navbarPath).toString()
         if (navbarHTML) {
           raw = raw.replace('</head>', `<div id='navbar______'>${navbarHTML}</template></div>`)

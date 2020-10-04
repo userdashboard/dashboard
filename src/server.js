@@ -201,13 +201,6 @@ async function receiveRequest (req, res) {
   if (user) {
     req.session = user.session
     req.account = user.account
-    if (global.enableLanguagePreference) {
-      req.language = req.account.language || global.language || 'en'
-    } else {
-      req.language = global.language || 'en'
-    }
-  } else {
-    req.language = global.language || 'en'
   }
   if (!req.account && req.route && req.route.auth !== false) {
     if (req.urlPath.startsWith('/api/')) {
