@@ -3,9 +3,14 @@ let defaultSessionKey
 if (process.env.NODE_ENV !== 'production') {
   defaultSessionKey = 'dashboard-session-key'
 }
-
 global.host = process.env.HOST || 'localhost'
 global.port = parseInt(process.env.PORT || '8000', 10)
+if (process.env.DASHBOARD_SERVER) {
+  global.dashboardServer = process.env.DASHBOARD_SERVER
+} else {
+  const protocol = global.port === 443 ? 'https' : 'http'
+  global.dashboardServer = '${protocol}://${global.host}:${global.port}'
+}
 global.applicationServer = process.env.APPLICATION_SERVER
 global.applicationServerToken = process.env.APPLICATION_SERVER_TOKEN
 if (global.applicationServer && !global.applicationServerToken) {
@@ -63,7 +68,6 @@ if (!process.env.USER_PROFILE_FIELDS) {
 }
 global.appid = process.env.APPID || process.env.DOMAIN || 'dashboard'
 global.allowPublicAPI = process.env.ALLOW_PUBLIC_API === 'true'
-global.dashboardServer = process.env.DASHBOARD_SERVER
 global.domain = process.env.DOMAIN || ''
 global.idLength = parseInt(process.env.ID_LENGTH || '8', 10)
 global.minimumUsernameLength = parseInt(process.env.MINIMUM_USERNAME_LENGTH || '1', 6)
