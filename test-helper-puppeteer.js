@@ -90,12 +90,16 @@ async function fetch (method, req) {
     }
     let screenshotNumber = 1
     let lastStep
+    const languages = global.languages || []
+    if (!languages.length) {
+      languages.push('en')
+    }
     for (const step of req.screenshots) {
       Log.info('screenshot step', JSON.stringify(step))
       if (step.save) {
         if (process.env.GENERATE_SCREENSHOTS && process.env.SCREENSHOT_PATH) {
           let firstTitle
-          for (const language of global.languages) {
+          for (const language of languages) {
             global.language = language.code
             for (const device of devices) {
               await emulate(page, device)
@@ -110,7 +114,7 @@ async function fetch (method, req) {
       if (step.hover) {
         if (process.env.GENERATE_SCREENSHOTS && process.env.SCREENSHOT_PATH) {
           let firstTitle
-          for (const language of global.languages) {
+          for (const language of languages) {
             for (const device of devices) {
               global.language = language.code
               await emulate(page, device)
@@ -126,7 +130,7 @@ async function fetch (method, req) {
       } else if (step.click) {
         if (process.env.GENERATE_SCREENSHOTS && process.env.SCREENSHOT_PATH) {
           let firstTitle
-          for (const language of global.languages) {
+          for (const language of languages) {
             global.language = language.code
             for (const device of devices) {
               await emulate(page, device)        
@@ -169,7 +173,7 @@ async function fetch (method, req) {
         }
         if (process.env.GENERATE_SCREENSHOTS && process.env.SCREENSHOT_PATH) {
           let firstTitle
-          for (const language of global.languages) {
+          for (const language of languages) {
             global.language = language.code
             for (const device of devices) {
               await emulate(page, device, req)
@@ -211,7 +215,7 @@ async function fetch (method, req) {
     }
     if (process.env.GENERATE_SCREENSHOTS && process.env.SCREENSHOT_PATH) {
       let firstTitle
-      for (const language of global.languages) {
+      for (const language of languages) {
         global.language = language.code
         for (const device of devices) {
           await emulate(page, device)

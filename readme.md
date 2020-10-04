@@ -259,30 +259,17 @@ Override Dashboard's logging by creating your own `log.js` in the root of your p
       }
     }
 
-# Localization
-
-Dashboard has been automatically-localized into a variety of languages.  You can submit corrections by editing the HTML files directly on Github in the `languages` folder in Dashboard and its official modules, except the `maxmind-geoip` module which has no UI to translate.
-
-Users can specify their preferred language, timezone, date and formatting in their account settings.
-
-You can set the language with an environment variable:
-
-    LANGUAGE=es node main.js
-
-By default users may not customize language settings.  You can enable the option with an environment variable:
-
-    ENABLE_LANGUAGE_PREFERENCE=true LANGUAGE=en node main.js
-
 # Dashboard modules
 
 Dashboard is modular and by itself it provides only the signing in, account management and basic administration.  Modules add new pages and API routes for additional functionality.
 
-| Name                                                                                                | Description                              |
-|-----------------------------------------------------------------------------------------------------|------------------------------------------|
-| [@userdashboard/maxmind-geoip](https://npmjs.com/package/userdashboard/maxmind-geoip)               | IP address-based geolocation by MaxMind  |
-| [@userdashboard/organizations](https://npmjs.com/package/userdashboard/organizations)               | User created groups                      |
-| [@userdashboard/stripe-connect](https://npmjs.com/package/userdashboard/stripe-connect)             | Marketplace functionality by Stripe      |
-| [@userdashboard/stripe-subscriptions](https://npmjs.com/package/userdashboard/stripe-subscriptions) | SaaS functionality by Stripe             |
+| Name                                                                                                | Description                               |
+|-----------------------------------------------------------------------------------------------------|-------------------------------------------|
+| [@userdashboard/localization](https://npmjs.com/package/userdashboard/localization)                 | Specify language or allow users to select |
+| [@userdashboard/maxmind-geoip](https://npmjs.com/package/userdashboard/maxmind-geoip)               | IP address-based geolocation by MaxMind   |
+| [@userdashboard/organizations](https://npmjs.com/package/userdashboard/organizations)               | User created groups                       |
+| [@userdashboard/stripe-connect](https://npmjs.com/package/userdashboard/stripe-connect)             | Marketplace functionality by Stripe       |
+| [@userdashboard/stripe-subscriptions](https://npmjs.com/package/userdashboard/stripe-subscriptions) | SaaS functionality by Stripe              |
 
 Modules are NodeJS packages that you install with NPM:
 

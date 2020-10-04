@@ -66,8 +66,6 @@ global.allowPublicAPI = process.env.ALLOW_PUBLIC_API === 'true'
 global.dashboardServer = process.env.DASHBOARD_SERVER
 global.domain = process.env.DOMAIN || ''
 global.idLength = parseInt(process.env.ID_LENGTH || '8', 10)
-global.language = process.env.LANGUAGE || 'en'
-global.enableLanguagePreference = process.env.ENABLE_LANGUAGE_PREFERENCE === 'true'
 global.minimumUsernameLength = parseInt(process.env.MINIMUM_USERNAME_LENGTH || '1', 6)
 global.maximumUsernameLength = parseInt(process.env.MAXIMUM_USERNAME_LENGTH || '50', 10)
 global.minimumPasswordLength = parseInt(process.env.MINIMUM_PASSWORD_LENGTH || '1', 6)
@@ -84,14 +82,7 @@ global.minimumProfileCompanyNameLength = parseInt(process.env.MINIMUM_PROFILE_CO
 global.maximumProfileCompanyNameLength = parseInt(process.env.MAXIMUM_PROFILE_COMPANY_NAME_LENGTH || '50', 10)
 global.deleteDelay = parseInt(process.env.DELETE_DELAY || '7', 10)
 global.pageSize = parseInt(process.env.PAGE_SIZE || '10', 10)
-if (fs.existsSync(`${global.applicationPath}/languages.json`) && fs.existsSync(`${global.applicationPath}/node_modules/@userdashboard/dashboard/languages.json`)) {
-  global.languages = require(`${global.applicationPath}/languages.json`)
-} else {
-  global.languages = require('./languages.json')
-}
-global.languages.sort((a, b) => {
-  return a.code.toLowerCase() > b.code.toLowerCase() ? 1 : -1
-})
+
 let Server
 
 module.exports = {

@@ -95,25 +95,6 @@ async function setupBefore () {
   }
   global.testConfiguration.appid = `tests_${dashboard.Timestamp.now}`
   global.testConfiguration.testNumber = dashboard.Timestamp.now
-  if (process.env.SCREENSHOT_LANGUAGES) {
-    const supported = []
-    if (process.env.SCREENSHOT_LANGUAGES.indexOf(',') > -1) {
-      const group = process.env.SCREENSHOT_LANGUAGES.split(',')
-      for (const language of group) {
-        supported.push(language)
-      }
-    } else {
-      supported.push(process.env.SCREENSHOT_LANGUAGES)
-    }
-    const newLanguages = []
-    const languages = require('./languages.json')
-    for (const language of languages) {
-      if (supported.indexOf(language.code) > -1) {
-        newLanguages.push(language)
-      }
-    }
-    global.testConfiguration.languages = newLanguages
-  }
 }
 
 async function setupBeforeEach () {
