@@ -2,6 +2,7 @@
 const assert = require('assert')
 const properties = [
   { camelCase: 'pageSize', raw: 'PAGE_SIZE', description: 'Rows of data per page', value: '7', default: '10', valueDescription: 'Integer' },
+  { camelCase: 'dashboardServer', raw: 'DASHBOARD_SERVER', description: 'URL of dashboard server', value: 'https://1.2.3.4', default: 'http://localhost:8000', valueDescription: 'Address' },
   { camelCase: 'domain', raw: 'DOMAIN', description: 'Domain of server', value: 'example.com', default: '', valueDescription: 'String' },
   { camelCase: 'host', raw: 'HOST', description: 'IP or address web server listens on', value: '0.0.0.0', default: 'localhost', valueDescription: 'IP address' },
   { camelCase: 'port', raw: 'PORT', description: 'Port web server listens on', value: '9000', default: '8000', valueDescription: 'Integer' },
@@ -14,7 +15,6 @@ const properties = [
   { camelCase: 'encryptionSecret', raw: 'ENCRYPTION_SECRET', description: '32-character secret string', value: '0123456789abcdef0123456789abcdef', noDefaultValue: true, valueDescription: 'String' },
   { camelCase: 'encryptionSecretIV', raw: 'ENCRYPTION_SECRET_IV', description: '16-character secret string', value: '0123456789abcdef', noDefaultValue: true, valueDescription: 'String' },
   { camelCase: 'disableRegistration', raw: 'DISABLE_REGISTRATION', description: 'Disable UI (not API) for registering', value: 'false', default: '', valueDescription: 'Boolean' },
-  { camelCase: 'dashboardServer', raw: 'DASHBOARD_SERVER', description: 'URL of dashboard server', value: 'https://1.2.3.4', default: 'http://localhost:8000', valueDescription: 'Address' },
   { camelCase: 'minimumPasswordLength', raw: 'MINIMUM_PASSWORD_LENGTH', description: 'Shortest password length', value: '1', default: '1', valueDescription: 'Integer' },
   { camelCase: 'maximumPasswordLength', raw: 'MAXIMUM_PASSWORD_LENGTH', description: 'Longest password length', value: '1000', default: '50', valueDescription: 'Integer' },
   { camelCase: 'minimumUsernameLength', raw: 'MINIMUM_USERNAME_LENGTH', description: 'Shortest username length', value: '1', default: '1', valueDescription: 'Integer' },
