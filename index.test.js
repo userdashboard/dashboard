@@ -13,8 +13,6 @@ const properties = [
   { camelCase: 'bcryptWorkloadFactor', raw: 'BCRYPT_WORKLOAD_FACTOR', description: 'Strength to protect passwords', value: '4', default: '10', valueDescription: 'Integer' },
   { camelCase: 'encryptionSecret', raw: 'ENCRYPTION_SECRET', description: '32-character secret string', value: '0123456789abcdef0123456789abcdef', noDefaultValue: true, valueDescription: 'String' },
   { camelCase: 'encryptionSecretIV', raw: 'ENCRYPTION_SECRET_IV', description: '16-character secret string', value: '0123456789abcdef', noDefaultValue: true, valueDescription: 'String' },
-  { camelCase: 'language', raw: 'LANGUAGE', description: 'Default, fixed or selectable UI language', value: 'fr', default: 'en', valueDescription: 'Languages folder name' },
-  { camelCase: 'enableLanguagePreference', raw: 'ENABLE_LANGUAGE_PREFERENCE', description: 'Allows users to customize language, timezone and formats', value: 'true', default: '', valueDescription: 'Boolean' },
   { camelCase: 'disableRegistration', raw: 'DISABLE_REGISTRATION', description: 'Disable UI (not API) for registering', value: 'false', default: '', valueDescription: 'Boolean' },
   { camelCase: 'dashboardServer', raw: 'DASHBOARD_SERVER', description: 'URL of dashboard server', value: 'http://localhost:8000', default: '', valueDescription: 'Address' },
   { camelCase: 'minimumPasswordLength', raw: 'MINIMUM_PASSWORD_LENGTH', description: 'Shortest password length', value: '1', default: '1', valueDescription: 'Integer' },
