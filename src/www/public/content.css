@@ -36,7 +36,7 @@ a.pure-button:hover { text-decoration: none }
 .pure-control-group input[type="email"],
 .pure-control-group input[type="number"] { border: 1px solid #BBB; box-shadow: inset 0 0 3px #BBB; background-color: #DDD; border-radius: 0; color: #333; font-size: 0.9rem; max-width: 100% }
 .pure-control-group input:focus { border-color: #0078e7; box-shadow: inset 0 0 3px #FFF }
-.pure-checkbox span { background-color: rgba(255, 255, 255, 0.25); display: inline-block; padding: 0; margin: 0 0.5rem 0 0; border-radius: 0.25rem; border: 1px solid rgba(255, 255, 255, 0.5) }}
+.pure-checkbox span { background-color: rgba(255, 255, 255, 0.25); display: inline-block; padding: 0; margin: 0 0.5rem 0 0; border-radius: 0.25rem; border: 1px solid rgba(255, 255, 255, 0.5) }
 .pure-checkbox input { display: inline-block }
 .pure-checkbox label { font-size: 0.8rem; color: #333;  text-transform: none; font-size: 1rem }
 .pure-button { background-color: #FFF; color: #666; border: 1px solid #CCC; border-radius: 0.5rem }
@@ -90,6 +90,7 @@ body.entry { background-color: #036; display: flex; align-items: center; justify
 .entry-form input[type="password"],
 .entry-form input[type="email"]{ width: 100%; border-color: #DDD; box-shadow: none; border-radius: 0 }
 .entry-form label { color: rgba(255, 255, 255, 0.5) }
+.entry-form .pure-checkbox span { border: none; background-color: none }
 
 @media (max-width: 600px) {
   .entry-form { width: unset; box-shadow: none; transform: none; position: unset }
