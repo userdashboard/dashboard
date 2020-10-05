@@ -22,11 +22,9 @@ jobs:
         npm install faker puppeteer@2.1.1 @userdashboard/dashboard
         npm install -g mocha
         rm node_modules/@userdashboard/dashboard/*.js
-        rm -rf node_modules/@userdashboard/dashboard/languages
         rm -rf node_modules/@userdashboard/dashboard/src
         cp $HERE/*.js node_modules/@userdashboard/dashboard
         cp -R $HERE/src/ node_modules/@userdashboard/dashboard/src/
-        cp -R $HERE/languages/ node_modules/@userdashboard/dashboard/languages/
         echo "global.applicationPath = __dirname" > main.js
     - name: Test unencrypted file-system storage
       run: mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
