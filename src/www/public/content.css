@@ -90,7 +90,7 @@ body.entry { background-color: #036; display: flex; align-items: center; justify
 .entry-form input[type="password"],
 .entry-form input[type="email"]{ width: 100%; border-color: #DDD; box-shadow: none; border-radius: 0 }
 .entry-form label { color: rgba(255, 255, 255, 0.5) }
-.entry-form .pure-checkbox span { border: none; background-color: none }
+.entry-form label span { border: none; background-color: none }
 
 @media (max-width: 600px) {
   .entry-form { width: unset; box-shadow: none; transform: none; position: unset }
