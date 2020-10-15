@@ -85,6 +85,7 @@ global.minimumProfileCompanyNameLength = parseInt(process.env.MINIMUM_PROFILE_CO
 global.maximumProfileCompanyNameLength = parseInt(process.env.MAXIMUM_PROFILE_COMPANY_NAME_LENGTH || '50', 10)
 global.deleteDelay = parseInt(process.env.DELETE_DELAY || '7', 10)
 global.pageSize = parseInt(process.env.PAGE_SIZE || '10', 10)
+global.sessionVerificationDelay = parseInt(process.env.SESSION_VERIFICATION_DELAY || '14400', 10)
 
 let Server
 
