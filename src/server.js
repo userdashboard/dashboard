@@ -246,29 +246,15 @@ async function receiveRequest (req, res) {
       return Response.throw500(req, res)
     }
   }
-  if (req.session) {
-    req.session.lastVerified = req.session.lastVerified || req.session.created
-    if (dashboard.Timestamp.now - req.session.lastVerified > 86400) {
-      delete (req.session.lastVerified)
-    }
-    if (req.session.lastSeen && dashboard.Timestamp.now - req.session.lastSeen > 3600) {
-      delete (req.session.lastVerified)
-    }
-    if (!req.session.lastSeen && dashboard.Timestamp.now - req.session.created > 3600) {
-      delete (req.session.lastVerified)
-    }
-    if (req.session.lastSeen < dashboard.Timestamp.now - 30) {
-      req.session.lastSeen = dashboard.Timestamp.now
-      await dashboard.Storage(`${req.appid}/session/${req.session.sessionid}`, 'lastSeen', dashboard.Timestamp.now)
-    }
-    if (req.urlPath === '/administrator' || req.urlPath.startsWith('/administrator/') ||
-      req.urlPath === '/account' || req.urlPath.startsWith('/account/')) {
-      if (!req.session.lastVerified &&
-        req.urlPath !== '/account/signout' &&
-        req.urlPath !== '/account/end-all-sessions' &&
-        req.urlPath !== '/account/verify') {
-        return Response.redirectToVerify(req, res)
-      }
+  if (req.session && global.sessionVerificationDelay) {
+    const requireVerification = dashboard.Timestamp.now - req.session.lastVerified > 14400
+    if (requireVerification &&
+      (req.urlPath === '/administrator' || req.urlPath.startsWith('/administrator/') ||
+       req.urlPath === '/account' || req.urlPath.startsWith('/account/')) &&
+      req.urlPath !== '/account/signout' &&
+      req.urlPath !== '/account/end-all-sessions' &&
+      req.urlPath !== '/account/verify') {
+      return Response.redirectToVerify(req, res)
     }
   }
   if (!req.route) {

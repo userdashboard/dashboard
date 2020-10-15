@@ -158,10 +158,14 @@ describe('internal-api/server', () => {
     })
 
     it('should redirect user to verification', async () => {
-      Timestamp.now -= 10000
+      global.sessionVerificationDelay = 10000
+      // rewind five days ago
+      Timestamp.now -= 5 * 24 * 60 * 60
       const user = await TestHelper.createUser()
+      // create thirty-day session
       user.session = await TestHelper.createSession(user, 'days')
-      Timestamp.now += 10000
+      // reset to current time
+      Timestamp.now += 5 * 24 * 60 * 60
       const req = TestHelper.createRequest('/account/change-password')
       req.account = user.account
       req.session = user.session
@@ -178,6 +182,67 @@ describe('internal-api/server', () => {
           const doc = HTML.parse(page)
           const redirectURL = TestHelper.extractRedirectURL(doc)
           assert.strictEqual(redirectURL, '/account/verify?return-url=/account/change-password')
+        }
+      }
+      return Server.receiveRequest(req, res)
+    })
+
+    it('should accept recent verification', async () => {
+      global.sessionVerificationDelay = 0
+      // rewind five days ago
+      Timestamp.now -= 5 * 24 * 60 * 60
+      const user = await TestHelper.createUser()
+      // create thirty-day session
+      user.session = await TestHelper.createSession(user, 'days')
+      // reset to current time
+      Timestamp.now += 5 * 24 * 60 * 60
+      user.session = await TestHelper.completeVerification(user)
+      const req = TestHelper.createRequest('/account/change-password')
+      req.account = user.account
+      req.session = user.session
+      req.method = 'GET'
+      req.headers = {}
+      req.body = {
+        username: user.account.username,
+        password: user.account.password
+      }
+      const res = {
+        setHeader: () => {
+        },
+        end: (page) => {
+          const doc = HTML.parse(page)
+          const redirectURL = TestHelper.extractRedirectURL(doc)
+          assert.notStrictEqual(redirectURL, '/account/verify?return-url=/account/change-password')
+        }
+      }
+      return Server.receiveRequest(req, res)
+    })
+
+    it('should not require verification', async () => {
+      global.sessionVerificationDelay = 0
+      // rewind five days ago
+      Timestamp.now -= 5 * 24 * 60 * 60
+      const user = await TestHelper.createUser()
+      // create thirty-day session
+      user.session = await TestHelper.createSession(user, 'days')
+      // reset to current time
+      Timestamp.now += 5 * 24 * 60 * 60
+      const req = TestHelper.createRequest('/account/change-password')
+      req.account = user.account
+      req.session = user.session
+      req.method = 'GET'
+      req.headers = {}
+      req.body = {
+        username: user.account.username,
+        password: user.account.password
+      }
+      const res = {
+        setHeader: () => {
+        },
+        end: (page) => {
+          const doc = HTML.parse(page)
+          const redirectURL = TestHelper.extractRedirectURL(doc)
+          assert.notStrictEqual(redirectURL, '/account/verify?return-url=/account/change-password')
         }
       }
       return Server.receiveRequest(req, res)

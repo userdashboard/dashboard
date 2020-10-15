@@ -35,7 +35,8 @@ const defaultConfigurationValues = {
   idLength: 7,
   allowPublicAPI: true,
   delayDiskWrites: false,
-  bcryptWorkloadFactor: 4
+  bcryptWorkloadFactor: 4,
+  sessionVerificationDelay: 14400
 }
 for (const property in defaultConfigurationValues) {
   global.testConfiguration[property] = global.testConfiguration[property] || defaultConfigurationValues[property]
@@ -125,6 +126,7 @@ const wait = util.promisify(function (amount, callback) {
 })
 
 module.exports = {
+  completeVerification,
   createAdministrator,
   createMultiPart,
   createOwner,
@@ -354,6 +356,17 @@ async function requireVerification (user) {
   const req = createRequest(`/api/require-verification?sessionid=${user.session.sessionid}`)
   req.account = user.account
   req.session = user.session
+  await req.patch()
+}
+
+async function completeVerification (user) {
+  const req = createRequest(`/api/user/set-session-verified?sessionid=${user.session.sessionid}`)
+  req.account = user.account
+  req.session = user.session
+  req.body = {
+    username: user.account.username,
+    password: user.account.password
+  }
   await req.patch()
 }
 

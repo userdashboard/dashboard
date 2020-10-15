@@ -63,7 +63,8 @@ module.exports = {
       tokenHash: tokenHash,
       created: dashboard.Timestamp.now,
       expires: dashboard.Timestamp.now + expireSeconds,
-      sessionKeyNumber: account.sessionKeyNumber
+      sessionKeyNumber: account.sessionKeyNumber,
+      lastVerified: dashboard.Timestamp.now
     }
     await dashboard.StorageObject.setProperty(`${req.appid}/account/${account.accountid}`, 'lastSignedIn', dashboard.Timestamp.now)
     await dashboard.Storage.write(`${req.appid}/session/${sessionid}`, sessionInfo)
