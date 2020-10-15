@@ -222,22 +222,6 @@ async function receiveRequest (req, res) {
   if (res.ended) {
     return
   }
-  if (req.language !== 'en' && req.route && req.route.htmlFilePath) {
-    const newRoute = {}
-    for (const x in req.route) {
-      newRoute[x] = req.route[x]
-    }
-    const htmlFilePath = req.route.htmlFilePath.replace('/src/www', '/languages/' + req.language)
-    if (languageCache[htmlFilePath]) {
-      newRoute.html = languageCache[htmlFilePath]
-    } else {
-      const fullPath = path.join(global.applicationPath, htmlFilePath)
-      if (fs.existsSync(fullPath)) {
-        newRoute.html = languageCache[htmlFilePath] = fs.readFileSync(fullPath).toString()
-      }
-    }
-    req.route = newRoute
-  }
   if (req.urlPath === '/administrator' || req.urlPath.startsWith('/administrator/') || req.urlPath.startsWith('/api/administrator/')) {
     if (!req.account) {
       return Response.redirectToSignIn(req, res)
