@@ -67,16 +67,13 @@ async function end (req, res, doc, blob) {
         form.attr.novalidate = 'novalidate'
       }
       if (req.query && req.query['return-url']) {
-        form.attr.action = form.attr.action || req.url
-        if (form.attr.action) {
-          const formURL = form.attr.action.startsWith('/') ? global.dashboardServer + form.attr.action : form.attr.action
-          const action = new url.URL(formURL)
-          if (action['return-url']) {
-            continue
-          }
+        const formURL = form.attr.action.startsWith('/') ? global.dashboardServer + form.attr.action : form.attr.action
+        const action = new url.URL(formURL)
+        if (action['return-url']) {
+          continue
         }
         const divider = form.attr.action.indexOf('?') > -1 ? '&' : '?'
-        form.attr.action += `${divider}return-url=${encodeURI(req.query['return-url']).split('?').join('%3F')}`
+        form.attr.action += `${divider}return-url=${encodeURI(req.query['return-url']).split('?').join('%3F').split('&').join('%26')}`
       }
     }
     return compress(req, res, doc.toString())
@@ -283,16 +280,13 @@ async function wrapTemplateWithSrcDoc (req, res, doc) {
       form.attr.novalidate = 'novalidate'
     }
     if (req.query && req.query['return-url']) {
-      form.attr.action = form.attr.action || req.url
-      if (form.attr.action) {
-        const formURL = form.attr.action.startsWith('/') ? global.dashboardServer + form.attr.action : form.attr.action
-        const action = new url.URL(formURL)
-        if (action['return-url']) {
-          continue
-        }
+      const formURL = form.attr.action.startsWith('/') ? global.dashboardServer + form.attr.action : form.attr.action
+      const action = new url.URL(formURL)
+      if (action['return-url']) {
+        continue
       }
       const divider = form.attr.action.indexOf('?') > -1 ? '&' : '?'
-      form.attr.action += `${divider}return-url=${encodeURI(req.query['return-url']).split('?').join('%3F')}`
+      form.attr.action += `${divider}return-url=${encodeURI(req.query['return-url']).split('?').join('%3F').split('&').join('%26')}`
     }
   }
   if (packageJSON.dashboard.content && packageJSON.dashboard.content.length) {
@@ -342,7 +336,7 @@ function redirectToSignIn (req, res) {
       }
     }
     if (variables.length) {
-      returnURL = `${req.urlPath}%3F${variables.join('&')}`
+      returnURL = `${req.urlPath}%3F${variables.join('%26')}`
     }
   }
   return redirect(req, res, `/account/signin?return-url=${returnURL}`)
@@ -359,7 +353,7 @@ function redirectToVerify (req, res) {
       }
     }
     if (variables.length) {
-      returnURL = `${req.urlPath}%3F${variables.join('&')}`
+      returnURL = `${req.urlPath}%3F${variables.join('%26')}`
     }
   }
   return redirect(req, res, `/account/verify?return-url=${returnURL}`)
