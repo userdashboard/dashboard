@@ -68,7 +68,7 @@ a.pure-button:hover { text-decoration: none }
 .list-table td { padding: 0.5rem 4rem 0.5rem 0.5rem; text-align: left; font-size: 0.9rem }
 
 .checked-table tr th:first-of-type,
-.checked-table tr td:first-of-type { padding-right: 1rem m}
+.checked-table tr td:first-of-type { padding-right: 1rem }
 
 .data-table { width: auto }
 .data-table th { color: #036 }
