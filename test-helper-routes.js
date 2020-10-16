@@ -15,7 +15,7 @@ module.exports = {
         }
         const twentyFourHours = 24 * 60 * 60 * 1000
         await dashboard.StorageObject.setProperty(`${req.appid}/session/${req.session.sessionid}`, 'created', req.session.created - twentyFourHours)
-        await dashboard.StorageObject.removeProperty(`${req.appid}/session/${req.session.sessionid}`, 'lastVerified')
+        await dashboard.StorageObject.setProperty(`${req.appid}/session/${req.session.sessionid}`, 'lastVerified', req.session.created - twentyFourHours)
       }
     }
   }
