@@ -236,6 +236,7 @@ async function receiveRequest (req, res) {
       (req.urlPath === '/administrator' || req.urlPath.startsWith('/administrator/') ||
        req.urlPath === '/account' || req.urlPath.startsWith('/account/')) &&
       req.urlPath !== '/account/signout' &&
+      req.urlPath !== '/account/signin' &&
       req.urlPath !== '/account/end-all-sessions' &&
       req.urlPath !== '/account/verify') {
       return Response.redirectToVerify(req, res)
