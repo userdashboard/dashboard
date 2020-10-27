@@ -83,7 +83,10 @@ a.pure-button:hover { text-decoration: none }
 
 /* entry forms for signing in, registration */
 body.entry { background-color: #036; display: flex; align-items: center; justify-content: center }
-.entry-form { width: 20rem; padding: 1rem; text-align: center }
+.redirect-message { color: #FFF }
+.redirect-message a { color: rgba(255, 255, 255, 0.5); text-decoration: underline;}
+.redirect-message a { color: #FFF }
+.entry-form { width: 20rem; padding: 1rem; text-align: center }}
 .entry-form h1 { font-size: 1.2rem; color: rgba(255, 255, 255, 0.5) }
 .entry-form ul { margin: 1rem 0 0 0; color: rgba(255, 255, 255, 0.75) }
 .entry-form li { margin-top: 0.5rem }
