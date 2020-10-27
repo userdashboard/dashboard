@@ -23,7 +23,7 @@ async function beforeRequest (req) {
 }
 
 async function renderPage (req, res) {
-  const doc = dashboard.HTML.parse(req.route.html, req.data.account, 'account', req.language)
+  const doc = dashboard.HTML.parse(req.html || req.route.html, req.data.account, 'account', req.language)
   await navbar.setup(doc, req.data.account)
   if (req.data.resetCodes && req.data.resetCodes.length) {
     dashboard.HTML.renderTable(doc, req.data.resetCodes, 'reset-code-row', 'reset-codes-table')

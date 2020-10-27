@@ -18,7 +18,7 @@ async function beforeRequest (req) {
 }
 
 async function renderPage (req, res) {
-  const doc = dashboard.HTML.parse(req.route.html, null, null, req.language)
+  const doc = dashboard.HTML.parse(req.html || req.route.html, null, null, req.language)
   const removeElements = []
   if (req.data.profiles && req.data.profiles.length) {
     const removeFields = [].concat(global.profileFields)

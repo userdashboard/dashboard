@@ -11,7 +11,7 @@ function renderPage (req, res, messageTemplate) {
     minimumUsernameLength: global.minimumUsernameLength,
     minimumPasswordLength: global.minimumPasswordLength
   }
-  const doc = dashboard.HTML.parse(req.route.html, requirements, 'requirements', req.language)
+  const doc = dashboard.HTML.parse(req.html || req.route.html, requirements, 'requirements', req.language)
   if (global.disableRegistration) {
     messageTemplate = 'registration-disabled'
   }
