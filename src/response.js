@@ -172,7 +172,7 @@ function sri (buffer) {
 
 async function wrapTemplateWithSrcDoc (req, res, doc) {
   const packageJSON = req.packageJSON || global.packageJSON
-  const templateDoc = HTML.parse(packageJSON.templateHTML)
+  const templateDoc = HTML.parse(req.templateHTML || packageJSON.templateHTML)
   if (!templateDoc) {
     throw new Error()
   }
