@@ -253,7 +253,7 @@ async function receiveRequest (req, res) {
     req.route.reload()
   }
   if (req.route.api === 'static-page') {
-    const doc = dashboard.HTML.parse(req.route.html)
+    const doc = dashboard.HTML.parse(req.html || req.route.html)
     return Response.end(req, res, doc)
   }
   if (req.route.iframe) {
