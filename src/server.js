@@ -5,7 +5,6 @@ const path = require('path')
 const querystring = require('querystring')
 const Response = require('./response.js')
 const util = require('util')
-const languageCache = {}
 let dashboard, Hash, Log, Proxy
 
 const parsePostData = util.promisify((req, callback) => {
