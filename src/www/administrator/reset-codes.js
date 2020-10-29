@@ -23,7 +23,7 @@ async function beforeRequest (req) {
 }
 
 async function renderPage (req, res) {
-  const doc = dashboard.HTML.parse(req.html || req.route.html, null, null, req.language)
+  const doc = dashboard.HML.parse(req.html || req.route.html)
   if (req.data.resetCodes && req.data.resetCodes.length) {
     dashboard.HTML.renderTable(doc, req.data.resetCodes, 'reset-code-row', 'reset-codes-table')
     if (req.data.total <= global.pageSize) {

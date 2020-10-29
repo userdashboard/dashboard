@@ -6,7 +6,7 @@ module.exports = {
 }
 
 function renderPage (req, res, messageTemplate) {
-  const doc = dashboard.HTML.parse(req.html || req.route.html, null, null, req.language)
+  const doc = dashboard.HML.parse(req.html || req.route.html)
   if (messageTemplate) {
     dashboard.HTML.renderTemplate(doc, null, messageTemplate, 'message-container')
   }

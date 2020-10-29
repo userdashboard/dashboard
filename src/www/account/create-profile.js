@@ -7,7 +7,7 @@ module.exports = {
 
 function renderPage (req, res, messageTemplate) {
   messageTemplate = messageTemplate || (req.query ? req.query.message : null)
-  const doc = dashboard.HTML.parse(req.html || req.route.html, null, null, req.language)
+  const doc = dashboard.HML.parse(req.html || req.route.html)
   const removeFields = [].concat(global.profileFields)
   const profileFields = req.userProfileFields || global.userProfileFields
   for (const field of profileFields) {

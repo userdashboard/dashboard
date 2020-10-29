@@ -25,7 +25,7 @@ async function renderPage (req, res, messageTemplate) {
     `token=x; ${cookieStr}`
   ]
   res.setHeader('set-cookie', cookie)
-  const doc = dashboard.HTML.parse(req.html || req.route.html, null, null, req.language)
+  const doc = dashboard.HML.parse(req.html || req.route.html)
   if (messageTemplate) {
     dashboard.HTML.renderTemplate(doc, null, messageTemplate, 'message-container')
   }
