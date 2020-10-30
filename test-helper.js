@@ -100,7 +100,7 @@ async function setupBefore () {
 
 async function setupBeforeEach () {
   Log.info('beforeEach')
-  const mergePackageJSON = require(`${__dirname}/src/merge-package-json.js`)
+  const mergePackageJSON = require(path.join(__dirname, '/src/merge-package-json.js'))
   global.packageJSON = mergePackageJSON()
   global.sitemap['/api/require-verification'] = helperRoutes.requireVerification
   for (const property in global.testConfiguration) {

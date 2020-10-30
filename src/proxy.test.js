@@ -2,6 +2,7 @@
 const assert = require('assert')
 const http = require('http')
 const Multiparty = require('multiparty')
+const path = require('path')
 const Proxy = require('./proxy.js')
 const querystring = require('querystring')
 const TestHelper = require('../test-helper.js')
@@ -194,7 +195,7 @@ describe('internal-api/proxy', () => {
         'upload-name': {
           filename: 'proxy.js',
           name: 'upload-name',
-          path: `${__dirname}/proxy.js`
+          path: path.join(__dirname, 'proxy.js')
         }
       })
       await req.post()

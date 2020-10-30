@@ -1,7 +1,9 @@
+const path = require('path')
+
 module.exports = {
   setup: async (storage, moduleName) => {
     let storageList
-    const Log = require(`${__dirname}/log.js`)('storage-list')
+    const Log = require(path.join(__dirname, 'log.js'))('storage-list')
     const env = moduleName ? `${moduleName}_STORAGE` : 'STORAGE'
     if (env && process.env[env]) {
       const StorageList = require(process.env[env]).StorageList

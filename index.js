@@ -87,32 +87,33 @@ global.deleteDelay = parseInt(process.env.DELETE_DELAY || '7', 10)
 global.pageSize = parseInt(process.env.PAGE_SIZE || '10', 10)
 global.sessionVerificationDelay = parseInt(process.env.SESSION_VERIFICATION_DELAY || '14400', 10)
 
+const path = require('path')
 let Server
 
 module.exports = {
   start: async (applicationPath) => {
     global.applicationPath = global.applicationPath || applicationPath
     global.rootPath = `${applicationPath}/src/www`
-    const mergePackageJSON = require(`${__dirname}/src/merge-package-json.js`)
+    const mergePackageJSON = require(path.join(__dirname, '/src/merge-package-json.js'))
     global.packageJSON = mergePackageJSON()
-    const Sitemap = require(`${__dirname}/src/sitemap.js`)
+    const Sitemap = require(path.join(__dirname, '/src/sitemap.js'))
     global.sitemap = Sitemap.generate()
     if (process.env.GENERATE_SITEMAP_TXT !== 'false') {
       Sitemap.write()
     }
-    const API = require(`${__dirname}/src/api.js`)
+    const API = require(path.join(__dirname, '/src/api.js'))
     global.api = API.createFromSitemap()
     if (process.env.GENERATE_API_TXT !== 'false') {
       API.write()
     }
-    const ENV = require(`${__dirname}/env.js`)
+    const ENV = require(path.join(__dirname, '/env.js'))
     if (process.env.GENERATE_ENV_TXT !== 'false') {
       ENV.write()
     }
     if (!module.exports.Storage) {
       await module.exports.setup(applicationPath)
     }
-    Server = require(`${__dirname}/src/server.js`)
+    Server = require(path.join(__dirname, '/src/server.js'))
     await Server.start()
     if (process.env.EXIT_ON_START) {
       module.exports.stop()
@@ -123,32 +124,32 @@ module.exports = {
     if (!Server) {
       return
     }
-    const Timestamp = require(`${__dirname}/src/timestamp.js`)
+    const Timestamp = require(path.join(__dirname, '/src/timestamp.js'))
     clearInterval(Timestamp.interval)
     delete (Timestamp.interval)
     return Server.stop()
   },
   setup: async () => {
-    const Log = require(`${__dirname}/src/log.js`)('dashboard')
+    const Log = require(path.join(__dirname, '/src/log.js'))('dashboard')
     Log.info('setting up storage')
-    const Storage = require(`${__dirname}/src/storage.js`)
+    const Storage = require(path.join(__dirname, '/src/storage.js'))
     const storage = await Storage.setup()
     Log.info('setting up storage list')
-    const StorageList = require(`${__dirname}/src/storage-list.js`)
+    const StorageList = require(path.join(__dirname, '/src/storage-list.js'))
     const storageList = await StorageList.setup(storage)
     Log.info('setting up storage object')
-    const StorageObject = require(`${__dirname}/src/storage-object.js`)
+    const StorageObject = require(path.join(__dirname, '/src/storage-object.js'))
     const storageObject = await StorageObject.setup(storage)
     module.exports.Storage = storage
     module.exports.StorageList = storageList
     module.exports.StorageObject = storageObject
     Log.info('setting up exports')
-    module.exports.Format = require(`${__dirname}/src/format.js`)
-    module.exports.Hash = require(`${__dirname}/src/hash.js`)
-    module.exports.HTML = require(`${__dirname}/src/html.js`)
-    module.exports.Response = require(`${__dirname}/src/response.js`)
-    module.exports.Timestamp = require(`${__dirname}/src/timestamp.js`)
-    module.exports.UUID = require(`${__dirname}/src/uuid.js`)
+    module.exports.Format = require(path.join(__dirname, '/src/format.js'))
+    module.exports.Hash = require(path.join(__dirname, '/src/hash.js'))
+    module.exports.HTML = require(path.join(__dirname, '/src/html.js'))
+    module.exports.Response = require(path.join(__dirname, '/src/response.js'))
+    module.exports.Timestamp = require(path.join(__dirname, '/src/timestamp.js'))
+    module.exports.UUID = require(path.join(__dirname, '/src/uuid.js'))
     Log.info('setting up modules')
     if (global.packageJSON.dashboard.modules && global.packageJSON.dashboard.modules.length) {
       for (const addition of global.packageJSON.dashboard.modules) {

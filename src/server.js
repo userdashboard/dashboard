@@ -67,9 +67,9 @@ module.exports = {
 
 function start (callback) {
   dashboard = require(path.join(__dirname, '../index.js'))
-  Hash = require(`${__dirname}/hash.js`)
-  Log = require(`${__dirname}/log.js`)('dashboard-server')
-  Proxy = require(`${__dirname}/proxy.js`)
+  Hash = require(path.join(__dirname, '/hash.js'))
+  Log = require(path.join(__dirname, '/log.js'))('dashboard-server')
+  Proxy = require(path.join(__dirname, '/proxy.js'))
   server = http.createServer(receiveRequest)
   server.on('error', (error) => {
     callback(error)

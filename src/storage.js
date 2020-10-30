@@ -1,8 +1,9 @@
 const crypto = require('crypto')
+const path = require('path')
 
 module.exports = {
   setup: async (envPrefix) => {
-    const Log = require(`${__dirname}/log.js`)('storage')
+    const Log = require(path.join(__dirname, '/log.js'))('storage')
     let Storage, cache
     if (envPrefix) {
       Storage = require(process.env[`${envPrefix}_STORAGE`]).Storage

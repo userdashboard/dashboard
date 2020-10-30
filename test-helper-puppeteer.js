@@ -133,7 +133,7 @@ async function fetch (method, req) {
           for (const language of languages) {
             global.language = language.code
             for (const device of devices) {
-              await emulate(page, device)        
+              await emulate(page, device)
               if (lastStep && lastStep.hover === '#account-menu-container') {
                 await execute('hover', page, '#account-menu-container')
               } else if (lastStep && lastStep.hover === '#administrator-menu-container') {
@@ -498,7 +498,7 @@ async function getText (page, element) {
     if (el.title) {
       return el.title
     }
-    for (var i = 0, len = el.children.length; i < len; i++) {
+    for (let i = 0, len = el.children.length; i < len; i++) {
       if (el.children[i].innerText) {
         return el.children[i].innerText
       }
@@ -902,8 +902,8 @@ async function selectOption (element, value) {
   while (true) {
     try {
       await element.evaluate((_, data) => {
-        var select = document.getElementById(data.id)
-        for (var i = 0, len = select.options.length; i < len; i++) {
+        const select = document.getElementById(data.id)
+        for (let i = 0, len = select.options.length; i < len; i++) {
           if (select.options[i].value === data.value ||
             select.options[i].text === data.value ||
             select.options[i].text.indexOf(data.value) === 0 ||

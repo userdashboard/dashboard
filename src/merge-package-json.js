@@ -1,10 +1,11 @@
 const fs = require('fs')
+const path = require('path')
 let Log
 
 module.exports = mergePackageJSON
 
 function mergePackageJSON (applicationJSON, dashboardJSON) {
-  Log = Log || require(`${__dirname}/log.js`)('merge-package-json')
+  Log = Log || require(path.join(__dirname, 'log.js'))('merge-package-json')
   Log.info('setting up package JSON')
   applicationJSON = applicationJSON || loadApplicationJSON(applicationJSON)
   if (applicationJSON && applicationJSON.name === '@userdashboard/dashboard') {
