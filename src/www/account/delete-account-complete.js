@@ -5,7 +5,7 @@ module.exports = {
 }
 
 function renderPage (req, res) {
-  const doc = dashboard.HML.parse(req.html || req.route.html)
+  const doc = dashboard.HTML.parse(req.html || req.route.html)
   if (global.deleteDelay) {
     const data = {
       numDays: global.deleteDelay
