@@ -230,7 +230,7 @@ function extractDoc (str) {
   let doc
   const templateDoc = str.node ? str : dashboard.HTML.parse(str)
   const applicationIframe = templateDoc.getElementById('application-iframe')
-  if (applicationIframe) {
+  if (applicationIframe && applicationIframe.attr && applicationIframe.attr.srcdoc) {
     const pageSource = applicationIframe.attr.srcdoc.join(' ')
     doc = dashboard.HTML.parse(pageSource)
   } else {
