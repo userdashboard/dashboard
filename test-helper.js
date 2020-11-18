@@ -223,20 +223,33 @@ function createRequest (rawURL) {
   return req
 }
 
+// function extractDoc (str) {
+//   if (!str) {
+//     return null
+//   }
+//   let doc
+//   const templateDoc = str.node ? str : dashboard.HTML.parse(str)
+//   const applicationIframe = templateDoc.getElementById('application-iframe')
+//   if (applicationIframe && applicationIframe.attr && applicationIframe.attr.srcdoc) {
+//     const pageSource = applicationIframe.attr.srcdoc.join(' ')
+//     doc = dashboard.HTML.parse(pageSource)
+//   } else {
+//     doc = templateDoc
+//   }
+//   return doc
+// }
+
 function extractDoc (str) {
   if (!str) {
     return null
   }
-  let doc
-  const templateDoc = str.node ? str : dashboard.HTML.parse(str)
-  const applicationIframe = templateDoc.getElementById('application-iframe')
-  if (applicationIframe && applicationIframe.attr && applicationIframe.attr.srcdoc) {
-    const pageSource = applicationIframe.attr.srcdoc.join(' ')
-    doc = dashboard.HTML.parse(pageSource)
-  } else {
-    doc = templateDoc
+  if (str.indexOf("srcdoc") === -1) {
+    return dashboard.HTML.parse(str)
   }
-  return doc
+  let srcdoc = str.substring(str.indexOf('srcdoc'))
+  srcdoc = srcdoc.substring(srcdoc.indexOf('<html'))
+  srcdoc = srcdoc.substring(0, srcdoc.indexOf('</html>') + '</html>'.length)
+  return dashboard.HTML.parse(srcdoc)
 }
 
 function extractRedirectURL (doc) {
