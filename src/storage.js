@@ -1,4 +1,5 @@
 const crypto = require('crypto')
+const fs = require('fs')
 const path = require('path')
 
 module.exports = {
@@ -6,11 +7,33 @@ module.exports = {
     const Log = require(path.join(__dirname, '/log.js'))('storage')
     let Storage, cache
     if (envPrefix) {
-      Storage = require(process.env[`${envPrefix}_STORAGE`]).Storage
+      const storageValue = cess.env[`${envPrefix}_STORAGE`]
+      const storagePath = path.join(__dirname, `node_modules/${storageValue}/index.js`)
+      if (fs.existsSync(storagePath)) {
+        Storage = require(storagePath).Storage
+      } else {
+        const storagePath2 = path.join(global.applicationPath, `node_modules/${storageValue}/index.js`)
+        if (fs.existsSync(storagePath2)) {
+          Storage = require(storagePath2).Storage
+        }
+      }
     } else if (process.env.STORAGE) {
-      Storage = require(process.env.STORAGE).Storage
+      const storageValue = process.env.STORAGE
+      const storagePath = path.join(__dirname, `node_modules/${storageValue}/index.js`)
+      if (fs.existsSync(storagePath)) {
+        Storage = require(storagePath).Storage
+      } else {
+        const storagePath2 = path.join(global.applicationPath, `node_modules/${storageValue}/index.js`)
+        if (fs.existsSync(storagePath2)) {
+          Storage = require(storagePath2).Storage
+        }
+      }
     } else {
       Storage = require('./storage-fs.js')
+    }
+    if (!Storage) {
+      Log.error('invalid storage module ' + storagePath)
+      throw new Error('invalid-storage-module')
     }
     const storage = await Storage.setup(envPrefix)
     if (process.env.CACHE) {

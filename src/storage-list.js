@@ -1,12 +1,27 @@
+const fs = require('fs')
 const path = require('path')
 
 module.exports = {
   setup: async (storage, moduleName) => {
     let storageList
     const Log = require(path.join(__dirname, 'log.js'))('storage-list')
-    const env = moduleName ? `${moduleName}_STORAGE` : 'STORAGE'
-    if (env && process.env[env]) {
-      const StorageList = require(process.env[env]).StorageList
+    const envPrefix = moduleName ? `${moduleName}_STORAGE` : 'STORAGE'
+    if (envPrefix && process.env[envPrefix]) {
+      const storageValue = process.env[envPrefix]
+      const storagePath = path.join(__dirname, `node_modules/${storageValue}/index.js`)
+      let StorageList
+      if (fs.existsSync(storagePath)) {
+        StorageList = require(storagePath).StorageList
+      } else {
+        const storagePath2 = path.join(global.applicationPath, `node_modules/${storageValue}/index.js`)
+        if (fs.existsSync(storagePath2)) {
+          StorageList = require(storagePath2).StorageList
+        }
+      }
+      if (!StorageList) {
+        Log.error('invalid storage list ' + storagePath)
+        throw new Error('invalid-storage-list')  
+      }
       storageList = await StorageList.setup(storage, moduleName)
     } else {
       const StorageList = require('./storage-list-fs.js')
