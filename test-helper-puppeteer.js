@@ -9,7 +9,7 @@ const wait = util.promisify(function (amount, callback) {
   }
   return setTimeout(callback, amount || 1)
 })
-const allDevices = require('puppeteer/DeviceDescriptors')
+const allDevices = require('puppeteer/lib/cjs/puppeteer/common/DeviceDescriptors.js')
 const devices = [{
   name: 'Desktop',
   userAgent: 'Desktop browser',
