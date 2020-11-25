@@ -62,13 +62,14 @@ const mimeTypes = {
 
 let dashboard, helperRoutes, TestHelperPuppeteer, Log
 async function setupBefore () {
-  const logPath = path.join(global.applicationPath, 'node_modules/@userdashboard/dashboard/src/log.js')
+  const dashboardPath = path.join(global.applicationPath, '/node_modules/@userdashboard/dashboard/')
+  const logPath = path.join(dashboardPath, '/src/log.js')
   if (fs.existsSync(logPath)) {
     Log = require(logPath)('dashboard-test-helper')
     Log.info('dashboard is nested as module')
-    dashboard = require('@userdashboard/dashboard')
-    helperRoutes = require('@userdashboard/dashboard/test-helper-routes.js')
-    TestHelperPuppeteer = require('@userdashboard/dashboard/test-helper-puppeteer.js')
+    dashboard = require(`${dashboardPath}/index.js`)
+    helperRoutes = require(`${dashboardPath}/test-helper-routes.js`)
+    TestHelperPuppeteer = require(`${dashboardPath}/test-helper-puppeteer.js`)
   } else {
     Log = require('./src/log.js')('dashboard-test-helper')
     Log.info('dashboard is application')
@@ -76,8 +77,8 @@ async function setupBefore () {
     helperRoutes = require('./test-helper-routes.js')
     TestHelperPuppeteer = require('./test-helper-puppeteer.js')
   }
-  global.testConfiguration.port = 9000
-  let dashboardServer = global.dashboardServer || 'http://localhost:9000'
+  global.testConfiguration.port = global.port || process.env.PORT || 9000
+  let dashboardServer = global.dashboardServer || process.env.DASHBOARD_SERVER || 'http://localhost:9000'
   if (dashboardServer.lastIndexOf(':') > dashboardServer.indexOf(':')) {
     dashboardServer = dashboardServer.substring(0, dashboardServer.lastIndexOf(':'))
   }
