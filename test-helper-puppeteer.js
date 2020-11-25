@@ -268,20 +268,24 @@ async function relaunchBrowser () {
     await browser.close()
     browser = null
   }
+  const launchOptions = {
+    headless: !(process.env.SHOW_BROWSERS === 'true'),
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--window-size=1920,1080',
+      '--incognito',
+      '--disable-dev-shm-usage',
+      '--disable-features=site-per-process'
+    ],
+    slowMo: 10
+  }
+  if (process.env.CHROMIUM_EXECUTABLE) {
+    launchOptions.executablePath = process.env.CHROMIUM_EXECUTABLE
+  }
   while (!browser) {
     try {
-      browser = await puppeteer.launch({
-        headless: !(process.env.SHOW_BROWSERS === 'true'),
-        args: [
-          '--no-sandbox',
-          '--disable-setuid-sandbox',
-          '--window-size=1920,1080',
-          '--incognito',
-          '--disable-dev-shm-usage',
-          '--disable-features=site-per-process'
-        ],
-        slowMo: 10
-      })
+      browser = await puppeteer.launch(launchOptions)
       if (browser) {
         return browser
       }
