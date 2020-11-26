@@ -1,13 +1,13 @@
-name: test-s3
+name: test-s3-storage
 
 on: [push]
 
 jobs:
-  test-s3:
+  test-s3-storage:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.18.4]
+        node-version: [14.15.1]
     services:
       localstack:
         image: localstack/localstack:latest
@@ -20,52 +20,51 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Set up as module
+    - name: Set up Chrome
+      run: |
+        if [ ! -z "$PUPPETEER_SKIP_CHROMIUM_DOWNLOAD" ]; then
+          APT_INSTALL="chromium gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget"
+          if [ ! -z "$APT_PROXY" ]; then
+            echo "deb $APT_PROXY buster main" > /etc/apt/sources.list
+          fi
+          apt-get update
+          apt-get install -y $APT_INSTALL
+        fi
+    - name: Set up project
       run: |
         HERE=`pwd`
         mkdir /tmp/project
         cd /tmp/project
+        if [ ! -z "$NPM_PROXY" ]; then
+          echo registry=$NPM_PROXY > .npmrc
+        fi
         npm init -y
-        npm install faker puppeteer@2.1.1 @userdashboard/dashboard @userdashboard/storage-s3
-        npm install -g mocha
-        rm node_modules/@userdashboard/dashboard/*.js
-        rm -rf node_modules/@userdashboard/dashboard/src
-        cp $HERE/*.js node_modules/@userdashboard/dashboard
-        cp -R $HERE/src/ node_modules/@userdashboard/dashboard/src/
+        npm install "$HERE" @userdashboard/storage-s3 mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
+        find / -name aws -type f
         aws --endpoint-url=http://localhost:4566 s3 mb s3://testing
       env:
         AWS_SECRET_ACCESS_KEY: "using-mock-aws-s3"
         AWS_ACCESS_KEY_ID: "using-mock-aws-s3"
     - name: Test unencrypted S3-compatible storage
-      run: mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
+      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
-        FAST_START: true
-        DASHBOARD_SERVER: "http://localhost:9000"
-        DOMAIN: "localhost"
         STORAGE: "@userdashboard/storage-s3"
         S3_ENDPOINT: "http://localhost:4566"
         S3_BUCKET_NAME: "testing"
         SECRET_ACCESS_KEY: "using-mock-aws-s3"
         ACCESS_KEY_ID: "using-mock-aws-s3"
-        GENERATE_SITEMAP_TXT: false
-        GENERATE_API_TXT: false
     - name: Test encrypted S3-compatible storage
-      run: mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
+      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
-        FAST_START: true
-        DASHBOARD_SERVER: "http://localhost:9000"
-        DOMAIN: "localhost"
         STORAGE: "@userdashboard/storage-s3"
         S3_ENDPOINT: "http://localhost:4566"
         S3_BUCKET_NAME: "testing"
         SECRET_ACCESS_KEY: "using-mock-aws-s3"
         ACCESS_KEY_ID: "using-mock-aws-s3"
-        GENERATE_SITEMAP_TXT: false
-        GENERATE_API_TXT: false
         ENCRYPTION_SECRET: "12345678901234567890123456789012"
         ENCRYPTION_SECRET_IV: "1234123412341234"

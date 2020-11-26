@@ -1,9 +1,9 @@
-name: test-redis-cache
+name: test-redis-storage
 
 on: [push]
 
 jobs:
-  test-redis-cache:
+  test-redis-storage:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -17,9 +17,6 @@ jobs:
       with:
         redis version: '5'
         number of databases: 1
-    - uses: harmon758/postgresql-action@v1
-      with:
-        postgresql version: '11'
     - name: Set up Chrome
       run: |
         if [ ! -z "$PUPPETEER_SKIP_CHROMIUM_DOWNLOAD" ]; then
@@ -39,25 +36,21 @@ jobs:
           echo registry=$NPM_PROXY > .npmrc
         fi
         npm init -y
-        npm install "$HERE" @userdashboard/storage-cache-redis @userdashboard/storage-postgresql mocha puppeteer faker
+        npm install "$HERE" @userdashboard/storage-redis mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
-    - name: Test Redis cache with unencrypted data
-      run: ./node_modules/.bin/mocha --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/**/*.test.js"
+    - name: Test unencrypted Redis storage
+      run: ./node_modules/.bin/mocha --retries 2 --file main.js --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
-        STORAGE: "@userdashboard/storage-postgresql"
-        DATABASE_URL: "postgres://postgres:postgres@localhost:5432/postgres"
-        CACHE: "@userdashboard/storage-cache-redis"
-        CACHE_REDIS_URL: "redis://localhost:6379"
-    - name: Test Redis cache with encrypted data
-      run: ./node_modules/.bin/mocha --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/**/*.test.js"
+        STORAGE: "@userdashboard/storage-redis"
+        NODE_OPTIONS: "--preserve-symlinks"
+    - name: Test encrypted Redis storage
+      run: ./node_modules/.bin/mocha --retries 2 --file main.js --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
-        STORAGE: "@userdashboard/storage-postgresql"
-        DATABASE_URL: "postgres://postgres:postgres@localhost:5432/postgres"
-        CACHE: "@userdashboard/storage-cache-redis"
-        CACHE_REDIS_URL: "redis://localhost:6379"
+        STORAGE: "@userdashboard/storage-redis"
         ENCRYPTION_SECRET: "12345678901234567890123456789012"
         ENCRYPTION_SECRET_IV: "1234123412341234"
+        NODE_OPTIONS: "--preserve-symlinks"

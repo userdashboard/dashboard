@@ -1,9 +1,9 @@
-name: test-redis-cache
+name: test-postgresql-storage
 
 on: [push]
 
 jobs:
-  test-redis-cache:
+  test-postgresql-storage:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -13,13 +13,11 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - uses: zhulik/redis-action@1.1.0
-      with:
-        redis version: '5'
-        number of databases: 1
     - uses: harmon758/postgresql-action@v1
       with:
         postgresql version: '11'
+        postgresql user: postgres
+        postgresql password: postgres
     - name: Set up Chrome
       run: |
         if [ ! -z "$PUPPETEER_SKIP_CHROMIUM_DOWNLOAD" ]; then
@@ -39,25 +37,23 @@ jobs:
           echo registry=$NPM_PROXY > .npmrc
         fi
         npm init -y
-        npm install "$HERE" @userdashboard/storage-cache-redis @userdashboard/storage-postgresql mocha puppeteer faker
+        npm install "$HERE" @userdashboard/storage-postgresql mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
-    - name: Test Redis cache with unencrypted data
-      run: ./node_modules/.bin/mocha --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/**/*.test.js"
+    - name: Test unencrypted PostgreSQL storage
+      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
         STORAGE: "@userdashboard/storage-postgresql"
         DATABASE_URL: "postgres://postgres:postgres@localhost:5432/postgres"
-        CACHE: "@userdashboard/storage-cache-redis"
-        CACHE_REDIS_URL: "redis://localhost:6379"
-    - name: Test Redis cache with encrypted data
-      run: ./node_modules/.bin/mocha --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/**/*.test.js"
+        NODE_OPTIONS: "--preserve-symlinks"
+    - name: Test encrypted PostgreSQL storage
+      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
         STORAGE: "@userdashboard/storage-postgresql"
         DATABASE_URL: "postgres://postgres:postgres@localhost:5432/postgres"
-        CACHE: "@userdashboard/storage-cache-redis"
-        CACHE_REDIS_URL: "redis://localhost:6379"
         ENCRYPTION_SECRET: "12345678901234567890123456789012"
         ENCRYPTION_SECRET_IV: "1234123412341234"
+        NODE_OPTIONS: "--preserve-symlinks"

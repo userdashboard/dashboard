@@ -1,13 +1,13 @@
-name: test-and-publish
+name: publish
 
 on: [push]
 
 jobs:
-  test-and-publish:
+  publish:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.18.4]
+        node-version: [14.15.1]
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
@@ -17,55 +17,50 @@ jobs:
       with:
         redis version: "5"
         number of databases: 1
-    - name: Set up as module
+    - name: Set up Chrome
       run: |
-        git config --global user.name "${{ secrets.NAME }}"
-        git config --global user.email "${{ secrets.EMAIL }}"
-        npm install
+        if [ ! -z "$PUPPETEER_SKIP_CHROMIUM_DOWNLOAD" ]; then
+          APT_INSTALL="chromium gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget"
+          if [ ! -z "$APT_PROXY" ]; then
+            echo "deb $APT_PROXY buster main" > /etc/apt/sources.list
+          fi
+          apt-get update
+          apt-get install -y $APT_INSTALL
+        fi
+    - name: Set up project
+      run: |
         HERE=`pwd`
-        npm version patch
         mkdir /tmp/project
         cd /tmp/project
+        if [ ! -z "$NPM_PROXY" ]; then
+          echo registry=$NPM_PROXY > .npmrc
+        fi
         npm init -y
-        npm install faker puppeteer@2.1.1 @userdashboard/dashboard @userdashboard/storage-redis
-        npm install -g mocha standard
-        rm node_modules/@userdashboard/dashboard/*.js
-        rm -rf node_modules/@userdashboard/dashboard/src
-        cp /home/runner/work/dashboard/dashboard/*.js node_modules/@userdashboard/dashboard
-        cp -R $HERE/src/ node_modules/@userdashboard/dashboard/src/
+        npm install "$HERE" @userdashboard/storage-redis mocha puppeteer standard faker
         echo "global.applicationPath = __dirname" > main.js
     - name: Lint (standard.js)
-      run: standard src
-    - name: Test (redis)
+      run: ./node_modules/.bin/standard src
+    - name: Generate test screenshots and responses
       run: |
-        mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js" | tee /home/runner/work/dashboard/dashboard/tests.txt
-        TESTS=`cat /home/runner/work/dashboard/dashboard/tests.txt`
+        ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js" | tee $HERE/tests.txt
+        TESTS=`cat $HERE/tests.txt`
         if [[ "$TESTS" == *" 1)"* ]]; then
           exit 1
         fi
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
-        FAST_START: true
-        DASHBOARD_SERVER: "http://localhost:9000"
-        DOMAIN: "localhost"
         STORAGE: "@userdashboard/storage-redis"
-        REDIS_URL: "redis://localhost:6379"
-        GENERATE_SITEMAP_TXT: false
-        GENERATE_API_TXT: false
         GENERATE_RESPONSE: true
         GENERATE_SCREENSHOTS: true
         RESPONSE_PATH: "/home/runner/work/dashboard/dashboard/documentation"
         SCREENSHOT_PATH: "/home/runner/work/dashboard/dashboard/documentation/screenshots"
         SCREENSHOT_LANGUAGES: "en"
-    - name: Generate supporting texts
+    - name: Generate sitemap.txt and api.txt
       run: node main.js
       env:
         NODE_ENV: sitemap
         EXIT_ON_START: true
-        FAST_START: true
-        DASHBOARD_SERVER: "http://localhost:9000"
-        DOMAIN: "localhost"
     - name: Publish to Github
       uses: stefanzweifel/git-auto-commit-action@v4.1.6
       with:
