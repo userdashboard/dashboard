@@ -1,8 +1,11 @@
 let storageCache
+
 if (process.env.CACHE) {
   if (process.env.CACHE === 'node') {
     storageCache = require('./storage-cache-node.js')
   } else {
+    const fs = require('fs')
+    const path = require('path')
     const storageCacheValue = process.env.CACHE
     const storagePath = path.join(__dirname, `node_modules/${storageCacheValue}/index.js`)
     if (fs.existsSync(storagePath)) {
