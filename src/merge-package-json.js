@@ -128,7 +128,7 @@ function mergePackageJSON (applicationJSON, dashboardJSON) {
     if (!fs.existsSync(moduleFilePath)) {
       continue
     }
-    packageJSON.dashboard.modules[i] = require(moduleName)
+    packageJSON.dashboard.modules[i] = require(moduleFilePath)
     packageJSON.dashboard.moduleNames[i] = moduleName
     packageJSON.dashboard.moduleVersions[i] = moduleJSON.version
   }
