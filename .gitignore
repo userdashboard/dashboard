@@ -1,5 +1,4 @@
 node_modules
 data
 documentation
-.vscode
-.DS_Store
+.env
