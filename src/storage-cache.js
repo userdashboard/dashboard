@@ -3,7 +3,16 @@ if (process.env.CACHE) {
   if (process.env.CACHE === 'node') {
     storageCache = require('./storage-cache-node.js')
   } else {
-    storageCache = require(process.env.CACHE)
+    const storageCacheValue = process.env.CACHE
+    const storagePath = path.join(__dirname, `node_modules/${storageCacheValue}/index.js`)
+    if (fs.existsSync(storagePath)) {
+      storageCache = require(storagePath)
+    } else {
+      const storagePath2 = path.join(global.applicationPath, `node_modules/${storageCacheValue}/index.js`)
+      if (fs.existsSync(storagePath2)) {
+        storageCache = require(storagePath2)
+      }
+    }
   }
 }
 
