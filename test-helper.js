@@ -245,7 +245,7 @@ function extractDoc (str) {
   if (!str) {
     return null
   }
-  if (str.indexOf("srcdoc") === -1) {
+  if (str.indexOf('srcdoc') === -1) {
     return dashboard.HTML.parse(str)
   }
   let srcdoc = str.substring(str.indexOf('srcdoc'))

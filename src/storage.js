@@ -7,7 +7,7 @@ module.exports = {
     const Log = require(path.join(__dirname, '/log.js'))('storage')
     let Storage, cache
     if (envPrefix) {
-      const storageValue = cess.env[`${envPrefix}_STORAGE`]
+      const storageValue = process.env[`${envPrefix}_STORAGE`]
       const storagePath = path.join(__dirname, `node_modules/${storageValue}/index.js`)
       if (fs.existsSync(storagePath)) {
         Storage = require(storagePath).Storage
@@ -32,7 +32,7 @@ module.exports = {
       Storage = require('./storage-fs.js')
     }
     if (!Storage) {
-      Log.error('invalid storage module ' + storagePath)
+      Log.error('invalid storage module ' + envPrefix)
       throw new Error('invalid-storage-module')
     }
     const storage = await Storage.setup(envPrefix)

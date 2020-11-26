@@ -20,7 +20,7 @@ module.exports = {
       }
       if (!StorageList) {
         Log.error('invalid storage list ' + storagePath)
-        throw new Error('invalid-storage-list')  
+        throw new Error('invalid-storage-list')
       }
       storageList = await StorageList.setup(storage, moduleName)
     } else {

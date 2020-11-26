@@ -30,21 +30,21 @@ async function fetch (method, req) {
   puppeteer = global.puppeteer = global.puppeteer || require(puppeteerPath)
   allDevices = require(`${puppeteerPath}/lib/cjs/puppeteer/common/DeviceDescriptors.js`)
   devices = [{
-      name: 'Desktop',
-      userAgent: 'Desktop browser',
-      viewport: {
-        width: 1920,
-        height: 1080,
-        deviceScaleFactor: 1,
-        isMobile: false,
-        hasTouch: false,
-        isLandscape: false
-      }
-    },
-    allDevices['iPad Pro'],
-    allDevices['iPad Mini'],
-    allDevices['Pixel 2 XL'],
-    allDevices['iPhone SE']
+    name: 'Desktop',
+    userAgent: 'Desktop browser',
+    viewport: {
+      width: 1920,
+      height: 1080,
+      deviceScaleFactor: 1,
+      isMobile: false,
+      hasTouch: false,
+      isLandscape: false
+    }
+  },
+  allDevices['iPad Pro'],
+  allDevices['iPad Mini'],
+  allDevices['Pixel 2 XL'],
+  allDevices['iPhone SE']
   ]
   browser = await relaunchBrowser()
   const result = {}
