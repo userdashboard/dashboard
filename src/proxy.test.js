@@ -9,30 +9,22 @@ const TestHelper = require('../test-helper.js')
 
 describe('internal-api/proxy', () => {
   describe('Proxy#pass', () => {
-    let server, port, requestHandler
-    before(async () => {
-      server = http.createServer((req, res) => {
+    let port, requestHandler
+    beforeEach(async () => {
+      let server = http.createServer((req, res) => {
         if (requestHandler) {
           requestHandler(req, res)
-        } else if (res) {
-          res.end()
         }
+        res.end()
+        server.close()
+        server = null
       })
-      port = global.port + 2007
+      port = port || global.port + 7 + Math.floor(10000 * Math.random())
+      port++
       server.listen(port, 'localhost')
-    })
-
-    beforeEach(async () => {
       global.applicationServer = `http://localhost:${port}`
       global.applicationServerToken = 'secret'
       requestHandler = null
-    })
-
-    after(async () => {
-      if (server) {
-        server.close()
-        server = null
-      }
     })
 
     it('should include x-accountid header', async () => {
@@ -131,7 +123,6 @@ describe('internal-api/proxy', () => {
         return req.on('end', () => {
           req.body = querystring.parse(body, '&', '=')
           assert.strictEqual(req.body.simple, 'payload')
-          res.end()
         })
       }
       const user = await TestHelper.createUser()
@@ -160,7 +151,6 @@ describe('internal-api/proxy', () => {
             req.body[field] = fields[field][0]
           }
           assert.strictEqual(req.body.complex, 'payload')
-          res.end()
         })
       }
       const user = await TestHelper.createUser()
@@ -183,7 +173,6 @@ describe('internal-api/proxy', () => {
           }
           assert.notStrictEqual(files['upload-name'], null)
           assert.notStrictEqual(files['upload-name'], undefined)
-          res.end()
         })
       }
       const user = await TestHelper.createUser()
