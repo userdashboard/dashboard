@@ -37,7 +37,7 @@ jobs:
           echo registry=$NPM_PROXY > .npmrc
         fi
         npm init -y
-        npm install "$HERE" @userdashboard/storage-mongodb mocha
+        npm install "$HERE" @userdashboard/storage-mongodb mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
     - name: Test unencrypted MongoDB storage
       run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"

@@ -41,7 +41,6 @@ jobs:
         npm init -y
         npm install "$HERE" @userdashboard/storage-s3 mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
-        find / -name aws -type f
         aws --endpoint-url=http://localhost:4566 s3 mb s3://testing
       env:
         AWS_SECRET_ACCESS_KEY: "using-mock-aws-s3"

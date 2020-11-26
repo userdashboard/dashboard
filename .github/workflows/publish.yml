@@ -38,8 +38,9 @@ jobs:
         npm init -y
         npm install "$HERE" @userdashboard/storage-redis mocha puppeteer standard faker
         echo "global.applicationPath = __dirname" > main.js
-    - name: Lint (standard.js)
-      run: ./node_modules/.bin/standard src
+    - name: Lint with standard.js
+      run: ./node_modules/.bin/standard
+      working-directory: "/tmp/project"
     - name: Generate test screenshots and responses
       run: |
         ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js" | tee $HERE/tests.txt
