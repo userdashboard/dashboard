@@ -15,7 +15,7 @@
   "scripts": {
     "debug": "node main.js --debug-brk=5858",
     "start": "node main.js",
-    "test": "mocha --exit --inline-diffs --full-trace --async-only --recursive --timeout 360000 --slow 360000 './{,!(public|node_modules)/**}/*.test.js'"
+    "test": "mocha --recursive --timeout 360000 './{,!(public|node_modules)/**}/*.test.js'"
   },
   "dashboard": {
     "content": [],
@@ -27,5 +27,11 @@
     "multiparty": "^4.2.1",
     "server-html": "^9.0.0",
     "uglify-js": "^2.8.29"
+  },
+  "devDependencies": {
+    "faker": "^5.1.0",
+    "mocha": "^8.2.1",
+    "puppeteer": "^5.5.0",
+    "standard": "^16.0.3"
   }
 }
