@@ -370,7 +370,7 @@ Tests are run via Github Actions when pushing to a repository.  You can browse t
     $ act -j test-postgresql-storage
     $ act -j test-mongodb-storage
     $ act -j test-mysql-storage
-    $ act -j test-s3-storage # does not run locally, requires switching to `step` for `localstack`
+    $ act -j test-s3-storage
     $ act -j test-redis-cache
     $ act -j test-node-cache
 
@@ -381,7 +381,7 @@ If testing locally you can set an NPM and APT cache and have Chromium installed 
     APT_PROXY="http://192.168.1.30:8081/repository/apt-proxy"
     NPM_PROXY="http://192.168.1.30:8081/repository/npm-proxy/"
 
-Testing S3 locally does not work with `act` yet because `localstack` is defined as a service and does not start.  When running the Github Actions locally the storage may create Docker containers that need to be manually removed:
+When running the Github Actions locally the storage may create Docker containers that need to be manually removed:
 
     $ docker container ls
     $ docker stop ab12 # first four digits of id
