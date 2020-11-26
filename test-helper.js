@@ -42,7 +42,6 @@ for (const property in defaultConfigurationValues) {
   global.testConfiguration[property] = global.testConfiguration[property] || defaultConfigurationValues[property]
 }
 
-const faker = require('faker')
 const fs = require('fs')
 const http = require('http')
 const https = require('https')
@@ -60,8 +59,10 @@ const mimeTypes = {
   svg: 'image/svg+xml'
 }
 
-let dashboard, helperRoutes, TestHelperPuppeteer, Log
+let dashboard, faker, helperRoutes, TestHelperPuppeteer, Log
 async function setupBefore () {
+  const fakerPath = path.join(global.applicationPath, '/node_modules/faker/')
+  faker = require(fakerPath)
   const dashboardPath = path.join(global.applicationPath, '/node_modules/@userdashboard/dashboard/')
   const logPath = path.join(dashboardPath, '/src/log.js')
   if (fs.existsSync(logPath)) {

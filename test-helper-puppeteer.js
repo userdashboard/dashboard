@@ -9,25 +9,6 @@ const wait = util.promisify(function (amount, callback) {
   }
   return setTimeout(callback, amount || 1)
 })
-const allDevices = require('puppeteer/lib/cjs/puppeteer/common/DeviceDescriptors.js')
-const devices = [{
-  name: 'Desktop',
-  userAgent: 'Desktop browser',
-  viewport: {
-    width: 1920,
-    height: 1080,
-    deviceScaleFactor: 1,
-    isMobile: false,
-    hasTouch: false,
-    isLandscape: false
-  }
-},
-allDevices['iPad Pro'],
-allDevices['iPad Mini'],
-allDevices['Pixel 2 XL'],
-allDevices['iPhone SE']
-]
-
 module.exports = {
   fetch,
   fill,
@@ -41,9 +22,30 @@ module.exports = {
   }
 }
 
+let devices, allDevices
+
 async function fetch (method, req) {
   Log = require('./src/log.js')('dashboard-test-helper-puppeteer')
-  puppeteer = global.puppeteer = global.puppeteer || require('puppeteer')
+  const puppeteerPath = path.join(global.applicationPath, '/node_modules/puppeteer/')
+  puppeteer = global.puppeteer = global.puppeteer || require(puppeteerPath)
+  allDevices = require(`${puppeteerPath}/lib/cjs/puppeteer/common/DeviceDescriptors.js`)
+  devices = [{
+      name: 'Desktop',
+      userAgent: 'Desktop browser',
+      viewport: {
+        width: 1920,
+        height: 1080,
+        deviceScaleFactor: 1,
+        isMobile: false,
+        hasTouch: false,
+        isLandscape: false
+      }
+    },
+    allDevices['iPad Pro'],
+    allDevices['iPad Mini'],
+    allDevices['Pixel 2 XL'],
+    allDevices['iPhone SE']
+  ]
   browser = await relaunchBrowser()
   const result = {}
   const page = await launchBrowserPage()
