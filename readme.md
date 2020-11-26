@@ -363,13 +363,29 @@ Content can occupy the full screen without the template via a flag in the HTML o
 
 Dashboard's test suite covers the `API` and the `UI`.  The `API` tests are performed by proxying a running instance of the software.  The `UI` tests are performed with `puppeteer` remotely-controlling `Chrome` to browse a running instance of the software.  These tests are performed using each storage type.
 
-Modules are tested by creating a running instance of `Dashboard` configured with the module.  They run both Dashboard and their own test suites using each storage type.
+Tests are run via Github Actions when pushing to a repository.  You can browse their configuration in the `YML` files in the `.github` folder.  Github Actions can be run locally [using 'act'](https://github.com/nektos/act).
 
-Storage engines are tested by creating a running instance of `Dashboard` with the `Organizations` module.  Each storage engine is tested as being the only storage shared by both Dashboard and the Organizations module, being just Dashboard storage, being just the module storage, and being both Dashboard and module storage each with their own database.
+    $ act -j test-fs-storage
+    $ act -j test-redis-storage
+    $ act -j test-postgresql-storage
+    $ act -j test-mongodb-storage
+    $ act -j test-mysql-storage
+    $ act -j test-s3-storage # does not run locally, requires switching to `step` for `localstack`
+    $ act -j test-redis-cache
+    $ act -j test-node-cache
 
-The tests are all run via Github Actions when pushing to a repository.  You can browse their configuration in the `YML` files in the `.github` folder.  Github Actions can be run locally [with this software](https://github.com/nektos/act).  Some of the workflows publish to NPM and commit changes back to Github, which will not work for you locally.
+If testing locally you can set an NPM and APT cache and have Chromium installed via APT so it caches, as an alternative to the puppeteer module downloading the 120mb file each time a test is run.  These environment variables can be placed in a `.env` file for `act` to apply when running tests.  This is known to work with [Sonatype Nexus Repository Manager 3](https://github.com/sonatype/docker-nexus3).
 
-The documentation site is built by running Dashboard and module test suites, with flags that save API responses and UI screenshots.
+    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true"
+    CHROMIUM_EXECUTABLE="/usr/bin/chromium"
+    APT_PROXY="http://192.168.1.30:8081/repository/apt-proxy"
+    NPM_PROXY="http://192.168.1.30:8081/repository/npm-proxy/"
+
+Testing S3 locally does not work with `act` yet because `localstack` is defined as a service and does not start.  When running the Github Actions locally the storage may create Docker containers that need to be manually removed:
+
+    $ docker container ls
+    $ docker stop ab12 # first four digits of id
+    $ docker rm ab12
 
 # Support and contributions
 
