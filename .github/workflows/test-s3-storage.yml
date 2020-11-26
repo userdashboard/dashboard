@@ -46,7 +46,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: "using-mock-aws-s3"
         AWS_ACCESS_KEY_ID: "using-mock-aws-s3"
     - name: Test unencrypted S3-compatible storage
-      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
+      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
@@ -56,7 +56,7 @@ jobs:
         SECRET_ACCESS_KEY: "using-mock-aws-s3"
         ACCESS_KEY_ID: "using-mock-aws-s3"
     - name: Test encrypted S3-compatible storage
-      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
+      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing

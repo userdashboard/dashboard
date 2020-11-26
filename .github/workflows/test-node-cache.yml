@@ -41,7 +41,7 @@ jobs:
         npm install "$HERE" @userdashboard/storage-postgresql mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
     - name: Test NodeJS caching with unencrypted data
-      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
+      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
@@ -49,7 +49,7 @@ jobs:
         DATABASE_URL: "postgres://postgres:postgres@localhost:5432/postgres"
         CACHE: "node"
     - name: Test NodeJS caching with encrypted data
-      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
+      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing

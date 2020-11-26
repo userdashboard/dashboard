@@ -40,7 +40,7 @@ jobs:
         npm install "$HERE" @userdashboard/storage-mysql mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
     - name: Test unencrypted MySQL storage
-      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
+      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
@@ -48,7 +48,7 @@ jobs:
         DATABASE_URL: "mysql://username:password@localhost:3306/dashboard"
         NODE_OPTIONS: "--preserve-symlinks"
     - name: Test encrypted MySQL storage
-      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/**/{,!(public)}/*.test.js"
+      run: ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
