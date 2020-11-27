@@ -27,6 +27,10 @@ jobs:
           apt-get update
           apt-get install -y $APT_INSTALL
         fi
+    - name: Lint with standard.js
+      run: |
+        npm install standard -g
+        standard
     - name: Set up project with Dashboard and Redis storage
       run: |
         HERE=`pwd`
@@ -36,10 +40,8 @@ jobs:
           echo registry=$NPM_PROXY > .npmrc
         fi
         npm init -y
-        npm install "$HERE" @userdashboard/storage-redis mocha puppeteer standard faker
+        npm install "$HERE" @userdashboard/storage-redis mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
-    - name: Lint with standard.js
-      run: ./node_modules/.bin/standard
       working-directory: "/tmp/project"
     - name: Generate test screenshots and responses
       run: |
