@@ -27,6 +27,11 @@ jobs:
           apt-get update
           apt-get install -y $APT_INSTALL
         fi
+    - name: Configure git and increase version
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        npm version patch
     - name: Lint with standard.js
       run: |
         if [ ! -z "$NPM_PROXY" ]; then
@@ -68,11 +73,6 @@ jobs:
       env:
         NODE_ENV: sitemap
         EXIT_ON_START: true
-    - name: Configure git and increase version
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        npm version patch
     - name: Publish to Github
       uses: stefanzweifel/git-auto-commit-action@v4.1.6
       with:
