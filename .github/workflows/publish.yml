@@ -29,7 +29,11 @@ jobs:
         fi
     - name: Lint with standard.js
       run: |
-        npm install standard -g
+        if [ ! -z "$NPM_PROXY" ]; then
+          npm --registry=$NPM_PROXY install standard -g
+        else
+          npm install standard -g
+        fi        
         standard
     - name: Set up project with Dashboard and Redis storage
       run: |
