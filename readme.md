@@ -361,9 +361,7 @@ Content can occupy the full screen without the template via a flag in the HTML o
 
 # Testing
 
-Dashboard's test suite covers the `API` and the `UI`.  The `API` tests are performed by proxying a running instance of the software.  The `UI` tests are performed with `puppeteer` remotely-controlling `Chrome` to browse a running instance of the software.  These tests are performed using each storage type.
-
-Tests are run via Github Actions when pushing to a repository.  You can browse their configuration in the `YML` files in the `.github` folder.  Github Actions can be run locally [using 'act'](https://github.com/nektos/act).
+Dashboard's test suite covers the `API` and the `UI`.  The `API` tests are performed by proxying a running instance of the software.  The `UI` tests are performed with `puppeteer` remotely-controlling `Chrome` to browse a running instance of the software.  Github Actions can be run locally [using 'act'](https://github.com/nektos/act).
 
     $ act -j test-fs-storage
     $ act -j test-redis-storage
@@ -374,10 +372,13 @@ Tests are run via Github Actions when pushing to a repository.  You can browse t
     $ act -j test-redis-cache
     $ act -j test-node-cache
 
-If testing locally you can set an NPM and APT cache and have Chromium installed via APT so it caches, as an alternative to the puppeteer module downloading the 120mb file each time a test is run.  These environment variables can be placed in a `.env` file for `act` to apply when running tests.  This is known to work with [Sonatype Nexus Repository Manager 3](https://github.com/sonatype/docker-nexus3).
+You may need to install Chromium manually to ensure all its dependencies are met.  This can be configured via environment variables placed in a `.env` file for `act` to use:
 
     PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true"
     CHROMIUM_EXECUTABLE="/usr/bin/chromium"
+
+You can also configure an NPM and APT cache.  This is known to work with [Sonatype Nexus Repository Manager 3](https://github.com/sonatype/docker-nexus3).
+
     APT_PROXY="http://192.168.1.30:8081/repository/apt-proxy"
     NPM_PROXY="http://192.168.1.30:8081/repository/npm-proxy/"
 
