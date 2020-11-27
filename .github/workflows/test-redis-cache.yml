@@ -8,6 +8,18 @@ jobs:
     strategy:
       matrix:
         node-version: [14.15.1]
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
@@ -17,9 +29,6 @@ jobs:
       with:
         redis version: '5'
         number of databases: 1
-    - uses: harmon758/postgresql-action@v1
-      with:
-        postgresql version: '11'
     - name: Optionally install Chromium via APT instead of puppeteer
       run: |
         if [ ! -z "$PUPPETEER_SKIP_CHROMIUM_DOWNLOAD" ]; then
