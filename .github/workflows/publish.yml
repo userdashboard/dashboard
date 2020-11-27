@@ -10,7 +10,6 @@ jobs:
         node-version: [14.15.1]
     steps:
     - uses: actions/checkout@v2
-    - uses: oleksiyrudenko/gha-git-credentials@v2-latest
     - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
@@ -68,6 +67,11 @@ jobs:
       env:
         NODE_ENV: sitemap
         EXIT_ON_START: true
+    - name: Configure git and increase version
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        npm version patch
     - name: Publish to Github
       uses: stefanzweifel/git-auto-commit-action@v4.1.6
       with:
