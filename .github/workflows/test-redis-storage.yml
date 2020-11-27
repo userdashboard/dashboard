@@ -39,14 +39,14 @@ jobs:
         npm install "$HERE" @userdashboard/storage-redis mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
     - name: Test without data encryption
-      run: ./node_modules/.bin/mocha --file main.js --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
+      run: ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
         STORAGE: "@userdashboard/storage-redis"
         NODE_OPTIONS: "--preserve-symlinks"
     - name: Test with data encryption
-      run: ./node_modules/.bin/mocha --file main.js --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
+      run: ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing

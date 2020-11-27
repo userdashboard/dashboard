@@ -48,7 +48,7 @@ jobs:
         echo "global.applicationPath = __dirname" > main.js
     - name: Generate test screenshots and responses
       run: |
-        ./node_modules/.bin/mocha --file main.js --recursive --timeout 90000000 --slow 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js" | tee $HERE/tests.txt
+        ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 --slow 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js" | tee $HERE/tests.txt
         TESTS=`cat $HERE/tests.txt`
         if [[ "$TESTS" == *" 1)"* ]]; then
           exit 1
