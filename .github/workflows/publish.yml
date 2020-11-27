@@ -48,19 +48,20 @@ jobs:
         echo "global.applicationPath = __dirname" > main.js
     - name: Generate UI screenshots and API responses
       run: |
+        HERE=`pwd`
+        cd /tmp/project
+        export RESPONSE_PATH="$HERE/documentation"
+        export SCREENSHOT_PATH="$HERE/documentation/screenshots"
         ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 --slow 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js" | tee $HERE/tests.txt
         TESTS=`cat $HERE/tests.txt`
         if [[ "$TESTS" == *" 1)"* ]]; then
           exit 1
         fi
-      working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
         STORAGE: "@userdashboard/storage-redis"
         GENERATE_RESPONSE: true
         GENERATE_SCREENSHOTS: true
-        RESPONSE_PATH: "/home/runner/work/dashboard/dashboard/documentation"
-        SCREENSHOT_PATH: "/home/runner/work/dashboard/dashboard/documentation/screenshots"
         SCREENSHOT_LANGUAGES: "en"
         LOG_LEVEL: "info,warn,error,log"
     - name: Generate sitemap.txt and api.txt
