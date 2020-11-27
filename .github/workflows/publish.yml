@@ -46,7 +46,7 @@ jobs:
         npm init -y
         npm install "$HERE" @userdashboard/storage-redis mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
-    - name: Generate test screenshots and responses
+    - name: Generate UI screenshots and API responses
       run: |
         ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 --slow 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js" | tee $HERE/tests.txt
         TESTS=`cat $HERE/tests.txt`
@@ -62,6 +62,7 @@ jobs:
         RESPONSE_PATH: "/home/runner/work/dashboard/dashboard/documentation"
         SCREENSHOT_PATH: "/home/runner/work/dashboard/dashboard/documentation/screenshots"
         SCREENSHOT_LANGUAGES: "en"
+        LOG_LEVEL: "info,warn,error,log"
     - name: Generate sitemap.txt and api.txt
       run: node main.js
       env:
