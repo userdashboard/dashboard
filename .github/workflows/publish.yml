@@ -46,7 +46,6 @@ jobs:
         npm init -y
         npm install "$HERE" @userdashboard/storage-redis mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
-      working-directory: "/tmp/project"
     - name: Generate test screenshots and responses
       run: |
         ./node_modules/.bin/mocha --retries 2 --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js" | tee $HERE/tests.txt
