@@ -63,7 +63,6 @@ jobs:
         GENERATE_RESPONSE: true
         GENERATE_SCREENSHOTS: true
         SCREENSHOT_LANGUAGES: "en"
-        LOG_LEVEL: "info,warn,error,log"
     - name: Generate sitemap.txt and api.txt
       run: node main.js
       env:
