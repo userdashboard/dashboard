@@ -28,8 +28,8 @@ async function fetch (method, req) {
   Log = require('./src/log.js')('dashboard-test-helper-puppeteer')
   const puppeteerPath = path.join(global.applicationPath, '/node_modules/puppeteer/')
   puppeteer = global.puppeteer = global.puppeteer || require(puppeteerPath)
-  allDevices = require(`${puppeteerPath}/lib/cjs/puppeteer/common/DeviceDescriptors.js`)
-  devices = [{
+  allDevices = allDevices || require(`${puppeteerPath}/lib/cjs/puppeteer/common/DeviceDescriptors.js`)
+  devices = devices || [{
     name: 'Desktop',
     userAgent: 'Desktop browser',
     viewport: {
@@ -41,10 +41,10 @@ async function fetch (method, req) {
       isLandscape: false
     }
   },
-  allDevices['iPad Pro'],
-  allDevices['iPad Mini'],
-  allDevices['Pixel 2 XL'],
-  allDevices['iPhone SE']
+  allDevices.devicesMap['iPad Pro'],
+  allDevices.devicesMap['iPad Mini'],
+  allDevices.devicesMap['Pixel 2 XL'],
+  allDevices.devicesMap['iPhone SE']
   ]
   browser = await relaunchBrowser()
   const result = {}
