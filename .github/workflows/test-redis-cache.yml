@@ -8,16 +8,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14.15.1]
-    services:
-      postgres:
-        image: postgres:12
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        ports:
-          - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        mongodb-version: [4.4]
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
@@ -27,6 +18,9 @@ jobs:
       with:
         redis version: '5'
         number of databases: 1
+    - uses: supercharge/mongodb-github-action@1.3.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
     - name: Optionally install Chromium via APT instead of puppeteer
       run: |
         if [ ! -z "$PUPPETEER_SKIP_CHROMIUM_DOWNLOAD" ]; then
@@ -37,7 +31,7 @@ jobs:
           apt-get update
           apt-get install -y $APT_INSTALL
         fi
-    - name: Set up project with Dashboard and PostgreSQL storage and Redis cache
+    - name: Set up project with Dashboard and MongoDB storage and Redis cache
       run: |
         HERE=`pwd`
         mkdir /tmp/project
@@ -46,25 +40,27 @@ jobs:
           echo registry=$NPM_PROXY > .npmrc
         fi
         npm init -y
-        npm install "$HERE" @userdashboard/storage-cache-redis @userdashboard/storage-postgresql mocha puppeteer faker
+        npm install "$HERE" @userdashboard/storage-cache-redis @userdashboard/storage-mongodb mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
     - name: Test without data encryption
       run: ./node_modules/.bin/mocha --exit --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/**/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
-        STORAGE: "@userdashboard/storage-postgresql"
-        DATABASE_URL: "postgres://postgres:postgres@localhost:5432/postgres"
+        STORAGE: "@userdashboard/storage-mongodb"
+        MONGODB_URL: "mongodb://localhost:27017"
         CACHE: "@userdashboard/storage-cache-redis"
         CACHE_REDIS_URL: "redis://localhost:6379"
+        NODE_OPTIONS: "--preserve-symlinks"
     - name: Test with data encryption
       run: ./node_modules/.bin/mocha --exit --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/**/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
-        STORAGE: "@userdashboard/storage-postgresql"
-        DATABASE_URL: "postgres://postgres:postgres@localhost:5432/postgres"
+        STORAGE: "@userdashboard/storage-mongodb"
+        MONGODB_URL: "mongodb://localhost:27017"
         CACHE: "@userdashboard/storage-cache-redis"
         CACHE_REDIS_URL: "redis://localhost:6379"
         ENCRYPTION_SECRET: "12345678901234567890123456789012"
         ENCRYPTION_SECRET_IV: "1234123412341234"
+        NODE_OPTIONS: "--preserve-symlinks"

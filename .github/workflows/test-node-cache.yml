@@ -8,21 +8,16 @@ jobs:
     strategy:
       matrix:
         node-version: [14.15.1]
-    services:
-      postgres:
-        image: postgres:12
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-        ports:
-          - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - uses: mirromutth/mysql-action@v1.1
+      with:
+        mysql database: dashboard
+        mysql user: username
+        mysql password: password        
     - name: Optionally install Chromium via APT instead of puppeteer
       run: |
         if [ ! -z "$PUPPETEER_SKIP_CHROMIUM_DOWNLOAD" ]; then
@@ -33,7 +28,7 @@ jobs:
           apt-get update
           apt-get install -y $APT_INSTALL
         fi
-    - name: Set up project with Dashboard and PostgreSQL storage
+    - name: Set up project with Dashboard and MySQL storage and Node cache
       run: |
         HERE=`pwd`
         mkdir /tmp/project
@@ -42,23 +37,25 @@ jobs:
           echo registry=$NPM_PROXY > .npmrc
         fi
         npm init -y
-        npm install "$HERE" @userdashboard/storage-postgresql mocha puppeteer faker
+        npm install "$HERE" @userdashboard/storage-mysql mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
     - name: Test without data encryption
       run: ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
-        STORAGE: "@userdashboard/storage-postgresql"
-        DATABASE_URL: "postgres://postgres:postgres@localhost:5432/postgres"
+        STORAGE: "@userdashboard/storage-mysql"
+        DATABASE_URL: "mysql://username:password@localhost:3306/dashboard"
         CACHE: "node"
+        NODE_OPTIONS: "--preserve-symlinks"
     - name: Test with data encryption
       run: ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
-        STORAGE: "@userdashboard/storage-postgresql"
-        DATABASE_URL: "postgres://postgres:postgres@localhost:5432/postgres"
+        STORAGE: "@userdashboard/storage-mysql"
+        DATABASE_URL: "mysql://username:password@localhost:3306/dashboard"
         CACHE: "node"
         ENCRYPTION_SECRET: "12345678901234567890123456789012"
         ENCRYPTION_SECRET_IV: "1234123412341234"
+        NODE_OPTIONS: "--preserve-symlinks"
