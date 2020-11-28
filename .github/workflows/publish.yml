@@ -29,6 +29,15 @@ jobs:
         fi
     - name: Configure git and increase version
       run: |
+        if [ ! -z "$INSTALL_GIT" ]; then
+          if [ ! -z "$APT_PROXY" ]; then
+            echo "deb $APT_PROXY buster main" > /etc/apt/sources.list
+          fi
+          if [ -z "$PUPPETEER_SKIP_CHROMIUM_DOWNLOAD" ]; then
+            apt-get update
+          fi
+          apt-get install -y git
+        fi
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         npm version patch
