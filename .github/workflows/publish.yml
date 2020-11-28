@@ -13,6 +13,14 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Lint JavaScript source with standard.js
+      run: |
+        if [ ! -z "$NPM_PROXY" ]; then
+          npm --registry=$NPM_PROXY install standard -g
+        else
+          npm install standard -g
+        fi        
+        standard
     - uses: zhulik/redis-action@1.1.0
       with:
         redis version: "5"
@@ -41,14 +49,6 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         npm version patch
-    - name: Lint with standard.js
-      run: |
-        if [ ! -z "$NPM_PROXY" ]; then
-          npm --registry=$NPM_PROXY install standard -g
-        else
-          npm install standard -g
-        fi        
-        standard
     - name: Set up project
       run: |
         HERE=`pwd`
