@@ -1,11 +1,11 @@
+const fs = require('fs')
+const path = require('path')
 let storageCache
 
 if (process.env.CACHE) {
   if (process.env.CACHE === 'node') {
     storageCache = require('./storage-cache-node.js')
   } else {
-    const fs = require('fs')
-    const path = require('path')
     const storageCacheValue = process.env.CACHE
     const storagePath = path.join(__dirname, `node_modules/${storageCacheValue}/index.js`)
     if (fs.existsSync(storagePath)) {
@@ -17,7 +17,7 @@ if (process.env.CACHE) {
       }
     }
   }
-}
+} 
 
 module.exports = {
   get: async (key) => {
@@ -52,7 +52,16 @@ module.exports = {
 if (process.env.NODE_ENV === 'testing') {
   module.exports.setStorageCache = () => {
     if (process.env.CACHE && process.env.CACHE !== 'node') {
-      storageCache = require(process.env.CACHE)
+      const storageCacheValue = process.env.CACHE
+      const storagePath = path.join(__dirname, `node_modules/${storageCacheValue}/index.js`)
+      if (fs.existsSync(storagePath)) {
+        storageCache = require(storagePath)
+      } else {
+        const storagePath2 = path.join(global.applicationPath, `node_modules/${storageCacheValue}/index.js`)
+        if (fs.existsSync(storagePath2)) {
+          storageCache = require(storagePath2)
+        }
+      }
     } else {
       storageCache = require('./storage-cache-node.js')
     }
