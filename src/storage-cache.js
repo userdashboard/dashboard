@@ -17,7 +17,7 @@ if (process.env.CACHE) {
       }
     }
   }
-} 
+}
 
 module.exports = {
   get: async (key) => {
