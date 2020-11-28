@@ -40,7 +40,7 @@ jobs:
           npm install standard -g
         fi        
         standard
-    - name: Set up project with Dashboard and Redis storage
+    - name: Set up project
       run: |
         HERE=`pwd`
         mkdir /tmp/project

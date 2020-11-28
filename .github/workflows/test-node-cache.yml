@@ -28,7 +28,7 @@ jobs:
           apt-get update
           apt-get install -y $APT_INSTALL
         fi
-    - name: Set up project with Dashboard and MySQL storage and Node cache
+    - name: Set up project
       run: |
         HERE=`pwd`
         mkdir /tmp/project
