@@ -5,14 +5,11 @@ on: [push]
 jobs:
   test-mysql-storage:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.15.1]
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 14
     - uses: mirromutth/mysql-action@v1.1
       with:
         mysql database: dashboard
@@ -36,11 +33,15 @@ jobs:
         if [ ! -z "$NPM_PROXY" ]; then
           echo registry=$NPM_PROXY > .npmrc
         fi
+        if [ -d /opt/hostedtoolcache/node/ ]; then
+          alias node=`find /opt/hostedtoolcache/node/ -type f -name node`
+          alias npm=`find /opt/hostedtoolcache/node/ -type f -name npm`
+        fi
         npm init -y
         npm install "$HERE" @userdashboard/storage-mysql mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
     - name: Test without data encryption
-      run: ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
+      run: ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 $(find ./node_modules/@userdashboard/*/ -name "*.test.js" | grep -i -v [a-z]/node_modules | sort -k5.1,8.1 -t /)
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
@@ -48,7 +49,7 @@ jobs:
         DATABASE_URL: "mysql://username:password@localhost:3306/dashboard"
         NODE_OPTIONS: "--preserve-symlinks"
     - name: Test with data encryption
-      run: ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/*.test.js"
+      run: ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 $(find ./node_modules/@userdashboard/*/ -name "*.test.js" | grep -i -v [a-z]/node_modules | sort -k5.1,8.1 -t /)
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing

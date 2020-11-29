@@ -5,22 +5,18 @@ on: [push]
 jobs:
   test-redis-cache:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.15.1]
-        mongodb-version: [4.4]
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 14
     - uses: zhulik/redis-action@1.1.0
       with:
         redis version: '5'
         number of databases: 1
     - uses: supercharge/mongodb-github-action@1.3.0
       with:
-        mongodb-version: ${{ matrix.mongodb-version }}
+        mongodb-version: 4.x
     - name: Optionally install Chromium via APT instead of puppeteer
       run: |
         if [ ! -z "$PUPPETEER_SKIP_CHROMIUM_DOWNLOAD" ]; then
@@ -39,11 +35,15 @@ jobs:
         if [ ! -z "$NPM_PROXY" ]; then
           echo registry=$NPM_PROXY > .npmrc
         fi
+        if [ -d /opt/hostedtoolcache/node/ ]; then
+          alias node=`find /opt/hostedtoolcache/node/ -type f -name node`
+          alias npm=`find /opt/hostedtoolcache/node/ -type f -name npm`
+        fi
         npm init -y
         npm install "$HERE" @userdashboard/storage-cache-redis @userdashboard/storage-mongodb mocha puppeteer faker
         echo "global.applicationPath = __dirname" > main.js
     - name: Test without data encryption
-      run: ./node_modules/.bin/mocha --exit --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/**/*.test.js"
+      run: ./node_modules/.bin/mocha --exit --file main.js --bail --exit --recursive --timeout 90000000 $(find ./node_modules/@userdashboard/*/ -name "*.test.js" | grep -i -v [a-z]/node_modules | sort -k5.1,8.1 -t /)
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
@@ -53,7 +53,7 @@ jobs:
         CACHE_REDIS_URL: "redis://localhost:6379"
         NODE_OPTIONS: "--preserve-symlinks"
     - name: Test with data encryption
-      run: ./node_modules/.bin/mocha --exit --file main.js --bail --exit --full-trace --recursive --timeout 90000000 "./node_modules/@userdashboard/dashboard/**/{,!(public)}/**/*.test.js"
+      run: ./node_modules/.bin/mocha --exit --file main.js --bail --exit --recursive --timeout 90000000 $(find ./node_modules/@userdashboard/*/ -name "*.test.js" | grep -i -v [a-z]/node_modules | sort -k5.1,8.1 -t /)
       working-directory: "/tmp/project"
       env:
         NODE_ENV: testing
