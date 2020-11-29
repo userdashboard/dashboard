@@ -744,7 +744,6 @@ async function getElement (page, identifier) {
 }
 
 async function evaluate (page, method, element) {
-  Log.info('evaluate')
   let fails = 0
   const active = element || page
   while (true) {
