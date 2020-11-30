@@ -12,7 +12,7 @@ jobs:
         node-version: 14
     - uses: zhulik/redis-action@1.1.0
       with:
-        redis version: '5'
+        redis version: 5
         number of databases: 1
     - name: Optionally install Chromium via APT instead of puppeteer
       run: |
@@ -41,17 +41,17 @@ jobs:
         echo "global.applicationPath = __dirname" > main.js
     - name: Test without data encryption
       run: ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 $(find ./node_modules/@userdashboard/*/ -name "*.test.js" | grep -i -v [a-z]/node_modules | sort -k5.1,8.1 -t /)
-      working-directory: "/tmp/project"
+      working-directory: /tmp/project
       env:
         NODE_ENV: testing
         STORAGE: "@userdashboard/storage-redis"
-        NODE_OPTIONS: "--preserve-symlinks"
+        NODE_OPTIONS: --preserve-symlinks
     - name: Test with data encryption
       run: ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 $(find ./node_modules/@userdashboard/*/ -name "*.test.js" | grep -i -v [a-z]/node_modules | sort -k5.1,8.1 -t /)
-      working-directory: "/tmp/project"
+      working-directory: /tmp/project
       env:
         NODE_ENV: testing
         STORAGE: "@userdashboard/storage-redis"
-        ENCRYPTION_SECRET: "12345678901234567890123456789012"
-        ENCRYPTION_SECRET_IV: "1234123412341234"
-        NODE_OPTIONS: "--preserve-symlinks"
+        ENCRYPTION_SECRET: abc45678901234567890123456789012
+        ENCRYPTION_SECRET_IV: abc4123412341234
+        NODE_OPTIONS: --preserve-symlinks

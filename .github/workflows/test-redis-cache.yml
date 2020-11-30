@@ -44,23 +44,23 @@ jobs:
         echo "global.applicationPath = __dirname" > main.js
     - name: Test without data encryption
       run: ./node_modules/.bin/mocha --exit --file main.js --bail --exit --recursive --timeout 90000000 $(find ./node_modules/@userdashboard/*/ -name "*.test.js" | grep -i -v [a-z]/node_modules | sort -k5.1,8.1 -t /)
-      working-directory: "/tmp/project"
+      working-directory: /tmp/project
       env:
         NODE_ENV: testing
         STORAGE: "@userdashboard/storage-mongodb"
-        MONGODB_URL: "mongodb://localhost:27017"
+        MONGODB_URL: mongodb://localhost:27017
         CACHE: "@userdashboard/storage-cache-redis"
-        CACHE_REDIS_URL: "redis://localhost:6379"
-        NODE_OPTIONS: "--preserve-symlinks"
+        CACHE_REDIS_URL: redis://localhost:6379
+        NODE_OPTIONS: --preserve-symlinks
     - name: Test with data encryption
       run: ./node_modules/.bin/mocha --exit --file main.js --bail --exit --recursive --timeout 90000000 $(find ./node_modules/@userdashboard/*/ -name "*.test.js" | grep -i -v [a-z]/node_modules | sort -k5.1,8.1 -t /)
-      working-directory: "/tmp/project"
+      working-directory: /tmp/project
       env:
         NODE_ENV: testing
         STORAGE: "@userdashboard/storage-mongodb"
-        MONGODB_URL: "mongodb://localhost:27017"
+        MONGODB_URL: mongodb://localhost:27017
         CACHE: "@userdashboard/storage-cache-redis"
-        CACHE_REDIS_URL: "redis://localhost:6379"
-        ENCRYPTION_SECRET: "12345678901234567890123456789012"
-        ENCRYPTION_SECRET_IV: "1234123412341234"
-        NODE_OPTIONS: "--preserve-symlinks"
+        CACHE_REDIS_URL: redis://localhost:6379
+        ENCRYPTION_SECRET: abc45678901234567890123456789012
+        ENCRYPTION_SECRET_IV: abc4123412341234
+        NODE_OPTIONS: --preserve-symlinks

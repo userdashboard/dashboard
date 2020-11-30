@@ -77,8 +77,8 @@ jobs:
         STORAGE: "@userdashboard/storage-redis"
         GENERATE_RESPONSE: true
         GENERATE_SCREENSHOTS: true
-        SCREENSHOT_LANGUAGES: "en"
-        NODE_OPTIONS: "--preserve-symlinks"
+        SCREENSHOT_LANGUAGES: en
+        NODE_OPTIONS: --preserve-symlinks
     - name: Generate sitemap.txt and api.txt
       run: node main.js
       env:

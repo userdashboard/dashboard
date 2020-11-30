@@ -1,22 +1,4 @@
 {
-  "version": "1.0.351",
-  "description": "Dashboard for building web apps and SaaS",
-  "engines": {
-    "node": "14.15.1",
-    "npm": "6.14.8"
-  },
-  "license": "MIT",
-  "main": "index.js",
-  "name": "@userdashboard/dashboard",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/userdashboard/dashboard.git"
-  },
-  "scripts": {
-    "debug": "node main.js --debug-brk=5858",
-    "start": "node main.js",
-    "test": "mocha --recursive --timeout 360000 './{,!(public|node_modules)/**}/*.test.js'"
-  },
   "dashboard": {
     "content": [],
     "modules": [],
@@ -28,10 +10,28 @@
     "server-html": "^9.0.0",
     "uglify-js": "^2.8.29"
   },
+  "description": "Dashboard for building web apps and SaaS",
   "devDependencies": {
     "faker": "^5.1.0",
     "mocha": "^8.2.1",
     "puppeteer": "^5.5.0",
     "standard": "^16.0.3"
-  }
+  },
+  "engines": {
+    "node": ">=14.0",
+    "npm": ">=6.0"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@userdashboard/dashboard",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/userdashboard/dashboard.git"
+  },
+  "scripts": {
+    "debug": "node main.js --debug-brk=5858",
+    "start": "node main.js",
+    "test": "act -j test-fs-storage"
+  },
+  "version": "1.0.351"
 }

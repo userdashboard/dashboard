@@ -45,29 +45,29 @@ jobs:
         echo "global.applicationPath = __dirname" > main.js
         aws --endpoint-url=http://localhost:4566 s3 mb s3://testing
       env:
-        AWS_SECRET_ACCESS_KEY: "using-mock-aws-s3"
-        AWS_ACCESS_KEY_ID: "using-mock-aws-s3"
+        AWS_SECRET_ACCESS_KEY: using-mock-aws-s3
+        AWS_ACCESS_KEY_ID: using-mock-aws-s3
     - name: Test without data encryption
       run: ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 $(find ./node_modules/@userdashboard/*/ -name "*.test.js" | grep -i -v [a-z]/node_modules | sort -k5.1,8.1 -t /)
-      working-directory: "/tmp/project"
+      working-directory: /tmp/project
       env:
         NODE_ENV: testing
         STORAGE: "@userdashboard/storage-s3"
-        S3_ENDPOINT: "http://localhost:4566"
-        S3_BUCKET_NAME: "testing"
-        SECRET_ACCESS_KEY: "using-mock-aws-s3"
-        ACCESS_KEY_ID: "using-mock-aws-s3"
-        NODE_OPTIONS: "--preserve-symlinks"
+        S3_ENDPOINT: http://localhost:4566
+        S3_BUCKET_NAME: testing
+        SECRET_ACCESS_KEY: using-mock-aws-s3
+        ACCESS_KEY_ID: using-mock-aws-s3
+        NODE_OPTIONS: --preserve-symlinks
     - name: Test with data encryption
       run: ./node_modules/.bin/mocha --exit --file main.js --recursive --timeout 90000000 $(find ./node_modules/@userdashboard/*/ -name "*.test.js" | grep -i -v [a-z]/node_modules | sort -k5.1,8.1 -t /)
-      working-directory: "/tmp/project"
+      working-directory: /tmp/project
       env:
         NODE_ENV: testing
         STORAGE: "@userdashboard/storage-s3"
-        S3_ENDPOINT: "http://localhost:4566"
-        S3_BUCKET_NAME: "testing"
-        SECRET_ACCESS_KEY: "using-mock-aws-s3"
-        ACCESS_KEY_ID: "using-mock-aws-s3"
-        ENCRYPTION_SECRET: "12345678901234567890123456789012"
-        ENCRYPTION_SECRET_IV: "1234123412341234"
-        NODE_OPTIONS: "--preserve-symlinks"
+        S3_ENDPOINT: http://localhost:4566
+        S3_BUCKET_NAME: testing
+        SECRET_ACCESS_KEY: using-mock-aws-s3
+        ACCESS_KEY_ID: using-mock-aws-s3
+        ENCRYPTION_SECRET: abc45678901234567890123456789012
+        ENCRYPTION_SECRET_IV: abc4123412341234
+        NODE_OPTIONS: --preserve-symlinks
