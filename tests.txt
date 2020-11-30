@@ -7,7 +7,6 @@
         ✓ Integer
     DASHBOARD_SERVER
       URL of dashboard server
-        ✓ default http://localhost:8000
         ✓ Address
     DOMAIN
       Domain of server
@@ -1570,5 +1569,5 @@
       ✓ override req.userProfileFields
 
 
-  876 passing (28m)
+  875 passing (29m)
 
