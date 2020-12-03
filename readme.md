@@ -381,6 +381,11 @@ You may need to install Git manually:
 
     INSTALL_GIT=true
 
+You may need to install PostgreSQL or LocalStack separately because `act` doesn't start services.
+
+    S3_ENDPOINT=http://0.0.0.0:4566
+    DATABASE_URL=postgres://...
+
 You can also configure an NPM and APT cache to speed up working with multiple test suites.  This is known to work with [Sonatype Nexus Repository Manager 3](https://github.com/sonatype/docker-nexus3).
 
     APT_PROXY="http://192.168.1.30:8081/repository/apt-proxy"
