@@ -88,7 +88,7 @@ async function setupBefore () {
   while (true) {
     global.port = global.testConfiguration.port
     try {
-      await dashboard.start(global.applicationPath || __dirname)
+      await dashboard.start()
       break
     } catch (error) {
       Log.error('error starting server', error)
