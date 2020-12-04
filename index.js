@@ -91,6 +91,12 @@ const path = require('path')
 let Server
 
 module.exports = {
+  Format: require('./src/format.js'),
+  Hash: require('./src/hash.js'),
+  HTML: require('./src/html.js'),
+  Response: require('./src/response.js'),
+  Timestamp: require('./src/timestamp.js'),
+  UUID: require('./src/uuid.js'),
   start: async (applicationPath) => {
     global.applicationPath = global.applicationPath || applicationPath
     global.rootPath = `${applicationPath}/src/www`
@@ -143,13 +149,6 @@ module.exports = {
     module.exports.Storage = storage
     module.exports.StorageList = storageList
     module.exports.StorageObject = storageObject
-    Log.info('setting up exports')
-    module.exports.Format = require(path.join(__dirname, '/src/format.js'))
-    module.exports.Hash = require(path.join(__dirname, '/src/hash.js'))
-    module.exports.HTML = require(path.join(__dirname, '/src/html.js'))
-    module.exports.Response = require(path.join(__dirname, '/src/response.js'))
-    module.exports.Timestamp = require(path.join(__dirname, '/src/timestamp.js'))
-    module.exports.UUID = require(path.join(__dirname, '/src/uuid.js'))
     Log.info('setting up modules')
     if (global.packageJSON.dashboard.modules && global.packageJSON.dashboard.modules.length) {
       for (const addition of global.packageJSON.dashboard.modules) {
