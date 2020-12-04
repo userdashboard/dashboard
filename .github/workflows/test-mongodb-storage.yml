@@ -32,8 +32,8 @@ jobs:
           echo registry=$NPM_PROXY > .npmrc
         fi
         if [ -d /opt/hostedtoolcache/node/ ]; then
-          alias node=`find /opt/hostedtoolcache/node/ -type f -name node`
-          alias npm=`find /opt/hostedtoolcache/node/ -type f -name npm`
+          alias node=`find /opt/hostedtoolcache/node/ -maxdepth 4 -name node`
+          alias npm=`find /opt/hostedtoolcache/node/ -maxdepth 4 -name npm`
         fi
         npm init -y
         npm install "$HERE" @userdashboard/storage-mongodb mocha puppeteer faker
