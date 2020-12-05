@@ -42,11 +42,16 @@ for (const property in defaultConfigurationValues) {
   global.testConfiguration[property] = global.testConfiguration[property] || defaultConfigurationValues[property]
 }
 
+const dashboard = require('./index.js')
+const faker = require('faker')
 const fs = require('fs')
+const helperRoutes = require('./test-helper-routes.js')
 const http = require('http')
 const https = require('https')
+const Log = require('./src/log.js')('dashboard-test-helper')
 const path = require('path')
 const querystring = require('querystring')
+const TestHelperPuppeteer = require('./test-helper-puppeteer.js')
 const util = require('util')
 const mimeTypes = {
   js: 'text/javascript;',
@@ -59,25 +64,7 @@ const mimeTypes = {
   svg: 'image/svg+xml'
 }
 
-let dashboard, faker, helperRoutes, TestHelperPuppeteer, Log
 async function setupBefore () {
-  const fakerPath = path.join(global.applicationPath, '/node_modules/faker/')
-  faker = require(fakerPath)
-  const dashboardPath = path.join(global.applicationPath, '/node_modules/@userdashboard/dashboard/')
-  const logPath = path.join(dashboardPath, '/src/log.js')
-  if (fs.existsSync(logPath)) {
-    Log = require(logPath)('dashboard-test-helper')
-    Log.info('dashboard is nested as module')
-    dashboard = require(`${dashboardPath}/index.js`)
-    helperRoutes = require(`${dashboardPath}/test-helper-routes.js`)
-    TestHelperPuppeteer = require(`${dashboardPath}/test-helper-puppeteer.js`)
-  } else {
-    Log = require('./src/log.js')('dashboard-test-helper')
-    Log.info('dashboard is application')
-    dashboard = require('./index.js')
-    helperRoutes = require('./test-helper-routes.js')
-    TestHelperPuppeteer = require('./test-helper-puppeteer.js')
-  }
   global.testConfiguration.port = global.port || process.env.PORT || 9000
   let dashboardServer = global.dashboardServer || process.env.DASHBOARD_SERVER || 'http://localhost:9000'
   if (dashboardServer.lastIndexOf(':') > dashboardServer.indexOf(':')) {
@@ -102,7 +89,7 @@ async function setupBefore () {
 
 async function setupBeforeEach () {
   Log.info('beforeEach')
-  const mergePackageJSON = require(path.join(__dirname, '/src/merge-package-json.js'))
+  const mergePackageJSON = require('./src/merge-package-json.js')
   global.packageJSON = mergePackageJSON()
   global.sitemap['/api/require-verification'] = helperRoutes.requireVerification
   for (const property in global.testConfiguration) {

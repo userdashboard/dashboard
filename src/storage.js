@@ -4,7 +4,7 @@ const path = require('path')
 
 module.exports = {
   setup: async (envPrefix) => {
-    const Log = require(path.join(__dirname, '/log.js'))('storage')
+    const Log = require('./log.js')('storage')
     let Storage, cache
     if (envPrefix) {
       const storageValue = process.env[`${envPrefix}_STORAGE`]
@@ -41,14 +41,12 @@ module.exports = {
     }
     const container = {
       exists: async (file) => {
-        Log.info('exists', file)
         if (!file) {
           throw new Error('invalid-file')
         }
         return storage.exists(file)
       },
       read: async (file) => {
-        Log.info('read', file)
         if (!file) {
           throw new Error('invalid-file')
         }
@@ -77,7 +75,6 @@ module.exports = {
         return data
       },
       readMany: async (prefix, files) => {
-        Log.info('readMany', prefix, files)
         if (!files || !files.length) {
           throw new Error('invalid-files')
         }
@@ -125,7 +122,6 @@ module.exports = {
         return data
       },
       readBinary: async (file) => {
-        Log.info('readBinary', file)
         if (!file) {
           throw new Error('invalid-file')
         }
@@ -142,7 +138,6 @@ module.exports = {
         return data
       },
       write: async (file, contents) => {
-        Log.info('write', file)
         if (!file) {
           throw new Error('invalid-file')
         }
@@ -159,7 +154,6 @@ module.exports = {
         }
       },
       writeMany: async (file, contents) => {
-        Log.info('writeMany', file)
         if (!file) {
           throw new Error('invalid-file')
         }
@@ -188,7 +182,6 @@ module.exports = {
         }
       },
       delete: async (file) => {
-        Log.info('delete', file)
         if (!file) {
           throw new Error('invalid-file')
         }

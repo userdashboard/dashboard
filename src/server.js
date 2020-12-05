@@ -1,7 +1,6 @@
 const fs = require('fs')
 const http = require('http')
 const Multiparty = require('multiparty')
-const path = require('path')
 const querystring = require('querystring')
 const Response = require('./response.js')
 const util = require('util')
@@ -66,10 +65,10 @@ module.exports = {
 }
 
 function start (callback) {
-  dashboard = require(path.join(__dirname, '../index.js'))
-  Hash = require(path.join(__dirname, '/hash.js'))
-  Log = require(path.join(__dirname, '/log.js'))('dashboard-server')
-  Proxy = require(path.join(__dirname, '/proxy.js'))
+  dashboard = require('../index.js')
+  Hash = require('./hash.js')
+  Log = require('./log.js')('dashboard-server')
+  Proxy = require('./proxy.js')
   server = http.createServer(receiveRequest)
   server.on('error', (error) => {
     callback(error)
@@ -97,8 +96,10 @@ async function receiveRequest (req, res) {
   const question = req.url.indexOf('?')
   req.appid = global.appid
   req.ip = requestIPAddress(req)
-  Log.info('request', req.appid, req.method, req.ip, req.url)
   req.urlPath = question === -1 ? req.url : req.url.substring(0, question)
+  if (!req.urlPath.startsWith('/public/')) {
+    Log.info('request', req.appid, req.method, req.ip, req.url)
+  }
   const dot = req.urlPath.lastIndexOf('.')
   req.route = global.sitemap[`${req.urlPath}/index`] || global.sitemap[req.urlPath]
   req.extension = dot > -1 ? req.urlPath.substring(dot + 1) : null

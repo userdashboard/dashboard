@@ -4,7 +4,7 @@ const path = require('path')
 module.exports = {
   setup: async (storage, moduleName) => {
     let storageList
-    const Log = require(path.join(__dirname, 'log.js'))('storage-list')
+    const Log = require('./log.js')('storage-list')
     const envPrefix = moduleName ? `${moduleName}_STORAGE` : 'STORAGE'
     if (envPrefix && process.env[envPrefix]) {
       const storageValue = process.env[envPrefix]
@@ -29,7 +29,6 @@ module.exports = {
     }
     const container = {
       add: async (path, itemid) => {
-        Log.info('add', path, itemid)
         const added = await storageList.exists(path, itemid)
         if (added) {
           return
@@ -37,7 +36,6 @@ module.exports = {
         await storageList.add(path, itemid)
       },
       addMany: async (items) => {
-        Log.info('addMany', items)
         for (const path in items) {
           const itemid = items[path]
           const added = await storageList.exists(path, itemid)
@@ -48,15 +46,12 @@ module.exports = {
         await storageList.addMany(items)
       },
       count: async (path) => {
-        Log.info('count', path)
         return storageList.count(path)
       },
       exists: async (path, itemid) => {
-        Log.info('existing', path, itemid)
         return storageList.exists(path, itemid)
       },
       list: async (path, offset, pageSize) => {
-        Log.info('list', path, offset, pageSize)
         offset = offset || 0
         if (pageSize === null || pageSize === undefined) {
           pageSize = global.pageSize
@@ -97,7 +92,6 @@ module.exports = {
         return itemids
       },
       listAll: async (path) => {
-        Log.info('listAll', path)
         const itemids = await storageList.listAll(path)
         if (!itemids || !itemids.length) {
           return null
@@ -131,7 +125,6 @@ module.exports = {
         return itemids
       },
       remove: async (path, itemid) => {
-        Log.info('remove', path, itemid)
         return storageList.remove(path, itemid)
       }
     }

@@ -1,12 +1,10 @@
 const fs = require('fs')
-const path = require('path')
 let Log
 
 module.exports = mergePackageJSON
 
 function mergePackageJSON (applicationJSON, dashboardJSON) {
-  Log = Log || require(path.join(__dirname, 'log.js'))('merge-package-json')
-  Log.info('setting up package JSON')
+  Log = Log || require('./log.js')('merge-package-json')
   applicationJSON = applicationJSON || loadApplicationJSON(applicationJSON)
   if (applicationJSON && applicationJSON.name === '@userdashboard/dashboard') {
     dashboardJSON = applicationJSON
@@ -36,28 +34,24 @@ function mergePackageJSON (applicationJSON, dashboardJSON) {
   packageJSON.dashboard.title = packageJSON.dashboard.title || 'Dashboard'
   for (const i in dashboardJSON.dashboard.server) {
     const relativePath = dashboardJSON.dashboard.server[i]
-    Log.info('dashboard JSON has server', relativePath)
     const filePath = `${global.applicationPath}/${relativePath}`
     packageJSON.dashboard.server[i] = relativePath
     packageJSON.dashboard.serverFilePaths[i] = filePath
   }
   for (const i in dashboardJSON.dashboard.content) {
     const relativePath = dashboardJSON.dashboard.content[i]
-    Log.info('dashboard JSON has content', relativePath)
     const filePath = `${global.applicationPath}/${relativePath}`
     packageJSON.dashboard.content[i] = relativePath
     packageJSON.dashboard.contentFilePaths[i] = filePath
   }
   for (const i in dashboardJSON.dashboard.proxy) {
     const relativePath = dashboardJSON.dashboard.proxy[i]
-    Log.info('dashboard JSON has proxy', relativePath)
     const filePath = `${global.applicationPath}/${relativePath}`
     packageJSON.dashboard.proxy[i] = relativePath
     packageJSON.dashboard.proxyFilePaths[i] = filePath
   }
   for (const i in dashboardJSON.dashboard.modules) {
     const moduleName = packageJSON.dashboard.modules[i]
-    Log.info('dashboard JSON has module', moduleName)
     if (moduleName === '@userdashboard/dashboard') {
       continue
     }
@@ -66,12 +60,10 @@ function mergePackageJSON (applicationJSON, dashboardJSON) {
     }
     packageJSON.dashboard.modules.push(moduleName)
   }
-  Log.info('setting up application JSON')
   if (applicationJSON && applicationJSON.dashboard) {
     if (applicationJSON.dashboard.modules && applicationJSON.dashboard.modules.length) {
       for (const i in applicationJSON.dashboard.modules) {
         const moduleName = applicationJSON.dashboard.modules[i]
-        Log.info('application JSON has module', moduleName)
         if (moduleName === '@userdashboard/dashboard') {
           continue
         }
@@ -92,7 +84,6 @@ function mergePackageJSON (applicationJSON, dashboardJSON) {
     if (applicationJSON.dashboard.server && applicationJSON.dashboard.server.length) {
       for (const i in applicationJSON.dashboard.server) {
         const relativePath = applicationJSON.dashboard.server[i]
-        Log.info('application JSON has server', relativePath)
         const filePath = `${global.applicationPath}${relativePath}`
         packageJSON.dashboard.server.push(relativePath)
         packageJSON.dashboard.serverFilePaths.push(filePath)
@@ -101,7 +92,6 @@ function mergePackageJSON (applicationJSON, dashboardJSON) {
     if (applicationJSON.dashboard.content && applicationJSON.dashboard.content.length) {
       for (const i in applicationJSON.dashboard.content) {
         const relativePath = applicationJSON.dashboard.content[i]
-        Log.info('application JSON has content', relativePath)
         const filePath = `${global.applicationPath}${relativePath}`
         packageJSON.dashboard.content.push(relativePath)
         packageJSON.dashboard.contentFilePaths.push(filePath)
@@ -110,14 +100,12 @@ function mergePackageJSON (applicationJSON, dashboardJSON) {
     if (applicationJSON.dashboard.proxy && applicationJSON.dashboard.proxy.length) {
       for (const i in applicationJSON.dashboard.proxy) {
         const relativePath = applicationJSON.dashboard.proxy[i]
-        Log.info('application JSON has proxy', relativePath)
         const filePath = `${global.applicationPath}${relativePath}`
         packageJSON.dashboard.proxy.push(relativePath)
         packageJSON.dashboard.proxyFilePaths.push(filePath)
       }
     }
   }
-  Log.info('setting up modules')
   for (const i in packageJSON.dashboard.modules) {
     const moduleName = packageJSON.dashboard.modules[i]
     const moduleJSON = loadModuleJSON(moduleName)
@@ -183,11 +171,9 @@ function mergePackageJSON (applicationJSON, dashboardJSON) {
   } else {
     packageJSON.templateHTMLPath = fs.existsSync(applicationTemplateHTMLPath) ? applicationTemplateHTMLPath : dashboardTemplateHTMLPath
   }
-  Log.info('setting up HTML')
   packageJSON.errorHTML = fs.readFileSync(packageJSON.errorHTMLPath).toString()
   packageJSON.redirectHTML = fs.readFileSync(packageJSON.redirectHTMLPath).toString()
   packageJSON.templateHTML = fs.readFileSync(packageJSON.templateHTMLPath).toString()
-  Log.info('setting up menus')
   const rootAccountMenuHTMLPath = `${global.applicationPath}/src/menu-account.html`
   if (fs.existsSync(rootAccountMenuHTMLPath)) {
     packageJSON.dashboard.menus.account.push(fs.readFileSync(rootAccountMenuHTMLPath).toString())
@@ -233,7 +219,6 @@ function mergeModuleJSON (baseJSON, moduleJSON) {
   if (moduleJSON.dashboard.server && moduleJSON.dashboard.server.length) {
     for (const i in moduleJSON.dashboard.server) {
       const relativePath = moduleJSON.dashboard.server[i]
-      Log.info('module JSON has server', relativePath)
       if (baseJSON.dashboard.server.indexOf(relativePath) > -1) {
         continue
       }
@@ -250,7 +235,6 @@ function mergeModuleJSON (baseJSON, moduleJSON) {
   if (moduleJSON.dashboard.content && moduleJSON.dashboard.content.length) {
     for (const i in moduleJSON.dashboard.content) {
       const relativePath = moduleJSON.dashboard.content[i]
-      Log.info('module JSON has content', relativePath)
       if (baseJSON.dashboard.content.indexOf(relativePath) > -1) {
         continue
       }
@@ -262,7 +246,6 @@ function mergeModuleJSON (baseJSON, moduleJSON) {
   if (moduleJSON.dashboard.proxy && moduleJSON.dashboard.proxy.length) {
     for (const i in moduleJSON.dashboard.proxy) {
       const relativePath = moduleJSON.dashboard.proxy[i]
-      Log.info('module JSON has proxy', relativePath)
       if (baseJSON.dashboard.proxy.indexOf(relativePath) > -1) {
         continue
       }
@@ -285,7 +268,6 @@ function mergeModuleJSON (baseJSON, moduleJSON) {
         continue
       }
       baseJSON.dashboard.modules.push(moduleName)
-      Log.info('module JSON has module', moduleName)
       const nestedModuleJSON = loadModuleJSON(moduleName)
       if (!nestedModuleJSON && (!global.testModuleJSON || !global.testModuleJSON[moduleName])) {
         throw new Error('invalid-module')

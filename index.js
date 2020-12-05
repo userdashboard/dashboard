@@ -87,10 +87,13 @@ global.deleteDelay = parseInt(process.env.DELETE_DELAY || '7', 10)
 global.pageSize = parseInt(process.env.PAGE_SIZE || '10', 10)
 global.sessionVerificationDelay = parseInt(process.env.SESSION_VERIFICATION_DELAY || '14400', 10)
 
-const path = require('path')
+const API = require('./src/api.js')
+const ENV = require('./env.js')
+const mergePackageJSON = require('./src/merge-package-json.js')
+const Sitemap = require('./src/sitemap.js')
 let Server
 
-module.exports = {
+const dashboard = module.exports = {
   Format: require('./src/format.js'),
   Hash: require('./src/hash.js'),
   HTML: require('./src/html.js'),
@@ -100,29 +103,25 @@ module.exports = {
   start: async (applicationPath) => {
     global.applicationPath = global.applicationPath || applicationPath
     global.rootPath = `${applicationPath}/src/www`
-    const mergePackageJSON = require(path.join(__dirname, '/src/merge-package-json.js'))
     global.packageJSON = mergePackageJSON()
-    const Sitemap = require(path.join(__dirname, '/src/sitemap.js'))
     global.sitemap = Sitemap.generate()
+    global.api = API.createFromSitemap()
     if (process.env.GENERATE_SITEMAP_TXT !== 'false') {
       Sitemap.write()
     }
-    const API = require(path.join(__dirname, '/src/api.js'))
-    global.api = API.createFromSitemap()
     if (process.env.GENERATE_API_TXT !== 'false') {
       API.write()
     }
-    const ENV = require(path.join(__dirname, '/env.js'))
     if (process.env.GENERATE_ENV_TXT !== 'false') {
       ENV.write()
     }
-    if (!module.exports.Storage) {
-      await module.exports.setup(applicationPath)
+    if (!dashboard.Storage) {
+      await dashboard.setup()
     }
-    Server = require(path.join(__dirname, '/src/server.js'))
+    Server = require('./src/server.js')
     await Server.start()
     if (process.env.EXIT_ON_START) {
-      module.exports.stop()
+      dashboard.stop()
       return process.exit(0)
     }
   },
@@ -130,29 +129,27 @@ module.exports = {
     if (!Server) {
       return
     }
-    const Timestamp = require(path.join(__dirname, '/src/timestamp.js'))
+    const Timestamp = require('./src/timestamp.js')
     clearInterval(Timestamp.interval)
     delete (Timestamp.interval)
     return Server.stop()
   },
   setup: async () => {
-    const Log = require(path.join(__dirname, '/src/log.js'))('dashboard')
+    const Log = require('./src/log.js')('dashboard')
     Log.info('setting up storage')
-    const Storage = require(path.join(__dirname, '/src/storage.js'))
+    const Storage = require('./src/storage.js')
     const storage = await Storage.setup()
-    Log.info('setting up storage list')
-    const StorageList = require(path.join(__dirname, '/src/storage-list.js'))
+    const StorageList = require('./src/storage-list.js')
     const storageList = await StorageList.setup(storage)
-    Log.info('setting up storage object')
-    const StorageObject = require(path.join(__dirname, '/src/storage-object.js'))
+    const StorageObject = require('./src/storage-object.js')
     const storageObject = await StorageObject.setup(storage)
     module.exports.Storage = storage
     module.exports.StorageList = storageList
     module.exports.StorageObject = storageObject
-    Log.info('setting up modules')
+    Log.info('setting up module storage')
     if (global.packageJSON.dashboard.modules && global.packageJSON.dashboard.modules.length) {
       for (const addition of global.packageJSON.dashboard.modules) {
-        Log.info('setting up addition', addition)
+        Log.info('setting up module', addition)
         if (addition.setup) {
           try {
             await addition.setup()

@@ -532,7 +532,6 @@ async function fill (page, fieldContainer, body, uploads) {
   }
   if (uploads) {
     for (const field in uploads) {
-      Log.info('filling upload field', field)
       const element = await getElement(formFields, `#${field}`)
       if (element) {
         await uploadFile(element, uploads[field].path)
@@ -544,7 +543,6 @@ async function fill (page, fieldContainer, body, uploads) {
     return
   }
   for (const field in body) {
-    Log.info('filling form field', field)
     const element = await getElement(formFields, `#${field}`)
     if (!element) {
       const checkboxes = await getTags(formFields, 'input[type=checkbox]')
@@ -630,7 +628,6 @@ async function fill (page, fieldContainer, body, uploads) {
 }
 
 async function getElement (page, identifier) {
-  Log.info('get element', identifier)
   const frame = await getOptionalApplicationFrame(page)
   let element
   if (identifier.startsWith('#')) {
@@ -660,7 +657,6 @@ async function getElement (page, identifier) {
               href === `${global.dashboardServer}${identifier}` ||
               href.startsWith(`${global.dashboardServer}${identifier}?`) ||
               href.startsWith(`${global.dashboardServer}${identifier}&`)) {
-              Log.info('puppeteer found frame link', identifier)
               return element
             }
           }
@@ -689,7 +685,6 @@ async function getElement (page, identifier) {
               href === `${global.dashboardServer}${identifier}` ||
               href.startsWith(`${global.dashboardServer}${identifier}?`) ||
               href.startsWith(`${global.dashboardServer}${identifier}&`)) {
-            Log.info('puppeteer found page link', identifier)
             return element
           }
         }
@@ -703,7 +698,6 @@ async function getElement (page, identifier) {
               href === `${global.dashboardServer}${identifier}` ||
               href.startsWith(`${global.dashboardServer}${identifier}?`) ||
               href.startsWith(`${global.dashboardServer}${identifier}&`)) {
-            Log.info('puppeteer found menu link', identifier)
             return element
           }
         }
@@ -721,7 +715,6 @@ async function getElement (page, identifier) {
         const text = await getText(element)
         if (text) {
           if (text === identifier || text.indexOf(identifier) > -1) {
-            Log.info('puppeteer found frame element', identifier)
             return element
           }
         }
@@ -735,7 +728,6 @@ async function getElement (page, identifier) {
       const text = await getText(element)
       if (text) {
         if (text === identifier || text.indexOf(identifier) > -1) {
-          Log.info('puppeteer found page element', identifier)
           return element
         }
       }
