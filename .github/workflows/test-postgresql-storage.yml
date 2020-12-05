@@ -39,8 +39,8 @@ jobs:
           echo registry=$NPM_PROXY > .npmrc
         fi
         if [ -d /opt/hostedtoolcache/node/ ]; then
-          alias node=`find /opt/hostedtoolcache/node/ -maxdepth 4 -name node`
-          alias npm=`find /opt/hostedtoolcache/node/ -maxdepth 4 -name npm`
+          export alias node=`find /opt/hostedtoolcache/node/ -maxdepth 4 -name node`
+          export alias npm=`find /opt/hostedtoolcache/node/ -maxdepth 4 -name npm`
         fi
         npm init -y
         npm install "$HERE" @userdashboard/storage-postgresql mocha puppeteer faker
