@@ -12,10 +12,10 @@
   },
   "description": "Dashboard for building web apps and SaaS",
   "devDependencies": {
-    "faker": "^5.1.0",
-    "mocha": "^8.2.1",
-    "puppeteer": "^5.5.0",
-    "standard": "^16.0.3"
+    "faker": "latest",
+    "mocha": "latest",
+    "puppeteer": "latest",
+    "standard": "latest"
   },
   "engines": {
     "node": ">=14.0",
