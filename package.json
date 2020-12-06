@@ -6,9 +6,9 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "multiparty": "^4.2.1",
+    "multiparty": "^4.2.2",
     "server-html": "^9.0.0",
-    "uglify-js": "^2.8.29"
+    "uglify-js": "^3.12.1"
   },
   "description": "Dashboard for building web apps and SaaS",
   "devDependencies": {
