@@ -82,7 +82,7 @@ jobs:
     - name: Generate sitemap.txt and api.txt
       run: node main.js
       env:
-        NODE_ENV: sitemap
+        NODE_ENV: testing
         EXIT_ON_START: true
     - name: Publish to Github
       uses: stefanzweifel/git-auto-commit-action@v4.1.6
