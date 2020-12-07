@@ -33,5 +33,5 @@
     "start": "node main.js",
     "test": "act -j test-fs-storage"
   },
-  "version": "1.0.359"
+  "version": "1.0.360"
 }
