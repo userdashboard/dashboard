@@ -54,7 +54,7 @@ describe('internal-api/server', () => {
 
     it('should ignore no-content uploads', (callback) => {
       const requestOptions = {
-        host: 'localhost',
+        host: global.host,
         path: '/account/signin',
         port: global.port,
         method: 'POST',
