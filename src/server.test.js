@@ -81,7 +81,7 @@ describe('internal-api/server', () => {
     it('should parse post data', (callback) => {
       const postData = 'username=value1&password=value2'
       const requestOptions = {
-        host: 'localhost',
+        host: global.host,
         path: '/account/signin',
         port: global.port,
         method: 'POST',
