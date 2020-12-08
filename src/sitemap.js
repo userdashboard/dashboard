@@ -9,21 +9,20 @@ module.exports = {
 
 function generate () {
   const routes = {}
-  const dashboardModulePath = require.resolve('@userdashboard/dashboard')
-  const dashboardIsModule = fs.existsSync(dashboardModulePath)
-  if (dashboardIsModule) {
+  let dashboardModulePath
+  try {
+    dashboardModulePath = require.resolve('@userdashboard/dashboard')
+  } catch (error) {
+  }
+  if (dashboardModulePath) {
     const dashboardWWWPath = path.join(dashboardModulePath.substring(0, dashboardModulePath.lastIndexOf('/')), '/src/www')
     attachRoutes(routes, dashboardWWWPath)
-  } else {
-    attachRoutes(routes, global.rootPath)
   }
   for (const moduleName of global.packageJSON.dashboard.moduleNames) {
     const modulePath = require.resolve(moduleName)
     attachRoutes(routes, `${modulePath}/src/www`)
   }
-  if (dashboardIsModule) {
-    attachRoutes(routes, global.rootPath)
-  }
+  attachRoutes(routes, global.rootPath)
   if (process.env.APPLICATION_SERVER) {
     const rootIndexPageExists = fs.existsSync(`${global.applicationPath}/src/www/index.html`)
     if (!rootIndexPageExists) {

@@ -84,7 +84,11 @@ function mergeSpecialHTML (baseJSON, moduleName) {
     return
   }
   for (const file of files) {
-    const filePath = require.resolve(`${moduleName}/src/${file}`)
+    let filePath
+    try {
+      filePath = require.resolve(`${moduleName}/src/${file}`)
+    } catch (error) {
+    }
     if (filePath) {
       const key = file.replace('.html', 'HTML')
       baseJSON.dashboard[`${key}Path`] = filePath
@@ -105,11 +109,19 @@ function mergeMenuLinks (baseJSON, moduleName) {
     }
     return
   }
-  const moduleAccountMenuHTMLPath = require.resolve(`${moduleName}/src/menu-account.html`)
+  let moduleAccountMenuHTMLPath
+  try {
+    moduleAccountMenuHTMLPath = require.resolve(`${moduleName}/src/menu-account.html`)
+  } catch (error) {
+  }
   if (moduleAccountMenuHTMLPath) {
     baseJSON.dashboard.menus.account.push(fs.readFileSync(moduleAccountMenuHTMLPath).toString())
   }
-  const moduleAdministratorMenuHTMLPath = require.resolve(`${moduleName}/src/menu-administrator.html`)
+  let moduleAdministratorMenuHTMLPath
+  try {
+    moduleAdministratorMenuHTMLPath = require.resolve(`${moduleName}/src/menu-administrator.html`)
+  } catch (error) {
+  }
   if (moduleAdministratorMenuHTMLPath) {
     baseJSON.dashboard.menus.administrator.push(fs.readFileSync(moduleAdministratorMenuHTMLPath).toString())
   }
