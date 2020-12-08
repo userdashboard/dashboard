@@ -7,7 +7,7 @@
 
 const fs = require('fs')
 
-if (fs.existsSync(`${global.applicationPath}/log.js`) && fs.existsSync(`${global.applicationPath}/node_modules/@userdashboard/dashboard/src/log.js`)) {
+if (fs.existsSync(`${global.applicationPath}/log.js`)) {
   module.exports = require(`${global.applicationPath}/log.js`)
 } else {
   const noop = function () { }

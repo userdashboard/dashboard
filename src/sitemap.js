@@ -9,15 +9,16 @@ module.exports = {
 
 function generate () {
   const routes = {}
-  const dashboardModulePath = `${global.applicationPath}/node_modules/@userdashboard/dashboard/src/www`
+  const dashboardModulePath = require.resolve('@userdashboard/dashboard')
   const dashboardIsModule = fs.existsSync(dashboardModulePath)
   if (dashboardIsModule) {
-    attachRoutes(routes, dashboardModulePath)
+    const dashboardWWWPath = path.join(dashboardModulePath.substring(0, dashboardModulePath.lastIndexOf('/')), '/src/www')
+    attachRoutes(routes, dashboardWWWPath)
   } else {
     attachRoutes(routes, global.rootPath)
   }
   for (const moduleName of global.packageJSON.dashboard.moduleNames) {
-    const modulePath = `${global.applicationPath}/node_modules/${moduleName}`
+    const modulePath = require.resolve(moduleName)
     attachRoutes(routes, `${modulePath}/src/www`)
   }
   if (dashboardIsModule) {
@@ -267,9 +268,9 @@ function parseDashboardConfiguration () {
     server: [],
     proxy: [],
     urls: {},
-    templateHTMLPath: trimApplicationPath(global.packageJSON.templateHTMLPath),
-    errorHTMLPath: trimApplicationPath(global.packageJSON.errorHTMLPath),
-    redirectHTMLPath: trimApplicationPath(global.packageJSON.redirectHTMLPath)
+    templateHTMLPath: trimApplicationPath(global.packageJSON.dashboard.templateHTMLPath),
+    errorHTMLPath: trimApplicationPath(global.packageJSON.dashboard.errorHTMLPath),
+    redirectHTMLPath: trimApplicationPath(global.packageJSON.dashboard.redirectHTMLPath)
   }
   for (const link of global.packageJSON.dashboard.menus.administrator) {
     const item = HTML.parse(`<div>${link}</div>`).child[0]

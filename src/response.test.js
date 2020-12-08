@@ -10,23 +10,23 @@ describe('internal-api/response', () => {
       global.packageJSON = {
         dashboard: {
           title: 'Global Template Title',
-          content: []
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          content: [],
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -54,26 +54,26 @@ describe('internal-api/response', () => {
       global.packageJSON = {
         dashboard: {
           title: 'Global Template Title',
-          content: []
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="page">
-              <script src="include.js"></script>
-            </template>
-          </body>
-        </html>`
+          content: [],
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="page">
+                <script src="include.js"></script>
+              </template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -98,24 +98,24 @@ describe('internal-api/response', () => {
       global.packageJSON = {
         dashboard: {
           title: 'Global Template Title',
-          content: []
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          content: [],
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -143,24 +143,24 @@ describe('internal-api/response', () => {
       global.packageJSON = {
         dashboard: {
           title: 'Global Template Title',
-          content: []
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          content: [],
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -186,24 +186,24 @@ describe('internal-api/response', () => {
           menus: {
             administrator: [],
             account: []
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -228,24 +228,24 @@ describe('internal-api/response', () => {
           menus: {
             administrator: [],
             account: []
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -274,24 +274,24 @@ describe('internal-api/response', () => {
             account: [
               '<a href="/">This is a link</a>'
             ]
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -322,24 +322,24 @@ describe('internal-api/response', () => {
             administrator: [
               '<a href="/">Administrator menu link</a>'
             ]
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -367,23 +367,23 @@ describe('internal-api/response', () => {
       global.packageJSON = {
         dashboard: {
           title: 'Global Template Title',
-          content: []
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          content: [],
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -399,24 +399,24 @@ describe('internal-api/response', () => {
       req.packageJSON = {
         dashboard: {
           title: 'Overriden Template Title',
-          content: []
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Overriden Template Title</title>
-            <script src="override.js" />
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          content: [],
+          templateHTML: `
+          <html>
+            <head>
+              <title>Overriden Template Title</title>
+              <script src="override.js" />
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const res = { setHeader: () => { } }
       const completedHTML = await Response.wrapTemplateWithSrcDoc(req, res, doc)
@@ -431,26 +431,26 @@ describe('internal-api/response', () => {
       global.packageJSON = {
         dashboard: {
           title: 'Global Template Title',
-          content: []
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="page">
-              <script src="include.js"></script>
-            </template>
-          </body>
-        </html>`
+          content: [],
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="page">
+                <script src="include.js"></script>
+              </template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -463,27 +463,27 @@ describe('internal-api/response', () => {
       req.packageJSON = {
         dashboard: {
           title: 'Overridden Template Title',
-          content: []
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Overridden Template Title</title>
-            <script src="override.js" />
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="page">
-              <script src="include.js"></script>
-            </template>
-          </body>
-        </html>`
+          content: [],
+          templateHTML: `
+          <html>
+            <head>
+              <title>Overridden Template Title</title>
+              <script src="override.js" />
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="page">
+                <script src="include.js"></script>
+              </template>
+            </body>
+          </html>`
+        }
       }
       const res = { setHeader: () => { } }
       const completedHTML = await Response.wrapTemplateWithSrcDoc(req, res, doc)
@@ -502,24 +502,24 @@ describe('internal-api/response', () => {
       global.packageJSON = {
         dashboard: {
           title: 'Global Template Title',
-          content: []
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          content: [],
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -537,25 +537,25 @@ describe('internal-api/response', () => {
       req.packageJSON = {
         dashboard: {
           title: 'Overriden Template Title',
-          content: []
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Overriden Template Title</title>
-            <script src="override.js"></script>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          content: [],
+          templateHTML: `
+          <html>
+            <head>
+              <title>Overriden Template Title</title>
+              <script src="override.js"></script>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const res = { setHeader: () => { } }
       const completedHTML = await Response.wrapTemplateWithSrcDoc(req, res, doc)
@@ -573,24 +573,24 @@ describe('internal-api/response', () => {
       global.packageJSON = {
         dashboard: {
           title: 'Global Template Title',
-          content: []
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          content: [],
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -603,25 +603,25 @@ describe('internal-api/response', () => {
       req.packageJSON = {
         dashboard: {
           title: 'Overriden Template Title',
-          content: []
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Overriden Template Title</title>
-            <script src="override.js"></script>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          content: [],
+          templateHTML: `
+          <html>
+            <head>
+              <title>Overriden Template Title</title>
+              <script src="override.js"></script>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const res = { setHeader: () => { } }
       const completedHTML = await Response.wrapTemplateWithSrcDoc(req, res, doc)
@@ -650,25 +650,25 @@ describe('internal-api/response', () => {
           menus: {
             administrator: [],
             account: []
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Overriden Template Title</title>
-            <script src="override.js"></script>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Overriden Template Title</title>
+              <script src="override.js"></script>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const res = { setHeader: () => { } }
       const completedHTML = await Response.wrapTemplateWithSrcDoc(req, res, doc)
@@ -696,25 +696,25 @@ describe('internal-api/response', () => {
           menus: {
             administrator: [],
             account: []
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Overriden Template Title</title>
-            <script src="override.js"></script>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Overriden Template Title</title>
+              <script src="override.js"></script>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const user = await TestHelper.createUser()
       req.account = user.account
@@ -738,24 +738,24 @@ describe('internal-api/response', () => {
             account: [
               '<a href="/">Ignore this link</a>'
             ]
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -776,25 +776,25 @@ describe('internal-api/response', () => {
             account: [
               '<a href="/">Embed this link</a>'
             ]
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Overriden Template Title</title>
-            <script src="override.js"></script>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Overriden Template Title</title>
+              <script src="override.js"></script>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const res = { setHeader: () => { } }
       const completedHTML = await Response.wrapTemplateWithSrcDoc(req, res, doc)
@@ -817,24 +817,24 @@ describe('internal-api/response', () => {
             administrator: [
               '<a href="/">Ignore this link</a>'
             ]
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -855,25 +855,25 @@ describe('internal-api/response', () => {
             administrator: [
               '<a href="/">Embed this link</a>'
             ]
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Overriden Template Title</title>
-            <script src="override.js"></script>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Overriden Template Title</title>
+              <script src="override.js"></script>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const res = { setHeader: () => { } }
       const completedHTML = await Response.wrapTemplateWithSrcDoc(req, res, doc)
@@ -901,24 +901,24 @@ describe('internal-api/response', () => {
           menus: {
             administrator: [],
             account: []
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -947,24 +947,24 @@ describe('internal-api/response', () => {
           menus: {
             administrator: [],
             account: []
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -996,24 +996,24 @@ describe('internal-api/response', () => {
           menus: {
             administrator: [],
             account: []
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>
@@ -1046,24 +1046,24 @@ describe('internal-api/response', () => {
           menus: {
             administrator: [],
             account: []
-          }
-        },
-        templateHTML: `
-        <html>
-          <head>
-            <title>Hardcoded Template Title</title>
-          </head>
-          <body>
-            <header id="heading"></header>
-            <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
-            <div id="account-menu-container"><menu id="account-menu"></menu></div>
-            <nav id="navigation"></nav>
-            <div id="spillage"></div>
-            <iframe id="application-iframe"></iframe>
-            <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
-            <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
-          </body>
-        </html>`
+          },
+          templateHTML: `
+          <html>
+            <head>
+              <title>Hardcoded Template Title</title>
+            </head>
+            <body>
+              <header id="heading"></header>
+              <div id="administrator-menu-container"><menu id="administrator-menu"></menu></div>
+              <div id="account-menu-container"><menu id="account-menu"></menu></div>
+              <nav id="navigation"></nav>
+              <div id="spillage"></div>
+              <iframe id="application-iframe"></iframe>
+              <template id="heading-link"><a href="\${link.href}">\${link.text}</a></template>
+              <template id="menu-link"><a href="\${link.href}">\${link.text}</a></template>
+            </body>
+          </html>`
+        }
       }
       const doc = HTML.parse(`
       <html>

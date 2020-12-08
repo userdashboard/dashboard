@@ -86,7 +86,7 @@ async function redirect (req, res, url) {
   }
   res.setHeader('content-type', mimeTypes.html)
   const packageJSON = req.packageJSON || global.packageJSON
-  const doc = HTML.parse(packageJSON.redirectHTML.split('{url}').join(url))
+  const doc = HTML.parse(packageJSON.dashboard.redirectHTML.split('{url}').join(url))
   if (packageJSON.dashboard.content && packageJSON.dashboard.content.length) {
     for (const contentHandler of packageJSON.dashboard.content) {
       if (contentHandler.page) {
@@ -111,7 +111,7 @@ function throw511 (req, res) {
 
 async function throwError (req, res, code, error) {
   const packageJSON = req.packageJSON || global.packageJSON
-  const doc = HTML.parse(packageJSON.errorHTML)
+  const doc = HTML.parse(packageJSON.dashboard.errorHTML)
   const heading = doc.getElementById('error-title')
   heading.child = [{
     node: 'text',
@@ -172,7 +172,7 @@ function sri (buffer) {
 
 async function wrapTemplateWithSrcDoc (req, res, doc) {
   const packageJSON = req.packageJSON || global.packageJSON
-  const templateDoc = HTML.parse(req.templateHTML || packageJSON.templateHTML)
+  const templateDoc = HTML.parse(req.templateHTML || packageJSON.dashboard.templateHTML)
   if (!templateDoc) {
     throw new Error()
   }

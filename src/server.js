@@ -53,6 +53,7 @@ const parseMultiPartData = util.promisify((req, callback) => {
 
 let server
 const fileCache = {}
+const statCache = {}
 
 module.exports = {
   authenticateRequest,
@@ -305,28 +306,40 @@ async function executeHandlers (req, res, method, handlers) {
 
 async function staticFile (req, res) {
   let filePath = `${global.rootPath}${req.urlPath}`
+  let resolvedPath
   if (!fs.existsSync(filePath)) {
-    filePath = `${global.applicationPath}/node_modules/@userdashboard/dashboard/src/www${req.urlPath}`
-    if (!fs.existsSync(filePath)) {
+    if (req.urlPath === '/public/content-additional.css' || req.urlPath === '/public/template-additional.css') {
+      res.setHeader('content-type', 'text/css')
+      res.statusCode = 200
+      return res.end('')
+    }
+    filePath = `@userdashboard/dashboard/src/www${req.urlPath}`
+    try {
+      resolvedPath = require.resolve(filePath)
+    } catch (error) {
+    }
+    if (!resolvedPath) {
       if (global.packageJSON.dashboard.moduleNames && global.packageJSON.dashboard.moduleNames.length) {
         for (const moduleName of global.packageJSON.dashboard.moduleNames) {
-          filePath = `${global.applicationPath}/node_modules/${moduleName}/src/www${req.urlPath}`
-          if (fs.existsSync(filePath)) {
+          filePath = `${moduleName}/src/www${req.urlPath}`
+          resolvedPath = require.resolve(filePath)
+          if (resolvedPath) {
             break
           }
         }
       }
     }
   }
-  if (fs.existsSync(filePath)) {
-    const stat = fs.statSync(filePath)
+  if (resolvedPath) {
+    const stat = statCache[resolvedPath] || fs.statSync(resolvedPath)
+    statCache[resolvedPath] = stat
     if (stat.isDirectory()) {
       return Response.throw404(req, res)
     }
     if (process.env.HOT_RELOAD) {
       delete (fileCache[filePath])
     }
-    const blob = fileCache[filePath] || fs.readFileSync(filePath)
+    const blob = fileCache[filePath] || fs.readFileSync(resolvedPath)
     fileCache[filePath] = fileCache[filePath] || blob
     const browserCached = req.headers['if-none-match']
     req.eTag = Response.eTag(blob)
@@ -338,11 +351,6 @@ async function staticFile (req, res) {
   }
   if (global.applicationServer) {
     return Proxy.pass(req, res)
-  }
-  if (req.urlPath === '/public/content-additional.css' || req.urlPath === '/public/template-additional.css') {
-    res.setHeader('content-type', 'text/css')
-    res.statusCode = 200
-    return res.end('')
   }
   return Response.throw404(req, res)
 }

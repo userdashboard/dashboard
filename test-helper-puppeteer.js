@@ -18,7 +18,6 @@ module.exports = {
       browser = null
     }
     puppeteer = null
-    global.puppeteer = null
   }
 }
 
@@ -26,9 +25,8 @@ let devices, allDevices
 
 async function fetch (method, req) {
   Log = require('./src/log.js')('dashboard-test-helper-puppeteer')
-  const puppeteerPath = path.join(global.applicationPath, '/node_modules/puppeteer/')
-  puppeteer = global.puppeteer = global.puppeteer || require(puppeteerPath)
-  allDevices = allDevices || require(`${puppeteerPath}/lib/cjs/puppeteer/common/DeviceDescriptors.js`)
+  puppeteer = puppeteer || require('puppeteer')
+  allDevices = allDevices || require('puppeteer/lib/cjs/puppeteer/common/DeviceDescriptors.js')
   devices = devices || [{
     name: 'Desktop',
     userAgent: 'Desktop browser',

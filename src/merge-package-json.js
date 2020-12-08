@@ -1,7 +1,15 @@
 const fs = require('fs')
+const path = require('path')
 let Log
 
-module.exports = mergePackageJSON
+module.exports = {
+  mergePackageJSON,
+  mergeTitle,
+  mergeScriptArray,
+  mergeModuleArray,
+  mergeMenuLinks,
+  mergeSpecialHTML
+}
 
 function mergePackageJSON (applicationJSON, dashboardJSON) {
   Log = Log || require('./log.js')('merge-package-json')
@@ -10,309 +18,179 @@ function mergePackageJSON (applicationJSON, dashboardJSON) {
     dashboardJSON = applicationJSON
     applicationJSON = null
   } else {
-    dashboardJSON = dashboardJSON || loadDashboardJSON(dashboardJSON)
+    dashboardJSON = dashboardJSON || loadModuleFile('@userdashboard/dashboard', 'package.json')
   }
-  const packageJSON = {}
-  packageJSON.version = dashboardJSON.version
-  packageJSON.dashboard = {}
-  packageJSON.dashboard.server = []
-  packageJSON.dashboard.serverFilePaths = []
-  packageJSON.dashboard.content = []
-  packageJSON.dashboard.contentFilePaths = []
-  packageJSON.dashboard.proxy = []
-  packageJSON.dashboard.proxyFilePaths = []
-  packageJSON.dashboard.modules = []
-  packageJSON.dashboard.moduleNames = []
-  packageJSON.dashboard.moduleVersions = []
-  packageJSON.dashboard.menus = {
-    account: [],
-    administrator: []
+  const packageJSON = {
+    version: dashboardJSON.version,
+    dashboard: {
+      server: [],
+      serverFilePaths: [],
+      content: [],
+      contentFilePaths: [],
+      prozxy: [],
+      proxyFilePaths: [],
+      modules: [],
+      moduleNames: [],
+      moduleVersions: [],
+      menus: {
+        account: [],
+        administrator: []
+      }
+    }
+  }
+  mergeTitle(packageJSON, dashboardJSON, applicationJSON)
+  if (dashboardJSON && dashboardJSON.dashboard) {
+    mergeScriptArray(packageJSON, dashboardJSON, 'content')
+    mergeScriptArray(packageJSON, dashboardJSON, 'server')
+    mergeScriptArray(packageJSON, dashboardJSON, 'proxy')
+    mergeModuleArray(packageJSON, dashboardJSON)
   }
   if (applicationJSON && applicationJSON.dashboard) {
-    packageJSON.dashboard.title = applicationJSON.dashboard.title
+    mergeScriptArray(packageJSON, applicationJSON, 'content')
+    mergeScriptArray(packageJSON, applicationJSON, 'server')
+    mergeScriptArray(packageJSON, applicationJSON, 'proxy')
+    mergeModuleArray(packageJSON, applicationJSON)
   }
-  packageJSON.dashboard.title = packageJSON.dashboard.title || 'Dashboard'
-  for (const i in dashboardJSON.dashboard.server) {
-    const relativePath = dashboardJSON.dashboard.server[i]
-    const filePath = `${global.applicationPath}/${relativePath}`
-    packageJSON.dashboard.server[i] = relativePath
-    packageJSON.dashboard.serverFilePaths[i] = filePath
+  mergeSpecialHTML(packageJSON, '@userdashboard/dashboard')
+  mergeSpecialHTML(packageJSON)
+  mergeMenuLinks(packageJSON)
+  for (const moduleName of packageJSON.dashboard.modules) {
+    mergeMenuLinks(packageJSON, moduleName)
   }
-  for (const i in dashboardJSON.dashboard.content) {
-    const relativePath = dashboardJSON.dashboard.content[i]
-    const filePath = `${global.applicationPath}/${relativePath}`
-    packageJSON.dashboard.content[i] = relativePath
-    packageJSON.dashboard.contentFilePaths[i] = filePath
-  }
-  for (const i in dashboardJSON.dashboard.proxy) {
-    const relativePath = dashboardJSON.dashboard.proxy[i]
-    const filePath = `${global.applicationPath}/${relativePath}`
-    packageJSON.dashboard.proxy[i] = relativePath
-    packageJSON.dashboard.proxyFilePaths[i] = filePath
-  }
-  for (const i in dashboardJSON.dashboard.modules) {
-    const moduleName = packageJSON.dashboard.modules[i]
-    if (moduleName === '@userdashboard/dashboard') {
-      continue
-    }
-    if (packageJSON.dashboard.modules.indexOf(moduleName) > -1) {
-      continue
-    }
-    packageJSON.dashboard.modules.push(moduleName)
-  }
-  if (applicationJSON && applicationJSON.dashboard) {
-    if (applicationJSON.dashboard.modules && applicationJSON.dashboard.modules.length) {
-      for (const i in applicationJSON.dashboard.modules) {
-        const moduleName = applicationJSON.dashboard.modules[i]
-        if (moduleName === '@userdashboard/dashboard') {
-          continue
-        }
-        if (applicationJSON && moduleName === applicationJSON.name) {
-          continue
-        }
-        if (packageJSON.dashboard.modules.indexOf(moduleName) > -1) {
-          continue
-        }
-        const moduleJSON = loadModuleJSON(moduleName)
-        if (!moduleJSON) {
-          throw new Error('invalid-module')
-        }
-        packageJSON.dashboard.modules.push(moduleName)
-        mergeModuleJSON(packageJSON, moduleJSON)
-      }
-    }
-    if (applicationJSON.dashboard.server && applicationJSON.dashboard.server.length) {
-      for (const i in applicationJSON.dashboard.server) {
-        const relativePath = applicationJSON.dashboard.server[i]
-        const filePath = `${global.applicationPath}${relativePath}`
-        packageJSON.dashboard.server.push(relativePath)
-        packageJSON.dashboard.serverFilePaths.push(filePath)
-      }
-    }
-    if (applicationJSON.dashboard.content && applicationJSON.dashboard.content.length) {
-      for (const i in applicationJSON.dashboard.content) {
-        const relativePath = applicationJSON.dashboard.content[i]
-        const filePath = `${global.applicationPath}${relativePath}`
-        packageJSON.dashboard.content.push(relativePath)
-        packageJSON.dashboard.contentFilePaths.push(filePath)
-      }
-    }
-    if (applicationJSON.dashboard.proxy && applicationJSON.dashboard.proxy.length) {
-      for (const i in applicationJSON.dashboard.proxy) {
-        const relativePath = applicationJSON.dashboard.proxy[i]
-        const filePath = `${global.applicationPath}${relativePath}`
-        packageJSON.dashboard.proxy.push(relativePath)
-        packageJSON.dashboard.proxyFilePaths.push(filePath)
-      }
-    }
-  }
-  for (const i in packageJSON.dashboard.modules) {
-    const moduleName = packageJSON.dashboard.modules[i]
-    const moduleJSON = loadModuleJSON(moduleName)
-    if (!moduleJSON) {
-      throw new Error('invalid-module')
-    }
-    const moduleFilePath = `${global.applicationPath}/node_modules/${moduleName}`
-    if (!fs.existsSync(moduleFilePath)) {
-      continue
-    }
-    packageJSON.dashboard.modules[i] = require(moduleFilePath)
-    packageJSON.dashboard.moduleNames[i] = moduleName
-    packageJSON.dashboard.moduleVersions[i] = moduleJSON.version
-  }
-  for (const i in packageJSON.dashboard.serverFilePaths) {
-    const filePath = packageJSON.dashboard.serverFilePaths[i]
-    if (fs.existsSync(filePath)) {
-      packageJSON.dashboard.server[i] = require(filePath)
-    }
-    const moduleName = trimModuleName(filePath)
-    if (moduleName) {
-      packageJSON.dashboard.serverFilePaths[i] = filePath
-    }
-  }
-  for (const i in packageJSON.dashboard.contentFilePaths) {
-    const filePath = packageJSON.dashboard.contentFilePaths[i]
-    if (fs.existsSync(filePath)) {
-      packageJSON.dashboard.content[i] = require(filePath)
-    }
-    const moduleName = trimModuleName(filePath)
-    packageJSON.dashboard.contentFilePaths[i] = moduleName + trimPath(filePath)
-  }
-  for (const i in packageJSON.dashboard.proxyFilePaths) {
-    const filePath = packageJSON.dashboard.proxyFilePaths[i]
-    if (fs.existsSync(filePath)) {
-      packageJSON.dashboard.proxy[i] = require(filePath)
-    }
-    const moduleName = trimModuleName(filePath)
-    packageJSON.dashboard.proxyFilePaths[i] = moduleName + trimPath(filePath)
-  }
-  const firstJSON = (applicationJSON || packageJSON)
-  const applicationJSONErrorHTMLPath = firstJSON.dashboard && firstJSON.dashboard['error.html'] ? `${global.applicationPath}${firstJSON.dashboard['error.html']}` : null
-  const applicationJSONRedirectHTMLPath = firstJSON.dashboard && firstJSON.dashboard['redirect.html'] ? `${global.applicationPath}${firstJSON.dashboard['redirect.html']}` : null
-  const applicationJSONTemplateHTMLPath = firstJSON.dashboard && firstJSON.dashboard['template.html'] ? `${global.applicationPath}${firstJSON.dashboard['template.html']}` : null
-  const applicationErrorHTMLPath = `${global.applicationPath}/src/error.html`
-  const applicationRedirectHTMLPath = `${global.applicationPath}/src/redirect.html`
-  const applicationTemplateHTMLPath = `${global.applicationPath}/src/template.html`
-  const dashboardErrorHTMLPath = `${global.applicationPath}/node_modules/@userdashboard/dashboard/src/error.html`
-  const dashboardRedirectHTMLPath = `${global.applicationPath}/node_modules/@userdashboard/dashboard/src/redirect.html`
-  const dashboardTemplateHTMLPath = `${global.applicationPath}/node_modules/@userdashboard/dashboard/src/template.html`
-  if (applicationJSONErrorHTMLPath && fs.existsSync(applicationJSONErrorHTMLPath)) {
-    packageJSON.errorHTMLPath = applicationJSONErrorHTMLPath
-  } else {
-    packageJSON.errorHTMLPath = fs.existsSync(applicationErrorHTMLPath) ? applicationErrorHTMLPath : dashboardErrorHTMLPath
-  }
-  if (applicationJSONRedirectHTMLPath && fs.existsSync(applicationJSONRedirectHTMLPath)) {
-    packageJSON.redirectHTMLPath = applicationJSONRedirectHTMLPath
-  } else {
-    packageJSON.redirectHTMLPath = fs.existsSync(applicationRedirectHTMLPath) ? applicationRedirectHTMLPath : dashboardRedirectHTMLPath
-  }
-  if (applicationJSONTemplateHTMLPath && fs.existsSync(applicationJSONTemplateHTMLPath)) {
-    packageJSON.templateHTMLPath = applicationJSONTemplateHTMLPath
-  } else {
-    packageJSON.templateHTMLPath = fs.existsSync(applicationTemplateHTMLPath) ? applicationTemplateHTMLPath : dashboardTemplateHTMLPath
-  }
-  packageJSON.errorHTML = fs.readFileSync(packageJSON.errorHTMLPath).toString()
-  packageJSON.redirectHTML = fs.readFileSync(packageJSON.redirectHTMLPath).toString()
-  packageJSON.templateHTML = fs.readFileSync(packageJSON.templateHTMLPath).toString()
-  const rootAccountMenuHTMLPath = `${global.applicationPath}/src/menu-account.html`
-  if (fs.existsSync(rootAccountMenuHTMLPath)) {
-    packageJSON.dashboard.menus.account.push(fs.readFileSync(rootAccountMenuHTMLPath).toString())
-  }
-  const rootAdministratorMenuHTMLPath = `${global.applicationPath}/src/menu-administrator.html`
-  if (fs.existsSync(rootAdministratorMenuHTMLPath)) {
-    packageJSON.dashboard.menus.administrator.push(fs.readFileSync(rootAdministratorMenuHTMLPath).toString())
-  }
-  if (applicationJSON && applicationJSON.dashboard && applicationJSON.dashboard.modules && applicationJSON.dashboard.modules.length) {
-    for (const module of applicationJSON.dashboard.modules) {
-      const moduleAccountMenuHTMLPath = `${global.applicationPath}/node_modules/${module}/src/menu-account.html`
-      if (fs.existsSync(moduleAccountMenuHTMLPath)) {
-        packageJSON.dashboard.menus.account.push(fs.readFileSync(moduleAccountMenuHTMLPath).toString())
-      }
-      const moduleAdministratorMenuHTMLPath = `${global.applicationPath}/node_modules/${module}/src/menu-administrator.html`
-      if (fs.existsSync(moduleAdministratorMenuHTMLPath)) {
-        packageJSON.dashboard.menus.administrator.push(fs.readFileSync(moduleAdministratorMenuHTMLPath).toString())
-      }
-    }
-  }
-  for (const module of packageJSON.dashboard.modules) {
-    const moduleAccountMenuHTMLPath = `${global.applicationPath}/node_modules/${module}/src/menu-account.html`
-    if (fs.existsSync(moduleAccountMenuHTMLPath)) {
-      packageJSON.dashboard.menus.account.push(fs.readFileSync(moduleAccountMenuHTMLPath).toString())
-    }
-    const moduleAdministratorMenuHTMLPath = `${global.applicationPath}/node_modules/${module}/src/menu-administrator.html`
-    if (fs.existsSync(moduleAdministratorMenuHTMLPath)) {
-      packageJSON.dashboard.menus.administrator.push(fs.readFileSync(moduleAdministratorMenuHTMLPath).toString())
-    }
-  }
-  const dashboardAccountMenuHTMLPath = `${global.applicationPath}/node_modules/@userdashboard/dashboard/src/menu-account.html`
-  if (fs.existsSync(dashboardAccountMenuHTMLPath)) {
-    packageJSON.dashboard.menus.account.push(fs.readFileSync(dashboardAccountMenuHTMLPath).toString())
-  }
-  const dashboardAdministratorMenuHTMLPath = `${global.applicationPath}/node_modules/@userdashboard/dashboard/src/menu-administrator.html`
-  if (fs.existsSync(dashboardAdministratorMenuHTMLPath)) {
-    packageJSON.dashboard.menus.administrator.push(fs.readFileSync(dashboardAdministratorMenuHTMLPath).toString())
-  }
+  mergeMenuLinks(packageJSON, '@userdashboard/dashboard')
   return packageJSON
 }
 
-function mergeModuleJSON (baseJSON, moduleJSON) {
-  if (moduleJSON.dashboard.server && moduleJSON.dashboard.server.length) {
-    for (const i in moduleJSON.dashboard.server) {
-      const relativePath = moduleJSON.dashboard.server[i]
-      if (baseJSON.dashboard.server.indexOf(relativePath) > -1) {
-        continue
+function mergeTitle (packageJSON, dashboardJSON, applicationJSON) {
+  if (applicationJSON && applicationJSON.dashboard) {
+    packageJSON.dashboard.title = applicationJSON.dashboard.title
+  }
+  if (dashboardJSON && dashboardJSON.dashboard) {
+    packageJSON.dashboard.title = packageJSON.dashboard.title || dashboardJSON.dashboard.title
+  }
+}
+
+function mergeSpecialHTML (baseJSON, moduleName) {
+  const files = ['error.html', 'redirect.html', 'template.html']
+  if (!moduleName) {
+    for (const file of files) {
+      const rootFilePath = `${global.applicationPath}/src/${file}`
+      if (fs.existsSync(rootFilePath)) {
+        const key = file.replace('.html', 'HTML')
+        baseJSON.dashboard[`${key}Path`] = rootFilePath
+        baseJSON.dashboard[key] = fs.readFileSync(rootFilePath).toString()
       }
-      let filePath
-      if (relativePath.indexOf('node_modules/') > -1) {
-        filePath = `${global.applicationPath}${relativePath}`
-      } else {
-        filePath = `${global.applicationPath}/node_modules/${moduleJSON.name}${relativePath}`
-      }
-      baseJSON.dashboard.server.push(relativePath)
-      baseJSON.dashboard.serverFilePaths.push(filePath)
+    }
+    return
+  }
+  for (const file of files) {
+    const filePath = require.resolve(`${moduleName}/src/${file}`)
+    if (filePath) {
+      const key = file.replace('.html', 'HTML')
+      baseJSON.dashboard[`${key}Path`] = filePath
+      baseJSON.dashboard[key] = fs.readFileSync(filePath).toString()
     }
   }
-  if (moduleJSON.dashboard.content && moduleJSON.dashboard.content.length) {
-    for (const i in moduleJSON.dashboard.content) {
-      const relativePath = moduleJSON.dashboard.content[i]
-      if (baseJSON.dashboard.content.indexOf(relativePath) > -1) {
-        continue
-      }
-      const filePath = `${global.applicationPath}/node_modules/${moduleJSON.name}/${relativePath}`
-      baseJSON.dashboard.content.push(relativePath)
-      baseJSON.dashboard.contentFilePaths.push(filePath)
+}
+
+function mergeMenuLinks (baseJSON, moduleName) {
+  if (!moduleName) {
+    const rootAccountMenuHTMLPath = `${global.applicationPath}/src/menu-account.html`
+    if (fs.existsSync(rootAccountMenuHTMLPath)) {
+      baseJSON.dashboard.menus.account.push(fs.readFileSync(rootAccountMenuHTMLPath).toString())
     }
-  }
-  if (moduleJSON.dashboard.proxy && moduleJSON.dashboard.proxy.length) {
-    for (const i in moduleJSON.dashboard.proxy) {
-      const relativePath = moduleJSON.dashboard.proxy[i]
-      if (baseJSON.dashboard.proxy.indexOf(relativePath) > -1) {
-        continue
-      }
-      const filePath = `${global.applicationPath}/node_modules/${moduleJSON.name}/${relativePath}`
-      baseJSON.dashboard.proxy.push(relativePath)
-      baseJSON.dashboard.proxyFilePaths.push(filePath)
+    const rootAdministratorMenuHTMLPath = `${global.applicationPath}/src/menu-administrator.html`
+    if (fs.existsSync(rootAdministratorMenuHTMLPath)) {
+      baseJSON.dashboard.menus.administrator.push(fs.readFileSync(rootAdministratorMenuHTMLPath).toString())
     }
+    return
   }
-  if (moduleJSON.dashboard.modules) {
-    for (const i in moduleJSON.dashboard.modules) {
-      const moduleName = moduleJSON.dashboard.modules[i]
-      if (moduleName === '@userdashboard/dashboard') {
-        continue
-      }
-      if (baseJSON.dashboard.modules.indexOf(moduleName) > -1) {
-        continue
-      }
-      const moduleFilePath = `${global.applicationPath}/node_modules/${moduleName}`
-      if (!fs.existsSync(moduleFilePath) && (!global.testModuleJSON || !global.testModuleJSON[moduleName])) {
-        continue
-      }
-      baseJSON.dashboard.modules.push(moduleName)
-      const nestedModuleJSON = loadModuleJSON(moduleName)
-      if (!nestedModuleJSON && (!global.testModuleJSON || !global.testModuleJSON[moduleName])) {
-        throw new Error('invalid-module')
-      }
-      mergeModuleJSON(baseJSON, nestedModuleJSON, true)
+  const moduleAccountMenuHTMLPath = require.resolve(`${moduleName}/src/menu-account.html`)
+  if (moduleAccountMenuHTMLPath) {
+    baseJSON.dashboard.menus.account.push(fs.readFileSync(moduleAccountMenuHTMLPath).toString())
+  }
+  const moduleAdministratorMenuHTMLPath = require.resolve(`${moduleName}/src/menu-administrator.html`)
+  if (moduleAdministratorMenuHTMLPath) {
+    baseJSON.dashboard.menus.administrator.push(fs.readFileSync(moduleAdministratorMenuHTMLPath).toString())
+  }
+}
+
+function mergeScriptArray (baseJSON, otherJSON, scriptType) {
+  if (!otherJSON.dashboard[scriptType] || !otherJSON.dashboard[scriptType].length) {
+    return baseJSON
+  }
+  for (const i in otherJSON.dashboard[scriptType]) {
+    const relativePath = otherJSON.dashboard[scriptType][i]
+    if (baseJSON.dashboard[scriptType].indexOf(relativePath) > -1) {
+      continue
     }
+    if (process.env.NODE_ENV === 'testing') {
+      baseJSON.dashboard[scriptType].push(relativePath)
+      baseJSON.dashboard[`${scriptType}FilePaths`].push(relativePath)
+      continue
+    }
+    const filePath = require.resolve(`${otherJSON.name}${relativePath}`)
+    baseJSON.dashboard[scriptType].push(require(relativePath))
+    baseJSON.dashboard[`${scriptType}FilePaths`].push(filePath)
   }
-  return baseJSON
+}
+
+function mergeModuleArray (baseJSON, otherJSON) {
+  if (!otherJSON.dashboard.modules || !otherJSON.dashboard.modules.length) {
+    return
+  }
+  for (const i in otherJSON.dashboard.modules) {
+    const moduleName = otherJSON.dashboard.modules[i]
+    if (moduleName === '@userdashboard/dashboard') {
+      continue
+    }
+    if (otherJSON && moduleName === otherJSON.name) {
+      continue
+    }
+    if (baseJSON.dashboard.modules.indexOf(moduleName) > -1) {
+      continue
+    }
+    const moduleJSON = loadModuleFile(moduleName, 'package.json')
+    if (!moduleJSON) {
+      throw new Error('invalid-module')
+    }
+    baseJSON.dashboard.modules.push(moduleName)
+    baseJSON.dashboard.modules.push(loadModule(moduleName))
+    baseJSON.dashboard.moduleNames.push(trimModuleName(moduleName))
+    baseJSON.dashboard.moduleVersions.push(moduleJSON.version)
+    mergeScriptArray(baseJSON, moduleJSON, 'content')
+    mergeScriptArray(baseJSON, moduleJSON, 'server')
+    mergeScriptArray(baseJSON, moduleJSON, 'proxy')
+    mergeSpecialHTML(baseJSON, moduleName)
+    mergeModuleArray(baseJSON, moduleJSON)
+  }
 }
 
 function loadApplicationJSON () {
-  const filePath = `${global.applicationPath}/package.json`
+  const filePath = path.join(global.applicationPath, 'package.json')
   if (fs.existsSync(filePath)) {
     return JSON.parse(fs.readFileSync(filePath))
   }
   return null
 }
 
-function loadDashboardJSON () {
-  const filePath = `${global.applicationPath}/node_modules/@userdashboard/dashboard/package.json`
-  if (fs.existsSync(filePath)) {
-    return JSON.parse(fs.readFileSync(filePath))
-  }
-  return null
-}
-
-function loadModuleJSON (moduleName) {
+function loadModule (moduleName) {
   if (global.testModuleJSON && global.testModuleJSON[moduleName]) {
     return global.testModuleJSON[moduleName]
   }
-  const filePath = `${global.applicationPath}/node_modules/${moduleName}/package.json`
-  if (fs.existsSync(filePath)) {
-    return JSON.parse(fs.readFileSync(filePath))
-  }
-  return null
+  return require(moduleName)
 }
 
-function trimPath (str) {
-  if (!str) {
-    return ''
+function loadModuleFile (moduleName, file) {
+  if (global.testModuleJSON && global.testModuleJSON[moduleName]) {
+    global.testModuleJSON[moduleName].files = global.testModuleJSON[moduleName].files || {}
+    return global.testModuleJSON[moduleName].files[file]
   }
-  if (str.indexOf('/src/') === 0) {
-    return str
+  if (file.endsWith('.js') || file.endsWith('.json')) {
+    return require(`${moduleName}/${file}`)
+  } else {
+    return fs.readFileSync(require.resolve(`${moduleName}/${file}`))
   }
-  return '/src/' + str.split('/src/')[1]
 }
 
 function trimModuleName (str) {
