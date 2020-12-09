@@ -75,10 +75,16 @@ function parse (fileOrHTML, dataObject, dataObjectName) {
       navbar = navbar.substring(0, navbar.indexOf('"'))
       let navbarPath = path.join(global.rootPath, navbar)
       if (!fs.existsSync(navbarPath)) {
-        navbarPath = require.resolve(`@userdashboard/dashboard/src/www${navbar}`)
+        try {
+          navbarPath = require.resolve(`@userdashboard/dashboard/src/www${navbar}`)
+        } catch (error) {
+        }
         if (!navbarPath) {
           for (const moduleName of global.packageJSON.dashboard.moduleNames) {
-            navbarPath = require.resolve(`${moduleName}/src/www${navbar}`)
+            try {
+              navbarPath = require.resolve(`${moduleName}/src/www${navbar}`)
+            } catch (error) {
+            }
             if (navbarPath) {
               break
             }
