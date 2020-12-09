@@ -50,7 +50,7 @@ function parse (fileOrHTML, dataObject, dataObjectName) {
   }
   let raw
   if (fileOrHTML.indexOf('/') === 0) {
-    const filePath = path.join(global.rootPath, fileOrHTML)
+    const filePath = path.join(global.applicationPath, 'src/www', fileOrHTML)
     if (fs.existsSync(filePath)) {
       raw = fs.readFileSync(filePath).toString()
     }
@@ -73,7 +73,7 @@ function parse (fileOrHTML, dataObject, dataObjectName) {
     if (htmlTag.indexOf(' data-navbar="') > -1) {
       let navbar = htmlTag.split(' data-navbar="')[1]
       navbar = navbar.substring(0, navbar.indexOf('"'))
-      let navbarPath = path.join(global.rootPath, navbar)
+      let navbarPath = path.join(global.applicationPath, 'src/www', navbar)
       if (!fs.existsSync(navbarPath)) {
         try {
           navbarPath = require.resolve(`@userdashboard/dashboard/src/www${navbar}`)

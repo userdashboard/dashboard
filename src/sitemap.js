@@ -16,14 +16,14 @@ function generate () {
   }
   if (dashboardModulePath) {
     const dashboardWWWPath = dashboardModulePath.substring(0, dashboardModulePath.indexOf('@userdashboard/dashboard') + '@userdashboard/dashboard'.length)
-    attachRoutes(routes, `${dashboardWWWPath}/src/www`)
+    attachRoutes(routes, path.join(dashboardWWWPath, 'src/www'))
   }
   for (const moduleName of global.packageJSON.dashboard.moduleNames) {
     const modulePath = require.resolve(moduleName)
     const moduleWWWPath = modulePath.substring(0, modulePath.indexOf(moduleName) + moduleName.length)
-    attachRoutes(routes, `${moduleWWWPath}/src/www`)
+    attachRoutes(routes, path.join(moduleWWWPath, 'src/www'))
   }
-  attachRoutes(routes, global.rootPath)
+  attachRoutes(routes, path.join(global.applicationPath, 'src/www'))
   if (process.env.APPLICATION_SERVER) {
     const rootIndexPageExists = fs.existsSync(`${global.applicationPath}/src/www/index.html`)
     if (!rootIndexPageExists) {
@@ -73,7 +73,7 @@ function attachRoutes (routes, folderPath) {
     const html = htmlFileExists ? fs.readFileSync(htmlFilePath).toString() : null
     const extension = apiOnly ? '.js' : '.html'
     const index = `index${extension}`
-    let folderStem = folderPath.substring(global.rootPath.length)
+    let folderStem = folderPath.substring(global.applicationPath.length)
     if (folderStem.indexOf('src/www') > -1) {
       folderStem = folderStem.substring(folderStem.indexOf('src/www') + 'src/www'.length)
     }

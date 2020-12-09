@@ -102,7 +102,6 @@ const dashboard = module.exports = {
   UUID: require('./src/uuid.js'),
   start: async (applicationPath) => {
     global.applicationPath = global.applicationPath || applicationPath
-    global.rootPath = `${applicationPath}/src/www`
     global.packageJSON = mergePackageJSON.mergePackageJSON()
     global.sitemap = Sitemap.generate()
     global.api = API.createFromSitemap()

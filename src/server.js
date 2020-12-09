@@ -1,6 +1,7 @@
 const fs = require('fs')
 const http = require('http')
 const Multiparty = require('multiparty')
+const path = require('path')
 const querystring = require('querystring')
 const Response = require('./response.js')
 const util = require('util')
@@ -305,7 +306,7 @@ async function executeHandlers (req, res, method, handlers) {
 }
 
 async function staticFile (req, res) {
-  let filePath = `${global.rootPath}${req.urlPath}`
+  let filePath = path.join(global.applicationPath, 'src/www', req.urlPath)
   let resolvedPath
   if (!fs.existsSync(filePath)) {
     if (req.urlPath === '/public/content-additional.css' || req.urlPath === '/public/template-additional.css') {
