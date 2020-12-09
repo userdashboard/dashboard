@@ -154,22 +154,12 @@
       ✓ should override global page size
 
   internal-api/merge-package-json
-    MergePackageJSON#loadRootJSON
-      Merged content handler order
-        ✓ should put application content handler last
-        ✓ should put dashboard content handlers first
-        ✓ should put module content handlers between dashboard and application
-        ✓ should include nested modules
-      Merged proxy handler order
-        ✓ should put application proxy handlers last
-        ✓ should put dashboard proxy handlers first
-        ✓ should put module proxy handlers between dashboard and application
-        ✓ should include nested modules
-      Merged proxy handler order
-        ✓ should put application proxy handlers last
-        ✓ should put dashboard proxy handlers first
-        ✓ should put module proxy handlers between dashboard and application
-        ✓ should include nested modules
+    mergeTitle
+      ✓ should prioritize application title
+      ✓ should default to Dashboard title
+    mergeScriptArray
+      ✓ should add scripts
+      ✓ should put application scripts last
 
   internal-api/proxy
     Proxy#pass
@@ -1569,5 +1559,5 @@
       ✓ override req.userProfileFields
 
 
-  875 passing (28m)
+  867 passing (27m)
 
