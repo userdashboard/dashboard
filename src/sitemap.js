@@ -15,12 +15,13 @@ function generate () {
   } catch (error) {
   }
   if (dashboardModulePath) {
-    const dashboardWWWPath = path.join(dashboardModulePath.substring(0, dashboardModulePath.lastIndexOf('/')), '/src/www')
-    attachRoutes(routes, dashboardWWWPath)
+    const dashboardWWWPath = dashboardModulePath.substring(0, dashboardModulePath.indexOf('@userdashboard/dashboard') + '@userdashboard/dashboard'.length)
+    attachRoutes(routes, `${dashboardWWWPath}/src/www`)
   }
   for (const moduleName of global.packageJSON.dashboard.moduleNames) {
     const modulePath = require.resolve(moduleName)
-    attachRoutes(routes, `${modulePath}/src/www`)
+    const moduleWWWPath = modulePath.substring(0, modulePath.indexOf(moduleName) + moduleName.length)
+    attachRoutes(routes, `${moduleWWWPath}/src/www`)
   }
   attachRoutes(routes, global.rootPath)
   if (process.env.APPLICATION_SERVER) {
@@ -58,10 +59,7 @@ function attachRoutes (routes, folderPath) {
       }
       continue
     }
-    let htmlFilePath = filePath.substring(0, filePath.lastIndexOf('.')) + '.html'
-    if (process.env.DASHBOARD_LANGUAGE) {
-      htmlFilePath = htmlFilePath.split('/src/www').join('/language')
-    }
+    const htmlFilePath = filePath.substring(0, filePath.lastIndexOf('.')) + '.html'
     const htmlFileExists = fs.existsSync(htmlFilePath)
     const jsFilePath = filePath.substring(0, filePath.lastIndexOf('.')) + '.js'
     const jsFileExists = fs.existsSync(jsFilePath)
@@ -134,16 +132,11 @@ function attachRoutes (routes, folderPath) {
 }
 
 function readHTMLAttributes (html) {
-  const doc = HTML.parse(html)
-  const htmlTag = doc.getElementsByTagName('html')[0]
-  let template = true
-  let auth = true
-  let navbar = ''
-  if (htmlTag && htmlTag.attr) {
-    template = htmlTag.attr['data-template'] !== 'false' && htmlTag.attr['data-template'] !== false
-    auth = htmlTag.attr['data-auth'] !== 'false' && htmlTag.attr['data-auth'] !== false
-    navbar = htmlTag.attr.navbar || ''
-  }
+  let htmlTag = html.substring(html.indexOf('<html'))
+  htmlTag = htmlTag.substring(0, htmlTag.indexOf('>')).toLowerCase()
+  const template = htmlTag.indexOf('data-template="false"') === -1 && htmlTag.indexOf("data-template='false'") === -1
+  const auth = htmlTag.indexOf('data-auth="false"') === -1 && htmlTag.indexOf("data-auth='false'") === -1
+  const navbar = htmlTag.indexOf('data-navbar=') > -1
   return { template, auth, navbar }
 }
 
