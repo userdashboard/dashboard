@@ -168,7 +168,7 @@ function mergeModuleArray (baseJSON, otherJSON) {
     }
     baseJSON.dashboard.modules.push(moduleName)
     baseJSON.dashboard.modules.push(loadModule(moduleName))
-    baseJSON.dashboard.moduleNames.push(trimModuleName(moduleName))
+    baseJSON.dashboard.moduleNames.push(moduleName)
     baseJSON.dashboard.moduleVersions.push(moduleJSON.version)
     mergeScriptArray(baseJSON, moduleJSON, 'content')
     mergeScriptArray(baseJSON, moduleJSON, 'server')
@@ -203,17 +203,4 @@ function loadModuleFile (moduleName, file) {
   } else {
     return fs.readFileSync(require.resolve(`${moduleName}/${file}`))
   }
-}
-
-function trimModuleName (str) {
-  if (str.indexOf('node_modules/') === -1) {
-    return ''
-  }
-  const shortPath = str.split('node_modules/').pop()
-  const slashIndex = shortPath.indexOf('/')
-  if (shortPath.indexOf('@') !== 0) {
-    return shortPath.substring(0, slashIndex)
-  }
-  const parts = shortPath.split('/')
-  return parts[0] + '/' + parts[1]
 }
