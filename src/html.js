@@ -75,6 +75,7 @@ function parse (fileOrHTML, dataObject, dataObjectName) {
       navbar = navbar.substring(0, navbar.indexOf('"'))
       let navbarPath = path.join(global.applicationPath, 'src/www', navbar)
       if (!fs.existsSync(navbarPath)) {
+        navbarPath = ''
         try {
           navbarPath = require.resolve(`@userdashboard/dashboard/src/www${navbar}`)
         } catch (error) {
