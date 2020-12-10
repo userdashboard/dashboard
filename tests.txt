@@ -1,148 +1,5 @@
 
 
-route /account/change-password
-route /account/change-password
-route /account/change-username
-route /account/change-username
-route /account/create-profile
-route /account/create-profile
-route /account/create-reset-code
-route /account/create-reset-code
-route /account/delete-account-complete
-route /account/delete-account-complete
-route /account/delete-account
-route /account/delete-account
-route /account/delete-profile
-route /account/delete-profile
-route /account/delete-reset-code
-route /account/delete-reset-code
-route /account/edit-profile
-route /account/edit-profile
-route /account/end-all-sessions
-route /account/end-all-sessions
-route /account/end-session
-route /account/end-session
-route /account
-route /account
-route /account/profile
-route /account/profile
-route /account/profiles
-route /account/profiles
-route /account/register
-route /account/register
-route /account/reset-account
-route /account/reset-account
-route /account/reset-code
-route /account/reset-code
-route /account/reset-codes
-route /account/reset-codes
-route /account/restore-account
-route /account/restore-account
-route /account/session
-route /account/session
-route /account/sessions
-route /account/sessions
-route /account/set-default-profile
-route /account/set-default-profile
-route /account/signin
-route /account/signin
-route /account/signout-complete
-route /account/signout
-route /account/signout
-route /account/verify
-route /account/verify
-route /administrator/account-profiles
-route /administrator/account-profiles
-route /administrator/account-reset-codes
-route /administrator/account-reset-codes
-route /administrator/account-sessions
-route /administrator/account-sessions
-route /administrator/account
-route /administrator/account
-route /administrator/accounts
-route /administrator/accounts
-route /administrator/administrators
-route /administrator/administrators
-route /administrator/assign-administrator
-route /administrator/assign-administrator
-route /administrator/create-reset-code
-route /administrator/create-reset-code
-route /administrator/delete-account
-route /administrator/delete-account
-route /administrator/delete-schedule
-route /administrator/delete-schedule
-route /administrator
-route /administrator/profile
-route /administrator/profile
-route /administrator/profiles
-route /administrator/profiles
-route /administrator/reset-code
-route /administrator/reset-code
-route /administrator/reset-codes
-route /administrator/reset-codes
-route /administrator/reset-session-key
-route /administrator/reset-session-key
-route /administrator/revoke-administrator
-route /administrator/revoke-administrator
-route /administrator/schedule-account-delete
-route /administrator/schedule-account-delete
-route /administrator/session
-route /administrator/session
-route /administrator/sessions
-route /administrator/sessions
-route /administrator/transfer-ownership
-route /administrator/transfer-ownership
-route /api/administrator/account
-route /api/administrator/accounts-count
-route /api/administrator/accounts
-route /api/administrator/administrator-accounts-count
-route /api/administrator/administrator-accounts
-route /api/administrator/create-reset-code
-route /api/administrator/delete-account
-route /api/administrator/deleted-accounts-count
-route /api/administrator/deleted-accounts
-route /api/administrator/profile
-route /api/administrator/profiles-count
-route /api/administrator/profiles
-route /api/administrator/reset-account-administrator
-route /api/administrator/reset-code
-route /api/administrator/reset-codes-count
-route /api/administrator/reset-codes
-route /api/administrator/reset-session-key
-route /api/administrator/session
-route /api/administrator/sessions-count
-route /api/administrator/sessions
-route /api/administrator/set-account-administrator
-route /api/administrator/set-account-deleted
-route /api/administrator/set-owner-account
-route /api/user/account
-route /api/user/create-account
-route /api/user/create-profile
-route /api/user/create-reset-code
-route /api/user/create-session
-route /api/user/delete-profile
-route /api/user/delete-reset-code
-route /api/user/profile
-route /api/user/profiles-count
-route /api/user/profiles
-route /api/user/reset-account-deleted
-route /api/user/reset-account-password
-route /api/user/reset-code
-route /api/user/reset-codes-count
-route /api/user/reset-codes
-route /api/user/reset-session-key
-route /api/user/session
-route /api/user/sessions-count
-route /api/user/sessions
-route /api/user/set-account-deleted
-route /api/user/set-account-password
-route /api/user/set-account-profile
-route /api/user/set-account-username
-route /api/user/set-session-ended
-route /api/user/set-session-verified
-route /api/user/update-profile
-route /home
-route /
   index
     PAGE_SIZE
       Rows of data per page
@@ -374,8 +231,23 @@ route /
       ✓ should execute each server handler
 
   internal-api/sitemap
-    Sitemap#authenticateRequest
-      ✓ should substitute language HTML file
+    Sitemap#readHTMLAttributes
+      ✓ should detect attributes
+    Sitemap#loadRoute
+{
+  auth: false,
+  api: { get: [AsyncFunction: get] },
+  jsFileExists: true,
+  jsFilePathFull: '/tmp/project/node_modules/@userdashboard/dashboard/src/www/api/user/account.js',
+  jsFilePath: '/node_modules/@userdashboard/dashboard/src/www/api/user/account.js'
+}
+      ✓ should load API route
+      ✓ should load HTML route
+      ✓ should load static HTML route
+    Sitemap#scanFiles
+      ✓ should read files recursively
+      ✓ should exclude navbar files
+      ✓ should exclude test files
 
   internal-api/storage-cache
     get
@@ -1702,5 +1574,5 @@ route /
       ✓ override req.userProfileFields
 
 
-  867 passing (27m)
+  873 passing (27m)
 
