@@ -1,4 +1,4 @@
-@userdashboard/dashboard 1.0.368
+@userdashboard/dashboard 1.0.369
 http://localhost:8000
 
 Administrator menu:
@@ -8,12 +8,11 @@ Account menu:
 /account "My account"
 
 Special HTML files:
-/src/template.html
-/src/error.html
-/src/redirect.html
+/template.html
+/error.html
+/redirect.html
 
 URL ------------------------------------------- AUTH - TEMPLATE - HTTP REQUESTS - NODEJS ----- HTML -------
-/                                               GUEST  FULLSCREEN GET                          /src/www    
 /account                                                          GET             /src/www     /src/www    
 /account/change-password                                          GET POST        /src/www     /src/www    
 /account/change-username                                          GET POST        /src/www     /src/www    
@@ -40,7 +39,6 @@ URL ------------------------------------------- AUTH - TEMPLATE - HTTP REQUESTS 
 /account/signout                                GUEST  FULLSCREEN GET             /src/www     /src/www    
 /account/signout-complete                       GUEST  FULLSCREEN GET                          /src/www    
 /account/verify                                 GUEST  FULLSCREEN GET POST        /src/www     /src/www    
-/administrator                                                    GET                          /src/www    
 /administrator/account                                            GET             /src/www     /src/www    
 /administrator/account-profiles                                   GET             /src/www     /src/www    
 /administrator/account-reset-codes                                GET             /src/www     /src/www    
