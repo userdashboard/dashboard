@@ -27,7 +27,7 @@ function merge (applicationJSON, dashboardJSON) {
       serverFilePaths: [],
       content: [],
       contentFilePaths: [],
-      prozxy: [],
+      proxy: [],
       proxyFilePaths: [],
       modules: [],
       moduleNames: [],
