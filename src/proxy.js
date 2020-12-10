@@ -1,7 +1,6 @@
 const http = require('http')
 const https = require('https')
-const HTML = require('./html.js')
-const Response = require('./response.js')
+const dashboard = require('../index.js')
 
 module.exports = { pass }
 
@@ -88,8 +87,8 @@ async function pass (req, res) {
                 htmlTag.indexOf(' template=false') > -1) {
                 return res.end(body)
               }
-              const doc = HTML.parse(body)
-              return Response.end(req, res, doc)
+              const doc = dashboard.HTML.parse(body)
+              return dashboard.Response.end(req, res, doc)
             }
           }
           if (proxyResponse.headers['content-type']) {
@@ -104,7 +103,7 @@ async function pass (req, res) {
           res.statusCode = 200
           return res.end(body)
         case 302:
-          return Response.redirect(req, res, proxyResponse.headers.location)
+          return dashboard.Response.redirect(req, res, proxyResponse.headers.location)
         case 304:
           res.statusCode = 304
           return res.end()
@@ -113,20 +112,20 @@ async function pass (req, res) {
             res.setHeader('content-type', 'application/json')
             return res.end('{ "object": "error", "message": "Invalid content was returned from the application server" }')
           }
-          return Response.throw404(req, res)
+          return dashboard.Response.throw404(req, res)
         case 511:
           if (req.urlPath.startsWith('/api/')) {
             res.setHeader('content-type', 'application/json')
             return res.end('{ "object": "error", "message": "Invalid content was returned from the application server" }')
           }
-          return Response.redirectToSignIn(req, res)
+          return dashboard.Response.redirectToSignIn(req, res)
         case 500:
         default:
           if (req.urlPath.startsWith('/api/')) {
             res.setHeader('content-type', 'application/json')
             return res.end('{ object": "error", "message": "Invalid content was returned from the application server" }')
           }
-          return Response.throw500(req, res)
+          return dashboard.Response.throw500(req, res)
       }
     })
   })

@@ -1,11 +1,13 @@
+const dashboard = require('../index.js')
 const fs = require('fs')
+const Hash = require('./hash.js')
 const http = require('http')
+const Log = require('./log.js')('dashboard-server')
 const Multiparty = require('multiparty')
 const path = require('path')
+const Proxy = require('./proxy.js')
 const querystring = require('querystring')
-const Response = require('./response.js')
 const util = require('util')
-let dashboard, Hash, Log, Proxy
 
 const parsePostData = util.promisify((req, callback) => {
   if (req.headers &&
@@ -67,10 +69,6 @@ module.exports = {
 }
 
 function start (callback) {
-  dashboard = require('../index.js')
-  Hash = require('./hash.js')
-  Log = require('./log.js')('dashboard-server')
-  Proxy = require('./proxy.js')
   server = http.createServer(receiveRequest)
   server.on('error', (error) => {
     callback(error)
@@ -114,7 +112,7 @@ async function receiveRequest (req, res) {
         await parseMultiPartData(req)
       } catch (error) {
         Log.error('multi-part error', error)
-        return Response.throw500(req, res)
+        return dashboard.Response.throw500(req, res)
       }
     }
     if (!req.body) {
@@ -122,7 +120,7 @@ async function receiveRequest (req, res) {
         req.bodyRaw = await parsePostData(req)
       } catch (error) {
         Log.error('post error', error)
-        return Response.throw500(req, res)
+        return dashboard.Response.throw500(req, res)
       }
       if (req.bodyRaw) {
         req.body = querystring.parse(req.bodyRaw, '&', '=')
@@ -133,7 +131,7 @@ async function receiveRequest (req, res) {
     if (req.method === 'GET') {
       return staticFile(req, res)
     } else {
-      return Response.throw404(req, res)
+      return dashboard.Response.throw404(req, res)
     }
   }
   try {
@@ -141,9 +139,9 @@ async function receiveRequest (req, res) {
   } catch (error) {
     Log.error('before error', error)
     if (error.message === 'invalid-route') {
-      return Response.throw404(req, res)
+      return dashboard.Response.throw404(req, res)
     }
-    return Response.throw500(req, res)
+    return dashboard.Response.throw500(req, res)
   }
   if (res.ended) {
     return
@@ -157,15 +155,15 @@ async function receiveRequest (req, res) {
     req.applicationServer = receivedToken === req.server.applicationServerToken || receivedToken === global.applicationServerToken
   }
   if (!req.applicationServer && req.headers['x-application-server']) {
-    return Response.throw500(req, res)
+    return dashboard.Response.throw500(req, res)
   }
   if (req.urlPath.startsWith('/api/') && !global.allowPublicAPI && !req.applicationServer && !req.allowAPIRequest) {
-    return Response.throw404(req, res)
+    return dashboard.Response.throw404(req, res)
   }
   if (req.route && req.route.api !== 'static-page') {
     const methodHandler = req.route.api[req.method.toLowerCase()]
     if (!methodHandler) {
-      return Response.throw404(req, res)
+      return dashboard.Response.throw404(req, res)
     }
   }
   let user
@@ -179,7 +177,7 @@ async function receiveRequest (req, res) {
       } catch (error) {
       }
       if (!account) {
-        return Response.throw500(req, res)
+        return dashboard.Response.throw500(req, res)
       }
       req.query.sessionid = req.headers['x-sessionid']
       let session
@@ -188,7 +186,7 @@ async function receiveRequest (req, res) {
       } catch (error) {
       }
       if (!session) {
-        return Response.throw500(req, res)
+        return dashboard.Response.throw500(req, res)
       }
       req.query = query
       user = { account, session }
@@ -210,26 +208,26 @@ async function receiveRequest (req, res) {
       res.setHeader('content-type', 'application/json')
       return res.end('{ "object": "auth", "message": "Sign in required" }')
     }
-    return Response.redirectToSignIn(req, res)
+    return dashboard.Response.redirectToSignIn(req, res)
   }
   try {
     await executeHandlers(req, res, 'after', global.packageJSON.dashboard.server, global.packageJSON.dashboard.serverFilePaths)
   } catch (error) {
     Log.error('after error', error)
     if (error.message === 'invalid-route') {
-      return Response.throw404(req, res)
+      return dashboard.Response.throw404(req, res)
     }
-    return Response.throw500(req, res)
+    return dashboard.Response.throw500(req, res)
   }
   if (res.ended) {
     return
   }
   if (req.urlPath === '/administrator' || req.urlPath.startsWith('/administrator/') || req.urlPath.startsWith('/api/administrator/')) {
     if (!req.account) {
-      return Response.redirectToSignIn(req, res)
+      return dashboard.Response.redirectToSignIn(req, res)
     }
     if (!req.account.administrator) {
-      return Response.throw500(req, res)
+      return dashboard.Response.throw500(req, res)
     }
   }
   if (req.session && global.sessionVerificationDelay) {
@@ -241,14 +239,14 @@ async function receiveRequest (req, res) {
       req.urlPath !== '/account/signin' &&
       req.urlPath !== '/account/end-all-sessions' &&
       req.urlPath !== '/account/verify') {
-      return Response.redirectToVerify(req, res)
+      return dashboard.Response.redirectToVerify(req, res)
     }
   }
   if (!req.route) {
     if (global.applicationServer) {
       return Proxy.pass(req, res)
     } else {
-      return Response.throw404(req, res)
+      return dashboard.Response.throw404(req, res)
     }
   }
   if (process.env.HOT_RELOAD && req.route.reload) {
@@ -256,10 +254,10 @@ async function receiveRequest (req, res) {
   }
   if (req.route.api === 'static-page') {
     const doc = dashboard.HTML.parse(req.html || req.route.html)
-    return Response.end(req, res, doc)
+    return dashboard.Response.end(req, res, doc)
   }
   if (req.route.iframe) {
-    return Response.end(req, res)
+    return dashboard.Response.end(req, res)
   }
   if (req.urlPath.startsWith('/api/')) {
     return executeAPIRequest(req, res)
@@ -271,7 +269,7 @@ async function receiveRequest (req, res) {
     await req.route.api[req.method.toLowerCase()](req, res)
   } catch (error) {
     Log.error('route error', error)
-    return Response.throw500(req, res)
+    return dashboard.Response.throw500(req, res)
   }
 }
 
@@ -335,7 +333,7 @@ async function staticFile (req, res) {
     const stat = statCache[resolvedPath] || fs.statSync(resolvedPath)
     statCache[resolvedPath] = stat
     if (stat.isDirectory()) {
-      return Response.throw404(req, res)
+      return dashboard.Response.throw404(req, res)
     }
     if (process.env.HOT_RELOAD) {
       delete (fileCache[filePath])
@@ -343,17 +341,17 @@ async function staticFile (req, res) {
     const blob = fileCache[filePath] || fs.readFileSync(resolvedPath)
     fileCache[filePath] = fileCache[filePath] || blob
     const browserCached = req.headers['if-none-match']
-    req.eTag = Response.eTag(blob)
+    req.eTag = dashboard.Response.eTag(blob)
     if (browserCached && browserCached === req.eTag) {
       res.statusCode = 304
       return res.end()
     }
-    return Response.end(req, res, null, blob)
+    return dashboard.Response.end(req, res, null, blob)
   }
   if (global.applicationServer) {
     return Proxy.pass(req, res)
   }
-  return Response.throw404(req, res)
+  return dashboard.Response.throw404(req, res)
 }
 
 async function authenticateRequest (req) {
