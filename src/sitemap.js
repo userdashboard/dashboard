@@ -2,7 +2,11 @@ const fs = require('fs')
 const path = require('path')
 
 module.exports = {
-  generate
+  generate,
+  scanFiles,
+  mergeRoutes,
+  loadRoute,
+  readHTMLAttributes
 }
 
 function generate () {
@@ -41,7 +45,6 @@ function mergeRoutes (routes, moduleName) {
         urlKey = '/'
       }
     }
-    console.log('route', urlKey)
     routes[urlKey] = loadRoute(fileName)
   }
 }
@@ -81,11 +84,13 @@ function loadRoute (fileName) {
     return
   }
   const route = {
-    jsFileExists,
-    jsFilePathFull,
-    jsFilePath: jsFileExists ? jsFilePathFull.substring(global.applicationPath.length) : 'static-page',
     auth: api.auth || false,
     api
+  }
+  if (jsFileExists) {
+    route.jsFileExists = jsFileExists
+    route.jsFilePathFull = jsFilePathFull
+    route.jsFilePath = jsFilePathFull.substring(global.applicationPath.length)
   }
   if (process.env.HOT_RELOAD) {
     route.reload = () => {
