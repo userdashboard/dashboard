@@ -87,10 +87,6 @@ global.deleteDelay = parseInt(process.env.DELETE_DELAY || '7', 10)
 global.pageSize = parseInt(process.env.PAGE_SIZE || '10', 10)
 global.sessionVerificationDelay = parseInt(process.env.SESSION_VERIFICATION_DELAY || '14400', 10)
 
-const API = require('./src/api.js')
-const ENV = require('./env.js')
-const mergePackageJSON = require('./src/merge-package-json.js')
-const Sitemap = require('./src/sitemap.js')
 let Server
 
 const dashboard = module.exports = {
@@ -101,18 +97,22 @@ const dashboard = module.exports = {
   Timestamp: require('./src/timestamp.js'),
   UUID: require('./src/uuid.js'),
   start: async (applicationPath) => {
+    const API = require('./src/api.js')
+    const PackageJSON = require('./src/package-json.js')
+    const Sitemap = require('./src/sitemap.js')
+    const documentation = require('./documentation.js')
     global.applicationPath = global.applicationPath || applicationPath
-    global.packageJSON = mergePackageJSON.mergePackageJSON()
+    global.packageJSON = PackageJSON.merge()
     global.sitemap = Sitemap.generate()
-    global.api = API.createFromSitemap()
+    global.api = API.generate()
     if (process.env.GENERATE_SITEMAP_TXT !== 'false') {
-      Sitemap.write()
+      documentation.writeSitemap()
     }
     if (process.env.GENERATE_API_TXT !== 'false') {
-      API.write()
+      documentation.writeAPI()
     }
     if (process.env.GENERATE_ENV_TXT !== 'false') {
-      ENV.write()
+      documentation.writeEnvironment()
     }
     if (!dashboard.Storage) {
       await dashboard.setup()

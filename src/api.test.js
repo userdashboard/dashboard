@@ -3,7 +3,7 @@ const assert = require('assert')
 
 /* eslint-env mocha */
 describe('internal-api/api', () => {
-  describe('API#createFromSitemap', () => {
+  describe('API#generate', () => {
     it('should remap urls to object', async () => {
       const sitemap = global.sitemap
       global.sitemap = {
@@ -22,7 +22,7 @@ describe('internal-api/api', () => {
           }
         }
       }
-      const api = API.createFromSitemap()
+      const api = API.generate()
       assert.notStrictEqual(api.this.is.an.Example, undefined)
       assert.notStrictEqual(api.this.is.an.Example, null)
       const getResult = api.this.is.an.Example.get()
@@ -43,7 +43,7 @@ describe('internal-api/api', () => {
           }
         }
       }
-      const api = API.createFromSitemap()
+      const api = API.generate()
       assert.notStrictEqual(api.this.is.an.Example, undefined)
       assert.notStrictEqual(api.this.is.an.Example, null)
       assert.strictEqual(api.this.is.an.example, undefined)
@@ -61,7 +61,7 @@ describe('internal-api/api', () => {
           }
         }
       }
-      const api = API.createFromSitemap()
+      const api = API.generate()
       assert.notStrictEqual(api.this.is.an.ExampleTwo, undefined)
       assert.notStrictEqual(api.this.is.an.ExampleTwo, null)
       global.sitemap = sitemap

@@ -49,6 +49,7 @@ const helperRoutes = require('./test-helper-routes.js')
 const http = require('http')
 const https = require('https')
 const Log = require('./src/log.js')('dashboard-test-helper')
+const packageJSON = require('./src/package-json.js')
 const path = require('path')
 const querystring = require('querystring')
 const TestHelperPuppeteer = require('./test-helper-puppeteer.js')
@@ -88,8 +89,7 @@ async function setupBefore () {
 }
 
 async function setupBeforeEach () {
-  const mergePackageJSON = require('./src/merge-package-json.js')
-  global.packageJSON = mergePackageJSON.mergePackageJSON()
+  global.packageJSON = packageJSON.merge()
   global.sitemap['/api/require-verification'] = helperRoutes.requireVerification
   for (const property in global.testConfiguration) {
     global[property] = global.testConfiguration[property]

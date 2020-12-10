@@ -1,8 +1,8 @@
 /* eslint-env mocha */
 const assert = require('assert')
-const mergePackageJSON = require('./merge-package-json.js')
+const PackageJSON = require('./package-json.js')
 
-describe('internal-api/merge-package-json', () => {
+describe('internal-api/package-json', () => {
   function blankPackageJSON () {
     return {
       dashboard: {
@@ -29,7 +29,7 @@ describe('internal-api/merge-package-json', () => {
       const dashboardJSON = blankPackageJSON()
       dashboardJSON.dashboard.title = 'Dashboard title'
       const packageJSON = blankPackageJSON()
-      mergePackageJSON.mergeTitle(packageJSON, dashboardJSON, applicationJSON)
+      PackageJSON.mergeTitle(packageJSON, dashboardJSON, applicationJSON)
       assert.strictEqual(packageJSON.dashboard.title, 'Application title')
     })
 
@@ -40,7 +40,7 @@ describe('internal-api/merge-package-json', () => {
       const packageJSON = {
         dashboard: {}
       }
-      mergePackageJSON.mergeTitle(packageJSON, dashboardJSON, applicationJSON)
+      PackageJSON.mergeTitle(packageJSON, dashboardJSON, applicationJSON)
       assert.strictEqual(packageJSON.dashboard.title, 'Dashboard title')
     })
   })
@@ -50,7 +50,7 @@ describe('internal-api/merge-package-json', () => {
       const dashboardJSON = blankPackageJSON()
       dashboardJSON.dashboard.server = ['script1', 'script2', 'script3']
       const packageJSON = blankPackageJSON()
-      mergePackageJSON.mergeScriptArray(packageJSON, dashboardJSON, 'server')
+      PackageJSON.mergeScriptArray(packageJSON, dashboardJSON, 'server')
       assert.strictEqual(packageJSON.dashboard.server[0], 'script1')
       assert.strictEqual(packageJSON.dashboard.server[1], 'script2')
       assert.strictEqual(packageJSON.dashboard.server[2], 'script3')
@@ -62,8 +62,8 @@ describe('internal-api/merge-package-json', () => {
       const applicationJSON = blankPackageJSON()
       applicationJSON.dashboard.server = ['script4', 'script5', 'script6']
       const packageJSON = blankPackageJSON()
-      mergePackageJSON.mergeScriptArray(packageJSON, dashboardJSON, 'server')
-      mergePackageJSON.mergeScriptArray(packageJSON, applicationJSON, 'server')
+      PackageJSON.mergeScriptArray(packageJSON, dashboardJSON, 'server')
+      PackageJSON.mergeScriptArray(packageJSON, applicationJSON, 'server')
       assert.strictEqual(packageJSON.dashboard.server[0], 'script1')
       assert.strictEqual(packageJSON.dashboard.server[1], 'script2')
       assert.strictEqual(packageJSON.dashboard.server[2], 'script3')

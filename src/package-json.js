@@ -3,7 +3,7 @@ const path = require('path')
 let Log
 
 module.exports = {
-  mergePackageJSON,
+  merge,
   mergeTitle,
   mergeScriptArray,
   mergeModuleArray,
@@ -11,8 +11,8 @@ module.exports = {
   mergeSpecialHTML
 }
 
-function mergePackageJSON (applicationJSON, dashboardJSON) {
-  Log = Log || require('./log.js')('merge-package-json')
+function merge (applicationJSON, dashboardJSON) {
+  Log = Log || require('./log.js')('package-json')
   applicationJSON = applicationJSON || loadApplicationJSON(applicationJSON)
   if (applicationJSON && applicationJSON.name === '@userdashboard/dashboard') {
     dashboardJSON = applicationJSON
@@ -74,7 +74,7 @@ function mergeSpecialHTML (baseJSON, moduleName) {
   const files = ['error.html', 'redirect.html', 'template.html']
   if (!moduleName) {
     for (const file of files) {
-      const rootFilePath = `${global.applicationPath}/src/${file}`
+      const rootFilePath = `${global.applicationPath}/${file}`
       if (fs.existsSync(rootFilePath)) {
         const key = file.replace('.html', 'HTML')
         baseJSON.dashboard[`${key}Path`] = rootFilePath
@@ -86,7 +86,7 @@ function mergeSpecialHTML (baseJSON, moduleName) {
   for (const file of files) {
     let filePath
     try {
-      filePath = require.resolve(`${moduleName}/src/${file}`)
+      filePath = require.resolve(`${moduleName}/${file}`)
     } catch (error) {
     }
     if (filePath) {
@@ -99,11 +99,11 @@ function mergeSpecialHTML (baseJSON, moduleName) {
 
 function mergeMenuLinks (baseJSON, moduleName) {
   if (!moduleName) {
-    const rootAccountMenuHTMLPath = `${global.applicationPath}/src/menu-account.html`
+    const rootAccountMenuHTMLPath = `${global.applicationPath}/menu-account.html`
     if (fs.existsSync(rootAccountMenuHTMLPath)) {
       baseJSON.dashboard.menus.account.push(fs.readFileSync(rootAccountMenuHTMLPath).toString())
     }
-    const rootAdministratorMenuHTMLPath = `${global.applicationPath}/src/menu-administrator.html`
+    const rootAdministratorMenuHTMLPath = `${global.applicationPath}/menu-administrator.html`
     if (fs.existsSync(rootAdministratorMenuHTMLPath)) {
       baseJSON.dashboard.menus.administrator.push(fs.readFileSync(rootAdministratorMenuHTMLPath).toString())
     }
@@ -111,7 +111,7 @@ function mergeMenuLinks (baseJSON, moduleName) {
   }
   let moduleAccountMenuHTMLPath
   try {
-    moduleAccountMenuHTMLPath = require.resolve(`${moduleName}/src/menu-account.html`)
+    moduleAccountMenuHTMLPath = require.resolve(`${moduleName}/menu-account.html`)
   } catch (error) {
   }
   if (moduleAccountMenuHTMLPath) {
@@ -119,7 +119,7 @@ function mergeMenuLinks (baseJSON, moduleName) {
   }
   let moduleAdministratorMenuHTMLPath
   try {
-    moduleAdministratorMenuHTMLPath = require.resolve(`${moduleName}/src/menu-administrator.html`)
+    moduleAdministratorMenuHTMLPath = require.resolve(`${moduleName}/menu-administrator.html`)
   } catch (error) {
   }
   if (moduleAdministratorMenuHTMLPath) {
