@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-let Log
+const Log = require('./log.js')('package-json')
 
 module.exports = {
   merge,
@@ -12,13 +12,12 @@ module.exports = {
 }
 
 function merge (applicationJSON, dashboardJSON) {
-  Log = Log || require('./log.js')('package-json')
   applicationJSON = applicationJSON || loadApplicationJSON(applicationJSON)
   if (applicationJSON && applicationJSON.name === '@userdashboard/dashboard') {
     dashboardJSON = applicationJSON
     applicationJSON = null
   } else {
-    dashboardJSON = dashboardJSON || loadModuleFile('@userdashboard/dashboard', 'package.json')
+    dashboardJSON = dashboardJSON || loadModuleFile('@userdashboard/dashboard', '/package.json')
   }
   const packageJSON = {
     version: dashboardJSON.version,
@@ -161,7 +160,7 @@ function mergeModuleArray (baseJSON, otherJSON) {
     if (baseJSON.dashboard.modules.indexOf(moduleName) > -1) {
       continue
     }
-    const moduleJSON = loadModuleFile(moduleName, 'package.json')
+    const moduleJSON = loadModuleFile(moduleName, '/package.json')
     if (!moduleJSON) {
       throw new Error('invalid-module')
     }
@@ -178,7 +177,7 @@ function mergeModuleArray (baseJSON, otherJSON) {
 }
 
 function loadApplicationJSON () {
-  const filePath = path.join(global.applicationPath, 'package.json')
+  const filePath = path.join(global.applicationPath, '/package.json')
   if (fs.existsSync(filePath)) {
     return JSON.parse(fs.readFileSync(filePath))
   }
