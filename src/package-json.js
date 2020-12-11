@@ -128,14 +128,14 @@ function mergeMenuLinks (baseJSON, moduleName) {
 
 function mergeScriptArray (baseJSON, otherJSON, scriptType) {
   if (!otherJSON.dashboard[scriptType] || !otherJSON.dashboard[scriptType].length) {
-    return baseJSON
+    return
   }
   for (const i in otherJSON.dashboard[scriptType]) {
     const relativePath = otherJSON.dashboard[scriptType][i]
     if (baseJSON.dashboard[scriptType].indexOf(relativePath) > -1) {
       continue
     }
-    if (process.env.NODE_ENV === 'testing' && !otherJSON.name) {
+    if (process.env.NODE_ENV === 'testing' && global.testingPackageJSON) {
       baseJSON.dashboard[scriptType].push(relativePath)
       baseJSON.dashboard[`${scriptType}FilePaths`].push(relativePath)
       continue

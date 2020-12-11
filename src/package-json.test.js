@@ -3,6 +3,12 @@ const assert = require('assert')
 const PackageJSON = require('./package-json.js')
 
 describe('internal-api/package-json', () => {
+  before(() => {
+    global.testingPackageJSON = true
+  })
+  after(() => {
+    global.testingPackageJSON = false
+  })
   function blankPackageJSON () {
     return {
       dashboard: {
