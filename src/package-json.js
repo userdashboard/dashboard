@@ -136,14 +136,13 @@ function mergeScriptArray (baseJSON, otherJSON, scriptType) {
     if (baseJSON.dashboard[scriptType].indexOf(relativePath) > -1) {
       continue
     }
-    if (process.env.NODE_ENV === 'testing') {
+    if (process.env.NODE_ENV === 'testing' && !otherJSON.name) {
       baseJSON.dashboard[scriptType].push(relativePath)
       baseJSON.dashboard[`${scriptType}FilePaths`].push(relativePath)
       continue
     }
-    const filePath = require.resolve(`${otherJSON.name}${relativePath}`)
-    baseJSON.dashboard[scriptType].push(require(relativePath))
-    baseJSON.dashboard[`${scriptType}FilePaths`].push(filePath)
+    baseJSON.dashboard[scriptType].push(loadModuleFile(otherJSON.name, relativePath))
+    baseJSON.dashboard[`${scriptType}FilePaths`].push(relativePath)
   }
 }
 
