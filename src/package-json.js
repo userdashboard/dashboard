@@ -197,10 +197,17 @@ function loadModuleFile (moduleName, file) {
     global.testModuleJSON[moduleName].files = global.testModuleJSON[moduleName].files || {}
     return global.testModuleJSON[moduleName].files[file]
   }
+  let modulePath
+  try {
+    modulePath = require.resolve(moduleName)
+  } catch (errro) {
+  }
   const trimmed = file.startsWith('/') ? file.substring(1) : file
   if (trimmed.endsWith('.js') || trimmed.endsWith('.json')) {
-    return require(`${moduleName}/${trimmed}`)
-  } else {
-    return fs.readFileSync(require.resolve(`${moduleName}/${trimmed}`))
+    return require(modulePath.replace('index.js', file))
+  }
+  const rootPath = path.join(global.applicationPath, file)
+  if (fs.existsSync(rootPath)) {
+    return fs.readFileSync(rootPath)
   }
 }
