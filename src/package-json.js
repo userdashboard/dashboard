@@ -197,9 +197,10 @@ function loadModuleFile (moduleName, file) {
     global.testModuleJSON[moduleName].files = global.testModuleJSON[moduleName].files || {}
     return global.testModuleJSON[moduleName].files[file]
   }
-  if (file.endsWith('.js') || file.endsWith('.json')) {
-    return require(`${moduleName}/${file}`)
+  const trimmed = file.startsWith('/') ? file.substring(1) : file
+  if (trimmed.endsWith('.js') || trimmed.endsWith('.json')) {
+    return require(`${moduleName}/${trimmed}`)
   } else {
-    return fs.readFileSync(require.resolve(`${moduleName}/${file}`))
+    return fs.readFileSync(require.resolve(`${moduleName}/${trimmed}`))
   }
 }
