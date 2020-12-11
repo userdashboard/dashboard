@@ -234,13 +234,6 @@
     Sitemap#readHTMLAttributes
       ✓ should detect attributes
     Sitemap#loadRoute
-{
-  auth: false,
-  api: { get: [AsyncFunction: get] },
-  jsFileExists: true,
-  jsFilePathFull: '/tmp/project/node_modules/@userdashboard/dashboard/src/www/api/user/account.js',
-  jsFilePath: '/node_modules/@userdashboard/dashboard/src/www/api/user/account.js'
-}
       ✓ should load API route
       ✓ should load HTML route
       ✓ should load static HTML route
@@ -1574,5 +1567,5 @@
       ✓ override req.userProfileFields
 
 
-  873 passing (27m)
+  873 passing (28m)
 
