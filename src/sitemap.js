@@ -53,6 +53,9 @@ function scanFiles (pathName, fileList) {
   const folderContents = fs.readdirSync(pathName)
   fileList = fileList || []
   for (const filePath of folderContents) {
+    if (filePath === 'public') {
+      continue
+    }
     const fullPath = path.join(pathName, filePath)
     const stat = fs.statSync(fullPath)
     if (stat.isDirectory()) {
