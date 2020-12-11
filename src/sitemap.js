@@ -45,7 +45,10 @@ function mergeRoutes (routes, moduleName) {
         urlKey = '/'
       }
     }
-    routes[urlKey] = loadRoute(fileName)
+    const route = loadRoute(fileName)
+    if (route) {
+      routes[urlKey] = route
+    }
   }
 }
 
@@ -84,7 +87,7 @@ function loadRoute (fileName) {
   const jsFileExists = fs.existsSync(jsFilePathFull)
   const api = jsFileExists ? require(jsFilePathFull) : 'static-page'
   if (api !== 'static-page' && !api.get && !api.post && !api.patch && !api.delete && !api.put) {
-    return
+    return null
   }
   const route = {
     auth: api.auth || false,
