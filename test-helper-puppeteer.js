@@ -1,6 +1,7 @@
-let puppeteer, browser, Log
 const fs = require('fs')
+const Log = require('./src/log.js')('dashboard-test-helper-puppeteer')
 const path = require('path')
+const puppeteer = require('puppeteer')
 const util = require('util')
 const wait = util.promisify(function (amount, callback) {
   if (amount && !callback) {
@@ -17,15 +18,12 @@ module.exports = {
       browser.close()
       browser = null
     }
-    puppeteer = null
   }
 }
 
-let devices, allDevices
+let devices, allDevices, browser
 
 async function fetch (method, req) {
-  Log = require('./src/log.js')('dashboard-test-helper-puppeteer')
-  puppeteer = puppeteer || require('puppeteer')
   allDevices = allDevices || require('puppeteer/lib/cjs/puppeteer/common/DeviceDescriptors.js')
   devices = devices || [{
     name: 'Desktop',

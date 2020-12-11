@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-let Log
+const Log = require('./log.js')('package-json')
 
 module.exports = {
   merge,
@@ -12,7 +12,6 @@ module.exports = {
 }
 
 function merge (applicationJSON, dashboardJSON) {
-  Log = Log || require('./log.js')('package-json')
   applicationJSON = applicationJSON || loadApplicationJSON(applicationJSON)
   if (applicationJSON && applicationJSON.name === '@userdashboard/dashboard') {
     dashboardJSON = applicationJSON
@@ -200,14 +199,19 @@ function loadModuleFile (moduleName, file) {
   let modulePath
   try {
     modulePath = require.resolve(moduleName)
-  } catch (errro) {
+  } catch (error) {
   }
-  const trimmed = file.startsWith('/') ? file.substring(1) : file
-  if (trimmed.endsWith('.js') || trimmed.endsWith('.json')) {
-    return require(modulePath.replace('index.js', file))
+  if (modulePath) {
+    const filePath = modulePath.replace('/index.js', file)
+    if (file.endsWith('.js') || file.endsWith('.json')) {
+      return require(filePath)
+    }
+    return fs.readFileSync(filePath).toString()
   }
   const rootPath = path.join(global.applicationPath, file)
   if (fs.existsSync(rootPath)) {
-    return fs.readFileSync(rootPath)
+    return fs.readFileSync(rootPath).toString()
   }
+  Log.error('missing module file', moduleName, file)
+  throw new Error('missing-module-file')
 }
