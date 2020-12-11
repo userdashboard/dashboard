@@ -188,7 +188,20 @@ function loadModule (moduleName) {
   if (global.testModuleJSON && global.testModuleJSON[moduleName]) {
     return global.testModuleJSON[moduleName]
   }
-  return require(moduleName)
+  let modulePath
+  try {
+    modulePath = require.resolve(moduleName)
+  } catch (error) {
+  }
+  if (modulePath) {
+    return require(modulePath)
+  }
+  const rootPath = path.join(global.applicationPath, `/node_modules/${moduleName}`)
+  if (fs.existsSync(rootPath)) {
+    return require(rootPath)
+  }
+  Log.error('missing module', moduleName)
+  throw new Error('missing-module-file')
 }
 
 function loadModuleFile (moduleName, file) {
