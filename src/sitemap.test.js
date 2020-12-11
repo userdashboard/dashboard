@@ -21,7 +21,6 @@ describe('internal-api/sitemap', () => {
     it('should load API route', async () => {
       const routePath = path.join(__dirname, 'www/api/user/account.js')
       const route = Sitemap.loadRoute(routePath)
-      console.log(route)
       assert.strictEqual(route.jsFilePathFull, routePath)
       assert.strictEqual(route.html, undefined)
     })
