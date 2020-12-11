@@ -36,9 +36,8 @@ async function pass (req, res) {
     requestOptions.headers['x-sessionid'] = req.session.sessionid
   }
   requestOptions.headers['x-application-server-token'] = req.applicationServerToken || global.applicationServerToken
-  const proxyHandlers = global.packageJSON.dashboard.proxy
-  if (proxyHandlers && proxyHandlers.length) {
-    for (const handler of proxyHandlers) {
+  if (global.packageJSON.dashboard.proxy && global.packageJSON.dashboard.proxy.length) {
+    for (const handler of global.packageJSON.dashboard.proxy) {
       await handler(req, requestOptions)
     }
   }
