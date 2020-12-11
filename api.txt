@@ -1,4 +1,4 @@
-@userdashboard/dashboard 1.0.381
+@userdashboard/dashboard 1.0.382
 http://localhost:8000
 
 |-----------------------------------------|
