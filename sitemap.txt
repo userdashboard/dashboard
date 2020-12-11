@@ -1,4 +1,4 @@
-@userdashboard/dashboard 1.0.378
+@userdashboard/dashboard 1.0.379
 http://localhost:8000
 
 Administrator menu:
