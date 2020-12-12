@@ -321,7 +321,10 @@ async function staticFile (req, res) {
       if (global.packageJSON.dashboard.moduleNames && global.packageJSON.dashboard.moduleNames.length) {
         for (const moduleName of global.packageJSON.dashboard.moduleNames) {
           filePath = `${moduleName}/src/www${req.urlPath}`
-          resolvedPath = require.resolve(filePath)
+          try {
+            resolvedPath = require.resolve(filePath)
+          } catch (error) {
+          }
           if (resolvedPath) {
             break
           }
