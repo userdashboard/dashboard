@@ -37,7 +37,7 @@ async function beforeRequest (req) {
 }
 
 async function renderPage (req, res) {
-  const doc = dashboard.HTML.parse(req.html || req.route.html, req.data.account, 'account', req.language)
+  const doc = dashboard.HTML.parse(req.html || req.route.html, req.data.account, 'account')
   await navbar.setup(doc, req.data.account)
   if (req.data.sessions && req.data.sessions.length) {
     dashboard.HTML.renderTable(doc, req.data.sessions, 'session-row', 'sessions-table')

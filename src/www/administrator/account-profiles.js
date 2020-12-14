@@ -23,7 +23,7 @@ async function beforeRequest (req) {
 }
 
 async function renderPage (req, res) {
-  const doc = dashboard.HTML.parse(req.html || req.route.html, req.data.account, 'account', req.language)
+  const doc = dashboard.HTML.parse(req.html || req.route.html, req.data.account, 'account')
   await navbar.setup(doc, req.data.account)
   const removeElements = []
   if (req.data.profiles && req.data.profiles.length) {

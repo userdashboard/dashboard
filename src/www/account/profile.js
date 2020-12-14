@@ -19,7 +19,7 @@ async function beforeRequest (req) {
 }
 
 async function renderPage (req, res) {
-  const doc = dashboard.HTML.parse(req.html || req.route.html, req.data.profile, 'profile', req.language)
+  const doc = dashboard.HTML.parse(req.html || req.route.html, req.data.profile, 'profile')
   await navbar.setup(doc, req.data.profile)
   if (req.account.profileid === req.query.profileid) {
     const notDefault = doc.getElementById('is-not-default')
