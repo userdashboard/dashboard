@@ -81,7 +81,7 @@ describe('/api/administrator/set-account-deleted', () => {
       global.deleteDelay = 1
       const accountNow = await req.patch()
       const now = Math.floor(new Date().getTime() / 1000)
-      const days = Math.ceil((accountNow.deleted - now) / 60 / 60 / 24)
+      const days = Math.floor((accountNow.deleted - now) / 60 / 60 / 24)
       assert.strictEqual(days, 1)
     })
   })
@@ -98,7 +98,7 @@ describe('/api/administrator/set-account-deleted', () => {
       global.deleteDelay = 7
       const accountNow = await req.patch()
       const now = Math.floor(new Date().getTime() / 1000)
-      const days = Math.ceil((accountNow.deleted - now) / 60 / 60 / 24)
+      const days = Math.floor((accountNow.deleted - now) / 60 / 60 / 24)
       assert.strictEqual(days, 7)
     })
   })
