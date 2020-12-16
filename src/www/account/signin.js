@@ -47,7 +47,7 @@ async function submitForm (req, res) {
   if (req.secure) {
     cookieStr += '; secure'
   }
-  if (global.domain) {
+  if (global.domain && global.domain !== 'localhost') {
     const domainColon = global.domain.indexOf(':')
     if (domainColon > -1) {
       cookieStr += '; domain=' + global.domain.substring(0, domainColon)

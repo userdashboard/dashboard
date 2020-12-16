@@ -16,7 +16,7 @@ async function renderPage (req, res, messageTemplate) {
   if (req.secure) {
     cookieStr += '; secure'
   }
-  if (global.domain) {
+  if (global.domain && global.domain !== 'localhost') {
     cookieStr += `; domain=${global.domain}`
   }
   cookieStr += '; expires=' + expires
