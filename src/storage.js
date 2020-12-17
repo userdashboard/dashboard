@@ -3,6 +3,8 @@ const fs = require('fs')
 const path = require('path')
 
 module.exports = {
+  encrypt,
+  decrypt,
   setup: async (envPrefix) => {
     const Log = require('./log.js')('storage')
     let Storage, cache
