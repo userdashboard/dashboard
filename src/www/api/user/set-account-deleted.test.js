@@ -116,8 +116,9 @@ describe('/api/user/set-account-deleted', () => {
       global.deleteDelay = 3
       const accountNow = await req.patch()
       const now = Math.floor(new Date().getTime() / 1000)
-      const days = Math.ceil((accountNow.deleted - now) / 60 / 60 / 24)
-      assert.strictEqual(days, 3)
+      const days = Math.floor((accountNow.deleted - now) / 60 / 60 / 24)
+      const days2 = Math.ceil((accountNow.deleted - now) / 60 / 60 / 24)
+      assert.strictEqual(days === 3 || days2 === 3, true)
     })
   })
 })
