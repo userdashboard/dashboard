@@ -231,7 +231,7 @@ async function receiveRequest (req, res) {
     }
   }
   if (req.session && global.sessionVerificationDelay) {
-    const requireVerification = dashboard.Timestamp.now - req.session.lastVerified > 14400
+    const requireVerification = dashboard.Timestamp.now - req.session.lastVerified > global.sessionVerificationDelay
     if (requireVerification &&
       (req.urlPath === '/administrator' || req.urlPath.startsWith('/administrator/') ||
        req.urlPath === '/account' || req.urlPath.startsWith('/account/')) &&
