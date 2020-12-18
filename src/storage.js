@@ -155,22 +155,6 @@ module.exports = {
           await cache.set(file, string)
         }
       },
-      writeMany: async (file, contents) => {
-        if (!file) {
-          throw new Error('invalid-file')
-        }
-        if (!contents && contents !== '') {
-          throw new Error('invalid-contents')
-        }
-        let string = contents
-        if (string && !string.substring) {
-          string = JSON.stringify(string)
-        }
-        await storage.write(file, encrypt(string))
-        if (cache) {
-          await cache.set(file, string)
-        }
-      },
       writeBinary: async (file, buffer) => {
         if (!file) {
           throw new Error('invalid-file')
