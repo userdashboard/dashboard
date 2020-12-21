@@ -76,6 +76,14 @@ async function end (req, res, doc, blob) {
         form.attr.action += `${divider}return-url=${encodeURI(req.query['return-url']).split('?').join('%3F').split('&').join('%26')}`
       }
     }
+    const packageJSON = req.packageJSON || global.packageJSON
+    if (packageJSON.dashboard.content && packageJSON.dashboard.content.length) {
+      for (const contentHandler of packageJSON.dashboard.content) {
+        if (contentHandler.page) {
+          await contentHandler.page(req, res, doc)
+        }
+      }
+    }
     return compress(req, res, doc.toString())
   }
 }
