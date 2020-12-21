@@ -74,7 +74,7 @@ function scanFiles (pathName, fileList) {
     if (filePath.endsWith('.html') && fs.existsSync(filePath.replace('.html', '.js'))) {
       continue
     }
-    if (global.applicationServer && (filePath.endsWith('/src/www/index.html') || filePath.endsWith('src/www/home.html'))) {
+    if (global.applicationServer && (filePath.endsWith('/src/www/index.html') || filePath.endsWith('/src/www/home.html'))) {
       continue
     }
     fileList.push(fullPath)
