@@ -100,12 +100,12 @@ function loadRoute (fileName) {
   }
   if (process.env.HOT_RELOAD) {
     route.reload = () => {
-      if (this.jsFileExists) {
-        delete require.cache[require.resolve(this.jsFilePath)]
-        this.api = require(this.jsFilePath)
+      if (route.jsFileExists) {
+        delete require.cache[require.resolve(route.jsFilePathFull)]
+        route.api = require(route.jsFilePathFull)
       }
-      if (this.htmlFileExists) {
-        this.html = fs.readFileSync(this.htmlFilePath).toString()
+      if (route.htmlFileExists) {
+        route.html = fs.readFileSync(route.htmlFilePathFull).toString()
       }
     }
   }
